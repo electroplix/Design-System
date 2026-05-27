@@ -1,7 +1,7 @@
 'use client';
-import React from 'react';
-import { useNavTheme } from '../../core/provider';
+import type React from 'react';
 import { Icon } from '../../core/icons';
+import { useNavTheme } from '../../core/provider';
 
 /* ── Footer ─────────────────────────────────────────────── */
 

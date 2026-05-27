@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useMiscTheme } from '../../core/provider';
+import { useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useMiscTheme } from '../../core/provider';
 
 /* ── helpers ────────────────────────────────────────────── */
 

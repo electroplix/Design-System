@@ -1,18 +1,18 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – social tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  SocialShareBar,
-  SocialLoginButtons,
-  SocialEmbed,
+  CommentsBox,
   FollowLike,
   ReactionsBar,
-  CommentsBox,
   ReviewsForm,
+  SocialEmbed,
+  SocialLoginButtons,
+  SocialShareBar,
 } from '../components/social';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};

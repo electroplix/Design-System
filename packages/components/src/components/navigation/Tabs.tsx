@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import { useNavTheme } from '../../core/provider';
 
 export type TabDef = {

@@ -1,5 +1,6 @@
 'use client';
-import React, { useMemo } from 'react';
+import type React from 'react';
+import { useMemo } from 'react';
 import { Icon } from '../../core/icons';
 import { useNavTheme } from '../../core/provider';
 

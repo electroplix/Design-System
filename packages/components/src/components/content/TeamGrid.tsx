@@ -1,7 +1,6 @@
 'use client';
-import React from 'react';
-import { useContentTheme } from '../../core/provider';
 import { Icon } from '../../core/icons';
+import { useContentTheme } from '../../core/provider';
 
 /* ── TeamGrid ───────────────────────────────────────────── */
 

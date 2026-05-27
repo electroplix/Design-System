@@ -1,22 +1,22 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – data-display tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
   Badge,
   BadgeGroup,
   BarChart,
-  LineChart,
-  PieChart,
-  Sparkline,
-  ProgressBar,
-  RatingStars,
   CalendarGrid,
   DataTable,
+  LineChart,
+  PieChart,
+  ProgressBar,
+  RatingStars,
+  Sparkline,
   Timeline,
 } from '../components/data-display';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 
@@ -42,12 +42,7 @@ describe('Data Display components', () => {
   });
 
   it('PieChart renders', () => {
-    const { container } = wrap(
-      <PieChart
-        data={[60, 40]}
-        labels={['A', 'B']}
-      />,
-    );
+    const { container } = wrap(<PieChart data={[60, 40]} labels={['A', 'B']} />);
     expect(container.firstChild).toBeTruthy();
   });
 
@@ -79,7 +74,9 @@ describe('Data Display components', () => {
   });
 
   it('Timeline renders', () => {
-    const { container } = wrap(<Timeline items={[{ id: '1', title: 'Start', description: 'Begin' }]} />);
+    const { container } = wrap(
+      <Timeline items={[{ id: '1', title: 'Start', description: 'Begin' }]} />,
+    );
     expect(container.firstChild).toBeTruthy();
   });
 });

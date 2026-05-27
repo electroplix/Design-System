@@ -1,7 +1,8 @@
 'use client';
-import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { useSearchTheme } from '../../core/provider';
+import type React from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useSearchTheme } from '../../core/provider';
 
 /* ── helpers ────────────────────────────────────────────── */
 

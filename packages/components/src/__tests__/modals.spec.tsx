@@ -1,20 +1,20 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – modals tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  OverlayBase,
-  GenericModal,
   ConfirmDialog,
-  FormDialog,
-  LoadingOverlay,
-  Tooltip,
-  ToastBanners,
   CookieNotice,
+  FormDialog,
+  GenericModal,
+  LoadingOverlay,
+  OverlayBase,
+  ToastBanners,
+  Tooltip,
   WelcomePopup,
 } from '../components/modals';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};
@@ -62,7 +62,7 @@ describe('Modal components', () => {
   it('Tooltip renders', () => {
     const { container } = wrap(
       <Tooltip text="Hint">
-        <button>Hover</button>
+        <button type="button">Hover</button>
       </Tooltip>,
     );
     expect(container.firstChild).toBeTruthy();

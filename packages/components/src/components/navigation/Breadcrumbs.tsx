@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import type React from 'react';
 import { Icon } from '../../core/icons';
 import { useNavTheme } from '../../core/provider';
 

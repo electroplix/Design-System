@@ -1,19 +1,19 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – lists-cards tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  BlockShell,
   Accordion,
-  GenericList,
+  BlockShell,
   FeatureGrid,
+  GenericList,
   ItemCardGrid,
+  LCTimeline,
   PricingTable,
   SortableTable,
-  LCTimeline,
 } from '../components/lists-cards';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 

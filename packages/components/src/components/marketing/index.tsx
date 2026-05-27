@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useMarketingTheme } from '../../core/provider';
 import { Icon } from '../../core/icons';
+import { useMarketingTheme } from '../../core/provider';
 
 function useMK() {
   const t = useMarketingTheme();

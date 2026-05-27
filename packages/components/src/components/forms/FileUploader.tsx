@@ -1,5 +1,6 @@
 'use client';
-import React, { useState, useRef } from 'react';
+import type React from 'react';
+import { useRef, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 

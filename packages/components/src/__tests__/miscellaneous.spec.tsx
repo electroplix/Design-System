@@ -1,19 +1,19 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – miscellaneous tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  CookieConsent,
-  ScrollProgressBar,
-  ThemeToggle,
-  EmptyState,
   AppInstallBanner,
+  CookieConsent,
   DownloadBlock,
+  EmptyState,
   InlineCode,
   RSSFeed,
+  ScrollProgressBar,
+  ThemeToggle,
 } from '../components/miscellaneous';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};

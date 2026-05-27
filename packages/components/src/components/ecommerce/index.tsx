@@ -1,9 +1,9 @@
 'use client';
-import React, { useState } from 'react';
-import { useEcommerceTheme } from '../../core/provider';
+import { useState } from 'react';
 import { Icon } from '../../core/icons';
-import { money } from '../../core/utils';
+import { useEcommerceTheme } from '../../core/provider';
 import type { Currency } from '../../core/types';
+import { money } from '../../core/utils';
 
 /* ── Shared types ───────────────────────────────────────── */
 

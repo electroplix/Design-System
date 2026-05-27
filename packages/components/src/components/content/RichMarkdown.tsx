@@ -1,7 +1,8 @@
 'use client';
-import React, { useMemo } from 'react';
-import { useContentTheme } from '../../core/provider';
+import type React from 'react';
+import { useMemo } from 'react';
 import { Icon } from '../../core/icons';
+import { useContentTheme } from '../../core/provider';
 
 /* ── miniMarkdownToHtml ─────────────────────────────────── */
 
@@ -203,6 +204,7 @@ export function RichMarkdown({
 
         <article
           style={{ fontSize: baseSize, lineHeight: 1.7, width: '100%', color: fg }}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Internal markdown rendering
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>

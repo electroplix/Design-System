@@ -1,7 +1,6 @@
 'use client';
-import React from 'react';
-import { useDataDisplayTheme } from '../../core/provider';
 import { Icon } from '../../core/icons';
+import { useDataDisplayTheme } from '../../core/provider';
 import { Badge, type BadgeTone } from './Badge';
 
 /* ── BadgeGroup ─────────────────────────────────────────── */

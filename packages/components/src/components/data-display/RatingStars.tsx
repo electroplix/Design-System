@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useId } from 'react';
+import { useId, useState } from 'react';
 import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── Star (internal) ────────────────────────────────────── */

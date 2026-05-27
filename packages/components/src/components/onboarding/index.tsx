@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import { useOnboardingTheme } from '../../core/provider';
 import { Icon } from '../../core/icons';
+import { useOnboardingTheme } from '../../core/provider';
 
 /* ── helpers ────────────────────────────────────────────── */
 

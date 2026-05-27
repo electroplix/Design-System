@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
-import { useListsCardsTheme } from '../../core/provider';
+import type React from 'react';
+import { useMemo, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useListsCardsTheme } from '../../core/provider';
 
 /* ── helpers ────────────────────────────────────────────── */
 

@@ -1,22 +1,17 @@
-/**
- * @electroplix/components – core module tests
- */
-import React from 'react';
 import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
 import {
+  ElectroplixProvider,
+  Icon,
+  cn,
+  defaultConfig,
   defineConfig,
   mergeTheme,
-  defaultConfig,
-  ElectroplixProvider,
-  useElectroplixConfig,
-  Icon,
-  sx,
-  cn,
   money,
-  truncate,
+  sx,
   timeAgo,
+  truncate,
 } from '../core';
+import { TestWrapper } from './test-utils';
 
 describe('Core – config utilities', () => {
   it('defineConfig returns the config object', () => {

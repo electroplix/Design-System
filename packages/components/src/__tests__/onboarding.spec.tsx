@@ -1,17 +1,17 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – onboarding tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
+  ContactSupportBlock,
   FAQAccordion,
   OnboardingWizard,
   ProductTour,
-  TooltipHelp,
   SupportChat,
-  ContactSupportBlock,
+  TooltipHelp,
 } from '../components/onboarding';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};
@@ -21,7 +21,9 @@ Element.prototype.scrollIntoView = jest.fn();
 
 describe('Onboarding components', () => {
   it('FAQAccordion renders', () => {
-    const { container } = wrap(<FAQAccordion items={[{ id: '1', question: 'Q1', answer: 'A1' }]} />);
+    const { container } = wrap(
+      <FAQAccordion items={[{ id: '1', question: 'Q1', answer: 'A1' }]} />,
+    );
     expect(container.firstChild).toBeTruthy();
   });
 

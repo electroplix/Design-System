@@ -3,9 +3,10 @@
 /*  ElectroplixProvider — React context for global theme config       */
 /* ------------------------------------------------------------------ */
 
-import React, { createContext, useContext, useMemo } from 'react';
-import type { ElectroplixConfig, BaseTheme } from './types';
+import type React from 'react';
+import { createContext, useContext, useMemo } from 'react';
 import { defaultConfig, mergeTheme } from './config';
+import type { BaseTheme, ElectroplixConfig } from './types';
 
 const Ctx = createContext<ElectroplixConfig>(defaultConfig);
 

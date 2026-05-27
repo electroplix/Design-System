@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { useMediaTheme } from '../../core/provider';
 import { Icon } from '../../core/icons';
+import { useMediaTheme } from '../../core/provider';
 
 function useMD() {
   const t = useMediaTheme();
@@ -565,7 +565,7 @@ export interface MasonryGridProps {
 
 export function MasonryGrid({ items = [], columns = 3, gap = 8 }: MasonryGridProps) {
   const md = useMD();
-  const numColumns = typeof columns === 'string' ? parseInt(columns, 10) || 1 : columns;
+  const numColumns = typeof columns === 'string' ? Number.parseInt(columns, 10) || 1 : columns;
   const cols = Array.from<GalleryItem[]>({ length: numColumns }).map(() => []) as GalleryItem[][];
 
   items.forEach((it, i) => cols[i % numColumns].push(it));

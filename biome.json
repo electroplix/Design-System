@@ -31,6 +31,9 @@
     ],
     "ignoreUnknown": true
   },
+  "javascript": {
+    "globals": ["jest", "describe", "it", "expect", "beforeEach", "afterEach", "beforeAll", "afterAll"]
+  },
   "organizeImports": {
     "enabled": true
   },
@@ -42,6 +45,31 @@
     "lineWidth": 100,
     "lineEnding": "lf"
   },
+  "overrides": [
+    {
+      "include": ["**/*.spec.tsx", "**/*.spec.ts", "**/test-utils.tsx"],
+      "javascript": {
+        "globals": ["jest", "describe", "it", "expect", "beforeEach", "afterEach", "beforeAll", "afterAll", "vi"]
+      },
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noExplicitAny": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["**/*.stories.tsx", "**/*.stories.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ],
   "linter": {
     "enabled": true,
     "rules": {

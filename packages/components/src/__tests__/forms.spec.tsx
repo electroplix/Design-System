@@ -1,24 +1,24 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – forms tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  FormShell,
-  InputField,
-  TextAreaField,
-  SelectDropdown,
-  RadioGroup,
-  ToggleSwitch,
+  AddressAutocomplete,
+  Captcha,
+  ContactForm,
   DateTimePicker,
   FileUploader,
-  ContactForm,
-  NewsletterSignup,
+  FormShell,
+  InputField,
   MultiStepWizard,
-  Captcha,
-  AddressAutocomplete,
+  NewsletterSignup,
+  RadioGroup,
+  SelectDropdown,
+  TextAreaField,
+  ToggleSwitch,
 } from '../components/forms';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};
@@ -84,7 +84,7 @@ describe('Form components', () => {
 
   it('MultiStepWizard renders', () => {
     const { container } = wrap(
-      <MultiStepWizard steps={[{ label: 'Step 1', content: <span>1</span> }]} onComplete={noop} />,
+      <MultiStepWizard steps={[{ title: 'Step 1', content: <span>1</span> }]} onFinish={noop} />,
     );
     expect(container.firstChild).toBeTruthy();
   });

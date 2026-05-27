@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import React, { useMemo, useState } from 'react';
-import { useDataDisplayTheme } from '../../core/provider';
+import type React from 'react';
+import { useMemo, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── DataTable ──────────────────────────────────────────── */
 

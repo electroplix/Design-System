@@ -9,6 +9,7 @@ import type {
   ContentTheme,
   DataDisplayTheme,
   EcommerceTheme,
+  ElectroplixConfig,
   FormsTheme,
   HeroTheme,
   ListsCardsTheme,
@@ -22,7 +23,6 @@ import type {
   SiteIdentityTheme,
   SocialTheme,
   UserAccountsTheme,
-  ElectroplixConfig,
 } from './types';
 
 /* ----------------------- base ------------------------------------- */

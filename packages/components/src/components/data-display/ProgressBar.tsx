@@ -1,7 +1,7 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { useDataDisplayTheme } from '../../core/provider';
+import { useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── ProgressBar ────────────────────────────────────────── */
 

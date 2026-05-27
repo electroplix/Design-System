@@ -1,7 +1,7 @@
 'use client';
-import React, { useId, useState } from 'react';
-import { useDataDisplayTheme } from '../../core/provider';
+import { useId, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── BarChart ───────────────────────────────────────────── */
 

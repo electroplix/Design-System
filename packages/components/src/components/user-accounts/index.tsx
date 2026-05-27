@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import { useUserAccountsTheme } from '../../core/provider';
 import { Icon } from '../../core/icons';
+import { useUserAccountsTheme } from '../../core/provider';
 
 /* ── helpers ────────────────────────────────────────────── */
 

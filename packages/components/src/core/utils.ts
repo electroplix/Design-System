@@ -3,7 +3,7 @@
 /*  Shared utilities for @electroplix/components                      */
 /* ------------------------------------------------------------------ */
 
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 /* ----------------------- style helpers ---------------------------- */
 
@@ -23,7 +23,7 @@ export function cn(...args: Array<string | false | null | undefined>): string {
 }
 
 /** Format money value with currency. */
-export function money(value: number, currency: string = 'USD', locale: string = 'en-US'): string {
+export function money(value: number, currency = 'USD', locale = 'en-US'): string {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency,
@@ -34,7 +34,7 @@ export function money(value: number, currency: string = 'USD', locale: string = 
 
 /** Truncate text to a max length with ellipsis. */
 export function truncate(text: string, max: number): string {
-  return text.length > max ? text.slice(0, max) + '…' : text;
+  return text.length > max ? `${text.slice(0, max)}…` : text;
 }
 
 /** Generate a readable "time ago" string from a Date or ISO string. */
@@ -59,7 +59,7 @@ export function timeAgo(date: Date | string): string {
  * Trap keyboard focus inside a container (useful for modals / drawers).
  * Returns a ref to attach to the container element.
  */
-export function useFocusTrap<T extends HTMLElement = HTMLDivElement>(active: boolean = true) {
+export function useFocusTrap<T extends HTMLElement = HTMLDivElement>(active = true) {
   const ref = useRef<T>(null);
 
   useEffect(() => {
@@ -144,7 +144,7 @@ export function useMediaQuery(query: string): boolean {
 /**
  * Debounce a changing value.
  */
-export function useDebounce<T>(value: T, delay: number = 300): T {
+export function useDebounce<T>(value: T, delay = 300): T {
   const [debounced, setDebounced] = React.useState(value);
 
   useEffect(() => {

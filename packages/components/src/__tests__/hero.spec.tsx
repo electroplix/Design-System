@@ -1,18 +1,18 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – hero tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  HeroShell,
-  StaticHero,
-  CarouselHero,
   CTAOverlayHero,
+  CarouselHero,
+  HeroShell,
   PatternedHero,
   SplitHero,
+  StaticHero,
   VideoHeaderHero,
 } from '../components/hero';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 

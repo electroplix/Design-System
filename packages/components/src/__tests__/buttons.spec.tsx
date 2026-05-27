@@ -1,21 +1,21 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – buttons tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  PrimaryButton,
-  SecondaryButton,
-  TertiaryButton,
-  IconButton,
-  FloatingActionButton,
   ButtonGroup,
-  LoadingButton,
-  ShareButton,
   DownloadButton,
+  FloatingActionButton,
+  IconButton,
+  LoadingButton,
+  PrimaryButton,
   PrintButton,
+  SecondaryButton,
+  ShareButton,
+  TertiaryButton,
 } from '../components/buttons';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 

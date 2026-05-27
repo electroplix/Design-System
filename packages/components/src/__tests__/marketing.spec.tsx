@@ -1,9 +1,8 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – marketing tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
   ComparisonTable,
   CountdownTimer,
@@ -16,6 +15,7 @@ import {
   TestimonialsCarousel,
   TrustBadges,
 } from '../components/marketing';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};
@@ -70,7 +70,9 @@ describe('Marketing components', () => {
   });
 
   it('TrustBadges renders', () => {
-    const { container } = wrap(<TrustBadges badges={[{ id: '1', label: 'Secure', icon: 'shield' }]} />);
+    const { container } = wrap(
+      <TrustBadges badges={[{ id: '1', label: 'Secure', icon: 'shield' }]} />,
+    );
     expect(container.firstChild).toBeTruthy();
   });
 

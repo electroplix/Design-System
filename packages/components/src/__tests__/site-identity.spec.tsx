@@ -1,17 +1,17 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – site-identity tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  LogoDisplay,
   AnimatedBrandMark,
-  Taglines,
-  BrandingShell,
   BrandIconGrid,
+  BrandingShell,
   FaviconUploader,
+  LogoDisplay,
+  Taglines,
 } from '../components/site-identity';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};
@@ -42,7 +42,9 @@ describe('Site-Identity components', () => {
   });
 
   it('BrandIconGrid renders', () => {
-    const { container } = wrap(<BrandIconGrid icons={[{ id: '1', src: 'img.png', name: 'Brand' }]} />);
+    const { container } = wrap(
+      <BrandIconGrid icons={[{ id: '1', src: 'img.png', name: 'Brand' }]} />,
+    );
     expect(container.firstChild).toBeTruthy();
   });
 

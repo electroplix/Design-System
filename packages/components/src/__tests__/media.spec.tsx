@@ -1,23 +1,23 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – media tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  MediaShell,
-  ResponsiveVideo,
   AudioEmbed,
   AvatarProfile,
   IconGrid,
+  ImageCropperUploader,
   ImageGallery,
   LightboxGallery,
+  LottieOrSVG,
   MapEmbed,
   MasonryGrid,
+  MediaShell,
   PolaroidImage,
-  LottieOrSVG,
-  ImageCropperUploader,
+  ResponsiveVideo,
 } from '../components/media';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};
@@ -58,7 +58,9 @@ describe('Media components', () => {
   });
 
   it('LightboxGallery renders', () => {
-    const { container } = wrap(<LightboxGallery items={[{ id: '1', src: 'img.jpg', alt: 'test' }]} />);
+    const { container } = wrap(
+      <LightboxGallery items={[{ id: '1', src: 'img.jpg', alt: 'test' }]} />,
+    );
     expect(container.firstChild).toBeTruthy();
   });
 

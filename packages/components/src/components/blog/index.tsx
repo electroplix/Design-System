@@ -1,7 +1,8 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { useBlogTheme } from '../../core/provider';
+import type React from 'react';
+import { useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useBlogTheme } from '../../core/provider';
 
 /* ── helpers ────────────────────────────────────────────── */
 

@@ -1,41 +1,50 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – ecommerce tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
   CartDrawer,
   MiniCartPanel,
   OrderSummary,
-  ProductCard,
-  ProductGrid,
-  ProductDetail,
-  VariantSelector,
-  QuickAddButton,
-  WishlistButton,
   PaymentButtons,
+  ProductCard,
+  ProductDetail,
+  ProductGrid,
+  QuickAddButton,
+  VariantSelector,
+  WishlistButton,
 } from '../components/ecommerce';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};
 
-const sampleProduct = { id: '1', name: 'Widget', price: 29.99 };
+const sampleProduct = { id: '1', title: 'Widget', name: 'Widget', price: 29.99 };
 
 describe('Ecommerce components', () => {
   it('CartDrawer renders', () => {
-    const { container } = wrap(<CartDrawer items={[]} />);
+    const { container } = wrap(
+      <CartDrawer items={[{ id: 'item-1', name: 'Item 1', price: 10 }]} />,
+    );
     expect(container.firstChild).toBeTruthy();
   });
 
   it('MiniCartPanel renders', () => {
-    const { container } = wrap(<MiniCartPanel items={[]} />);
+    const { container } = wrap(
+      <MiniCartPanel items={[{ id: 'item-1', name: 'Item 1', price: 10 }]} />,
+    );
     expect(container.firstChild).toBeTruthy();
   });
 
   it('OrderSummary renders', () => {
     const { container } = wrap(
-      <OrderSummary orderId="ORD-1" total={99.99} lines={[]} subtotal={89.99} />,
+      <OrderSummary
+        orderId="ORD-1"
+        total={99.99}
+        lines={[{ id: 'line-1', title: 'Product 1', price: 89.99, quantity: 1 }]}
+        subtotal={89.99}
+      />,
     );
     expect(container.firstChild).toBeTruthy();
   });

@@ -1,9 +1,8 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – navigation tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
   AnchorLinks,
   Breadcrumbs,
@@ -12,11 +11,12 @@ import {
   MegaMenu,
   Pagination,
   PrimaryNav,
-  SidebarMenu,
   SideDrawerNav,
+  SidebarMenu,
   Stepper,
   Tabs,
 } from '../components/navigation';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 

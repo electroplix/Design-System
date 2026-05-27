@@ -1,7 +1,8 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
-import { useModalsTheme } from '../../core/provider';
+import type React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useModalsTheme } from '../../core/provider';
 
 /* ── helpers ────────────────────────────────────────────── */
 

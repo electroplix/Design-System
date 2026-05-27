@@ -1,20 +1,20 @@
+import { render } from '@testing-library/react';
 /**
  * @electroplix/components – blog tests
  */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { TestWrapper } from './test-utils';
+import type React from 'react';
 import {
-  BlogCard,
-  AuthorByline,
-  TagList,
-  BlogBadge,
-  ReadingBar,
-  ArticleRenderer,
-  RelatedPosts,
   ArchiveList,
+  ArticleRenderer,
+  AuthorByline,
+  BlogBadge,
+  BlogCard,
   CommentsSection,
+  ReadingBar,
+  RelatedPosts,
+  TagList,
 } from '../components/blog';
+import { TestWrapper } from './test-utils';
 
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};

@@ -1,7 +1,8 @@
 'use client';
-import React, { useMemo, useState } from 'react';
-import { useContentTheme } from '../../core/provider';
+import type React from 'react';
+import { useMemo, useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useContentTheme } from '../../core/provider';
 
 /* ── InlineCodeText ─────────────────────────────────────── */
 

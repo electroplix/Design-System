@@ -3,7 +3,8 @@
 // Only visual design/theme styling updated.
 
 'use client';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import type { IconName } from '../../core/icons';
 import { useButtonTheme } from '../../core/provider';
@@ -289,7 +290,13 @@ export { PrimaryButton as ButtonAlias }; // Keeping alias if needed, but the mai
 // Logic untouched
 // Only visuals simplified into shadcn-like minimal theme
 
-export function FloatingActionButton(p: ButtonBaseProps & { position?: 'bottom-right' | 'bottom-left'; offset?: number; fixed?: boolean }) {
+export function FloatingActionButton(
+  p: ButtonBaseProps & {
+    position?: 'bottom-right' | 'bottom-left';
+    offset?: number;
+    fixed?: boolean;
+  },
+) {
   const t = useButtonTheme();
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -299,13 +306,16 @@ export function FloatingActionButton(p: ButtonBaseProps & { position?: 'bottom-r
   const size = 56;
   const offset = p.offset ?? 24;
 
-  const positionStyles: React.CSSProperties = p.fixed !== false ? {
-    position: 'fixed',
-    bottom: offset,
-    right: p.position === 'bottom-left' ? undefined : offset,
-    left: p.position === 'bottom-left' ? offset : undefined,
-    zIndex: 50,
-  } : {};
+  const positionStyles: React.CSSProperties =
+    p.fixed !== false
+      ? {
+          position: 'fixed',
+          bottom: offset,
+          right: p.position === 'bottom-left' ? undefined : offset,
+          left: p.position === 'bottom-left' ? offset : undefined,
+          zIndex: 50,
+        }
+      : {};
 
   return (
     <button
@@ -436,7 +446,14 @@ export function ShareButton(p: ButtonBaseProps & { url?: string }) {
     }
   };
 
-  return <SecondaryButton {...p} label={p.label ?? 'Share'} icon={p.icon ?? 'share-2'} onClick={handleShare} />;
+  return (
+    <SecondaryButton
+      {...p}
+      label={p.label ?? 'Share'}
+      icon={p.icon ?? 'share-2'}
+      onClick={handleShare}
+    />
+  );
 }
 
 export function DownloadButton(p: ButtonBaseProps & { fileUrl?: string }) {
@@ -451,7 +468,14 @@ export function DownloadButton(p: ButtonBaseProps & { fileUrl?: string }) {
       link.click();
     }
   };
-  return <SecondaryButton {...p} label={p.label ?? 'Download'} icon={p.icon ?? 'download'} onClick={handleDownload} />;
+  return (
+    <SecondaryButton
+      {...p}
+      label={p.label ?? 'Download'}
+      icon={p.icon ?? 'download'}
+      onClick={handleDownload}
+    />
+  );
 }
 
 export function PrintButton(p: ButtonBaseProps) {
@@ -462,6 +486,12 @@ export function PrintButton(p: ButtonBaseProps) {
       window.print();
     }
   };
-  return <SecondaryButton {...p} label={p.label ?? 'Print'} icon={p.icon ?? 'printer'} onClick={handlePrint} />;
+  return (
+    <SecondaryButton
+      {...p}
+      label={p.label ?? 'Print'}
+      icon={p.icon ?? 'printer'}
+      onClick={handlePrint}
+    />
+  );
 }
-

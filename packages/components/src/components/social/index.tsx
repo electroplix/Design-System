@@ -1,7 +1,8 @@
 'use client';
-import React, { useState } from 'react';
-import { useSocialTheme } from '../../core/provider';
+import type React from 'react';
+import { useState } from 'react';
 import { Icon } from '../../core/icons';
+import { useSocialTheme } from '../../core/provider';
 
 /* ── helpers ────────────────────────────────────────────── */
 
