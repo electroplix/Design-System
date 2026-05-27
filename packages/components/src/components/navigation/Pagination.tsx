@@ -42,7 +42,7 @@ export function Pagination(props: PaginationProps) {
   } = props;
 
   const mutedColor = '#71717a';
-  const surfaceColor = '#fafafa';
+  const _surfaceColor = '#fafafa';
 
   const pages = useMemo(() => {
     const arr: (number | '...')[] = [];

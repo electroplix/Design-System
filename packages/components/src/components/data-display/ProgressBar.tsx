@@ -44,7 +44,7 @@ export function ProgressBar({
   const r = t.radius ?? 14;
   const [animatedValue, setAnimatedValue] = useState(0);
   const safeValue =
-    typeof value === 'number' && !isNaN(value) ? Math.max(0, Math.min(100, value)) : 0;
+    typeof value === 'number' && !Number.isNaN(value) ? Math.max(0, Math.min(100, value)) : 0;
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimatedValue(safeValue), 100);
@@ -149,7 +149,11 @@ export function ProgressBar({
           />
         ))}
       </div>
-      <style>{`@keyframes epx-shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }`}</style>
+      <style>
+        {
+          '@keyframes epx-shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }'
+        }
+      </style>
     </div>
   );
 }

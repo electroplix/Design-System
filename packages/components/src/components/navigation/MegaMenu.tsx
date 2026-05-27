@@ -43,7 +43,7 @@ export function MegaMenu(props: MegaMenuProps) {
     px = 24,
     py = 24,
     radius = 16,
-    bgColor = t.bgColor ?? '#ffffff',
+    bgColor: _bgColor = t.bgColor ?? '#ffffff',
     textColor = t.textColor ?? '#09090b',
     accentColor = t.accentColor ?? '#18181b',
     borderColor = t.borderColor ?? '#e4e4e7',

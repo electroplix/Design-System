@@ -102,7 +102,8 @@ export interface RichMarkdownProps {
   gap?: number;
   style?: React.CSSProperties;
   className?: string;
-  markdown: string;
+  markdown?: string;
+  content?: string;
   baseSize?: number;
   accentColor?: string;
   title?: string;
@@ -129,7 +130,8 @@ export function RichMarkdown({
   gap = 16,
   style = {},
   className = '',
-  markdown = '# Welcome\n\nThis is **bold** and *italic* text.\n\n## Features\n\n- Item one\n- Item two\n- Item three\n\n> A blockquote example\n\nVisit [our website](https://example.com) for more.',
+  markdown,
+  content,
   baseSize = 16,
   accentColor,
   title,
@@ -142,7 +144,15 @@ export function RichMarkdown({
   const accent = accentColor ?? t.accentColor ?? ui.black;
   const border = t.borderColor ?? ui.border;
 
-  const html = useMemo(() => miniMarkdownToHtml(markdown, accent), [markdown, accent]);
+  const effectiveMarkdown =
+    content ??
+    markdown ??
+    '# Welcome\n\nThis is **bold** and *italic* text.\n\n## Features\n\n- Item one\n- Item two\n- Item three\n\n> A blockquote example\n\nVisit [our website](https://example.com) for more.';
+
+  const html = useMemo(
+    () => miniMarkdownToHtml(effectiveMarkdown, accent),
+    [effectiveMarkdown, accent],
+  );
 
   return (
     <Tag
@@ -204,7 +214,6 @@ export function RichMarkdown({
 
         <article
           style={{ fontSize: baseSize, lineHeight: 1.7, width: '100%', color: fg }}
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: Internal markdown rendering
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>

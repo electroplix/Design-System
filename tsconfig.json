@@ -3,6 +3,9 @@
   "references": [
     {
       "path": "./packages/components"
+    },
+    {
+      "path": "./examples/vite-showcase"
     }
   ],
   "compilerOptions": {

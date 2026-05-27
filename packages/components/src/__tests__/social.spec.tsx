@@ -42,13 +42,28 @@ describe('Social components', () => {
 
   it('ReactionsBar renders', () => {
     const { container } = wrap(
-      <ReactionsBar reactions={[{ emoji: '👍', label: 'like', count: 5 }]} onReact={noop} />,
+      <ReactionsBar
+        reactions={[{ id: '1', emoji: '👍', label: 'like', count: 5 }]}
+        onReact={noop}
+      />,
     );
     expect(container.firstChild).toBeTruthy();
   });
 
   it('CommentsBox renders', () => {
-    const { container } = wrap(<CommentsBox onSubmit={noop} />);
+    const { container } = wrap(
+      <CommentsBox
+        comments={[
+          {
+            id: '1',
+            author: 'Alice',
+            content: 'Nice!',
+            timestamp: '1h ago',
+          },
+        ]}
+        onSubmit={noop}
+      />,
+    );
     expect(container.firstChild).toBeTruthy();
   });
 

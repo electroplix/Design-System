@@ -27,7 +27,7 @@ describe('Data Display components', () => {
   });
 
   it('BadgeGroup renders', () => {
-    const { container } = wrap(<BadgeGroup badges={[{ label: 'A' }, { label: 'B' }]} />);
+    const { container } = wrap(<BadgeGroup badges={['A', 'B']} />);
     expect(container.firstChild).toBeTruthy();
   });
 

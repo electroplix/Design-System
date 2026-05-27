@@ -64,7 +64,7 @@ describe('Marketing components', () => {
 
   it('TestimonialsCarousel renders', () => {
     const { container } = wrap(
-      <TestimonialsCarousel testimonials={[{ quote: 'Great!', author: 'Jane' }]} />,
+      <TestimonialsCarousel testimonials={[{ id: '1', quote: 'Great!', author: 'Jane' }]} />,
     );
     expect(container.firstChild).toBeTruthy();
   });

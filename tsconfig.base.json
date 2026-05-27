@@ -14,7 +14,7 @@
     "noImplicitReturns": false,
     "noUnusedLocals": false,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "target": "es2022",
     "jsx": "react-jsx",
     "customConditions": ["@electroplix-ds/source"]

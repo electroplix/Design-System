@@ -106,7 +106,7 @@ export function PatternedHero(props: PatternedHeroProps) {
     px = t.px ?? 24,
     py = t.py ?? 64,
     radius = t.cardRadius ?? 20,
-    gap = t.gap ?? 24,
+    gap: _gap = t.gap ?? 24,
     style = {},
     className = '',
   } = props;

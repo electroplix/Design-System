@@ -81,8 +81,8 @@ export function DataTable<T extends Record<string, any>>({
     const { key, dir } = sort;
     const copy = [...filtered];
     copy.sort((a, b) => {
-      const av = a[key],
-        bv = b[key];
+      const av = a[key];
+      const bv = b[key];
       if (av == null && bv != null) return dir === 'asc' ? -1 : 1;
       if (av != null && bv == null) return dir === 'asc' ? 1 : -1;
       if (av === bv) return 0;

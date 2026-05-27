@@ -7,8 +7,8 @@
  *      import { defineConfig } from "@electroplix/components/config";
  * 3. Generates the matching  config.d.ts  type declarations.
  */
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const distDir = path.resolve(__dirname, '..', 'dist');
 
@@ -21,9 +21,7 @@ if (fs.existsSync(esmFile)) {
   const content = fs.readFileSync(esmFile, 'utf8');
   if (!content.startsWith('"use client"') && !content.startsWith("'use client'")) {
     fs.writeFileSync(esmFile, `"use client";\n${content}`, 'utf8');
-    console.log('[postbuild] Prepended "use client" to index.esm.js');
   } else {
-    console.log('[postbuild] "use client" already present – skipping.');
   }
 } else {
   console.error('[postbuild] index.esm.js not found!');
@@ -266,7 +264,6 @@ export function mergeTheme(target, ...sources) {
 `;
 
 fs.writeFileSync(path.join(distDir, 'config.esm.js'), configJs, 'utf8');
-console.log('[postbuild] Created config.esm.js (server-safe entry, 18 categories)');
 
 /* ------------------------------------------------------------------ */
 /* 3.  Type declarations for config entry – config.d.ts               */
@@ -347,6 +344,3 @@ export declare function mergeTheme<T extends Record<string, unknown>>(
 `;
 
 fs.writeFileSync(path.join(distDir, 'config.d.ts'), configDts, 'utf8');
-console.log('[postbuild] Created config.d.ts');
-
-console.log('[postbuild] Done.');

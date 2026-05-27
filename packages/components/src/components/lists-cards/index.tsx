@@ -612,9 +612,9 @@ export function PricingTable({ plans = [], onSelect }: PricingTableProps) {
               gap: 10,
             }}
           >
-            {p.features.map((f, i) => (
+            {p.features.map((f) => (
               <div
-                key={i}
+                key={f.label}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -794,7 +794,7 @@ export function SortableTable<T extends Record<string, unknown>>({
           <tbody>
             {sorted.map((row, i) => (
               <tr
-                key={i}
+                key={(row as any).id || i}
                 style={{
                   borderBottom: `1px solid ${lc.border}`,
                 }}

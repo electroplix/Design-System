@@ -37,6 +37,7 @@ export type ButtonBaseProps = {
   transitionDuration?: number;
   className?: string;
   style?: React.CSSProperties;
+  ariaLabel?: string;
 };
 
 const ui = {
@@ -124,7 +125,9 @@ export function PrimaryButton(p: ButtonBaseProps) {
         (p.iconNode ?? null)
       )}
       <span data-testid="primary-btn">{p.children ?? p.label ?? 'Primary'}</span>
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+      <style>
+        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
+      </style>
     </button>
   );
 }
@@ -170,7 +173,9 @@ export function SecondaryButton(p: ButtonBaseProps) {
         (p.iconNode ?? null)
       )}
       <span data-testid="secondary-btn">{p.children ?? p.label ?? 'Secondary'}</span>
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+      <style>
+        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
+      </style>
     </button>
   );
 }
@@ -213,7 +218,9 @@ export function TertiaryButton(p: ButtonBaseProps) {
         (p.iconNode ?? null)
       )}
       <span>{p.children ?? p.label ?? 'Button'}</span>
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+      <style>
+        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
+      </style>
     </button>
   );
 }
@@ -262,7 +269,9 @@ export function IconButton(p: IconButtonProps) {
       ) : (
         p.iconNode
       )}
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+      <style>
+        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
+      </style>
     </button>
   );
 }
@@ -353,7 +362,9 @@ export function FloatingActionButton(
       ) : (
         p.iconNode
       )}
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+      <style>
+        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
+      </style>
     </button>
   );
 }

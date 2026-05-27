@@ -497,7 +497,7 @@ export function SearchResults({ items = [], query, onItemClick, loading }: Searc
           }}
         />
 
-        <style>{`@keyframes eplxSpin { to { transform: rotate(360deg) } }`}</style>
+        <style>{'@keyframes eplxSpin { to { transform: rotate(360deg) } }'}</style>
       </div>
     );
 

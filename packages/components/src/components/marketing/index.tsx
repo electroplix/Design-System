@@ -138,8 +138,8 @@ export function ComparisonTable({
           </thead>
 
           <tbody>
-            {features.map((f, i) => (
-              <tr key={i} style={{ borderBottom: `1px solid ${mk.border}` }}>
+            {features.map((f) => (
+              <tr key={f.label} style={{ borderBottom: `1px solid ${mk.border}` }}>
                 <td style={{ padding: '13px 20px', fontSize: mk.bs }}>{f.label}</td>
 
                 {plans.map((p) => {

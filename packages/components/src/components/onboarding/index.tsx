@@ -420,7 +420,14 @@ export function ProductTour({ steps = [], isOpen, onClose, onComplete }: Product
           </button>
 
           <button
-            onClick={() => (isLast ? (onComplete?.(), onClose?.()) : setIdx(idx + 1))}
+            onClick={() => {
+              if (isLast) {
+                onComplete?.();
+                onClose?.();
+              } else {
+                setIdx(idx + 1);
+              }
+            }}
             style={{
               padding: '8px 14px',
               borderRadius: 12,

@@ -98,14 +98,14 @@ export function PieChart({
   const wedges = safeData.map((v, i) => {
     const a1 = a0 + (v / total) * Math.PI * 2;
     const midAngle = (a0 + a1) / 2;
-    const x0 = cx + r * Math.cos(a0),
-      y0 = cy + r * Math.sin(a0);
-    const x1 = cx + r * Math.cos(a1),
-      y1 = cy + r * Math.sin(a1);
-    const ix0 = cx + innerR * Math.cos(a0),
-      iy0 = cy + innerR * Math.sin(a0);
-    const ix1 = cx + innerR * Math.cos(a1),
-      iy1 = cy + innerR * Math.sin(a1);
+    const x0 = cx + r * Math.cos(a0);
+    const y0 = cy + r * Math.sin(a0);
+    const x1 = cx + r * Math.cos(a1);
+    const y1 = cy + r * Math.sin(a1);
+    const ix0 = cx + innerR * Math.cos(a0);
+    const iy0 = cy + innerR * Math.sin(a0);
+    const ix1 = cx + innerR * Math.cos(a1);
+    const iy1 = cy + innerR * Math.sin(a1);
     const large = a1 - a0 > Math.PI ? 1 : 0;
     const d = `M ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1} L ${ix1} ${iy1} A ${innerR} ${innerR} 0 ${large} 0 ${ix0} ${iy0} Z`;
     const w = {

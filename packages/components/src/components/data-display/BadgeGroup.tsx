@@ -6,14 +6,16 @@ import { Badge, type BadgeTone } from './Badge';
 /* ── BadgeGroup ─────────────────────────────────────────── */
 
 export interface BadgeGroupProps {
-  items: string[];
+  items?: string[];
+  badges?: string[];
   tone?: BadgeTone;
   title?: string;
 }
 
-export function BadgeGroup({ items = [], tone, title }: BadgeGroupProps) {
+export function BadgeGroup({ items, badges, tone, title }: BadgeGroupProps) {
   const t = useDataDisplayTheme();
-  const safeItems = Array.isArray(items) ? items : [];
+  const effectiveItems = badges ?? items ?? [];
+  const safeItems = Array.isArray(effectiveItems) ? effectiveItems : [];
 
   if (safeItems.length === 0) {
     return (

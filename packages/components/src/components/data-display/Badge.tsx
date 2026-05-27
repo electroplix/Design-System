@@ -8,7 +8,8 @@ import { useDataDisplayTheme } from '../../core/provider';
 export type BadgeTone = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 
 export interface BadgeProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  label?: string;
   tone?: BadgeTone;
   pill?: boolean;
 }
@@ -46,7 +47,7 @@ const toneStyles: Record<BadgeTone, { bg: string; text: string; border: string; 
   },
 };
 
-export function Badge({ children, tone = 'neutral', pill = true }: BadgeProps) {
+export function Badge({ children, label, tone = 'neutral', pill = true }: BadgeProps) {
   const t = useDataDisplayTheme();
   const [hovered, setHovered] = useState(false);
   const s = toneStyles[tone];
@@ -84,7 +85,7 @@ export function Badge({ children, tone = 'neutral', pill = true }: BadgeProps) {
           opacity: 0.9,
         }}
       />
-      {children}
+      {children ?? label}
     </span>
   );
 }

@@ -51,7 +51,7 @@ describe('User-Accounts components', () => {
   });
 
   it('RoleBadge renders', () => {
-    const { container } = wrap(<RoleBadge role="admin" />);
+    const { container } = wrap(<RoleBadge />);
     expect(container.firstChild).toBeTruthy();
   });
 });

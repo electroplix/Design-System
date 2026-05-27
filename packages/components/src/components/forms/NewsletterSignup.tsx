@@ -162,7 +162,7 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
               padding: 24,
               borderRadius: 12,
               background: ui.successSoft,
-              border: `1px solid rgba(22,163,74,0.16)`,
+              border: '1px solid rgba(22,163,74,0.16)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',

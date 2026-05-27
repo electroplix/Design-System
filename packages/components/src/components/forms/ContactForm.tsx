@@ -191,7 +191,7 @@ export function ContactForm(props: ContactFormProps) {
               padding: 24,
               borderRadius: 14,
               background: ui.successSoft,
-              border: `1px solid rgba(22,163,74,0.15)`,
+              border: '1px solid rgba(22,163,74,0.15)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',

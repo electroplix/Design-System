@@ -69,11 +69,10 @@ export function ParagraphBlock({
   const accent = accentColor ?? t.accentColor ?? ui.black;
   const border = t.borderColor ?? ui.border;
 
-  const childParas = typeof children === 'string'
-    ? children.split(/\n\n+/).filter(Boolean)
-    : [];
+  const childParas = typeof children === 'string' ? children.split(/\n\n+/).filter(Boolean) : [];
 
-  const effectiveParagraphs = childParas.length > 0 ? childParas : (Array.isArray(paragraphs) ? paragraphs : []);
+  const effectiveParagraphs =
+    childParas.length > 0 ? childParas : Array.isArray(paragraphs) ? paragraphs : [];
 
   return (
     <Tag
@@ -189,10 +188,14 @@ export function ParagraphBlock({
               gap: 6,
             }}
           >
-            <span>{effectiveParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0)} words</span>
+            <span>
+              {effectiveParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0)} words
+            </span>
             <span>&bull;</span>
             <span>
-              {Math.ceil(effectiveParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0) / 200)}{' '}
+              {Math.ceil(
+                effectiveParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0) / 200,
+              )}{' '}
               min read
             </span>
           </div>

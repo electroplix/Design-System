@@ -1,4 +1,4 @@
-import { PrimaryNav, Footer, MegaMenu } from '@electroplix/components';
+import { Footer, MegaMenu, PrimaryNav } from '@electroplix/components';
 
 export default function NavigationPage() {
   return (
@@ -20,4 +20,3 @@ export default function NavigationPage() {
     </>
   );
 }
-

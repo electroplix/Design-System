@@ -228,6 +228,7 @@ export function BrandIconGrid({ icons = [], columns = 6, iconSize = 48 }: BrandI
       {icons.map((ic) => {
         const inner = (
           <div
+            key={ic.id}
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -279,7 +280,8 @@ export function BrandIconGrid({ icons = [], columns = 6, iconSize = 48 }: BrandI
             {inner}
           </a>
         ) : (
-          <div key={ic.id}>{inner}</div>
+          /* inner already has key={ic.id} from my previous edit */
+          inner
         );
       })}
     </div>
@@ -300,7 +302,7 @@ export function FaviconUploader({ onUpload, currentSrc }: FaviconUploaderProps) 
 
   React.useEffect(() => {
     return () => {
-      if (preview && preview.startsWith('blob:')) URL.revokeObjectURL(preview);
+      if (preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
     };
   }, [preview]);
 
@@ -308,7 +310,7 @@ export function FaviconUploader({ onUpload, currentSrc }: FaviconUploaderProps) 
     const f = e.target.files?.[0];
     if (!f) return;
 
-    if (preview && preview.startsWith('blob:')) URL.revokeObjectURL(preview);
+    if (preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
 
     setPreview(URL.createObjectURL(f));
     onUpload?.(f);

@@ -14,8 +14,8 @@
  *   SYNC_API_KEY  — Optional API key for authentication
  */
 
-import { readdir, readFile } from 'node:fs/promises';
-import { join, dirname } from 'node:path';
+import { readFile, readdir } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -36,9 +36,7 @@ const METADATA_DIR = join(__dirname, '..', 'metadata');
 
 // ——— Helpers ———
 
-function log(msg) {
-  console.log(`[sync-metadata] ${msg}`);
-}
+function log(_msg) {}
 
 function error(msg) {
   console.error(`[sync-metadata] ERROR: ${msg}`);
@@ -47,7 +45,7 @@ function error(msg) {
 async function postJSON(endpoint, body) {
   const url = `${API_BASE}${endpoint}`;
   const headers = { 'Content-Type': 'application/json' };
-  if (API_KEY) headers['Authorization'] = `Bearer ${API_KEY}`;
+  if (API_KEY) headers.Authorization = `Bearer ${API_KEY}`;
 
   const res = await fetch(url, {
     method: 'POST',

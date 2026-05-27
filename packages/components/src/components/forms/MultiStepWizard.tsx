@@ -238,7 +238,7 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
               padding: '14px 16px',
               borderRadius: 12,
               background: ui.dangerSoft,
-              border: `1px solid rgba(239,68,68,0.18)`,
+              border: '1px solid rgba(239,68,68,0.18)',
               boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >

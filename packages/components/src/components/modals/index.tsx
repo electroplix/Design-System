@@ -453,7 +453,7 @@ export function LoadingOverlay({ isOpen, message = 'Loading...' }: LoadingOverla
         {message}
       </div>
 
-      <style>{`@keyframes eplxSpin { to { transform: rotate(360deg) } }`}</style>
+      <style>{'@keyframes eplxSpin { to { transform: rotate(360deg) } }'}</style>
     </div>
   );
 }
@@ -633,7 +633,11 @@ export function ToastBanners({
         );
       })}
 
-      <style>{`@keyframes eplxSlideIn { from { opacity: 0; transform: translateX(20px) } to { opacity: 1; transform: none } }`}</style>
+      <style>
+        {
+          '@keyframes eplxSlideIn { from { opacity: 0; transform: translateX(20px) } to { opacity: 1; transform: none } }'
+        }
+      </style>
     </div>
   );
 }

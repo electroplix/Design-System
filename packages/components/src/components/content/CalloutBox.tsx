@@ -29,6 +29,7 @@ export interface CalloutBoxProps {
   border?: boolean;
   dismissible?: boolean;
   onDismiss?: () => void;
+  children?: React.ReactNode;
 }
 
 const ui = {
@@ -96,6 +97,7 @@ export function CalloutBox({
   border = true,
   dismissible = false,
   onDismiss,
+  children,
 }: CalloutBoxProps) {
   const t = useContentTheme();
   const ff = fontFamily ?? t.fontFamily;
@@ -176,7 +178,7 @@ export function CalloutBox({
                   fontSize: titleSize,
                   fontWeight: 700,
                   color: localColor,
-                  marginBottom: message ? 6 : 0,
+                  marginBottom: message || children ? 6 : 0,
                   lineHeight: 1.3,
                   letterSpacing: '-0.01em',
                 }}
@@ -184,18 +186,19 @@ export function CalloutBox({
                 {title}
               </div>
             )}
-            {message && (
-              <p
-                style={{
-                  fontSize: messageSize,
-                  margin: 0,
-                  lineHeight: 1.6,
-                  color: ui.muted,
-                }}
-              >
-                {message}
-              </p>
-            )}
+            {children ||
+              (message && (
+                <p
+                  style={{
+                    fontSize: messageSize,
+                    margin: 0,
+                    lineHeight: 1.6,
+                    color: ui.muted,
+                  }}
+                >
+                  {message}
+                </p>
+              ))}
           </div>
 
           {/* Dismiss */}

@@ -109,56 +109,56 @@ export function useElectroplixConfig(): ElectroplixConfig {
  * Shortcut hooks for individual categories.
  */
 export function useNavTheme() {
-  return useElectroplixConfig().navigation;
+  return useElectroplixConfig().navigation!;
 }
 export function useHeroTheme() {
-  return useElectroplixConfig().hero;
+  return useElectroplixConfig().hero!;
 }
 export function useButtonTheme() {
-  return useElectroplixConfig().buttons;
+  return useElectroplixConfig().buttons!;
 }
 export function useFormsTheme() {
-  return useElectroplixConfig().forms;
+  return useElectroplixConfig().forms!;
 }
 export function useContentTheme() {
-  return useElectroplixConfig().content;
+  return useElectroplixConfig().content!;
 }
 export function useDataDisplayTheme() {
-  return useElectroplixConfig().dataDisplay;
+  return useElectroplixConfig().dataDisplay!;
 }
 export function useEcommerceTheme() {
-  return useElectroplixConfig().ecommerce;
+  return useElectroplixConfig().ecommerce!;
 }
 export function useListsCardsTheme() {
-  return useElectroplixConfig().listsCards;
+  return useElectroplixConfig().listsCards!;
 }
 export function useMarketingTheme() {
-  return useElectroplixConfig().marketing;
+  return useElectroplixConfig().marketing!;
 }
 export function useMediaTheme() {
-  return useElectroplixConfig().media;
+  return useElectroplixConfig().media!;
 }
 export function useMiscTheme() {
-  return useElectroplixConfig().miscellaneous;
+  return useElectroplixConfig().miscellaneous!;
 }
 export function useModalsTheme() {
-  return useElectroplixConfig().modals;
+  return useElectroplixConfig().modals!;
 }
 export function useOnboardingTheme() {
-  return useElectroplixConfig().onboarding;
+  return useElectroplixConfig().onboarding!;
 }
 export function useSearchTheme() {
-  return useElectroplixConfig().search;
+  return useElectroplixConfig().search!;
 }
 export function useSiteIdentityTheme() {
-  return useElectroplixConfig().siteIdentity;
+  return useElectroplixConfig().siteIdentity!;
 }
 export function useSocialTheme() {
-  return useElectroplixConfig().social;
+  return useElectroplixConfig().social!;
 }
 export function useUserAccountsTheme() {
-  return useElectroplixConfig().userAccounts;
+  return useElectroplixConfig().userAccounts!;
 }
 export function useBlogTheme() {
-  return useElectroplixConfig().blog;
+  return useElectroplixConfig().blog!;
 }

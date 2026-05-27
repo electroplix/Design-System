@@ -18,7 +18,8 @@ export interface InlineCodeProps {
   gap?: number;
   style?: React.CSSProperties;
   className?: string;
-  text: string;
+  text?: string;
+  children?: React.ReactNode;
   codeBg?: string;
   codeColor?: string;
   codePx?: string;
@@ -58,6 +59,7 @@ export function InlineCodeText({
   size = 16,
   accentColor,
   copyable = true,
+  children,
 }: InlineCodeProps) {
   const t = useContentTheme();
 
@@ -67,20 +69,22 @@ export function InlineCodeText({
   const accent = accentColor ?? t.accentColor ?? ui.black;
   const border = t.borderColor ?? ui.border;
 
+  const effectiveText = (typeof children === 'string' ? children : '') || text || '';
+
   const [copied, setCopied] = useState(false);
 
   const effectiveCodeBg = codeBg || ui.surface;
   const effectiveCodeColor = codeColor || accent;
 
   const codeSnippets = useMemo(() => {
-    const matches = text.match(/`([^`]+?)`/g);
+    const matches = effectiveText.match(/`([^`]+?)`/g);
     return matches ? matches.map((m) => m.replace(/`/g, '')) : [];
-  }, [text]);
+  }, [effectiveText]);
 
   const rendered = useMemo(() => {
-    const safe = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const safe = effectiveText.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return safe.replace(/`([^`]+?)`/g, (_, m) => `<code class="__inline_code">${m}</code>`);
-  }, [text]);
+  }, [effectiveText]);
 
   const handleCopy = async () => {
     if (codeSnippets.length > 0) {

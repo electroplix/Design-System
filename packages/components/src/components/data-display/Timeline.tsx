@@ -67,7 +67,7 @@ const STATUS_CFG: Record<
 
 function TimelineEntry({ item, isLast }: { item: TimelineItem; isLast: boolean }) {
   const t = useDataDisplayTheme();
-  const fg = t.textColor ?? ui.text;
+  const _fg = t.textColor ?? ui.text;
   const border = t.borderColor ?? ui.border;
   const bg = t.bgColor ?? ui.white;
   const r = t.radius ?? 14;

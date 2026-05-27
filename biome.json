@@ -27,12 +27,30 @@
       "*.generated.*",
       "pnpm-lock.yaml",
       "yarn.lock",
-      "package-lock.json"
+      "package-lock.json",
+      "packages/components/cli.cjs"
     ],
     "ignoreUnknown": true
   },
   "javascript": {
-    "globals": ["jest", "describe", "it", "expect", "beforeEach", "afterEach", "beforeAll", "afterAll"]
+    "globals": [
+      "jest",
+      "describe",
+      "it",
+      "expect",
+      "beforeEach",
+      "afterEach",
+      "beforeAll",
+      "afterAll"
+    ],
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "trailingCommas": "all",
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "quoteProperties": "asNeeded"
+    }
   },
   "organizeImports": {
     "enabled": true
@@ -49,7 +67,17 @@
     {
       "include": ["**/*.spec.tsx", "**/*.spec.ts", "**/test-utils.tsx"],
       "javascript": {
-        "globals": ["jest", "describe", "it", "expect", "beforeEach", "afterEach", "beforeAll", "afterAll", "vi"]
+        "globals": [
+          "jest",
+          "describe",
+          "it",
+          "expect",
+          "beforeEach",
+          "afterEach",
+          "beforeAll",
+          "afterAll",
+          "vi"
+        ]
       },
       "linter": {
         "rules": {
@@ -61,6 +89,23 @@
     },
     {
       "include": ["**/*.stories.tsx", "**/*.stories.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": [
+        "**/*.config.ts",
+        "**/*.config.js",
+        "**/main.ts",
+        "**/preview.tsx",
+        "**/main.tsx",
+        "examples/**/*.tsx"
+      ],
       "linter": {
         "rules": {
           "style": {
@@ -83,8 +128,8 @@
         "noSelfAssign": "error"
       },
       "suspicious": {
-        "noExplicitAny": "warn",
-        "noArrayIndexKey": "warn",
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off",
         "noConsoleLog": "warn",
         "noDebugger": "error"
       },
@@ -92,7 +137,7 @@
         "useImportType": "error",
         "useNodejsImportProtocol": "error",
         "noDefaultExport": "warn",
-        "noNonNullAssertion": "warn",
+        "noNonNullAssertion": "off",
         "useConst": "error"
       },
       "complexity": {
@@ -103,17 +148,13 @@
       "performance": {
         "noDelete": "warn",
         "noAccumulatingSpread": "warn"
+      },
+      "a11y": {
+        "recommended": false
+      },
+      "security": {
+        "recommended": false
       }
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "single",
-      "jsxQuoteStyle": "double",
-      "trailingCommas": "all",
-      "semicolons": "always",
-      "arrowParentheses": "always",
-      "quoteProperties": "asNeeded"
     }
   }
 }

@@ -36,7 +36,7 @@ export function ValidationWrapper(props: ValidationWrapperProps) {
     successMessage = 'All validations passed!',
     bgColor = t.bgColor,
     textColor = t.textColor,
-    accentColor = t.accentColor,
+    accentColor: _accentColor = t.accentColor,
     borderColor = t.borderColor,
     fontFamily = t.fontFamily,
     maxW = t.maxW ?? 700,

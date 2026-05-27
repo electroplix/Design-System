@@ -108,7 +108,7 @@ export function RatingStars({
   const uid = useId();
   const [hoverValue, setHoverValue] = useState<number | null>(null);
 
-  const safeValue = typeof value === 'number' && !isNaN(value) ? value : 0;
+  const safeValue = typeof value === 'number' && !Number.isNaN(value) ? value : 0;
   const displayValue = hoverValue !== null ? hoverValue : safeValue;
   const full = Math.floor(displayValue);
   const half = displayValue - full >= 0.5;

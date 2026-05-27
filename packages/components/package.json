@@ -37,7 +37,16 @@
       "config": ["./dist/config.d.ts"]
     }
   },
-  "files": ["dist", "cli.cjs", "metadata", "!**/*.tsbuildinfo"],
+  "files": [
+    "dist",
+    "cli.cjs",
+    "metadata",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "SECURITY.md",
+    "!**/*.tsbuildinfo"
+  ],
   "homepage": "https://electroplix.com",
   "author": "Electroplix",
   "peerDependencies": {

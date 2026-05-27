@@ -457,7 +457,7 @@ export function ArchiveList({ groups = [], onPostClick }: ArchiveListProps) {
                   gap: 12,
                   padding: '10px 12px',
                   borderRadius: bg.r - 6,
-                  border: `1px solid transparent`,
+                  border: '1px solid transparent',
                   background: 'transparent',
                   cursor: onPostClick ? 'pointer' : 'default',
                   transition: 'background 0.15s ease, border-color 0.15s ease',
@@ -496,7 +496,7 @@ export interface BlogComment {
   replies?: BlogComment[];
 }
 export interface CommentsSectionProps {
-  comments: BlogComment[];
+  comments?: BlogComment[];
   onSubmit?: (text: string, parentId?: string) => void;
   title?: string;
 }

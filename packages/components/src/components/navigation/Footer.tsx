@@ -60,7 +60,7 @@ export function Footer({
   const surface = '#fafafa';
 
   const ff = fontFamily ?? t.fontFamily;
-  const r = t.radius ?? 16;
+  const _r = t.radius ?? 16;
 
   return (
     <footer

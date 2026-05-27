@@ -138,7 +138,7 @@ export interface AudioEmbedProps {
   showWaveform?: boolean;
 }
 
-export function AudioEmbed({ src, title, showWaveform }: AudioEmbedProps) {
+export function AudioEmbed({ src, title, showWaveform: _showWaveform }: AudioEmbedProps) {
   const md = useMD();
 
   return (
@@ -464,7 +464,7 @@ export function LightboxGallery({ items = [], columns = 3 }: LightboxGalleryProp
                 maxHeight: '85vh',
                 borderRadius: md.r,
                 objectFit: 'contain',
-                border: `1px solid rgba(255,255,255,0.16)`,
+                border: '1px solid rgba(255,255,255,0.16)',
                 boxShadow: '0 24px 80px rgba(0,0,0,0.32)',
               }}
             />
@@ -694,7 +694,7 @@ export function ImageCropperUploader({
 
   React.useEffect(() => {
     return () => {
-      if (preview && preview.startsWith('blob:')) URL.revokeObjectURL(preview);
+      if (preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
     };
   }, [preview]);
 
@@ -708,7 +708,7 @@ export function ImageCropperUploader({
       return;
     }
 
-    if (preview && preview.startsWith('blob:')) URL.revokeObjectURL(preview);
+    if (preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
 
     setErr('');
     setPreview(URL.createObjectURL(f));
