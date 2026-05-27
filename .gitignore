@@ -1,0 +1,16 @@
+node_modules
+dist
+.nx
+tmp
+out-tsc
+coverage
+test-output
+.pnpm-debug.log
+.DS_Store
+.env
+.env.*
+!.env.example
+.vercel
+.cache
+.turbo
+storybook-static
