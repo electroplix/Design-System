@@ -1,0 +1,21 @@
+{
+  "name": "@electroplix-ds/nextjs-e2e",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "next dev -p 3099",
+    "build": "next build",
+    "start": "next start -p 3099",
+    "test:ssr": "node --test src/ssr-validation.mjs"
+  },
+  "dependencies": {
+    "@electroplix/components": "workspace:*",
+    "next": "^15.3.0",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.8",
+    "typescript": "~5.7.3"
+  }
+}
