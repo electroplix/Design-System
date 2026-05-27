@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { ElectroplixProvider, StaticHero, PrimaryNav } from '@electroplix/components';
 import ButtonsPage from './pages/ButtonsPage';
@@ -8,8 +7,8 @@ import NavigationPage from './pages/NavigationPage';
 function HomePage() {
   return (
     <>
-      <StaticHero 
-        title="Modern Component Library" 
+      <StaticHero
+        title="Modern Component Library"
         subtitle="Robust, Enterprise-Ready Design System"
         ctaText="Explore Showcase"
       />
