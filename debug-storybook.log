@@ -1,0 +1,28 @@
+[20:44:10.624] [INFO] storybook v10.4.1
+[20:44:16.259] [DEBUG] Getting package.json info for /home/adnan/Documents/code-lab/electroplix/@electroplix/Design-System/packages/components/package.json...
+[20:44:16.271] [WARN] You are currently using Storybook [1m10.4.1[22m but you have packages which are incompatible with it:
+
+- @storybook/addon-essentials@8.6.14 which depends on 8.6.14
+ Repo: https://github.com/storybookjs/storybook/tree/next/code/addons/essentials
+- @storybook/addon-interactions@8.6.14 which depends on 8.6.14
+ Repo: https://github.com/storybookjs/storybook/tree/next/code/addons/interactions
+
+Please consider updating your packages or contacting the maintainers for compatibility details.
+
+For more details on compatibility guidance, see:
+https://github.com/storybookjs/storybook/issues/32836
+[20:44:16.868] [ERROR] Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'storybook' imported from ./node_modules/.pnpm/@storybook+builder-vite@10.4.1_rollup@4.34.4_vite@8.0.14_@types+node@22.13.1_jiti@2.4.2_5a40611f5fd4a778430103f39788482c/node_modules/@storybook/builder-vite/dist/_node-chunks/chunk-3IGMU7YO.js
+Did you mean to import "storybook/dist/common/index.js"?
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:764:81)
+    at moduleResolve (node:internal/modules/esm/resolve:855:18)
+    at defaultResolve (node:internal/modules/esm/resolve:988:11)
+    at nextResolve (node:internal/modules/esm/hooks:785:28)
+    at AsyncLoaderHooksOnLoaderHookWorker.resolve (node:internal/modules/esm/hooks:269:30)
+    at MessagePort.handleMessage (node:internal/modules/esm/worker:251:24)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:843:20)
+    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)
+[20:44:16.875] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[20:44:35.867] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":false}
+[20:44:35.873] [INFO] Storybook collects completely anonymous usage telemetry. We use it to shape Storybook's roadmap and prioritize features. You can learn more, including how to opt out, at https://storybook.js.org/telemetry

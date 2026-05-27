@@ -1,3 +1,4 @@
+'use client';
 export { AnchorLinks } from './AnchorLinks';
 export type { AnchorLinksProps, AnchorItem } from './AnchorLinks';
 

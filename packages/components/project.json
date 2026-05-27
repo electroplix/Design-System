@@ -4,7 +4,7 @@
   "sourceRoot": "packages/components/src",
   "tags": ["scope:components", "type:lib"],
   "targets": {
-    "build": {
+    "rollup": {
       "executor": "@nx/rollup:rollup",
       "options": {
         "outputPath": "packages/components/dist",
@@ -21,14 +21,21 @@
       "options": {
         "command": "node packages/components/scripts/postbuild.cjs"
       },
-      "dependsOn": ["build"]
+      "dependsOn": ["rollup"]
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo Build complete with postbuild"
+      },
+      "dependsOn": ["rollup", "postbuild"]
     },
     "package": {
       "executor": "nx:run-commands",
       "options": {
         "command": "echo Package ready to publish from packages/components"
       },
-      "dependsOn": ["build", "postbuild"]
+      "dependsOn": ["build"]
     },
     "test": {
       "executor": "@nx/jest:jest",

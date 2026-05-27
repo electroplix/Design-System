@@ -1,3 +1,4 @@
+'use client';
 export { FormShell } from './FormShell';
 export type { FormShellProps } from './FormShell';
 

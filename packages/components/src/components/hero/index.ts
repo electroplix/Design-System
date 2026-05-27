@@ -1,3 +1,4 @@
+'use client';
 export { HeroShell } from './HeroShell';
 export type { HeroShellProps } from './HeroShell';
 
