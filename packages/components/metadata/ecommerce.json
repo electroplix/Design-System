@@ -1,0 +1,300 @@
+{
+  "$schema": "electroplix-component-metadata-v1",
+  "category": "ecommerce",
+  "label": "Ecommerce",
+  "description": "Shopping, cart, product display, checkout, and payment components for online stores",
+  "themeKey": "ecommerce",
+  "icon": "shopping-cart",
+  "sortOrder": 7,
+  "components": [
+    {
+      "id": "ecommerce.CartDrawer",
+      "name": "CartDrawer",
+      "description": "Slide-out cart panel that overlays the page. Displays cart items with quantity controls, remove actions, and a checkout button.",
+      "whenToUse": "Use as the primary cart interface that slides in from the side when a user adds an item or clicks the cart icon. Ideal for ecommerce sites that want a non-disruptive cart experience without navigating away from the current page.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "CartItem[]", "required": true, "default": null, "description": "Array of cart items: {id, title, image, price, qty, variant?}" },
+        { "name": "currency", "type": "Currency", "required": false, "default": "\"USD\"", "description": "Currency code for formatting prices: \"USD\" | \"INR\" | \"EUR\" | \"GBP\"" },
+        { "name": "onQtyChange", "type": "(id: string, qty: number) => void", "required": false, "default": null, "description": "Callback when item quantity is changed" },
+        { "name": "onRemove", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when an item is removed from the cart" },
+        { "name": "onCheckout", "type": "() => void", "required": false, "default": null, "description": "Callback when the checkout button is clicked" },
+        { "name": "open", "type": "boolean", "required": false, "default": "true", "description": "Whether the drawer is open" },
+        { "name": "width", "type": "number", "required": false, "default": "380", "description": "Width of the drawer panel in pixels" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "retail", "marketplace"],
+        "placement": "overlay",
+        "priority": 9,
+        "sequenceOrder": 10,
+        "pairsWellWith": ["ecommerce.ProductGrid", "ecommerce.ProductCard", "ecommerce.QuickAddButton", "navigation.PrimaryNav"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "ecommerce.MiniCartPanel",
+      "name": "MiniCartPanel",
+      "description": "Compact inline cart summary showing item count, subtotal, and quick actions. Designed to be embedded in headers or sidebars.",
+      "whenToUse": "Use as a lightweight cart preview embedded in the page layout, such as inside a header dropdown or sidebar. Suitable when you want a persistent cart overview without a full drawer.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "CartItem[]", "required": true, "default": null, "description": "Array of cart items: {id, title, image, price, qty, variant?}" },
+        { "name": "currency", "type": "Currency", "required": false, "default": "\"USD\"", "description": "Currency code for formatting prices: \"USD\" | \"INR\" | \"EUR\" | \"GBP\"" },
+        { "name": "onQtyChange", "type": "(id: string, qty: number) => void", "required": false, "default": null, "description": "Callback when item quantity is changed" },
+        { "name": "onRemove", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when an item is removed from the cart" },
+        { "name": "onCheckout", "type": "() => void", "required": false, "default": null, "description": "Callback when the checkout button is clicked" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 9,
+        "pairsWellWith": ["ecommerce.CartDrawer", "ecommerce.ProductGrid", "navigation.PrimaryNav"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "ecommerce.OrderSummary",
+      "name": "OrderSummary",
+      "description": "Order review panel displaying line items, subtotal, shipping, tax, and total. Shows order status, shipping address, and estimated delivery.",
+      "whenToUse": "Use on checkout confirmation pages, order detail pages, or post-purchase review screens. Essential for any ecommerce checkout flow to summarize what the customer is purchasing.",
+      "isShell": false,
+      "props": [
+        { "name": "orderId", "type": "string", "required": false, "default": null, "description": "Unique order identifier" },
+        { "name": "status", "type": "\"processing\" | \"shipped\" | \"delivered\" | \"cancelled\"", "required": false, "default": "\"processing\"", "description": "Current order status" },
+        { "name": "lines", "type": "OrderLine[]", "required": true, "default": null, "description": "Array of order line items: {id, title, qty, price, image?}" },
+        { "name": "subtotal", "type": "number", "required": true, "default": null, "description": "Subtotal before shipping and tax" },
+        { "name": "shipping", "type": "number", "required": false, "default": "0", "description": "Shipping cost" },
+        { "name": "tax", "type": "number", "required": false, "default": "0", "description": "Tax amount" },
+        { "name": "total", "type": "number", "required": true, "default": null, "description": "Final total amount" },
+        { "name": "currency", "type": "Currency", "required": false, "default": "\"USD\"", "description": "Currency code for formatting prices: \"USD\" | \"INR\" | \"EUR\" | \"GBP\"" },
+        { "name": "shippingAddress", "type": "string", "required": false, "default": null, "description": "Formatted shipping address string" },
+        { "name": "estimatedDelivery", "type": "string", "required": false, "default": null, "description": "Estimated delivery date or range" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "checkout"],
+        "placement": "body",
+        "priority": 8,
+        "sequenceOrder": 8,
+        "pairsWellWith": ["ecommerce.PaymentButtons", "navigation.Stepper", "ecommerce.CartDrawer"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "ecommerce.ProductCard",
+      "name": "ProductCard",
+      "description": "Single product card displaying product image, title, price, optional badge, rating, and action buttons for add-to-cart and wishlist.",
+      "whenToUse": "Use to display individual products in grids, carousels, or featured sections. The fundamental building block for any product listing interface.",
+      "isShell": false,
+      "props": [
+        { "name": "product", "type": "Product", "required": true, "default": null, "description": "Product data: {id, title, image, price, originalPrice?, badge?, rating?, reviewCount?, inStock?}" },
+        { "name": "currency", "type": "Currency", "required": false, "default": "\"USD\"", "description": "Currency code for formatting prices: \"USD\" | \"INR\" | \"EUR\" | \"GBP\"" },
+        { "name": "onAddToCart", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when add-to-cart is clicked" },
+        { "name": "onWishlist", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when wishlist button is clicked" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "marketplace", "directory", "retail"],
+        "placement": "body",
+        "priority": 9,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["ecommerce.ProductGrid", "ecommerce.QuickAddButton", "ecommerce.WishlistButton", "ecommerce.CartDrawer"],
+        "maxPerPage": 12,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "ecommerce.ProductGrid",
+      "name": "ProductGrid",
+      "description": "Responsive grid layout of product cards. Automatically arranges products in a configurable number of columns with consistent spacing.",
+      "whenToUse": "Use on category pages, search results, landing pages, or any view that needs to display multiple products in a grid layout. The primary way to showcase a product catalog.",
+      "isShell": false,
+      "props": [
+        { "name": "products", "type": "Product[]", "required": true, "default": null, "description": "Array of products: {id, title, image, price, originalPrice?, badge?, rating?, reviewCount?, inStock?}" },
+        { "name": "currency", "type": "Currency", "required": false, "default": "\"USD\"", "description": "Currency code for formatting prices: \"USD\" | \"INR\" | \"EUR\" | \"GBP\"" },
+        { "name": "columns", "type": "number", "required": false, "default": "3", "description": "Number of columns in the grid" },
+        { "name": "onAddToCart", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when add-to-cart is clicked on a product" },
+        { "name": "onWishlist", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when wishlist button is clicked on a product" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "landing", "marketplace", "retail"],
+        "placement": "body",
+        "priority": 9,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["ecommerce.ProductCard", "ecommerce.CartDrawer", "navigation.Pagination", "navigation.Breadcrumbs"],
+        "maxPerPage": 2,
+        "isContainer": true
+      }
+    },
+    {
+      "id": "ecommerce.ProductDetail",
+      "name": "ProductDetail",
+      "description": "Full product detail view with image gallery, description, variant selectors, pricing, and add-to-cart action. The main component for individual product pages.",
+      "whenToUse": "Use as the primary content component on a product detail page (PDP). Displays all product information including images, description, variants, and purchase actions.",
+      "isShell": false,
+      "props": [
+        { "name": "product", "type": "Product", "required": true, "default": null, "description": "Product data: {id, title, image, price, originalPrice?, badge?, rating?, reviewCount?, inStock?}" },
+        { "name": "description", "type": "string", "required": false, "default": null, "description": "Full product description text" },
+        { "name": "images", "type": "string[]", "required": false, "default": null, "description": "Array of product image URLs for the gallery" },
+        { "name": "variants", "type": "VariantGroup[]", "required": false, "default": null, "description": "Array of variant groups: {name, options: VariantOption[]{label, value}}" },
+        { "name": "currency", "type": "Currency", "required": false, "default": "\"USD\"", "description": "Currency code for formatting prices: \"USD\" | \"INR\" | \"EUR\" | \"GBP\"" },
+        { "name": "onAddToCart", "type": "() => void", "required": false, "default": null, "description": "Callback when add-to-cart is clicked" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "marketplace", "retail"],
+        "placement": "body",
+        "priority": 10,
+        "sequenceOrder": 4,
+        "pairsWellWith": ["ecommerce.VariantSelector", "ecommerce.CartDrawer", "ecommerce.WishlistButton", "navigation.Breadcrumbs", "navigation.Tabs"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "ecommerce.VariantSelector",
+      "name": "VariantSelector",
+      "description": "Product variant picker for selecting options like size, color, material, etc. Renders grouped option buttons for each variant dimension.",
+      "whenToUse": "Use within a product detail view to let customers select product variants. Supports multiple variant groups (e.g., size and color simultaneously).",
+      "isShell": false,
+      "props": [
+        { "name": "groups", "type": "VariantGroup[]", "required": true, "default": null, "description": "Array of variant groups: {name, options: VariantOption[]{label, value}}" },
+        { "name": "selected", "type": "Record<string, string>", "required": false, "default": "{}", "description": "Map of currently selected values keyed by group name" },
+        { "name": "onChange", "type": "(groupName: string, value: string) => void", "required": false, "default": null, "description": "Callback when a variant option is selected" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "marketplace", "retail"],
+        "placement": "body",
+        "priority": 6,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["ecommerce.ProductDetail", "ecommerce.QuickAddButton"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "ecommerce.QuickAddButton",
+      "name": "QuickAddButton",
+      "description": "Compact add-to-cart button for quick product addition without navigating to the product detail page. Designed for use within product cards and grids.",
+      "whenToUse": "Use on product cards, product grids, or any listing view where you want to let users add items to their cart with a single click.",
+      "isShell": false,
+      "props": [
+        { "name": "productId", "type": "string", "required": true, "default": null, "description": "The product ID to add to cart" },
+        { "name": "label", "type": "string", "required": false, "default": "\"Quick Add\"", "description": "Button label text" },
+        { "name": "onAdd", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when the button is clicked" },
+        { "name": "disabled", "type": "boolean", "required": false, "default": "false", "description": "Whether the button is disabled" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "marketplace", "retail"],
+        "placement": "body",
+        "priority": 5,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["ecommerce.ProductCard", "ecommerce.ProductGrid"],
+        "maxPerPage": 12,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "ecommerce.WishlistButton",
+      "name": "WishlistButton",
+      "description": "Toggle heart button for adding or removing a product from the user's wishlist. Displays filled or outline heart based on state.",
+      "whenToUse": "Use on product cards, product detail pages, or anywhere you want to let users save products to their wishlist. Provides visual feedback for wishlisted state.",
+      "isShell": false,
+      "props": [
+        { "name": "productId", "type": "string", "required": true, "default": null, "description": "The product ID to wishlist" },
+        { "name": "wishlisted", "type": "boolean", "required": false, "default": "false", "description": "Whether the product is currently wishlisted" },
+        { "name": "onToggle", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when the wishlist state is toggled" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "marketplace"],
+        "placement": "body",
+        "priority": 5,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["ecommerce.ProductCard", "ecommerce.ProductDetail", "ecommerce.ProductGrid"],
+        "maxPerPage": 12,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "ecommerce.PaymentButtons",
+      "name": "PaymentButtons",
+      "description": "Group of payment method buttons supporting card, PayPal, Apple Pay, and other methods. Renders styled buttons for each available payment option.",
+      "whenToUse": "Use on checkout pages to let customers select their preferred payment method. Typically placed after the order summary and before the final confirmation step.",
+      "isShell": false,
+      "props": [
+        { "name": "onPay", "type": "(method: string) => void", "required": false, "default": null, "description": "Callback when a payment method is selected" },
+        { "name": "methods", "type": "string[]", "required": false, "default": "[\"card\", \"paypal\", \"apple-pay\"]", "description": "Array of available payment method identifiers" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "buttonSize"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "checkout", "nonprofit", "event"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 9,
+        "pairsWellWith": ["ecommerce.OrderSummary", "navigation.Stepper"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    }
+  ]
+}

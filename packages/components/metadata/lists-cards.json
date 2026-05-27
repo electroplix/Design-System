@@ -1,0 +1,226 @@
+{
+  "$schema": "electroplix-component-metadata-v1",
+  "category": "lists-cards",
+  "label": "Lists & Cards",
+  "description": "Layout components for lists, grids, accordions, pricing tables, and card-based content organization",
+  "themeKey": "listsCards",
+  "icon": "layout",
+  "sortOrder": 8,
+  "components": [
+    {
+      "id": "listsCards.BlockShell",
+      "name": "BlockShell",
+      "description": "Generic section shell/container that wraps child content with consistent padding, max-width, and background styling. Use as a layout wrapper for any section.",
+      "whenToUse": "Use as a foundational layout container on any page to wrap sections with consistent spacing, max-width constraints, and background colors. Ideal for structuring body content across all page types.",
+      "isShell": true,
+      "props": [
+        { "name": "as", "type": "ElementType", "required": false, "default": "\"section\"", "description": "HTML element or component to render as" },
+        { "name": "maxW", "type": "number", "required": false, "default": "900", "description": "Maximum width of the shell in pixels" },
+        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
+        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
+        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius" },
+        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between child elements in pixels" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
+        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
+        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Child content to render inside the shell" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "documentation", "admin"],
+        "placement": "body",
+        "priority": 4,
+        "sequenceOrder": 4,
+        "pairsWellWith": ["listsCards.Accordion", "listsCards.GenericList", "listsCards.FeatureGrid", "content.HeadingSection"],
+        "maxPerPage": 10,
+        "isContainer": true
+      }
+    },
+    {
+      "id": "listsCards.Accordion",
+      "name": "Accordion",
+      "description": "Expandable content panels where each item has a clickable title that reveals or hides its content. Supports single or multiple open panels.",
+      "whenToUse": "Use for FAQs, documentation sections, settings panels, or any content that benefits from progressive disclosure. Great for reducing visual clutter while keeping information accessible.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "AccordionItem[]", "required": true, "default": null, "description": "Array of accordion items: {id, title, content: ReactNode}" },
+        { "name": "allowMultiple", "type": "boolean", "required": false, "default": "false", "description": "Whether multiple panels can be expanded simultaneously" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "aiHints": {
+        "pageTypes": ["documentation", "faq", "settings", "landing", "saas", "restaurant", "education", "fitness", "health", "agency"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["listsCards.BlockShell", "content.HeadingSection", "listsCards.GenericList"],
+        "maxPerPage": 3,
+        "isContainer": true
+      }
+    },
+    {
+      "id": "listsCards.GenericList",
+      "name": "GenericList",
+      "description": "Simple vertical list displaying items with labels, optional descriptions, and optional icons. Lightweight and versatile.",
+      "whenToUse": "Use for displaying any simple list of items such as features, benefits, steps, or informational entries. Works well on all page types as a general-purpose list component.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "GenericListItem[]", "required": true, "default": null, "description": "Array of list items: {id, label, description?, icon?}" },
+        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional heading displayed above the list" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "documentation", "admin"],
+        "placement": "body",
+        "priority": 6,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["listsCards.BlockShell", "content.HeadingSection", "listsCards.Accordion"],
+        "maxPerPage": 5,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "listsCards.FeatureGrid",
+      "name": "FeatureGrid",
+      "description": "Responsive grid of feature or benefit cards, each with an optional icon, title, and description. Configurable column count.",
+      "whenToUse": "Use on landing pages, marketing pages, and SaaS product pages to showcase features, benefits, or value propositions in an organized grid layout.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "FeatureItem[]", "required": true, "default": null, "description": "Array of feature items: {id, icon?, title, description?}" },
+        { "name": "columns", "type": "number", "required": false, "default": "3", "description": "Number of columns in the grid" },
+        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional heading displayed above the grid" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "saas", "education", "fitness", "agency", "health", "nonprofit"],
+        "placement": "body",
+        "priority": 8,
+        "sequenceOrder": 4,
+        "pairsWellWith": ["listsCards.BlockShell", "hero.StaticHero", "hero.SplitHero", "content.HeadingSection"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "listsCards.ItemCardGrid",
+      "name": "ItemCardGrid",
+      "description": "Generic card-based grid for items such as products, projects, posts, services, team members, job listings, course catalogs, speaker profiles, property listings, or any entity collection.",
+      "whenToUse": "Use for ecommerce product grids, portfolio galleries, blog post cards, or any content that benefits from visual card-based browsing with images.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "ItemCardData[]", "required": true, "default": null, "description": "Array of card items: {id, title, image?, subtitle?, badge?}" },
+        { "name": "columns", "type": "number", "required": false, "default": "3", "description": "Number of columns in the grid" },
+        { "name": "onItemClick", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when a card is clicked, receives item id" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "portfolio", "blog", "services", "event", "education", "restaurant", "agency", "fitness", "realestate", "community", "health", "nonprofit", "recruitment"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["listsCards.BlockShell", "navigation.Pagination", "content.HeadingSection"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "listsCards.PricingTable",
+      "name": "PricingTable",
+      "description": "Pricing plan comparison table displaying multiple plans side-by-side with names, prices, feature lists, and call-to-action buttons. Supports highlighting a recommended plan.",
+      "whenToUse": "Use on SaaS pricing pages, marketing landing pages, or any page where users need to compare and select from multiple pricing tiers.",
+      "isShell": false,
+      "props": [
+        { "name": "plans", "type": "Plan[]", "required": true, "default": null, "description": "Array of plans: {id, name, price, period?, features: PricingFeature[]{label, included}, highlighted?, cta?}" },
+        { "name": "onSelect", "type": "(planId: string) => void", "required": false, "default": null, "description": "Callback when a plan's CTA is clicked, receives plan id" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "aiHints": {
+        "pageTypes": ["saas", "marketing", "landing", "fitness", "education", "agency", "health", "restaurant", "community"],
+        "placement": "body",
+        "priority": 9,
+        "sequenceOrder": 6,
+        "pairsWellWith": ["listsCards.BlockShell", "content.HeadingSection", "listsCards.FeatureGrid", "marketing.MarketingHeroBlock", "onboarding.FAQAccordion"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "listsCards.SortableTable",
+      "name": "SortableTable",
+      "description": "Generic sortable data table with configurable columns, custom cell renderers, and optional caption. Supports sorting by clicking column headers.",
+      "whenToUse": "Use on dashboard and admin pages to display tabular data that users need to sort and scan. Ideal for user lists, transaction logs, analytics data, or any structured dataset.",
+      "isShell": false,
+      "props": [
+        { "name": "columns", "type": "TableColumn<T>[]", "required": true, "default": null, "description": "Array of column definitions: {key, label, sortable?, width?, render?}" },
+        { "name": "rows", "type": "T[]", "required": true, "default": null, "description": "Array of row data objects matching the column keys" },
+        { "name": "caption", "type": "string", "required": false, "default": null, "description": "Optional table caption for accessibility and context" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "aiHints": {
+        "pageTypes": ["dashboard", "admin"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["listsCards.BlockShell", "navigation.Pagination", "content.HeadingSection"],
+        "maxPerPage": 3,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "listsCards.LCTimeline",
+      "name": "LCTimeline",
+      "description": "Vertical timeline displaying chronological events with titles, optional descriptions, dates, and icons. Renders a connected line between entries.",
+      "whenToUse": "Use on portfolio pages to show work history, changelog pages to display version history, or about pages to present company milestones and career timelines.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "LCTimelineItem[]", "required": true, "default": null, "description": "Array of timeline items: {id, title, description?, date?, icon?}" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "aiHints": {
+        "pageTypes": ["portfolio", "changelog", "about", "education", "landing", "marketing", "saas", "event", "nonprofit", "agency"],
+        "placement": "body",
+        "priority": 5,
+        "sequenceOrder": 6,
+        "pairsWellWith": ["listsCards.BlockShell", "content.HeadingSection"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    }
+  ]
+}

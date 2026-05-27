@@ -1,0 +1,25 @@
+# Exclude source files
+src/
+
+# Exclude metadata (synced to DB, not needed in npm package)
+metadata/
+
+# Exclude build scripts
+scripts/
+
+# Exclude test files
+**/*.spec.*
+**/*.test.*
+__tests__/
+
+# Exclude config files
+tsconfig*.json
+jest.config.*
+rollup.config.*
+project.json
+biome.json
+.eslintrc*
+
+# Exclude docs
+README.md
+CHANGELOG.md

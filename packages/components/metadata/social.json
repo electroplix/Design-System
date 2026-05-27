@@ -1,0 +1,204 @@
+{
+  "$schema": "electroplix-component-metadata-v1",
+  "category": "social",
+  "label": "Social",
+  "description": "Social interaction components for sharing, login, embeds, reactions, comments, and reviews",
+  "themeKey": "social",
+  "icon": "share-2",
+  "sortOrder": 16,
+  "components": [
+    {
+      "id": "social.SocialShareBar",
+      "name": "SocialShareBar",
+      "description": "Social media share buttons for distributing content across popular platforms. Supports Twitter, Facebook, LinkedIn, Reddit, email, and copy-to-clipboard.",
+      "whenToUse": "Use on blog posts, articles, marketing pages, and landing pages to let users share content across social networks.",
+      "isShell": false,
+      "props": [
+        { "name": "url", "type": "string", "required": true, "default": null, "description": "The URL to share" },
+        { "name": "title", "type": "string", "required": false, "default": "\"\"", "description": "Title text to include with the shared link" },
+        { "name": "networks", "type": "ShareNetwork[]", "required": false, "default": "[\"twitter\",\"facebook\",\"linkedin\",\"email\",\"copy\"]", "description": "Array of networks to display: (\"twitter\" | \"facebook\" | \"linkedin\" | \"reddit\" | \"email\" | \"copy\")" },
+        { "name": "compact", "type": "boolean", "required": false, "default": "false", "description": "Whether to render compact icon-only buttons without labels" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "mutedText", "buttonText"],
+      "aiHints": {
+        "pageTypes": ["blog", "marketing", "landing", "restaurant", "education", "community", "event"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 8,
+        "pairsWellWith": ["content.HeadingSection", "social.CommentsBox", "social.ReactionsBar"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "social.SocialLoginButtons",
+      "name": "SocialLoginButtons",
+      "description": "OAuth provider login buttons supporting major social platforms. Renders branded buttons for each provider with horizontal or vertical layout.",
+      "whenToUse": "Use on authentication pages, login modals, and landing pages where social sign-in is offered alongside traditional email/password.",
+      "isShell": false,
+      "props": [
+        { "name": "providers", "type": "SocialProvider[]", "required": true, "default": null, "description": "Array of OAuth providers to display: (\"google\" | \"github\" | \"twitter\" | \"facebook\" | \"discord\")" },
+        { "name": "onLogin", "type": "(provider: SocialProvider) => void", "required": false, "default": null, "description": "Callback invoked when a provider button is clicked" },
+        { "name": "layout", "type": "\"horizontal\" | \"vertical\"", "required": false, "default": "\"vertical\"", "description": "Layout direction of the provider buttons" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "mutedText", "buttonText"],
+      "aiHints": {
+        "pageTypes": ["auth", "landing"],
+        "placement": "body",
+        "priority": 8,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["forms.FormShell", "content.HeadingSection"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "social.SocialEmbed",
+      "name": "SocialEmbed",
+      "description": "Embed social media content from YouTube, Twitter, Instagram, Spotify, or custom sources. Renders responsive iframes with configurable dimensions.",
+      "whenToUse": "Use on blog posts, portfolio pages, and landing pages to embed external social media content like videos, tweets, or playlists.",
+      "isShell": false,
+      "props": [
+        { "name": "type", "type": "EmbedType", "required": true, "default": null, "description": "Type of embed: (\"youtube\" | \"twitter\" | \"instagram\" | \"spotify\" | \"custom\")" },
+        { "name": "url", "type": "string", "required": true, "default": null, "description": "URL of the content to embed" },
+        { "name": "width", "type": "string", "required": false, "default": "\"100%\"", "description": "Width of the embed container" },
+        { "name": "height", "type": "number", "required": false, "default": "400", "description": "Height of the embed container in pixels" },
+        { "name": "title", "type": "string", "required": false, "default": null, "description": "Accessible title for the embedded iframe" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "mutedText", "buttonText"],
+      "aiHints": {
+        "pageTypes": ["blog", "portfolio", "landing"],
+        "placement": "body",
+        "priority": 6,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["content.HeadingSection", "content.RichMarkdown", "social.SocialShareBar"],
+        "maxPerPage": 3,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "social.FollowLike",
+      "name": "FollowLike",
+      "description": "Follow and like action buttons with live counts. Supports toggling follow/unfollow and like states with callback handlers.",
+      "whenToUse": "Use on blog posts, social feeds, and user profile pages to allow follow and like interactions with visible engagement counts.",
+      "isShell": false,
+      "props": [
+        { "name": "isFollowed", "type": "boolean", "required": false, "default": "false", "description": "Whether the current user is following" },
+        { "name": "followerCount", "type": "number", "required": false, "default": null, "description": "Number of followers to display" },
+        { "name": "onFollow", "type": "() => void", "required": false, "default": null, "description": "Callback invoked when the follow button is clicked" },
+        { "name": "onUnfollow", "type": "() => void", "required": false, "default": null, "description": "Callback invoked when the unfollow button is clicked" },
+        { "name": "isLiked", "type": "boolean", "required": false, "default": "false", "description": "Whether the current user has liked the content" },
+        { "name": "likeCount", "type": "number", "required": false, "default": null, "description": "Number of likes to display" },
+        { "name": "onLike", "type": "() => void", "required": false, "default": null, "description": "Callback invoked when the like button is clicked" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "mutedText", "buttonText"],
+      "aiHints": {
+        "pageTypes": ["blog", "social", "profile"],
+        "placement": "body",
+        "priority": 5,
+        "sequenceOrder": 7,
+        "pairsWellWith": ["social.ReactionsBar", "social.CommentsBox", "social.SocialShareBar"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "social.ReactionsBar",
+      "name": "ReactionsBar",
+      "description": "Emoji reaction bar allowing users to express reactions with emoji buttons. Displays reaction counts and active state for each emoji.",
+      "whenToUse": "Use on blog posts and social feeds to provide lightweight emoji-based feedback as an alternative or supplement to comments.",
+      "isShell": false,
+      "props": [
+        { "name": "reactions", "type": "Reaction[]", "required": true, "default": null, "description": "Array of reactions: {emoji: string, label: string, count: number, active?: boolean}" },
+        { "name": "onReact", "type": "(label: string) => void", "required": false, "default": null, "description": "Callback invoked when a reaction emoji is clicked, receives the reaction label" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "mutedText", "buttonText"],
+      "aiHints": {
+        "pageTypes": ["blog", "social"],
+        "placement": "body",
+        "priority": 5,
+        "sequenceOrder": 8,
+        "pairsWellWith": ["social.CommentsBox", "social.FollowLike", "social.SocialShareBar"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "social.CommentsBox",
+      "name": "CommentsBox",
+      "description": "Comments section with threaded replies. Displays a list of comments with author info, avatars, timestamps, and like counts, plus a submission form.",
+      "whenToUse": "Use on blog posts and social content pages to enable user discussions and threaded comment replies.",
+      "isShell": false,
+      "props": [
+        { "name": "comments", "type": "SocialComment[]", "required": true, "default": null, "description": "Array of comments: {id: string, author: string, avatar?: string, text: string, time?: string, likes?: number}" },
+        { "name": "onSubmit", "type": "(text: string) => void", "required": false, "default": null, "description": "Callback invoked when a new comment is submitted" },
+        { "name": "title", "type": "string", "required": false, "default": "\"Comments\"", "description": "Heading text displayed above the comments section" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "mutedText", "buttonText"],
+      "aiHints": {
+        "pageTypes": ["blog", "social"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 8,
+        "pairsWellWith": ["social.ReactionsBar", "social.FollowLike", "social.SocialShareBar"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "social.ReviewsForm",
+      "name": "ReviewsForm",
+      "description": "Submit a review with star rating, name, and review text. Provides a complete review submission form with validation.",
+      "whenToUse": "Use on ecommerce product pages and review/testimonial sections to collect user reviews with star ratings.",
+      "isShell": false,
+      "props": [
+        { "name": "onSubmit", "type": "(data: { rating: number, name: string, review: string }) => void", "required": false, "default": null, "description": "Callback invoked when the review form is submitted with rating, name, and review text" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "mutedText", "buttonText"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "reviews", "restaurant", "marketplace", "agency", "fitness", "education"],
+        "placement": "body",
+        "priority": 6,
+        "sequenceOrder": 8,
+        "pairsWellWith": ["social.CommentsBox", "ecommerce.ProductDetail"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    }
+  ]
+}

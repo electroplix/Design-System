@@ -1,0 +1,47 @@
+{
+  "name": "@electroplix/components",
+  "projectType": "library",
+  "sourceRoot": "packages/components/src",
+  "tags": ["scope:components", "type:lib"],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "options": {
+        "outputPath": "packages/components/dist",
+        "main": "packages/components/src/index.ts",
+        "tsConfig": "packages/components/tsconfig.lib.json",
+        "compiler": "babel",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "format": ["esm"],
+        "assets": []
+      }
+    },
+    "postbuild": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node packages/components/scripts/postbuild.cjs"
+      },
+      "dependsOn": ["build"]
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo Package ready to publish from packages/components"
+      },
+      "dependsOn": ["build", "postbuild"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/components"],
+      "options": {
+        "jestConfig": "packages/components/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "biome check packages/components"
+      }
+    }
+  }
+}

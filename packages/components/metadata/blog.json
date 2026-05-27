@@ -1,0 +1,253 @@
+{
+  "$schema": "electroplix-component-metadata-v1",
+  "category": "blog",
+  "label": "Blog",
+  "description": "Blog and article components for post cards, author bylines, tags, reading progress, comments, and content rendering",
+  "themeKey": "blog",
+  "icon": "book-open",
+  "sortOrder": 18,
+  "components": [
+    {
+      "id": "blog.BlogCard",
+      "name": "BlogCard",
+      "description": "Blog post preview card displaying cover image, title, excerpt, author, date, read time, and tags. Supports vertical and horizontal layouts.",
+      "whenToUse": "Use on blog listing pages, landing pages, or marketing pages to showcase blog posts as clickable preview cards.",
+      "isShell": false,
+      "props": [
+        { "name": "post", "type": "BlogPost", "required": true, "default": null, "description": "Blog post object: {id, title, slug?, excerpt?, coverImage?, author?: {name, avatar?}, date?, readTime?, tags?, category?}" },
+        { "name": "onClick", "type": "(post: BlogPost) => void", "required": false, "default": null, "description": "Callback when the card is clicked" },
+        { "name": "variant", "type": "\"vertical\" | \"horizontal\"", "required": false, "default": "\"vertical\"", "description": "Card layout direction" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog", "landing", "marketing", "education", "community", "restaurant"],
+        "placement": "body",
+        "priority": 9,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["blog.TagList", "blog.AuthorByline", "navigation.Pagination", "blog.RelatedPosts", "forms.NewsletterSignup"],
+        "maxPerPage": 12,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "blog.AuthorByline",
+      "name": "AuthorByline",
+      "description": "Author information row displaying avatar, name, optional bio, publication date, and estimated read time.",
+      "whenToUse": "Use within blog post pages to show the author's identity, publication date, and reading time. Typically placed below the post title or above article content.",
+      "isShell": false,
+      "props": [
+        { "name": "name", "type": "string", "required": true, "default": null, "description": "Author display name" },
+        { "name": "avatar", "type": "string", "required": false, "default": null, "description": "URL to the author's avatar image" },
+        { "name": "bio", "type": "string", "required": false, "default": null, "description": "Short author biography" },
+        { "name": "date", "type": "string", "required": false, "default": null, "description": "Publication date string" },
+        { "name": "readTime", "type": "string", "required": false, "default": null, "description": "Estimated reading time (e.g. '5 min read')" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog"],
+        "placement": "body",
+        "priority": 6,
+        "sequenceOrder": 4,
+        "pairsWellWith": ["blog.ArticleRenderer", "blog.ReadingBar", "blog.TagList"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "blog.TagList",
+      "name": "TagList",
+      "description": "Horizontally-wrapped list of clickable tag chips. Highlights the currently active tag.",
+      "whenToUse": "Use on blog listing pages or individual post pages to display and filter by tags. Also useful in ecommerce for product tag filtering.",
+      "isShell": false,
+      "props": [
+        { "name": "tags", "type": "string[]", "required": true, "default": null, "description": "Array of tag label strings" },
+        { "name": "onTagClick", "type": "(tag: string) => void", "required": false, "default": null, "description": "Callback when a tag is clicked" },
+        { "name": "activeTag", "type": "string", "required": false, "default": null, "description": "Currently active/selected tag" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog", "ecommerce"],
+        "placement": "body",
+        "priority": 5,
+        "sequenceOrder": 4,
+        "pairsWellWith": ["blog.BlogCard", "blog.AuthorByline", "blog.ArchiveList"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "blog.BlogBadge",
+      "name": "BlogBadge",
+      "description": "Small category or status badge for blog posts. Displays a colored label chip.",
+      "whenToUse": "Use on blog cards or article headers to indicate the post category, status (e.g. 'New', 'Featured'), or content type.",
+      "isShell": false,
+      "props": [
+        { "name": "label", "type": "string", "required": true, "default": null, "description": "Badge text label" },
+        { "name": "color", "type": "string", "required": false, "default": "theme accent", "description": "Badge background color" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog"],
+        "placement": "body",
+        "priority": 4,
+        "sequenceOrder": 4,
+        "pairsWellWith": ["blog.BlogCard", "blog.AuthorByline", "blog.ArticleRenderer"],
+        "maxPerPage": 5,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "blog.ReadingBar",
+      "name": "ReadingBar",
+      "description": "Thin progress bar fixed at the top of the viewport that fills as the user scrolls through article content. Scroll-position-based.",
+      "whenToUse": "Use on blog post or documentation pages to give readers a visual indicator of their reading progress through the article.",
+      "isShell": false,
+      "props": [
+        { "name": "color", "type": "string", "required": false, "default": "gradient from accent", "description": "Bar color or gradient" },
+        { "name": "height", "type": "number", "required": false, "default": "3", "description": "Bar height in pixels" },
+        { "name": "containerRef", "type": "RefObject<HTMLElement | null>", "required": false, "default": null, "description": "Ref to the scrollable container element; defaults to document/window scroll" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog", "documentation"],
+        "placement": "overlay",
+        "priority": 5,
+        "sequenceOrder": 1,
+        "pairsWellWith": ["blog.ArticleRenderer", "blog.AuthorByline", "navigation.PrimaryNav"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "blog.ArticleRenderer",
+      "name": "ArticleRenderer",
+      "description": "Renders sanitized HTML article content with typographic styling. Constrains width for optimal readability.",
+      "whenToUse": "Use on blog post detail pages to render the full article body from HTML/rich-text content stored in a CMS.",
+      "isShell": false,
+      "props": [
+        { "name": "html", "type": "string", "required": true, "default": null, "description": "HTML string of the article content to render" },
+        { "name": "maxW", "type": "number", "required": false, "default": "720", "description": "Maximum content width in pixels for readability" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog"],
+        "placement": "body",
+        "priority": 9,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["blog.AuthorByline", "blog.ReadingBar", "blog.CommentsSection", "blog.RelatedPosts"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "blog.RelatedPosts",
+      "name": "RelatedPosts",
+      "description": "Grid of related blog post cards shown at the end of an article. Displays a configurable title and clickable post previews.",
+      "whenToUse": "Use at the bottom of blog post pages to encourage readers to explore more content. Typically placed after the article body and before comments.",
+      "isShell": false,
+      "props": [
+        { "name": "posts", "type": "BlogPost[]", "required": true, "default": null, "description": "Array of related blog posts: {id, title, slug?, excerpt?, coverImage?, author?: {name, avatar?}, date?, readTime?, tags?, category?}" },
+        { "name": "title", "type": "string", "required": false, "default": "\"Related Posts\"", "description": "Section heading text" },
+        { "name": "onPostClick", "type": "(post: BlogPost) => void", "required": false, "default": null, "description": "Callback when a related post is clicked" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 8,
+        "pairsWellWith": ["blog.ArticleRenderer", "blog.CommentsSection", "blog.BlogCard"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "blog.ArchiveList",
+      "name": "ArchiveList",
+      "description": "Grouped archive list organizing blog posts by time period or category. Each group has a label and a list of post links.",
+      "whenToUse": "Use on blog archive or index pages to display posts grouped by month, year, or category. Provides a structured overview of all published content.",
+      "isShell": false,
+      "props": [
+        { "name": "groups", "type": "ArchiveGroup[]", "required": true, "default": null, "description": "Array of archive groups: {label, posts: BlogPost[]}" },
+        { "name": "onPostClick", "type": "(post: BlogPost) => void", "required": false, "default": null, "description": "Callback when a post in the archive is clicked" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog"],
+        "placement": "body",
+        "priority": 5,
+        "sequenceOrder": 7,
+        "pairsWellWith": ["blog.TagList", "blog.BlogCard", "navigation.Pagination"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "blog.CommentsSection",
+      "name": "CommentsSection",
+      "description": "Full blog comments section with threaded replies, avatars, timestamps, and a submission form for new comments.",
+      "whenToUse": "Use at the bottom of blog post pages to allow readers to leave comments and reply to existing ones. Supports nested reply threads.",
+      "isShell": false,
+      "props": [
+        { "name": "comments", "type": "BlogComment[]", "required": true, "default": null, "description": "Array of comments: {id, author, avatar?, text, date?, replies?: BlogComment[]}" },
+        { "name": "onSubmit", "type": "(text: string, parentId?: string) => void", "required": false, "default": null, "description": "Callback when a comment or reply is submitted" },
+        { "name": "title", "type": "string", "required": false, "default": "\"Comments\"", "description": "Section heading text" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "aiHints": {
+        "pageTypes": ["blog"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 9,
+        "pairsWellWith": ["blog.ArticleRenderer", "blog.RelatedPosts", "blog.AuthorByline"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    }
+  ]
+}

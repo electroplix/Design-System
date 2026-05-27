@@ -1,0 +1,175 @@
+{
+  "$schema": "electroplix-component-metadata-v1",
+  "category": "search",
+  "label": "Search",
+  "description": "Search interface components including search bars, autocomplete, faceted filters, and result displays",
+  "themeKey": "search",
+  "icon": "search",
+  "sortOrder": 14,
+  "components": [
+    {
+      "id": "search.SiteSearchBar",
+      "name": "SiteSearchBar",
+      "description": "Main search input bar with customizable placeholder, optional auto-focus, and submit callback. Designed for prominent site-wide search placement.",
+      "whenToUse": "Use as the primary search entry point on any page. Ideal for landing pages, ecommerce storefronts, blog archives, documentation portals, and dashboard headers.",
+      "isShell": false,
+      "props": [
+        { "name": "placeholder", "type": "string", "required": false, "default": "\"Search...\"", "description": "Placeholder text displayed inside the search input" },
+        { "name": "onSearch", "type": "(query: string) => void", "required": true, "default": null, "description": "Callback fired when the user submits a search query" },
+        { "name": "defaultValue", "type": "string", "required": false, "default": "\"\"", "description": "Initial value pre-filled in the search input" },
+        { "name": "autoFocus", "type": "boolean", "required": false, "default": "false", "description": "Whether the search input should be focused on mount" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "aiHints": {
+        "pageTypes": ["landing", "ecommerce", "blog", "documentation", "dashboard", "marketplace", "restaurant", "education", "community"],
+        "placement": "header",
+        "priority": 8,
+        "sequenceOrder": 2,
+        "pairsWellWith": ["search.SearchResults", "search.AutoSuggest"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "search.AutoSuggest",
+      "name": "AutoSuggest",
+      "description": "Search input with a dropdown list of suggestions that updates as the user types. Supports selection callbacks and real-time query change tracking.",
+      "whenToUse": "Use when you want to provide type-ahead suggestions to help users find content faster. Great for ecommerce product search, documentation search, and any search-heavy interface.",
+      "isShell": false,
+      "props": [
+        { "name": "suggestions", "type": "string[]", "required": true, "default": null, "description": "Array of suggestion strings to display in the dropdown" },
+        { "name": "onSelect", "type": "(value: string) => void", "required": true, "default": null, "description": "Callback fired when a suggestion is selected" },
+        { "name": "placeholder", "type": "string", "required": false, "default": "\"Type to search...\"", "description": "Placeholder text displayed inside the input" },
+        { "name": "onQueryChange", "type": "(query: string) => void", "required": false, "default": null, "description": "Callback fired on every input change for real-time query tracking" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "documentation", "search"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 3,
+        "pairsWellWith": ["search.SiteSearchBar", "search.SearchResults", "search.FacetFilters"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "search.FacetFilters",
+      "name": "FacetFilters",
+      "description": "Faceted filter panel for refining search results. Displays grouped filter options with optional counts and tracks multi-select state per facet.",
+      "whenToUse": "Use alongside search results to let users narrow down results by category, price range, brand, or other attributes. Essential for ecommerce catalogs, documentation, and any filterable dataset.",
+      "isShell": false,
+      "props": [
+        { "name": "facets", "type": "Facet[]", "required": true, "default": null, "description": "Array of facet groups: {id, name, options: FacetOption[]{id, label, count?}}" },
+        { "name": "selected", "type": "Record<string, Set<string>>", "required": false, "default": "{}", "description": "Map of selected option IDs keyed by facet ID" },
+        { "name": "onChange", "type": "(facetId: string, optionId: string, checked: boolean) => void", "required": true, "default": null, "description": "Callback fired when a filter option is toggled" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "aiHints": {
+        "pageTypes": ["ecommerce", "search", "documentation", "marketplace", "realestate", "directory", "recruitment"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 4,
+        "pairsWellWith": ["search.SearchResults"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "search.SearchResultCard",
+      "name": "SearchResultCard",
+      "description": "Single search result item card displaying a title, optional description, image, badge, and metadata. Supports click interaction for navigation.",
+      "whenToUse": "Use as an individual result entry within a search results list. Suitable for search pages, ecommerce product results, and blog article listings.",
+      "isShell": false,
+      "props": [
+        { "name": "item", "type": "SearchItem", "required": true, "default": null, "description": "Search result data: {id, title, description?, url?, image?, badge?, meta?}" },
+        { "name": "onClick", "type": "(item: SearchItem) => void", "required": false, "default": null, "description": "Callback fired when the result card is clicked" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "aiHints": {
+        "pageTypes": ["search", "ecommerce", "blog"],
+        "placement": "body",
+        "priority": 6,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["search.SearchResults"],
+        "maxPerPage": 20,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "search.SearchResults",
+      "name": "SearchResults",
+      "description": "Full search results list with query context, loading state, and item click handling. Renders a collection of result items with optional loading indicator.",
+      "whenToUse": "Use as the main search results container on dedicated search pages. Pairs with facet filters for refined browsing and pagination for large result sets.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "SearchItem[]", "required": true, "default": null, "description": "Array of search result items: SearchItem{id, title, description?, url?, image?, badge?, meta?}" },
+        { "name": "query", "type": "string", "required": false, "default": "\"\"", "description": "The current search query string for display context" },
+        { "name": "onItemClick", "type": "(item: SearchItem) => void", "required": false, "default": null, "description": "Callback fired when a result item is clicked" },
+        { "name": "loading", "type": "boolean", "required": false, "default": "false", "description": "Whether the results are currently loading" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "aiHints": {
+        "pageTypes": ["search", "ecommerce", "blog"],
+        "placement": "body",
+        "priority": 8,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["search.FacetFilters", "navigation.Pagination"],
+        "maxPerPage": 1,
+        "isContainer": true
+      }
+    },
+    {
+      "id": "search.SearchEmptyState",
+      "name": "SearchEmptyState",
+      "description": "Empty state display shown when a search returns no results. Provides a friendly message with the original query and customizable title and description.",
+      "whenToUse": "Use inside search results containers when the result set is empty. Helps guide users to refine their query or explore alternative content.",
+      "isShell": false,
+      "props": [
+        { "name": "query", "type": "string", "required": false, "default": "\"\"", "description": "The search query that produced no results" },
+        { "name": "title", "type": "string", "required": false, "default": "auto", "description": "Heading text for the empty state (auto-generated from query if not provided)" },
+        { "name": "description", "type": "string", "required": false, "default": "auto", "description": "Descriptive text with suggestions (auto-generated if not provided)" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "aiHints": {
+        "pageTypes": ["search"],
+        "placement": "body",
+        "priority": 4,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["search.SiteSearchBar", "search.SearchResults"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    }
+  ]
+}

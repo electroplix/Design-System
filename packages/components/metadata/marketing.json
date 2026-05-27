@@ -1,0 +1,314 @@
+{
+  "$schema": "electroplix-component-metadata-v1",
+  "category": "marketing",
+  "label": "Marketing",
+  "description": "Promotional components including comparisons, countdowns, testimonials, trust badges, and lead capture",
+  "themeKey": "marketing",
+  "icon": "megaphone",
+  "sortOrder": 9,
+  "components": [
+    {
+      "id": "marketing.ComparisonTable",
+      "name": "ComparisonTable",
+      "description": "Side-by-side plan comparison table with feature rows and optional highlighted plan. Ideal for pricing and feature comparison pages.",
+      "whenToUse": "Use to compare pricing plans, product tiers, or feature sets side by side. Essential for SaaS pricing pages, marketing landing pages, and product comparison views.",
+      "isShell": false,
+      "props": [
+        { "name": "plans", "type": "ComparisonPlan[]", "required": true, "default": null, "description": "Array of plans to compare: {id, name, price, period?, cta?, highlighted?}" },
+        { "name": "features", "type": "ComparisonFeature[]", "required": true, "default": null, "description": "Array of feature rows: {label, values: Record<string, boolean | string>}" },
+        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional heading displayed above the comparison table" },
+        { "name": "onSelect", "type": "(planId: string) => void", "required": false, "default": null, "description": "Callback when a plan is selected" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "cardBg", "type": "string", "required": false, "default": "theme", "description": "Card background color override" },
+        { "name": "cardRadius", "type": "number", "required": false, "default": null, "description": "Card border radius override" },
+        { "name": "cardBorder", "type": "string", "required": false, "default": "theme", "description": "Card border color override" },
+        { "name": "gridColor", "type": "string", "required": false, "default": "theme", "description": "Grid/table line color override" },
+        { "name": "mutedText", "type": "string", "required": false, "default": "theme", "description": "Muted/secondary text color override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "mutedText", "gridColor"],
+      "aiHints": {
+        "pageTypes": ["saas", "marketing", "landing", "education", "agency", "fitness"],
+        "placement": "body",
+        "priority": 8,
+        "sequenceOrder": 6,
+        "pairsWellWith": ["marketing.MarketingHeroBlock", "marketing.TestimonialsCarousel", "marketing.TrustBadges"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "marketing.CountdownTimer",
+      "name": "CountdownTimer",
+      "description": "Countdown timer displaying days, hours, minutes, and seconds until a target date. Supports custom accent color and expiry callback. Great for event launch timers, product drops, flash sale clocks, hackathon countdowns.",
+      "whenToUse": "Use for limited-time offers, product launches, event countdowns, or flash sales. Great for creating urgency on marketing and ecommerce pages.",
+      "isShell": false,
+      "props": [
+        { "name": "targetDate", "type": "string | Date", "required": true, "default": null, "description": "The target date/time to count down to" },
+        { "name": "label", "type": "string", "required": false, "default": null, "description": "Optional label displayed above or alongside the countdown" },
+        { "name": "onExpire", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the countdown reaches zero" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color for countdown digits" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "cardBg", "type": "string", "required": false, "default": "theme", "description": "Card background color for digit boxes" },
+        { "name": "cardRadius", "type": "number", "required": false, "default": null, "description": "Border radius for digit boxes" },
+        { "name": "cardBorder", "type": "string", "required": false, "default": "theme", "description": "Border color for digit boxes" },
+        { "name": "mutedText", "type": "string", "required": false, "default": "theme", "description": "Muted text color for unit labels" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "mutedText", "gridColor"],
+      "aiHints": {
+        "pageTypes": ["marketing", "ecommerce", "landing", "event", "restaurant", "fitness"],
+        "placement": "body",
+        "priority": 6,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["marketing.PromoPopup", "marketing.MarketingHeroBlock", "marketing.LeadMagnetGate"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "marketing.FeatureHighlights",
+      "name": "FeatureHighlights",
+      "description": "Responsive grid of USP/feature cards, each with an optional icon, title, and description. Configurable column count.",
+      "whenToUse": "Use to showcase unique selling points, key features, or benefits in a scannable grid layout. Ideal for landing pages, SaaS marketing, and product overview sections.",
+      "isShell": false,
+      "props": [
+        { "name": "items", "type": "USP[]", "required": true, "default": null, "description": "Array of feature items: {id, icon?, title, description?}" },
+        { "name": "columns", "type": "number", "required": false, "default": "3", "description": "Number of columns in the grid layout" },
+        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional heading displayed above the feature grid" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "cardBg", "type": "string", "required": false, "default": "theme", "description": "Card background color override" },
+        { "name": "cardRadius", "type": "number", "required": false, "default": null, "description": "Card border radius override" },
+        { "name": "cardBorder", "type": "string", "required": false, "default": "theme", "description": "Card border color override" },
+        { "name": "mutedText", "type": "string", "required": false, "default": "theme", "description": "Muted text color for descriptions" },
+        { "name": "gridColor", "type": "string", "required": false, "default": "theme", "description": "Grid line/separator color override" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "mutedText", "gridColor"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "saas", "education", "fitness", "agency", "health", "nonprofit"],
+        "placement": "body",
+        "priority": 8,
+        "sequenceOrder": 4,
+        "pairsWellWith": ["marketing.MarketingHeroBlock", "marketing.TestimonialsCarousel", "marketing.ComparisonTable"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "marketing.LeadMagnetGate",
+      "name": "LeadMagnetGate",
+      "description": "Email gate overlay for gated content. Collects an email address before revealing the wrapped content. Includes customizable CTA and input placeholder.",
+      "whenToUse": "Use to gate premium content such as ebooks, whitepapers, templates, or exclusive offers behind an email capture form. Ideal for lead generation on marketing and landing pages.",
+      "isShell": false,
+      "props": [
+        { "name": "title", "type": "string", "required": true, "default": null, "description": "Heading text for the lead magnet gate" },
+        { "name": "description", "type": "string", "required": false, "default": null, "description": "Supporting description text below the title" },
+        { "name": "inputPlaceholder", "type": "string", "required": false, "default": "\"Enter your email\"", "description": "Placeholder text for the email input" },
+        { "name": "ctaLabel", "type": "string", "required": false, "default": "\"Get Access\"", "description": "Label for the submit/CTA button" },
+        { "name": "onSubmit", "type": "(email: string) => void", "required": false, "default": null, "description": "Callback fired with the email when the form is submitted" },
+        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Gated content revealed after email submission" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "cardBg", "type": "string", "required": false, "default": "theme", "description": "Card background color override" },
+        { "name": "cardRadius", "type": "number", "required": false, "default": null, "description": "Card border radius override" },
+        { "name": "cardBorder", "type": "string", "required": false, "default": "theme", "description": "Card border color override" },
+        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Input background color override" },
+        { "name": "inputText", "type": "string", "required": false, "default": "theme", "description": "Input text color override" },
+        { "name": "mutedText", "type": "string", "required": false, "default": "theme", "description": "Muted text color for description" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "mutedText", "gridColor"],
+      "aiHints": {
+        "pageTypes": ["marketing", "landing"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 7,
+        "pairsWellWith": ["marketing.CountdownTimer", "marketing.TestimonialsCarousel", "marketing.TrustBadges"],
+        "maxPerPage": 1,
+        "isContainer": true
+      }
+    },
+    {
+      "id": "marketing.MarketingHeroBlock",
+      "name": "MarketingHeroBlock",
+      "description": "Full-width marketing hero section with eyebrow text, headline, subheadline, primary and secondary CTAs, and optional background image.",
+      "whenToUse": "Use as the primary hero section on marketing and landing pages. Ideal for product launches, campaign pages, and any page needing a bold above-the-fold section.",
+      "isShell": false,
+      "props": [
+        { "name": "eyebrow", "type": "string", "required": false, "default": null, "description": "Small text displayed above the headline" },
+        { "name": "headline", "type": "string", "required": true, "default": null, "description": "Primary headline text" },
+        { "name": "subheadline", "type": "string", "required": false, "default": null, "description": "Supporting subheadline text below the headline" },
+        { "name": "ctaLabel", "type": "string", "required": false, "default": "\"Get Started\"", "description": "Label for the primary CTA button" },
+        { "name": "onCtaClick", "type": "() => void", "required": false, "default": null, "description": "Callback when the primary CTA is clicked" },
+        { "name": "secondaryLabel", "type": "string", "required": false, "default": null, "description": "Label for the secondary CTA button" },
+        { "name": "onSecondaryClick", "type": "() => void", "required": false, "default": null, "description": "Callback when the secondary CTA is clicked" },
+        { "name": "bgImage", "type": "string", "required": false, "default": null, "description": "URL of the background image" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "mutedText", "type": "string", "required": false, "default": "theme", "description": "Muted text color for eyebrow and subheadline" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "mutedText", "gridColor"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "event", "agency", "fitness", "education", "nonprofit"],
+        "placement": "header",
+        "priority": 8,
+        "sequenceOrder": 2,
+        "pairsWellWith": ["marketing.FeatureHighlights", "marketing.TestimonialsCarousel", "marketing.ComparisonTable", "marketing.TrustBadges"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "marketing.PromoPopup",
+      "name": "PromoPopup",
+      "description": "Promotional popup overlay with title, message, optional image, and CTA button. Supports open/dismiss controls.",
+      "whenToUse": "Use for flash sales, special promotions, newsletter signups, or exit-intent offers. Best used sparingly to avoid disrupting user experience.",
+      "isShell": false,
+      "props": [
+        { "name": "title", "type": "string", "required": true, "default": null, "description": "Popup heading text" },
+        { "name": "message", "type": "string", "required": false, "default": null, "description": "Promotional message body" },
+        { "name": "ctaLabel", "type": "string", "required": false, "default": "\"Claim Offer\"", "description": "Label for the CTA button" },
+        { "name": "onCta", "type": "() => void", "required": false, "default": null, "description": "Callback when the CTA button is clicked" },
+        { "name": "onDismiss", "type": "() => void", "required": false, "default": null, "description": "Callback when the popup is dismissed" },
+        { "name": "isOpen", "type": "boolean", "required": false, "default": "true", "description": "Whether the popup is visible" },
+        { "name": "image", "type": "string", "required": false, "default": null, "description": "URL of an optional promotional image" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "cardBg", "type": "string", "required": false, "default": "theme", "description": "Card background color for popup panel" },
+        { "name": "cardRadius", "type": "number", "required": false, "default": null, "description": "Border radius for popup panel" },
+        { "name": "cardBorder", "type": "string", "required": false, "default": "theme", "description": "Border color for popup panel" },
+        { "name": "mutedText", "type": "string", "required": false, "default": "theme", "description": "Muted text color for message body" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "mutedText", "gridColor"],
+      "aiHints": {
+        "pageTypes": ["marketing", "ecommerce"],
+        "placement": "overlay",
+        "priority": 6,
+        "sequenceOrder": 10,
+        "pairsWellWith": ["marketing.CountdownTimer", "marketing.LeadMagnetGate"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "marketing.TestimonialsCarousel",
+      "name": "TestimonialsCarousel",
+      "description": "Auto-playing carousel of customer testimonials with quote, author, role, avatar, and optional star rating.",
+      "whenToUse": "Use to build social proof by showcasing customer quotes and reviews. Essential for landing pages, SaaS marketing, and ecommerce product pages.",
+      "isShell": false,
+      "props": [
+        { "name": "testimonials", "type": "Testimonial[]", "required": true, "default": null, "description": "Array of testimonials: {id, quote, author, role?, avatar?, rating?}" },
+        { "name": "autoPlay", "type": "boolean", "required": false, "default": "true", "description": "Whether the carousel auto-advances" },
+        { "name": "interval", "type": "number", "required": false, "default": "5000", "description": "Auto-play interval in milliseconds" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "cardBg", "type": "string", "required": false, "default": "theme", "description": "Card background color for testimonial cards" },
+        { "name": "cardRadius", "type": "number", "required": false, "default": null, "description": "Border radius for testimonial cards" },
+        { "name": "cardBorder", "type": "string", "required": false, "default": "theme", "description": "Border color for testimonial cards" },
+        { "name": "mutedText", "type": "string", "required": false, "default": "theme", "description": "Muted text color for author role" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "mutedText", "gridColor"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "saas", "ecommerce", "agency", "education", "fitness", "restaurant", "health", "community", "realestate", "nonprofit"],
+        "placement": "body",
+        "priority": 8,
+        "sequenceOrder": 6,
+        "pairsWellWith": ["marketing.TrustBadges", "marketing.FeatureHighlights", "marketing.ComparisonTable", "marketing.TrustBadges"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "marketing.TrustBadges",
+      "name": "TrustBadges",
+      "description": "Horizontal row of trust indicators, partner logos, or certification badges with optional icon and image support.",
+      "whenToUse": "Use to reinforce credibility by displaying partner logos, security certifications, awards, or 'as seen on' badges. Works well near CTAs, checkout sections, and testimonials.",
+      "isShell": false,
+      "props": [
+        { "name": "badges", "type": "TrustBadge[]", "required": true, "default": null, "description": "Array of badges: {id, label, icon?, image?}" },
+        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional heading displayed above the badge row" },
+        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
+        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
+        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
+        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
+        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
+        { "name": "mutedText", "type": "string", "required": false, "default": "theme", "description": "Muted text color for badge labels" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "mutedText", "gridColor"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "ecommerce", "agency", "education", "fitness", "nonprofit", "health"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 7,
+        "pairsWellWith": ["marketing.TestimonialsCarousel", "marketing.ComparisonTable", "marketing.MarketingHeroBlock", "marketing.TestimonialsCarousel"],
+        "maxPerPage": 2,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "marketing.StatsCounter",
+      "name": "StatsCounter",
+      "description": "Grid of stat items displaying key metrics with large numbers, labels, optional suffixes, and icons. Perfect for showcasing impact numbers and KPIs.",
+      "whenToUse": "Use on landing pages, nonprofit impact sections, SaaS social proof, company about pages, or any section that highlights impressive numbers (clients, downloads, revenue, etc.).",
+      "isShell": false,
+      "props": [
+        { "name": "stats", "type": "StatItem[]", "required": true, "default": null, "description": "Array of stat items: {id, value: string, label, suffix?, icon?}" },
+        { "name": "title", "type": "string", "required": false, "default": null, "description": "Section heading above the stats" },
+        { "name": "columns", "type": "number", "required": false, "default": "4", "description": "Number of grid columns" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardBorder", "cardRadius"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "saas", "nonprofit", "agency", "education", "fitness", "health", "event", "community", "about"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["content.HeadingSection", "marketing.TrustBadges", "marketing.TestimonialsCarousel"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    },
+    {
+      "id": "marketing.HowItWorks",
+      "name": "HowItWorks",
+      "description": "Visual step-by-step process section with numbered steps, icons, and connector arrows. Supports horizontal and vertical layouts.",
+      "whenToUse": "Use on landing pages, SaaS explainers, service pages, delivery flows, and onboarding sections to visually explain a multi-step process to users.",
+      "isShell": false,
+      "props": [
+        { "name": "steps", "type": "HowItWorksStep[]", "required": true, "default": null, "description": "Array of steps: {id, title, description?, icon?}" },
+        { "name": "title", "type": "string", "required": false, "default": null, "description": "Section heading" },
+        { "name": "subtitle", "type": "string", "required": false, "default": null, "description": "Section subheading" },
+        { "name": "layout", "type": "\"horizontal\" | \"vertical\"", "required": false, "default": "\"horizontal\"", "description": "Layout direction of the steps" }
+      ],
+      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardBorder", "cardRadius"],
+      "aiHints": {
+        "pageTypes": ["landing", "marketing", "saas", "agency", "fitness", "education", "restaurant", "health", "ecommerce", "nonprofit"],
+        "placement": "body",
+        "priority": 7,
+        "sequenceOrder": 5,
+        "pairsWellWith": ["content.HeadingSection", "marketing.StatsCounter", "marketing.FeatureHighlights"],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
+    }
+  ]
+}
