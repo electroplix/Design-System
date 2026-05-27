@@ -17,7 +17,8 @@ export interface ParagraphBlockProps {
   gap?: number;
   style?: React.CSSProperties;
   className?: string;
-  paragraphs: string[];
+  paragraphs?: string[];
+  children?: React.ReactNode;
   size?: number;
   leading?: number;
   align?: 'left' | 'center' | 'right' | 'justify';
@@ -58,6 +59,7 @@ export function ParagraphBlock({
   accentColor,
   showDropCap = false,
   title,
+  children,
 }: ParagraphBlockProps) {
   const t = useContentTheme();
 
@@ -67,7 +69,11 @@ export function ParagraphBlock({
   const accent = accentColor ?? t.accentColor ?? ui.black;
   const border = t.borderColor ?? ui.border;
 
-  const safeParagraphs = Array.isArray(paragraphs) ? paragraphs : [];
+  const childParas = typeof children === 'string'
+    ? children.split(/\n\n+/).filter(Boolean)
+    : [];
+
+  const effectiveParagraphs = childParas.length > 0 ? childParas : (Array.isArray(paragraphs) ? paragraphs : []);
 
   return (
     <Tag
@@ -129,11 +135,11 @@ export function ParagraphBlock({
         )}
 
         {/* Paragraphs */}
-        {safeParagraphs.length === 0 ? (
+        {effectiveParagraphs.length === 0 ? (
           <p style={{ color: ui.mutedSoft, fontSize: size, margin: 0 }}>No content</p>
         ) : (
           <div style={{ display: 'grid', gap: 18 }}>
-            {safeParagraphs.map((p, i) => (
+            {effectiveParagraphs.map((p, i) => (
               <p
                 key={i}
                 style={{
@@ -172,7 +178,7 @@ export function ParagraphBlock({
         )}
 
         {/* Word count */}
-        {safeParagraphs.length > 0 && (
+        {effectiveParagraphs.length > 0 && (
           <div
             style={{
               fontSize: 12,
@@ -183,10 +189,10 @@ export function ParagraphBlock({
               gap: 6,
             }}
           >
-            <span>{safeParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0)} words</span>
+            <span>{effectiveParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0)} words</span>
             <span>&bull;</span>
             <span>
-              {Math.ceil(safeParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0) / 200)}{' '}
+              {Math.ceil(effectiveParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0) / 200)}{' '}
               min read
             </span>
           </div>
