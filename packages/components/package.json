@@ -22,13 +22,11 @@
       "@electroplix-ds/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.esm.js",
       "default": "./dist/index.esm.js"
     },
     "./config": {
       "types": "./dist/config.d.ts",
       "import": "./dist/config.esm.js",
-      "require": "./dist/config.esm.js",
       "default": "./dist/config.esm.js"
     }
   },
@@ -48,6 +46,9 @@
     "!**/*.tsbuildinfo"
   ],
   "homepage": "https://electroplix.com",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "author": "Electroplix",
   "peerDependencies": {
     "react": ">=19.2.5 <20",

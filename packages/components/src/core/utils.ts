@@ -127,6 +127,7 @@ export function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = React.useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const mql = window.matchMedia(query);
     setMatches(mql.matches);
     function handler(e: MediaQueryListEvent) {

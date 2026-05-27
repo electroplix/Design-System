@@ -42,6 +42,18 @@
       "options": {
         "command": "biome check packages/components"
       }
+    },
+    "storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "storybook dev -p 6006 -c packages/components/.storybook"
+      }
+    },
+    "build-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "storybook build -c packages/components/.storybook -o dist/storybook"
+      }
     }
   }
 }
