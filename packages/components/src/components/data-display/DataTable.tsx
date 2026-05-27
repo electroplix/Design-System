@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-import React, { useMemo, useState } from "react";
-import { useDataDisplayTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useMemo, useState } from 'react';
+import { useDataDisplayTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── DataTable ──────────────────────────────────────────── */
 
@@ -10,7 +10,7 @@ export interface DataTableColumn<T> {
   key: keyof T;
   label: string;
   width?: number | string;
-  align?: "left" | "center" | "right";
+  align?: 'left' | 'center' | 'right';
   render?: (row: T) => React.ReactNode;
   sortable?: boolean;
 }
@@ -22,19 +22,19 @@ export interface DataTableProps<T> {
   zebra?: boolean;
   compact?: boolean;
   caption?: string;
-  initialSort?: { key: keyof T; dir: "asc" | "desc" };
+  initialSort?: { key: keyof T; dir: 'asc' | 'desc' };
   searchable?: boolean;
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  mutedSoft: "#a1a1aa",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  mutedSoft: '#a1a1aa',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
 };
 
 export function DataTable<T extends Record<string, any>>({
@@ -58,7 +58,7 @@ export function DataTable<T extends Record<string, any>>({
 
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState(initialSort);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
 
   const safeColumns = Array.isArray(columns) ? columns : [];
@@ -80,11 +80,12 @@ export function DataTable<T extends Record<string, any>>({
     const { key, dir } = sort;
     const copy = [...filtered];
     copy.sort((a, b) => {
-      const av = a[key], bv = b[key];
-      if (av == null && bv != null) return dir === "asc" ? -1 : 1;
-      if (av != null && bv == null) return dir === "asc" ? 1 : -1;
+      const av = a[key],
+        bv = b[key];
+      if (av == null && bv != null) return dir === 'asc' ? -1 : 1;
+      if (av != null && bv == null) return dir === 'asc' ? 1 : -1;
       if (av === bv) return 0;
-      return (av > bv ? 1 : -1) * (dir === "asc" ? 1 : -1);
+      return (av > bv ? 1 : -1) * (dir === 'asc' ? 1 : -1);
     });
     return copy;
   }, [filtered, sort]);
@@ -97,7 +98,7 @@ export function DataTable<T extends Record<string, any>>({
     if (!col.sortable) return;
     setPage(1);
     setSort((prev) => {
-      const dir = prev?.key === col.key && prev.dir === "asc" ? "desc" : "asc";
+      const dir = prev?.key === col.key && prev.dir === 'asc' ? 'desc' : 'asc';
       return { key: col.key, dir };
     });
   };
@@ -112,8 +113,8 @@ export function DataTable<T extends Record<string, any>>({
           border: `1px solid ${border}`,
           color: fg,
           fontFamily: t.fontFamily,
-          textAlign: "center",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+          textAlign: 'center',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
         <div
@@ -123,38 +124,40 @@ export function DataTable<T extends Record<string, any>>({
             borderRadius: 12,
             background: ui.surface,
             border: `1px solid ${ui.border}`,
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Icon name="table" size={22} color={ui.black} />
         </div>
-        <div style={{ color: ui.muted, marginTop: 10, fontSize: t.bodySize ?? 14 }}>No columns defined</div>
+        <div style={{ color: ui.muted, marginTop: 10, fontSize: t.bodySize ?? 14 }}>
+          No columns defined
+        </div>
       </div>
     );
   }
 
-  const pad = compact ? "10px 12px" : "14px 16px";
+  const pad = compact ? '10px 12px' : '14px 16px';
 
   return (
     <section
       style={{
         border: `1px solid ${border}`,
         borderRadius: r,
-        overflow: "hidden",
+        overflow: 'hidden',
         background: bg,
         color: fg,
         fontFamily: t.fontFamily,
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       {(caption || searchable) && (
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
             padding: sp,
             borderBottom: `1px solid ${border}`,
             gap: 12,
@@ -162,7 +165,7 @@ export function DataTable<T extends Record<string, any>>({
           }}
         >
           {caption && (
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div
                 style={{
                   width: 30,
@@ -170,9 +173,9 @@ export function DataTable<T extends Record<string, any>>({
                   borderRadius: 8,
                   background: ui.surface,
                   border: `1px solid ${ui.border}`,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   flexShrink: 0,
                 }}
               >
@@ -183,7 +186,7 @@ export function DataTable<T extends Record<string, any>>({
                   fontWeight: 700,
                   fontSize: t.headingSize ?? 18,
                   color: ui.black,
-                  letterSpacing: "-0.02em",
+                  letterSpacing: '-0.02em',
                 }}
               >
                 {caption}
@@ -194,7 +197,7 @@ export function DataTable<T extends Record<string, any>>({
                   color: ui.muted,
                   background: ui.surface,
                   border: `1px solid ${ui.border}`,
-                  padding: "2px 8px",
+                  padding: '2px 8px',
                   borderRadius: 999,
                   fontWeight: 600,
                 }}
@@ -207,14 +210,14 @@ export function DataTable<T extends Record<string, any>>({
           {searchable && (
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
+                display: 'flex',
+                alignItems: 'center',
                 gap: 8,
                 background: ui.white,
                 borderRadius: r - 6,
-                padding: "6px 12px",
+                padding: '6px 12px',
                 border: `1px solid ${border}`,
-                boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+                boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
               }}
             >
               <Icon name="search" size={14} color={ui.muted} />
@@ -227,9 +230,9 @@ export function DataTable<T extends Record<string, any>>({
                   setPage(1);
                 }}
                 style={{
-                  background: "transparent",
-                  border: "none",
-                  outline: "none",
+                  background: 'transparent',
+                  border: 'none',
+                  outline: 'none',
                   color: fg,
                   fontSize: 13,
                   width: 150,
@@ -241,8 +244,8 @@ export function DataTable<T extends Record<string, any>>({
         </div>
       )}
 
-      <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <div style={{ overflowX: 'auto' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ background: ui.surface }}>
               {safeColumns.map((c) => (
@@ -253,28 +256,42 @@ export function DataTable<T extends Record<string, any>>({
                     padding: pad,
                     fontWeight: 700,
                     fontSize: t.bodySize ?? 14,
-                    textAlign: c.align ?? "left",
+                    textAlign: c.align ?? 'left',
                     width: c.width,
-                    cursor: c.sortable ? "pointer" : "default",
-                    userSelect: "none",
+                    cursor: c.sortable ? 'pointer' : 'default',
+                    userSelect: 'none',
                     borderBottom: `1px solid ${border}`,
-                    transition: "background 150ms ease",
-                    background: sort?.key === c.key ? ui.surfaceHover : "transparent",
+                    transition: 'background 150ms ease',
+                    background: sort?.key === c.key ? ui.surfaceHover : 'transparent',
                     color: ui.black,
                   }}
                 >
                   <div
                     style={{
-                      display: "flex",
-                      alignItems: "center",
+                      display: 'flex',
+                      alignItems: 'center',
                       gap: 6,
-                      justifyContent: c.align === "right" ? "flex-end" : c.align === "center" ? "center" : "flex-start",
+                      justifyContent:
+                        c.align === 'right'
+                          ? 'flex-end'
+                          : c.align === 'center'
+                            ? 'center'
+                            : 'flex-start',
                     }}
                   >
                     {c.label}
                     {c.sortable && (
-                      <span style={{ opacity: sort?.key === c.key ? 1 : 0.35, display: "inline-flex" }}>
-                        <Icon name={sort?.key === c.key && sort.dir === "desc" ? "chevron-down" : "chevron-up"} size={14} />
+                      <span
+                        style={{ opacity: sort?.key === c.key ? 1 : 0.35, display: 'inline-flex' }}
+                      >
+                        <Icon
+                          name={
+                            sort?.key === c.key && sort.dir === 'desc'
+                              ? 'chevron-down'
+                              : 'chevron-up'
+                          }
+                          size={14}
+                        />
                       </span>
                     )}
                   </div>
@@ -285,7 +302,10 @@ export function DataTable<T extends Record<string, any>>({
           <tbody>
             {pageRows.length === 0 ? (
               <tr>
-                <td colSpan={safeColumns.length} style={{ padding: sp * 2, textAlign: "center", color: ui.muted }}>
+                <td
+                  colSpan={safeColumns.length}
+                  style={{ padding: sp * 2, textAlign: 'center', color: ui.muted }}
+                >
                   No data to display
                 </td>
               </tr>
@@ -296,8 +316,13 @@ export function DataTable<T extends Record<string, any>>({
                   onMouseEnter={() => setHoveredRow(i)}
                   onMouseLeave={() => setHoveredRow(null)}
                   style={{
-                    background: hoveredRow === i ? ui.surfaceHover : zebra && i % 2 === 1 ? ui.surface : "transparent",
-                    transition: "background 150ms ease",
+                    background:
+                      hoveredRow === i
+                        ? ui.surfaceHover
+                        : zebra && i % 2 === 1
+                          ? ui.surface
+                          : 'transparent',
+                    transition: 'background 150ms ease',
                   }}
                 >
                   {safeColumns.map((c) => (
@@ -306,12 +331,12 @@ export function DataTable<T extends Record<string, any>>({
                       style={{
                         padding: pad,
                         fontSize: t.bodySize ?? 14,
-                        textAlign: c.align ?? "left",
+                        textAlign: c.align ?? 'left',
                         borderBottom: `1px solid ${border}`,
                         color: ui.text,
                       }}
                     >
-                      {c.render ? c.render(row) : String(row[c.key] ?? "—")}
+                      {c.render ? c.render(row) : String(row[c.key] ?? '—')}
                     </td>
                   ))}
                 </tr>
@@ -323,9 +348,9 @@ export function DataTable<T extends Record<string, any>>({
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
           padding: sp,
           borderTop: `1px solid ${border}`,
           fontSize: t.bodySize ?? 14,
@@ -336,30 +361,30 @@ export function DataTable<T extends Record<string, any>>({
           Showing {start + 1}–{Math.min(start + pageSize, sorted.length)} of {sorted.length}
         </span>
 
-        <div style={{ display: "flex", gap: 6 }}>
+        <div style={{ display: 'flex', gap: 6 }}>
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
             style={{
-              padding: "8px 12px",
+              padding: '8px 12px',
               border: `1px solid ${border}`,
               borderRadius: r - 6,
               background: page === 1 ? ui.surface : ui.white,
               color: page === 1 ? ui.mutedSoft : ui.text,
-              cursor: page === 1 ? "not-allowed" : "pointer",
+              cursor: page === 1 ? 'not-allowed' : 'pointer',
               opacity: 1,
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 4,
-              transition: "all 150ms ease",
+              transition: 'all 150ms ease',
               fontFamily: t.fontFamily,
-              boxShadow: page === 1 ? "none" : "0 1px 2px rgba(9, 9, 11, 0.03)",
+              boxShadow: page === 1 ? 'none' : '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             <Icon name="chevron-left" size={16} /> Prev
           </button>
 
-          <div style={{ display: "flex", gap: 4 }}>
+          <div style={{ display: 'flex', gap: 4 }}>
             {Array.from({ length: Math.min(5, totalPages) }).map((_, i) => {
               let pn: number;
               if (totalPages <= 5) pn = i + 1;
@@ -377,11 +402,11 @@ export function DataTable<T extends Record<string, any>>({
                     borderRadius: r - 6,
                     background: page === pn ? accent : ui.white,
                     color: page === pn ? ui.white : ui.text,
-                    cursor: "pointer",
+                    cursor: 'pointer',
                     fontWeight: page === pn ? 700 : 500,
-                    transition: "all 150ms ease",
+                    transition: 'all 150ms ease',
                     fontFamily: t.fontFamily,
-                    boxShadow: page === pn ? "0 1px 2px rgba(9, 9, 11, 0.08)" : "none",
+                    boxShadow: page === pn ? '0 1px 2px rgba(9, 9, 11, 0.08)' : 'none',
                   }}
                 >
                   {pn}
@@ -394,19 +419,19 @@ export function DataTable<T extends Record<string, any>>({
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
             style={{
-              padding: "8px 12px",
+              padding: '8px 12px',
               border: `1px solid ${border}`,
               borderRadius: r - 6,
               background: page === totalPages ? ui.surface : ui.white,
               color: page === totalPages ? ui.mutedSoft : ui.text,
-              cursor: page === totalPages ? "not-allowed" : "pointer",
+              cursor: page === totalPages ? 'not-allowed' : 'pointer',
               opacity: 1,
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 4,
-              transition: "all 150ms ease",
+              transition: 'all 150ms ease',
               fontFamily: t.fontFamily,
-              boxShadow: page === totalPages ? "none" : "0 1px 2px rgba(9, 9, 11, 0.03)",
+              boxShadow: page === totalPages ? 'none' : '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             Next <Icon name="chevron-right" size={16} />

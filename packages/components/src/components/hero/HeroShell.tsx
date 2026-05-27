@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useHeroTheme } from "../../core/provider";
+import React from 'react';
+import { useHeroTheme } from '../../core/provider';
 
 export interface HeroShellProps {
   as?: React.ElementType;
@@ -20,30 +20,30 @@ export interface HeroShellProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
 };
 
 export function HeroShell(props: HeroShellProps) {
   const t = useHeroTheme();
 
   const {
-    as: Tag = "section",
+    as: Tag = 'section',
     bgColor,
     textColor,
     fontFamily = t.fontFamily,
-    minH = t.minH ?? "60vh",
+    minH = t.minH ?? '60vh',
     maxW = t.maxW ?? 1200,
     px = t.px ?? 24,
     py = t.py ?? 48,
     radius = t.cardRadius ?? 20,
     gap = t.gap ?? 16,
     style = {},
-    className = "",
+    className = '',
     children,
   } = props;
 
@@ -54,19 +54,19 @@ export function HeroShell(props: HeroShellProps) {
     <Tag
       className={className}
       style={{
-        display: "grid",
-        placeItems: "center",
+        display: 'grid',
+        placeItems: 'center',
         background: bg,
         color: fg,
         fontFamily,
-        minHeight: typeof minH === "number" ? `${minH}px` : minH,
+        minHeight: typeof minH === 'number' ? `${minH}px` : minH,
         paddingInline: px,
         paddingBlock: py,
         borderRadius: radius,
         border: `1px solid ${ui.border}`,
-        position: "relative",
-        overflow: "hidden",
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
     >
@@ -74,11 +74,10 @@ export function HeroShell(props: HeroShellProps) {
       <div
         aria-hidden
         style={{
-          position: "absolute",
+          position: 'absolute',
           inset: 0,
-          background:
-            "linear-gradient(180deg, rgba(250,250,250,0.7), rgba(255,255,255,0))",
-          pointerEvents: "none",
+          background: 'linear-gradient(180deg, rgba(250,250,250,0.7), rgba(255,255,255,0))',
+          pointerEvents: 'none',
         }}
       />
 
@@ -86,40 +85,40 @@ export function HeroShell(props: HeroShellProps) {
       <div
         aria-hidden
         style={{
-          position: "absolute",
-          top: "12%",
-          left: "8%",
+          position: 'absolute',
+          top: '12%',
+          left: '8%',
           width: 240,
           height: 240,
-          borderRadius: "999px",
-          background: "rgba(9,9,11,0.035)",
-          filter: "blur(70px)",
-          pointerEvents: "none",
+          borderRadius: '999px',
+          background: 'rgba(9,9,11,0.035)',
+          filter: 'blur(70px)',
+          pointerEvents: 'none',
         }}
       />
 
       <div
         aria-hidden
         style={{
-          position: "absolute",
-          bottom: "10%",
-          right: "8%",
+          position: 'absolute',
+          bottom: '10%',
+          right: '8%',
           width: 220,
           height: 220,
-          borderRadius: "999px",
-          background: "rgba(9,9,11,0.03)",
-          filter: "blur(70px)",
-          pointerEvents: "none",
+          borderRadius: '999px',
+          background: 'rgba(9,9,11,0.03)',
+          filter: 'blur(70px)',
+          pointerEvents: 'none',
         }}
       />
 
       <div
         style={{
-          width: "100%",
+          width: '100%',
           maxWidth: maxW,
-          display: "grid",
+          display: 'grid',
           gap,
-          position: "relative",
+          position: 'relative',
           zIndex: 1,
         }}
       >

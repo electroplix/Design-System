@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Icon } from "../../core/icons";
-import { useFormsTheme } from "../../core/provider";
+import React, { useState } from 'react';
+import { Icon } from '../../core/icons';
+import { useFormsTheme } from '../../core/provider';
 
 export type WizardStep = {
   title: string;
@@ -33,23 +33,23 @@ export interface MultiStepWizardProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  danger: "#ef4444",
-  dangerSoft: "#fef2f2",
-  ring: "rgba(9,9,11,0.08)",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  danger: '#ef4444',
+  dangerSoft: '#fef2f2',
+  ring: 'rgba(9,9,11,0.08)',
 };
 
 export function MultiStepWizard(props: MultiStepWizardProps) {
   const t = useFormsTheme();
 
   const {
-    as: Tag = "section",
+    as: Tag = 'section',
     steps = [],
     onFinish,
     bgColor,
@@ -66,7 +66,7 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
     descSize = 14,
     navBtnSize = 14,
     style = {},
-    className = "",
+    className = '',
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -78,7 +78,7 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
   const [errors, setErrors] = useState<string[]>([]);
 
   const safeSteps = Array.isArray(steps) ? steps : [];
-  const step = safeSteps[idx] || { title: "Step", content: null };
+  const step = safeSteps[idx] || { title: 'Step', content: null };
 
   const next = () => {
     const errs = step.validate?.() ?? [];
@@ -108,24 +108,24 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
         padding: `${py}px ${px}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
     >
       <div
         style={{
-          marginInline: "auto",
+          marginInline: 'auto',
           maxWidth: maxW,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           gap,
         }}
       >
         <div
           style={{
-            display: "flex",
+            display: 'flex',
             gap: 8,
-            justifyContent: "center",
+            justifyContent: 'center',
           }}
         >
           {safeSteps.map((_, i) => (
@@ -134,31 +134,16 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
               style={{
                 width: 32,
                 height: 32,
-                borderRadius: "999px",
-                display: "grid",
-                placeItems: "center",
+                borderRadius: '999px',
+                display: 'grid',
+                placeItems: 'center',
                 fontSize: 12,
                 fontWeight: 600,
-                background:
-                  i < idx
-                    ? ui.black
-                    : i === idx
-                      ? ui.surface
-                      : ui.white,
-                color:
-                  i < idx
-                    ? ui.white
-                    : i === idx
-                      ? fg
-                      : ui.muted,
-                border: `1px solid ${
-                  i <= idx ? ui.black : border
-                }`,
-                transition: "all 0.2s ease",
-                boxShadow:
-                  i === idx
-                    ? `0 0 0 4px ${ui.ring}`
-                    : "0 1px 2px rgba(9,9,11,0.04)",
+                background: i < idx ? ui.black : i === idx ? ui.surface : ui.white,
+                color: i < idx ? ui.white : i === idx ? fg : ui.muted,
+                border: `1px solid ${i <= idx ? ui.black : border}`,
+                transition: 'all 0.2s ease',
+                boxShadow: i === idx ? `0 0 0 4px ${ui.ring}` : '0 1px 2px rgba(9,9,11,0.04)',
               }}
             >
               {i < idx ? <Icon name="check" size={14} /> : i + 1}
@@ -168,9 +153,9 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
 
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
           <span style={{ fontSize: 12, color: ui.muted }}>
@@ -184,10 +169,7 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
               color: fg,
             }}
           >
-            {safeSteps.length > 0
-              ? Math.round(((idx + 1) / safeSteps.length) * 100)
-              : 0}
-            %
+            {safeSteps.length > 0 ? Math.round(((idx + 1) / safeSteps.length) * 100) : 0}%
           </span>
         </div>
 
@@ -197,19 +179,16 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
             borderRadius: 999,
             background: ui.surface,
             border: `1px solid ${border}`,
-            overflow: "hidden",
+            overflow: 'hidden',
           }}
         >
           <div
             style={{
-              height: "100%",
-              width:
-                safeSteps.length > 0
-                  ? `${((idx + 1) / safeSteps.length) * 100}%`
-                  : "0%",
+              height: '100%',
+              width: safeSteps.length > 0 ? `${((idx + 1) / safeSteps.length) * 100}%` : '0%',
               background: accent,
               borderRadius: 999,
-              transition: "width 0.3s ease",
+              transition: 'width 0.3s ease',
             }}
           />
         </div>
@@ -220,17 +199,17 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
             borderRadius: 12,
             background: ui.surface,
             border: `1px solid ${border}`,
-            boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+            boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
           }}
         >
           <strong
             style={{
               fontSize: titleSize,
-              display: "block",
+              display: 'block',
               marginBottom: 8,
               color: fg,
               fontWeight: 700,
-              letterSpacing: "-0.02em",
+              letterSpacing: '-0.02em',
             }}
           >
             {step.title}
@@ -255,26 +234,22 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
         {errors.length > 0 && (
           <div
             style={{
-              padding: "14px 16px",
+              padding: '14px 16px',
               borderRadius: 12,
               background: ui.dangerSoft,
               border: `1px solid rgba(239,68,68,0.18)`,
-              boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+              boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
+                display: 'flex',
+                alignItems: 'center',
                 gap: 8,
                 marginBottom: 8,
               }}
             >
-              <Icon
-                name="alert-circle"
-                size={16}
-                style={{ color: ui.danger } as any}
-              />
+              <Icon name="alert-circle" size={16} style={{ color: ui.danger } as any} />
 
               <strong
                 style={{
@@ -306,9 +281,9 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
 
         <div
           style={{
-            display: "flex",
+            display: 'flex',
             gap: 12,
-            justifyContent: "space-between",
+            justifyContent: 'space-between',
           }}
         >
           <button
@@ -316,20 +291,20 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
             onClick={back}
             disabled={idx === 0}
             style={{
-              padding: "12px 20px",
+              padding: '12px 20px',
               borderRadius: 10,
               border: `1px solid ${border}`,
               background: ui.white,
               color: idx === 0 ? ui.muted : fg,
-              cursor: idx === 0 ? "not-allowed" : "pointer",
+              cursor: idx === 0 ? 'not-allowed' : 'pointer',
               opacity: idx === 0 ? 0.55 : 1,
               fontSize: navBtnSize,
               fontWeight: 600,
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 6,
-              transition: "all 0.2s ease",
-              boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+              transition: 'all 0.2s ease',
+              boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             <Icon name="chevron-left" size={18} />
@@ -340,19 +315,19 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
             type="button"
             onClick={next}
             style={{
-              padding: "12px 24px",
+              padding: '12px 24px',
               borderRadius: 10,
               border: `1px solid ${ui.black}`,
               background: ui.black,
               color: ui.white,
-              cursor: "pointer",
+              cursor: 'pointer',
               fontSize: navBtnSize,
               fontWeight: 600,
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 6,
-              transition: "all 0.2s ease",
-              boxShadow: "0 1px 2px rgba(9,9,11,0.12)",
+              transition: 'all 0.2s ease',
+              boxShadow: '0 1px 2px rgba(9,9,11,0.12)',
             }}
           >
             {idx < safeSteps.length - 1 ? (

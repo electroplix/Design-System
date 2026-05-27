@@ -1,11 +1,11 @@
-"use client";
-import React, { useState } from "react";
-import { Icon } from "../../core/icons";
-import { useFormsTheme } from "../../core/provider";
+'use client';
+import React, { useState } from 'react';
+import { Icon } from '../../core/icons';
+import { useFormsTheme } from '../../core/provider';
 
 export interface CaptchaProps {
   as?: React.ElementType;
-  mode?: "checkbox" | "math";
+  mode?: 'checkbox' | 'math';
   label?: string;
   onVerify?: (ok: boolean) => void;
   bgColor?: string;
@@ -25,24 +25,24 @@ export interface CaptchaProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  success: "#16a34a",
-  successSoft: "#f0fdf4",
-  ring: "rgba(9,9,11,0.08)",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  success: '#16a34a',
+  successSoft: '#f0fdf4',
+  ring: 'rgba(9,9,11,0.08)',
 };
 
 export function Captcha(props: CaptchaProps) {
   const t = useFormsTheme();
 
   const {
-    as: Tag = "div",
-    mode = "checkbox",
+    as: Tag = 'div',
+    mode = 'checkbox',
     label = "I'm not a robot",
     onVerify,
     bgColor,
@@ -58,7 +58,7 @@ export function Captcha(props: CaptchaProps) {
     gap = t.gap ?? 12,
     labelSize = 14,
     style = {},
-    className = "",
+    className = '',
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -70,7 +70,7 @@ export function Captcha(props: CaptchaProps) {
   const [ok, setOk] = useState(false);
   const [a, setA] = useState(() => Math.ceil(Math.random() * 9));
   const [b, setB] = useState(() => Math.ceil(Math.random() * 9));
-  const [ans, setAns] = useState("");
+  const [ans, setAns] = useState('');
   const [isHovered, setIsHovered] = useState(false);
 
   const verifyMath = () => {
@@ -82,7 +82,7 @@ export function Captcha(props: CaptchaProps) {
   const refreshMath = () => {
     setA(Math.ceil(Math.random() * 9));
     setB(Math.ceil(Math.random() * 9));
-    setAns("");
+    setAns('');
     setOk(false);
   };
 
@@ -100,12 +100,12 @@ export function Captcha(props: CaptchaProps) {
       <div
         style={{
           maxWidth: maxW,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           gap,
         }}
       >
-        {mode === "checkbox" ? (
+        {mode === 'checkbox' ? (
           <button
             type="button"
             onClick={() => {
@@ -116,24 +116,16 @@ export function Captcha(props: CaptchaProps) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 14,
-              padding: "16px 20px",
+              padding: '16px 20px',
               borderRadius: radius,
-              border: `1px solid ${
-                ok ? ui.success : isHovered ? ui.black : border
-              }`,
-              background: ok
-                ? ui.successSoft
-                : isHovered
-                  ? ui.surface
-                  : inputSurface,
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-              boxShadow: isHovered
-                ? `0 0 0 4px ${ui.ring}`
-                : "0 1px 2px rgba(9,9,11,0.04)",
+              border: `1px solid ${ok ? ui.success : isHovered ? ui.black : border}`,
+              background: ok ? ui.successSoft : isHovered ? ui.surface : inputSurface,
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: isHovered ? `0 0 0 4px ${ui.ring}` : '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             <div
@@ -141,23 +133,15 @@ export function Captcha(props: CaptchaProps) {
                 width: 24,
                 height: 24,
                 borderRadius: 6,
-                border: `1.5px solid ${
-                  ok ? ui.success : isHovered ? accent : border
-                }`,
+                border: `1.5px solid ${ok ? ui.success : isHovered ? accent : border}`,
                 background: ok ? ui.success : ui.white,
-                display: "grid",
-                placeItems: "center",
-                transition: "all 0.2s ease",
-                boxShadow: "inset 0 1px 1px rgba(9,9,11,0.04)",
+                display: 'grid',
+                placeItems: 'center',
+                transition: 'all 0.2s ease',
+                boxShadow: 'inset 0 1px 1px rgba(9,9,11,0.04)',
               }}
             >
-              {ok && (
-                <Icon
-                  name="check"
-                  size={14}
-                  style={{ color: ui.white } as any}
-                />
-              )}
+              {ok && <Icon name="check" size={14} style={{ color: ui.white } as any} />}
             </div>
 
             <span
@@ -165,7 +149,7 @@ export function Captcha(props: CaptchaProps) {
                 fontSize: labelSize,
                 color: fg,
                 fontWeight: 500,
-                letterSpacing: "-0.01em",
+                letterSpacing: '-0.01em',
               }}
             >
               {label}
@@ -174,26 +158,26 @@ export function Captcha(props: CaptchaProps) {
         ) : (
           <div
             style={{
-              padding: "16px 20px",
+              padding: '16px 20px',
               borderRadius: radius,
               border: `1px solid ${ok ? ui.success : border}`,
               background: ok ? ui.successSoft : inputSurface,
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               gap: 14,
-              boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+              boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
+                display: 'flex',
+                alignItems: 'center',
                 gap: 12,
               }}
             >
               <div
                 style={{
-                  padding: "10px 16px",
+                  padding: '10px 16px',
                   borderRadius: 8,
                   background: ui.surface,
                   border: `1px solid ${border}`,
@@ -202,7 +186,7 @@ export function Captcha(props: CaptchaProps) {
                   fontFamily:
                     'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
                   color: fg,
-                  boxShadow: "inset 0 -1px 0 rgba(9,9,11,0.04)",
+                  boxShadow: 'inset 0 -1px 0 rgba(9,9,11,0.04)',
                 }}
               >
                 {a} + {b} = ?
@@ -218,34 +202,34 @@ export function Captcha(props: CaptchaProps) {
                   border: `1px solid ${border}`,
                   background: ui.white,
                   color: ui.muted,
-                  cursor: "pointer",
-                  display: "grid",
-                  placeItems: "center",
-                  transition: "all 0.15s ease",
-                  boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+                  cursor: 'pointer',
+                  display: 'grid',
+                  placeItems: 'center',
+                  transition: 'all 0.15s ease',
+                  boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
                 }}
               >
                 <Icon name="refresh-cw" size={16} />
               </button>
             </div>
 
-            <div style={{ display: "flex", gap: 10 }}>
+            <div style={{ display: 'flex', gap: 10 }}>
               <input
                 value={ans}
                 onChange={(e) => setAns(e.target.value)}
                 placeholder="Your answer"
                 style={{
                   flex: 1,
-                  padding: "12px 14px",
+                  padding: '12px 14px',
                   borderRadius: 10,
                   border: `1px solid ${border}`,
                   background: ui.white,
                   color: fg,
                   fontSize: 14,
-                  outline: "none",
-                  boxSizing: "border-box",
-                  transition: "all 0.2s ease",
-                  boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
                 }}
               />
 
@@ -254,21 +238,19 @@ export function Captcha(props: CaptchaProps) {
                 onClick={verifyMath}
                 disabled={ok}
                 style={{
-                  padding: "12px 20px",
+                  padding: '12px 20px',
                   borderRadius: 10,
                   border: `1px solid ${ok ? ui.success : ui.black}`,
                   background: ok ? ui.success : ui.black,
                   color: ui.white,
-                  cursor: ok ? "default" : "pointer",
+                  cursor: ok ? 'default' : 'pointer',
                   fontSize: 14,
                   fontWeight: 600,
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 6,
-                  transition: "all 0.2s ease",
-                  boxShadow: ok
-                    ? "0 1px 2px rgba(22,163,74,0.14)"
-                    : "0 1px 2px rgba(9,9,11,0.12)",
+                  transition: 'all 0.2s ease',
+                  boxShadow: ok ? '0 1px 2px rgba(22,163,74,0.14)' : '0 1px 2px rgba(9,9,11,0.12)',
                 }}
               >
                 {ok ? (
@@ -277,7 +259,7 @@ export function Captcha(props: CaptchaProps) {
                     Verified
                   </>
                 ) : (
-                  "Verify"
+                  'Verify'
                 )}
               </button>
             </div>

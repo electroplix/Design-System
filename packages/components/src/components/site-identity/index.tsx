@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useRef } from "react";
-import { useSiteIdentityTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState, useRef } from 'react';
+import { useSiteIdentityTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -9,13 +9,13 @@ function useSI() {
   const t = useSiteIdentityTheme();
 
   return {
-    accent: t.accentColor ?? "#18181b",
-    fg: t.textColor ?? "#09090b",
-    muted: "#71717a",
-    bg: t.bgColor ?? "#ffffff",
-    surface: "#fafafa",
-    surfaceHover: "#f4f4f5",
-    border: t.borderColor ?? "#e4e4e7",
+    accent: t.accentColor ?? '#18181b',
+    fg: t.textColor ?? '#09090b',
+    muted: '#71717a',
+    bg: t.bgColor ?? '#ffffff',
+    surface: '#fafafa',
+    surfaceHover: '#f4f4f5',
+    border: t.borderColor ?? '#e4e4e7',
     r: t.radius ?? 16,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
@@ -34,22 +34,16 @@ export interface LogoDisplayProps {
   href?: string;
 }
 
-export function LogoDisplay({
-  src,
-  alt = "Logo",
-  width = 140,
-  height,
-  href,
-}: LogoDisplayProps) {
+export function LogoDisplay({ src, alt = 'Logo', width = 140, height, href }: LogoDisplayProps) {
   const img = (
     <img
       src={src}
       alt={alt}
       style={{
         width,
-        height: height ?? "auto",
-        display: "block",
-        objectFit: "contain",
+        height: height ?? 'auto',
+        display: 'block',
+        objectFit: 'contain',
       }}
     />
   );
@@ -59,8 +53,8 @@ export function LogoDisplay({
       <a
         href={href}
         style={{
-          display: "inline-flex",
-          textDecoration: "none",
+          display: 'inline-flex',
+          textDecoration: 'none',
         }}
       >
         {img}
@@ -96,9 +90,9 @@ export function AnimatedBrandMark({
         fontWeight: 800,
         fontFamily: fontFamily ?? si.ff,
         color: col,
-        letterSpacing: "-0.045em",
+        letterSpacing: '-0.045em',
         lineHeight: 1,
-        display: "inline-flex",
+        display: 'inline-flex',
       }}
     >
       {text}
@@ -114,11 +108,7 @@ export interface TaglinesProps {
   interval?: number;
 }
 
-export function Taglines({
-  lines = [],
-  rotate = false,
-  interval = 3000,
-}: TaglinesProps) {
+export function Taglines({ lines = [], rotate = false, interval = 3000 }: TaglinesProps) {
   const si = useSI();
   const [idx, setIdx] = useState(0);
 
@@ -141,7 +131,7 @@ export function Taglines({
       }}
     >
       {rotate ? (
-        <span style={{ transition: "opacity 0.3s" }}>{lines[idx]}</span>
+        <span style={{ transition: 'opacity 0.3s' }}>{lines[idx]}</span>
       ) : (
         lines.map((l, i) => <div key={i}>{l}</div>)
       )}
@@ -178,8 +168,8 @@ export function BrandingShell({
     >
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 14,
           marginBottom: 16,
         }}
@@ -222,17 +212,13 @@ export interface BrandIconGridProps {
   iconSize?: number;
 }
 
-export function BrandIconGrid({
-  icons = [],
-  columns = 6,
-  iconSize = 48,
-}: BrandIconGridProps) {
+export function BrandIconGrid({ icons = [], columns = 6, iconSize = 48 }: BrandIconGridProps) {
   const si = useSI();
 
   return (
     <div
       style={{
-        display: "grid",
+        display: 'grid',
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap: 16,
         fontFamily: si.ff,
@@ -243,16 +229,16 @@ export function BrandIconGrid({
         const inner = (
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               gap: 8,
               padding: 16,
               border: `1px solid ${si.border}`,
               borderRadius: si.r,
               background: si.bg,
-              transition: "border-color 0.2s, box-shadow 0.2s",
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+              transition: 'border-color 0.2s, box-shadow 0.2s',
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
             }}
           >
             <img
@@ -261,7 +247,7 @@ export function BrandIconGrid({
               style={{
                 width: iconSize,
                 height: iconSize,
-                objectFit: "contain",
+                objectFit: 'contain',
               }}
             />
 
@@ -270,7 +256,7 @@ export function BrandIconGrid({
                 fontSize: 12,
                 fontWeight: 600,
                 color: si.muted,
-                textAlign: "center",
+                textAlign: 'center',
                 lineHeight: 1.4,
               }}
             >
@@ -286,8 +272,8 @@ export function BrandIconGrid({
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              textDecoration: "none",
-              color: "inherit",
+              textDecoration: 'none',
+              color: 'inherit',
             }}
           >
             {inner}
@@ -307,17 +293,14 @@ export interface FaviconUploaderProps {
   currentSrc?: string;
 }
 
-export function FaviconUploader({
-  onUpload,
-  currentSrc,
-}: FaviconUploaderProps) {
+export function FaviconUploader({ onUpload, currentSrc }: FaviconUploaderProps) {
   const si = useSI();
   const ref = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(currentSrc ?? null);
 
   React.useEffect(() => {
     return () => {
-      if (preview && preview.startsWith("blob:")) URL.revokeObjectURL(preview);
+      if (preview && preview.startsWith('blob:')) URL.revokeObjectURL(preview);
     };
   }, [preview]);
 
@@ -325,7 +308,7 @@ export function FaviconUploader({
     const f = e.target.files?.[0];
     if (!f) return;
 
-    if (preview && preview.startsWith("blob:")) URL.revokeObjectURL(preview);
+    if (preview && preview.startsWith('blob:')) URL.revokeObjectURL(preview);
 
     setPreview(URL.createObjectURL(f));
     onUpload?.(f);
@@ -334,8 +317,8 @@ export function FaviconUploader({
   return (
     <div
       style={{
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         gap: 16,
         fontFamily: si.ff,
         color: si.fg,
@@ -348,13 +331,13 @@ export function FaviconUploader({
           height: 64,
           borderRadius: si.r,
           border: `1px dashed ${si.border}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          overflow: "hidden",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          overflow: 'hidden',
           background: si.surface,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       >
         {preview ? (
@@ -362,10 +345,10 @@ export function FaviconUploader({
             src={preview}
             alt="Favicon"
             style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              background: "#ffffff",
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              background: '#ffffff',
             }}
           />
         ) : (
@@ -379,7 +362,7 @@ export function FaviconUploader({
             fontWeight: 700,
             fontSize: 15,
             color: si.fg,
-            letterSpacing: "-0.02em",
+            letterSpacing: '-0.02em',
           }}
         >
           Favicon
@@ -401,7 +384,7 @@ export function FaviconUploader({
         type="file"
         accept="image/png,image/x-icon,image/svg+xml"
         onChange={handle}
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
       />
     </div>
   );

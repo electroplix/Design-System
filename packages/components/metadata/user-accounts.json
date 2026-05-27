@@ -14,27 +14,119 @@
       "whenToUse": "Use as the primary authentication entry point for login and registration pages. Ideal for auth landing pages where users need to sign in or create an account.",
       "isShell": false,
       "props": [
-        { "name": "mode", "type": "\"login\" | \"register\"", "required": true, "default": null, "description": "Whether the form displays login or register fields" },
-        { "name": "onSubmit", "type": "(data: { email: string; password: string; name?: string }) => void", "required": false, "default": null, "description": "Callback fired when the form is submitted with the entered credentials" },
-        { "name": "onToggleMode", "type": "() => void", "required": false, "default": null, "description": "Callback to switch between login and register modes" },
-        { "name": "onForgotPassword", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the forgot password link is clicked" },
-        { "name": "loading", "type": "boolean", "required": false, "default": "false", "description": "Whether the form is in a loading/submitting state" },
-        { "name": "error", "type": "string", "required": false, "default": null, "description": "Error message to display above or below the form" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of input fields" },
-        { "name": "inputText", "type": "string", "required": false, "default": "theme", "description": "Text color of input fields" }
+        {
+          "name": "mode",
+          "type": "\"login\" | \"register\"",
+          "required": true,
+          "default": null,
+          "description": "Whether the form displays login or register fields"
+        },
+        {
+          "name": "onSubmit",
+          "type": "(data: { email: string; password: string; name?: string }) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the form is submitted with the entered credentials"
+        },
+        {
+          "name": "onToggleMode",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback to switch between login and register modes"
+        },
+        {
+          "name": "onForgotPassword",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the forgot password link is clicked"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the form is in a loading/submitting state"
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Error message to display above or below the form"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of input fields"
+        },
+        {
+          "name": "inputText",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color of input fields"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "inputBg", "inputText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "inputBg",
+        "inputText"
+      ],
       "aiHints": {
         "pageTypes": ["auth", "landing"],
         "placement": "body",
         "priority": 10,
         "sequenceOrder": 4,
-        "pairsWellWith": ["user-accounts.PasswordReset", "user-accounts.MultiFactorAuthInput", "navigation.PrimaryNav"],
+        "pairsWellWith": [
+          "user-accounts.PasswordReset",
+          "user-accounts.MultiFactorAuthInput",
+          "navigation.PrimaryNav"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -46,18 +138,88 @@
       "whenToUse": "Use on a dedicated password reset page or as a modal form triggered from the login screen. Provides a simple email input for requesting a password reset link.",
       "isShell": false,
       "props": [
-        { "name": "onSubmit", "type": "(email: string) => void", "required": false, "default": null, "description": "Callback fired when the reset form is submitted with the email address" },
-        { "name": "loading", "type": "boolean", "required": false, "default": "false", "description": "Whether the form is in a loading/submitting state" },
-        { "name": "success", "type": "boolean", "required": false, "default": "false", "description": "Whether to display the success confirmation message" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the email input field" },
-        { "name": "inputText", "type": "string", "required": false, "default": "theme", "description": "Text color of the email input field" }
+        {
+          "name": "onSubmit",
+          "type": "(email: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the reset form is submitted with the email address"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the form is in a loading/submitting state"
+        },
+        {
+          "name": "success",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to display the success confirmation message"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the email input field"
+        },
+        {
+          "name": "inputText",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color of the email input field"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "inputBg", "inputText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "inputBg",
+        "inputText"
+      ],
       "aiHints": {
         "pageTypes": ["auth"],
         "placement": "body",
@@ -75,18 +237,88 @@
       "whenToUse": "Use after the initial login step when MFA is required. Provides a focused, accessible digit input for 2FA verification codes sent via SMS, email, or authenticator app.",
       "isShell": false,
       "props": [
-        { "name": "length", "type": "number", "required": false, "default": "6", "description": "Number of digit input boxes to display" },
-        { "name": "onComplete", "type": "(code: string) => void", "required": false, "default": null, "description": "Callback fired when all digits have been entered" },
-        { "name": "error", "type": "string", "required": false, "default": null, "description": "Error message to display below the input boxes" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the digit input boxes" },
-        { "name": "inputText", "type": "string", "required": false, "default": "theme", "description": "Text color of the digit input boxes" }
+        {
+          "name": "length",
+          "type": "number",
+          "required": false,
+          "default": "6",
+          "description": "Number of digit input boxes to display"
+        },
+        {
+          "name": "onComplete",
+          "type": "(code: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when all digits have been entered"
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Error message to display below the input boxes"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the digit input boxes"
+        },
+        {
+          "name": "inputText",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color of the digit input boxes"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "inputBg", "inputText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "inputBg",
+        "inputText"
+      ],
       "aiHints": {
         "pageTypes": ["auth", "security"],
         "placement": "body",
@@ -104,25 +336,105 @@
       "whenToUse": "Use on dashboard or profile pages to show the current user's identity and key statistics at a glance. Works well alongside editable settings or activity feeds.",
       "isShell": false,
       "props": [
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Display name of the user" },
-        { "name": "email", "type": "string", "required": false, "default": null, "description": "Email address of the user" },
-        { "name": "avatar", "type": "string", "required": false, "default": null, "description": "URL of the user's avatar image" },
-        { "name": "role", "type": "string", "required": false, "default": null, "description": "User role displayed as a label or badge" },
-        { "name": "joinDate", "type": "string", "required": false, "default": null, "description": "Date the user joined, displayed in the profile card" },
-        { "name": "stats", "type": "{ label: string; value: string | number }[]", "required": false, "default": "[]", "description": "Array of stat items to display, each with a label and value" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Display name of the user"
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Email address of the user"
+        },
+        {
+          "name": "avatar",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL of the user's avatar image"
+        },
+        {
+          "name": "role",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "User role displayed as a label or badge"
+        },
+        {
+          "name": "joinDate",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Date the user joined, displayed in the profile card"
+        },
+        {
+          "name": "stats",
+          "type": "{ label: string; value: string | number }[]",
+          "required": false,
+          "default": "[]",
+          "description": "Array of stat items to display, each with a label and value"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "inputBg", "inputText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "inputBg",
+        "inputText"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "profile"],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 4,
-        "pairsWellWith": ["user-accounts.ProfileSettings", "user-accounts.RoleBadge", "user-accounts.AccountSettings"],
+        "pairsWellWith": [
+          "user-accounts.ProfileSettings",
+          "user-accounts.RoleBadge",
+          "user-accounts.AccountSettings"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -134,20 +446,102 @@
       "whenToUse": "Use on settings or profile edit pages where the user can modify their personal information. Typically paired with ProfileOverview for a view/edit flow.",
       "isShell": false,
       "props": [
-        { "name": "name", "type": "string", "required": false, "default": "\"\"", "description": "Current name value displayed in the name field" },
-        { "name": "email", "type": "string", "required": false, "default": "\"\"", "description": "Current email value displayed in the email field" },
-        { "name": "avatar", "type": "string", "required": false, "default": null, "description": "URL of the current avatar image" },
-        { "name": "onSave", "type": "(data: { name: string; email: string }) => void", "required": false, "default": null, "description": "Callback fired when the user saves profile changes" },
-        { "name": "onAvatarChange", "type": "(file: File) => void", "required": false, "default": null, "description": "Callback fired when the user selects a new avatar file" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of input fields" },
-        { "name": "inputText", "type": "string", "required": false, "default": "theme", "description": "Text color of input fields" }
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "default": "\"\"",
+          "description": "Current name value displayed in the name field"
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "required": false,
+          "default": "\"\"",
+          "description": "Current email value displayed in the email field"
+        },
+        {
+          "name": "avatar",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL of the current avatar image"
+        },
+        {
+          "name": "onSave",
+          "type": "(data: { name: string; email: string }) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user saves profile changes"
+        },
+        {
+          "name": "onAvatarChange",
+          "type": "(file: File) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user selects a new avatar file"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of input fields"
+        },
+        {
+          "name": "inputText",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color of input fields"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "inputBg", "inputText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "inputBg",
+        "inputText"
+      ],
       "aiHints": {
         "pageTypes": ["settings", "profile"],
         "placement": "body",
@@ -165,21 +559,77 @@
       "whenToUse": "Use as the main settings hub on account settings or dashboard pages. Renders a list of configurable sections each with an optional action such as a toggle, button, or link.",
       "isShell": false,
       "props": [
-        { "name": "sections", "type": "SettingsSection[]", "required": true, "default": null, "description": "Array of settings sections: { id: string; label: string; description?: string; icon?: string; action?: ReactNode }" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Account Settings\"", "description": "Title displayed at the top of the settings panel" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "sections",
+          "type": "SettingsSection[]",
+          "required": true,
+          "default": null,
+          "description": "Array of settings sections: { id: string; label: string; description?: string; icon?: string; action?: ReactNode }"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Account Settings\"",
+          "description": "Title displayed at the top of the settings panel"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "inputBg", "inputText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "inputBg",
+        "inputText"
+      ],
       "aiHints": {
         "pageTypes": ["settings", "dashboard"],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 5,
-        "pairsWellWith": ["user-accounts.ProfileSettings", "user-accounts.ProfileOverview", "navigation.Tabs"],
+        "pairsWellWith": [
+          "user-accounts.ProfileSettings",
+          "user-accounts.ProfileOverview",
+          "navigation.Tabs"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -191,22 +641,84 @@
       "whenToUse": "Use inline alongside user names, in profile cards, admin panels, or user lists to visually indicate a user's role or permission level.",
       "isShell": false,
       "props": [
-        { "name": "role", "type": "string", "required": true, "default": null, "description": "The role label to display inside the badge" },
-        { "name": "variant", "type": "\"admin\" | \"moderator\" | \"editor\" | \"viewer\" | \"custom\"", "required": false, "default": "\"custom\"", "description": "Predefined role variant that determines the badge color scheme" },
-        { "name": "color", "type": "string", "required": false, "default": null, "description": "Custom color override. Automatically derived from variant when not provided" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "role",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The role label to display inside the badge"
+        },
+        {
+          "name": "variant",
+          "type": "\"admin\" | \"moderator\" | \"editor\" | \"viewer\" | \"custom\"",
+          "required": false,
+          "default": "\"custom\"",
+          "description": "Predefined role variant that determines the badge color scheme"
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom color override. Automatically derived from variant when not provided"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "inputBg", "inputText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "inputBg",
+        "inputText"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "admin"],
         "placement": "body",
         "priority": 4,
         "sequenceOrder": 5,
-        "pairsWellWith": ["user-accounts.ProfileOverview", "user-accounts.AccountSettings", "dataDisplay.DataTable"],
+        "pairsWellWith": [
+          "user-accounts.ProfileOverview",
+          "user-accounts.AccountSettings",
+          "dataDisplay.DataTable"
+        ],
         "maxPerPage": 5,
         "isContainer": false
       }

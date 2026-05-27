@@ -1,7 +1,7 @@
-"use client";
-import React, { useId, useState } from "react";
-import { useDataDisplayTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useId, useState } from 'react';
+import { useDataDisplayTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── BarChart ───────────────────────────────────────────── */
 
@@ -17,14 +17,14 @@ export interface BarChartProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  mutedSoft: "#a1a1aa",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  grid: "#f4f4f5",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  mutedSoft: '#a1a1aa',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  grid: '#f4f4f5',
 };
 
 export function BarChart({
@@ -65,9 +65,9 @@ export function BarChart({
           color: fg,
           background: bg,
           fontFamily: t.fontFamily,
-          textAlign: "center",
+          textAlign: 'center',
           margin: 0,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
         <div
@@ -77,14 +77,16 @@ export function BarChart({
             borderRadius: 12,
             background: ui.surface,
             border: `1px solid ${ui.border}`,
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Icon name="bar-chart" size={22} color={ui.black} />
         </div>
-        <div style={{ color: ui.muted, marginTop: 10, fontSize: t.bodySize ?? 14 }}>No data available</div>
+        <div style={{ color: ui.muted, marginTop: 10, fontSize: t.bodySize ?? 14 }}>
+          No data available
+        </div>
       </figure>
     );
   }
@@ -99,20 +101,20 @@ export function BarChart({
         background: bg,
         fontFamily: t.fontFamily,
         margin: 0,
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       {title && (
         <figcaption
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 8,
             marginBottom: 12,
             fontWeight: 700,
             fontSize: t.headingSize ?? 18,
             color: ui.black,
-            letterSpacing: "-0.02em",
+            letterSpacing: '-0.02em',
           }}
         >
           <div
@@ -122,9 +124,9 @@ export function BarChart({
               borderRadius: 8,
               background: ui.surface,
               border: `1px solid ${ui.border}`,
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               flexShrink: 0,
             }}
           >
@@ -134,7 +136,7 @@ export function BarChart({
         </figcaption>
       )}
 
-      <svg width={width} height={height} style={{ display: "block" }}>
+      <svg width={width} height={height} style={{ display: 'block' }}>
         {showGrid &&
           [0, 0.25, 0.5, 0.75, 1].map((g) => (
             <g key={g}>
@@ -144,7 +146,7 @@ export function BarChart({
                 y1={padding + innerH * (1 - g)}
                 y2={padding + innerH * (1 - g)}
                 stroke={grid}
-                strokeDasharray={g === 0 ? "none" : "4,4"}
+                strokeDasharray={g === 0 ? 'none' : '4,4'}
               />
               <text
                 x={padding - 8}
@@ -195,12 +197,19 @@ export function BarChart({
                 height={h}
                 rx={barRadius}
                 fill={isH ? `url(#epx-barGH-${uid})` : `url(#epx-barG-${uid})`}
-                style={{ transition: "all 200ms ease", cursor: "pointer" }}
+                style={{ transition: 'all 200ms ease', cursor: 'pointer' }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
               />
               {isH && (
-                <text x={x + bw / 2} y={y - 8} fontSize={12} fill={ui.black} textAnchor="middle" fontWeight={700}>
+                <text
+                  x={x + bw / 2}
+                  y={y - 8}
+                  fontSize={12}
+                  fill={ui.black}
+                  textAnchor="middle"
+                  fontWeight={700}
+                >
                   {v}
                 </text>
               )}
@@ -218,7 +227,7 @@ export function BarChart({
             textAnchor="middle"
             opacity={hoveredIndex === i ? 1 : 0.85}
             fontWeight={hoveredIndex === i ? 700 : 500}
-            style={{ transition: "all 200ms ease" }}
+            style={{ transition: 'all 200ms ease' }}
           >
             {lb}
           </text>

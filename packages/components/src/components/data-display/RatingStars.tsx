@@ -1,11 +1,11 @@
-"use client";
-import React, { useState, useId } from "react";
-import { useDataDisplayTheme } from "../../core/provider";
+'use client';
+import React, { useState, useId } from 'react';
+import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── Star (internal) ────────────────────────────────────── */
 
 interface StarProps {
-  fill: "full" | "half" | "empty";
+  fill: 'full' | 'half' | 'empty';
   index: number;
   size: number;
   interactive: boolean;
@@ -16,20 +16,31 @@ interface StarProps {
   uid: string;
 }
 
-const STAR_PATH = "M12 .587l3.668 7.431 8.2 1.192-5.934 5.786 1.402 8.167L12 18.896l-7.336 3.867 1.402-8.167L.132 9.21l8.2-1.192z";
+const STAR_PATH =
+  'M12 .587l3.668 7.431 8.2 1.192-5.934 5.786 1.402 8.167L12 18.896l-7.336 3.867 1.402-8.167L.132 9.21l8.2-1.192z';
 
 const ui = {
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  mutedSoft: "#a1a1aa",
-  border: "#e4e4e7",
-  star: "#f59e0b",
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  mutedSoft: '#a1a1aa',
+  border: '#e4e4e7',
+  star: '#f59e0b',
 };
 
-function Star({ fill, index, size, interactive, gridColor, onHover, onLeave, onClick, uid }: StarProps) {
+function Star({
+  fill,
+  index,
+  size,
+  interactive,
+  gridColor,
+  onHover,
+  onLeave,
+  onClick,
+  uid,
+}: StarProps) {
   const [starH, setStarH] = useState(false);
-  const fillColor = fill === "empty" ? gridColor : ui.star;
+  const fillColor = fill === 'empty' ? gridColor : ui.star;
 
   return (
     <svg
@@ -37,11 +48,11 @@ function Star({ fill, index, size, interactive, gridColor, onHover, onLeave, onC
       height={size}
       viewBox="0 0 24 24"
       style={{
-        display: "inline-block",
-        cursor: interactive ? "pointer" : "default",
-        transition: "transform 150ms ease, opacity 150ms ease",
-        transform: starH ? "scale(1.08)" : "scale(1)",
-        opacity: fill === "empty" ? 0.75 : 1,
+        display: 'inline-block',
+        cursor: interactive ? 'pointer' : 'default',
+        transition: 'transform 150ms ease, opacity 150ms ease',
+        transform: starH ? 'scale(1.08)' : 'scale(1)',
+        opacity: fill === 'empty' ? 0.75 : 1,
       }}
       onMouseEnter={() => {
         if (interactive) {
@@ -57,7 +68,7 @@ function Star({ fill, index, size, interactive, gridColor, onHover, onLeave, onC
         if (interactive) onClick(index + 1);
       }}
     >
-      {fill === "half" ? (
+      {fill === 'half' ? (
         <>
           <path d={STAR_PATH} fill={gridColor} />
           <clipPath id={`epx-half-${uid}-${index}`}>
@@ -97,7 +108,7 @@ export function RatingStars({
   const uid = useId();
   const [hoverValue, setHoverValue] = useState<number | null>(null);
 
-  const safeValue = typeof value === "number" && !isNaN(value) ? value : 0;
+  const safeValue = typeof value === 'number' && !isNaN(value) ? value : 0;
   const displayValue = hoverValue !== null ? hoverValue : safeValue;
   const full = Math.floor(displayValue);
   const half = displayValue - full >= 0.5;
@@ -110,14 +121,14 @@ export function RatingStars({
   return (
     <div
       style={{
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         gap: 8,
         fontFamily: t.fontFamily,
       }}
       onMouseLeave={() => setHoverValue(null)}
     >
-      <div style={{ display: "flex", gap: 4 }}>
+      <div style={{ display: 'flex', gap: 4 }}>
         {Array.from({ length: full }).map((_, i) => (
           <Star
             key={`f-${i}`}
@@ -162,8 +173,10 @@ export function RatingStars({
       </div>
 
       {showValue && (
-        <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
-          <span style={{ fontSize: size * 0.8, fontWeight: 700, color: fg }}>{safeValue.toFixed(1)}</span>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+          <span style={{ fontSize: size * 0.8, fontWeight: 700, color: fg }}>
+            {safeValue.toFixed(1)}
+          </span>
           <span style={{ fontSize: size * 0.6, color: ui.muted }}>/ {outOf}</span>
         </div>
       )}

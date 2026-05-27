@@ -3,28 +3,16 @@
   "defaultBase": "main",
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ],
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
       "cache": true
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js"
-      ],
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
     },
     "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/biome.json"
-      ],
+      "inputs": ["default", "{workspaceRoot}/biome.json"],
       "cache": true
     },
     "e2e": {
@@ -32,10 +20,7 @@
     }
   },
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -86,9 +71,7 @@
     }
   },
   "release": {
-    "projects": [
-      "packages/*"
-    ],
+    "projects": ["packages/*"],
     "projectsRelationship": "independent",
     "version": {
       "preVersionCommand": "npx nx run-many -t build",

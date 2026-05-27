@@ -14,40 +14,235 @@
       "whenToUse": "Use as the primary call-to-action on any page. Ideal for form submissions, sign-up actions, checkout buttons, and any main action the user should take.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Button\"", "description": "Text displayed inside the button" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Font size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display alongside label" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Button\"",
+          "description": "Text displayed inside the button"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Font size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display alongside label"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "restaurant", "fitness", "education", "nonprofit", "event", "agency", "realestate", "health", "community"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "restaurant",
+          "fitness",
+          "education",
+          "nonprofit",
+          "event",
+          "agency",
+          "realestate",
+          "health",
+          "community"
+        ],
         "placement": "body",
         "priority": 9,
         "sequenceOrder": 5,
-        "pairsWellWith": ["hero.StaticHero", "hero.SplitHero", "content.HeadingSection", "forms.FormShell"],
+        "pairsWellWith": [
+          "hero.StaticHero",
+          "hero.SplitHero",
+          "content.HeadingSection",
+          "forms.FormShell"
+        ],
         "maxPerPage": 10,
         "isContainer": false
       }
@@ -59,40 +254,226 @@
       "whenToUse": "Use for secondary or alternative actions alongside a primary button. Ideal for cancel actions, learn-more links, or any non-primary call-to-action.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Button\"", "description": "Text displayed inside the button" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Font size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display alongside label" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Button\"",
+          "description": "Text displayed inside the button"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Font size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display alongside label"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "body",
         "priority": 8,
         "sequenceOrder": 5,
-        "pairsWellWith": ["buttons.PrimaryButton", "hero.StaticHero", "content.HeadingSection", "forms.FormShell"],
+        "pairsWellWith": [
+          "buttons.PrimaryButton",
+          "hero.StaticHero",
+          "content.HeadingSection",
+          "forms.FormShell"
+        ],
         "maxPerPage": 10,
         "isContainer": false
       }
@@ -104,40 +485,225 @@
       "whenToUse": "Use for tertiary actions, inline text links styled as buttons, or low-priority actions that should not compete with primary/secondary buttons.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Button\"", "description": "Text displayed inside the button" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Font size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display alongside label" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Button\"",
+          "description": "Text displayed inside the button"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Font size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display alongside label"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 5,
-        "pairsWellWith": ["buttons.PrimaryButton", "buttons.SecondaryButton", "content.HeadingSection"],
+        "pairsWellWith": [
+          "buttons.PrimaryButton",
+          "buttons.SecondaryButton",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 10,
         "isContainer": false
       }
@@ -149,35 +715,214 @@
       "whenToUse": "Use for icon-only actions like close, menu toggle, settings, or toolbar actions. Best in dashboards, toolbars, and compact UI areas.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Button\"", "description": "Accessible label (used for aria-label)" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text/icon color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Icon size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "size", "type": "number", "required": false, "default": "48", "description": "Overall button size (width and height) in pixels" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Button\"",
+          "description": "Accessible label (used for aria-label)"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text/icon color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Icon size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false,
+          "default": "48",
+          "description": "Overall button size (width and height) in pixels"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "tools", "admin", "settings", "saas"],
         "placement": "body",
@@ -195,37 +940,228 @@
       "whenToUse": "Use for quick-access primary actions like compose, add, or chat. Ideal for mobile layouts, dashboard apps, and pages that benefit from a persistent action button.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Button\"", "description": "Accessible label or tooltip text" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text/icon color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Font size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "position", "type": "\"bottom-right\" | \"bottom-left\"", "required": false, "default": "\"bottom-right\"", "description": "Screen corner position for the FAB" },
-        { "name": "offset", "type": "number", "required": false, "default": "24", "description": "Distance from the edge of the viewport in pixels" },
-        { "name": "fixed", "type": "boolean", "required": false, "default": null, "description": "Whether the button uses fixed positioning" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Button\"",
+          "description": "Accessible label or tooltip text"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text/icon color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Font size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "position",
+          "type": "\"bottom-right\" | \"bottom-left\"",
+          "required": false,
+          "default": "\"bottom-right\"",
+          "description": "Screen corner position for the FAB"
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Distance from the edge of the viewport in pixels"
+        },
+        {
+          "name": "fixed",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button uses fixed positioning"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
         "pageTypes": ["mobile", "dashboard", "saas", "ecommerce"],
         "placement": "overlay",
@@ -243,24 +1179,106 @@
       "whenToUse": "Use for toggling between options, segmented controls, or grouping related actions. Ideal for dashboards, settings panels, and filter toolbars.",
       "isShell": false,
       "props": [
-        { "name": "buttons", "type": "GroupButtonItem[]", "required": true, "default": null, "description": "Array of button items extending ButtonBaseProps with optional active flag: {...ButtonBaseProps, active?: boolean}" },
-        { "name": "toggle", "type": "boolean", "required": false, "default": null, "description": "Whether the group behaves as a toggle (only one active at a time)" },
-        { "name": "onChange", "type": "(index: number) => void", "required": false, "default": null, "description": "Callback when a button is selected, receives the index" },
-        { "name": "bgColor", "type": "string", "required": false, "default": null, "description": "Background color for the group container" },
-        { "name": "radius", "type": "number", "required": false, "default": null, "description": "Border radius for the group container" },
-        { "name": "accentColor", "type": "string", "required": false, "default": null, "description": "Accent color for active state" },
-        { "name": "borderColor", "type": "string", "required": false, "default": null, "description": "Border color for the group container" },
-        { "name": "gap", "type": "number", "required": false, "default": null, "description": "Gap between buttons in the group" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" }
+        {
+          "name": "buttons",
+          "type": "GroupButtonItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of button items extending ButtonBaseProps with optional active flag: {...ButtonBaseProps, active?: boolean}"
+        },
+        {
+          "name": "toggle",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the group behaves as a toggle (only one active at a time)"
+        },
+        {
+          "name": "onChange",
+          "type": "(index: number) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when a button is selected, receives the index"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Background color for the group container"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Border radius for the group container"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Accent color for active state"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Border color for the group container"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Gap between buttons in the group"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "settings", "admin", "tools", "saas"],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 5,
-        "pairsWellWith": ["buttons.PrimaryButton", "buttons.IconButton", "content.HeadingSection", "dataDisplay.DataTable"],
+        "pairsWellWith": [
+          "buttons.PrimaryButton",
+          "buttons.IconButton",
+          "content.HeadingSection",
+          "dataDisplay.DataTable"
+        ],
         "maxPerPage": 5,
         "isContainer": false
       }
@@ -272,34 +1290,207 @@
       "whenToUse": "Use for form submissions, API calls, or any async action where the user needs visual feedback that an operation is in progress.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Loading...\"", "description": "Text displayed inside the button" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Font size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display alongside label" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Loading...\"",
+          "description": "Text displayed inside the button"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Font size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display alongside label"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
         "pageTypes": ["forms", "ecommerce", "saas", "dashboard"],
         "placement": "body",
@@ -317,41 +1508,224 @@
       "whenToUse": "Use on blog posts, articles, social media pages, or marketing content where users should be able to share the current page or a specific URL.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Share\"", "description": "Text displayed inside the button" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Font size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display alongside label" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "url", "type": "string", "required": false, "default": null, "description": "URL to share. Defaults to the current page URL if not provided." }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Share\"",
+          "description": "Text displayed inside the button"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Font size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display alongside label"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL to share. Defaults to the current page URL if not provided."
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
         "pageTypes": ["blog", "social", "marketing", "portfolio", "landing"],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 8,
-        "pairsWellWith": ["buttons.PrimaryButton", "content.HeadingSection", "blog.ArticleRenderer"],
+        "pairsWellWith": [
+          "buttons.PrimaryButton",
+          "content.HeadingSection",
+          "blog.ArticleRenderer"
+        ],
         "maxPerPage": 5,
         "isContainer": false
       }
@@ -363,37 +1737,225 @@
       "whenToUse": "Use wherever users need to download files — resource pages, documentation, invoices, reports, or any content with downloadable assets.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Download\"", "description": "Text displayed inside the button" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Font size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display alongside label" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "fileUrl", "type": "string", "required": false, "default": null, "description": "URL of the file to download" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Download\"",
+          "description": "Text displayed inside the button"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Font size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display alongside label"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "fileUrl",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL of the file to download"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "documentation", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "documentation",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 8,
@@ -409,34 +1971,207 @@
       "whenToUse": "Use on pages where users may want to print content — documentation pages, invoices, reports, receipts, or any printable content.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": false, "default": "\"Print\"", "description": "Text displayed inside the button" },
-        { "name": "onClick", "type": "() => void", "required": false, "default": null, "description": "Click handler callback" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override (hover/focus states)" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "15", "description": "Font size in pixels" },
-        { "name": "fontWeight", "type": "string", "required": false, "default": "\"500\"", "description": "Font weight" },
-        { "name": "letterSpacing", "type": "number", "required": false, "default": null, "description": "Letter spacing in pixels" },
-        { "name": "lineHeight", "type": "number", "required": false, "default": null, "description": "Line height" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius in pixels" },
-        { "name": "paddingX", "type": "number", "required": false, "default": "18", "description": "Horizontal padding in pixels" },
-        { "name": "paddingY", "type": "number", "required": false, "default": "10", "description": "Vertical padding in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between icon and label in pixels" },
-        { "name": "icon", "type": "IconName", "required": false, "default": null, "description": "Icon name to display alongside label" },
-        { "name": "iconNode", "type": "ReactNode", "required": false, "default": null, "description": "Custom icon node to render" },
-        { "name": "isLoading", "type": "boolean", "required": false, "default": null, "description": "Whether the button shows a loading spinner" },
-        { "name": "disabled", "type": "boolean", "required": false, "default": null, "description": "Whether the button is disabled" },
-        { "name": "width", "type": "string | number", "required": false, "default": "\"fit-content\"", "description": "Button width" },
-        { "name": "height", "type": "string | number", "required": false, "default": null, "description": "Button height" },
-        { "name": "opacity", "type": "number", "required": false, "default": null, "description": "Opacity value (0–1)" },
-        { "name": "shadow", "type": "string", "required": false, "default": "\"none\"", "description": "Box shadow value" },
-        { "name": "transitionDuration", "type": "number", "required": false, "default": "200", "description": "Transition duration in milliseconds" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Print\"",
+          "description": "Text displayed inside the button"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Click handler callback"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override (hover/focus states)"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "15",
+          "description": "Font size in pixels"
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "required": false,
+          "default": "\"500\"",
+          "description": "Font weight"
+        },
+        {
+          "name": "letterSpacing",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Letter spacing in pixels"
+        },
+        {
+          "name": "lineHeight",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Line height"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "paddingX",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between icon and label in pixels"
+        },
+        {
+          "name": "icon",
+          "type": "IconName",
+          "required": false,
+          "default": null,
+          "description": "Icon name to display alongside label"
+        },
+        {
+          "name": "iconNode",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Custom icon node to render"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button shows a loading spinner"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the button is disabled"
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false,
+          "default": "\"fit-content\"",
+          "description": "Button width"
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false,
+          "default": null,
+          "description": "Button height"
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Opacity value (0–1)"
+        },
+        {
+          "name": "shadow",
+          "type": "string",
+          "required": false,
+          "default": "\"none\"",
+          "description": "Box shadow value"
+        },
+        {
+          "name": "transitionDuration",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Transition duration in milliseconds"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "fontSize", "fontWeight", "letterSpacing", "lineHeight", "radius", "paddingX", "paddingY", "gap", "opacity", "shadow", "transitionDuration"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "letterSpacing",
+        "lineHeight",
+        "radius",
+        "paddingX",
+        "paddingY",
+        "gap",
+        "opacity",
+        "shadow",
+        "transitionDuration"
+      ],
       "aiHints": {
         "pageTypes": ["documentation", "invoices", "reports", "admin"],
         "placement": "body",

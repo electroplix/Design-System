@@ -14,21 +14,84 @@
       "whenToUse": "Use as a wrapper around media components to ensure consistent spacing, background color, and border radius across different page layouts.",
       "isShell": true,
       "props": [
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "maxW", "type": "number", "required": false, "default": "900", "description": "Maximum width of the shell in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "theme", "description": "Border radius" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Child media components to render inside the shell" }
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "900",
+          "description": "Maximum width of the shell in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Child media components to render inside the shell"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "body",
         "priority": 3,
         "sequenceOrder": 4,
-        "pairsWellWith": ["media.ResponsiveVideo", "media.ImageGallery", "media.LightboxGallery", "media.MasonryGrid"],
+        "pairsWellWith": [
+          "media.ResponsiveVideo",
+          "media.ImageGallery",
+          "media.LightboxGallery",
+          "media.MasonryGrid"
+        ],
         "maxPerPage": 5,
         "isContainer": true
       }
@@ -40,17 +103,76 @@
       "whenToUse": "Use to embed video content on landing pages, marketing pages, portfolio showcases, or blog posts. Ideal for hero videos, product demos, and media-rich content.",
       "isShell": false,
       "props": [
-        { "name": "src", "type": "string", "required": true, "default": null, "description": "Video source URL" },
-        { "name": "poster", "type": "string", "required": false, "default": null, "description": "Poster image URL shown before playback" },
-        { "name": "aspectRatio", "type": "string", "required": false, "default": "\"16/9\"", "description": "Aspect ratio of the video container" },
-        { "name": "autoPlay", "type": "boolean", "required": false, "default": "false", "description": "Whether the video autoplays on load" },
-        { "name": "muted", "type": "boolean", "required": false, "default": "true", "description": "Whether the video is muted by default" },
-        { "name": "loop", "type": "boolean", "required": false, "default": "false", "description": "Whether the video loops continuously" },
-        { "name": "controls", "type": "boolean", "required": false, "default": "true", "description": "Whether to show playback controls" }
+        {
+          "name": "src",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Video source URL"
+        },
+        {
+          "name": "poster",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Poster image URL shown before playback"
+        },
+        {
+          "name": "aspectRatio",
+          "type": "string",
+          "required": false,
+          "default": "\"16/9\"",
+          "description": "Aspect ratio of the video container"
+        },
+        {
+          "name": "autoPlay",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the video autoplays on load"
+        },
+        {
+          "name": "muted",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether the video is muted by default"
+        },
+        {
+          "name": "loop",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the video loops continuously"
+        },
+        {
+          "name": "controls",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to show playback controls"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "portfolio", "blog", "restaurant", "event", "fitness", "education"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "portfolio",
+          "blog",
+          "restaurant",
+          "event",
+          "fitness",
+          "education"
+        ],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 5,
@@ -66,11 +188,37 @@
       "whenToUse": "Use to embed audio content such as podcast episodes, music tracks, or audio samples on blog posts, portfolio pages, or dedicated podcast pages.",
       "isShell": false,
       "props": [
-        { "name": "src", "type": "string", "required": true, "default": null, "description": "Audio source URL" },
-        { "name": "title", "type": "string", "required": false, "default": null, "description": "Title displayed above the audio player" },
-        { "name": "showWaveform", "type": "boolean", "required": false, "default": null, "description": "Whether to display an audio waveform visualization" }
+        {
+          "name": "src",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Audio source URL"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Title displayed above the audio player"
+        },
+        {
+          "name": "showWaveform",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether to display an audio waveform visualization"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["blog", "portfolio", "podcast"],
         "placement": "body",
@@ -88,20 +236,82 @@
       "whenToUse": "Use anywhere a user or profile avatar is needed — team sections, testimonials, comment threads, user profiles, and dashboard headers.",
       "isShell": false,
       "props": [
-        { "name": "src", "type": "string", "required": false, "default": null, "description": "Avatar image source URL" },
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Full name used for alt text and initials fallback" },
-        { "name": "initials", "type": "string", "required": false, "default": "auto-derived", "description": "Custom initials override; auto-derived from name if not provided" },
-        { "name": "size", "type": "number", "required": false, "default": "48", "description": "Avatar diameter in pixels" },
-        { "name": "badge", "type": "string", "required": false, "default": null, "description": "Status badge text or indicator (e.g., 'online', 'away')" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme accent", "description": "Border color around the avatar, defaults to theme accent" }
+        {
+          "name": "src",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Avatar image source URL"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Full name used for alt text and initials fallback"
+        },
+        {
+          "name": "initials",
+          "type": "string",
+          "required": false,
+          "default": "auto-derived",
+          "description": "Custom initials override; auto-derived from name if not provided"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false,
+          "default": "48",
+          "description": "Avatar diameter in pixels"
+        },
+        {
+          "name": "badge",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Status badge text or indicator (e.g., 'online', 'away')"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme accent",
+          "description": "Border color around the avatar, defaults to theme accent"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "agency", "education", "fitness", "restaurant", "event", "community"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "agency",
+          "education",
+          "fitness",
+          "restaurant",
+          "event",
+          "community"
+        ],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 5,
-        "pairsWellWith": ["content.BlockquoteTestimonial", "listsCards.ItemCardGrid", "media.MediaShell"],
+        "pairsWellWith": [
+          "content.BlockquoteTestimonial",
+          "listsCards.ItemCardGrid",
+          "media.MediaShell"
+        ],
         "maxPerPage": 20,
         "isContainer": false
       }
@@ -113,11 +323,37 @@
       "whenToUse": "Use on landing pages to showcase features with icons, display technology stacks, or list partner/client logos in a clean grid layout.",
       "isShell": false,
       "props": [
-        { "name": "icons", "type": "IconGridItem[]", "required": true, "default": null, "description": "Array of icon items: {name, label?}" },
-        { "name": "columns", "type": "number", "required": false, "default": "6", "description": "Number of grid columns" },
-        { "name": "iconSize", "type": "number", "required": false, "default": "24", "description": "Size of each icon in pixels" }
+        {
+          "name": "icons",
+          "type": "IconGridItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of icon items: {name, label?}"
+        },
+        {
+          "name": "columns",
+          "type": "number",
+          "required": false,
+          "default": "6",
+          "description": "Number of grid columns"
+        },
+        {
+          "name": "iconSize",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Size of each icon in pixels"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["landing", "marketing", "documentation"],
         "placement": "body",
@@ -135,14 +371,56 @@
       "whenToUse": "Use on portfolio pages to showcase work, ecommerce product image grids, or blog posts with multiple images. Supports selection callbacks for interactive galleries.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "GalleryItem[]", "required": true, "default": null, "description": "Array of gallery items: {id, src, alt?, caption?, width?, height?}" },
-        { "name": "columns", "type": "number", "required": false, "default": "3", "description": "Number of grid columns" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between gallery items in pixels" },
-        { "name": "onSelect", "type": "(item: GalleryItem) => void", "required": false, "default": null, "description": "Callback fired when a gallery item is selected" }
+        {
+          "name": "items",
+          "type": "GalleryItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of gallery items: {id, src, alt?, caption?, width?, height?}"
+        },
+        {
+          "name": "columns",
+          "type": "number",
+          "required": false,
+          "default": "3",
+          "description": "Number of grid columns"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between gallery items in pixels"
+        },
+        {
+          "name": "onSelect",
+          "type": "(item: GalleryItem) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when a gallery item is selected"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["portfolio", "ecommerce", "blog", "restaurant", "fitness", "realestate", "event", "community", "education"],
+        "pageTypes": [
+          "portfolio",
+          "ecommerce",
+          "blog",
+          "restaurant",
+          "fitness",
+          "realestate",
+          "event",
+          "community",
+          "education"
+        ],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 5,
@@ -158,10 +436,30 @@
       "whenToUse": "Use on portfolio pages or ecommerce product pages where users need to view images at full size. Provides a polished fullscreen viewing experience with next/prev navigation.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "GalleryItem[]", "required": true, "default": null, "description": "Array of gallery items: {id, src, alt?, caption?, width?, height?}" },
-        { "name": "columns", "type": "number", "required": false, "default": "3", "description": "Number of grid columns in the thumbnail view" }
+        {
+          "name": "items",
+          "type": "GalleryItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of gallery items: {id, src, alt?, caption?, width?, height?}"
+        },
+        {
+          "name": "columns",
+          "type": "number",
+          "required": false,
+          "default": "3",
+          "description": "Number of grid columns in the thumbnail view"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["portfolio", "ecommerce", "restaurant", "realestate", "event", "fitness"],
         "placement": "body",
@@ -179,13 +477,47 @@
       "whenToUse": "Use on portfolio pages or blog photo posts where images have varying aspect ratios. Creates a visually dynamic, Pinterest-style layout.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "GalleryItem[]", "required": true, "default": null, "description": "Array of gallery items: {id, src, alt?, caption?, width?, height?}" },
-        { "name": "columns", "type": "number", "required": false, "default": "3", "description": "Number of masonry columns" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between items in pixels" }
+        {
+          "name": "items",
+          "type": "GalleryItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of gallery items: {id, src, alt?, caption?, width?, height?}"
+        },
+        {
+          "name": "columns",
+          "type": "number",
+          "required": false,
+          "default": "3",
+          "description": "Number of masonry columns"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between items in pixels"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["portfolio", "blog", "ecommerce", "gallery", "restaurant", "event", "realestate"],
+        "pageTypes": [
+          "portfolio",
+          "blog",
+          "ecommerce",
+          "gallery",
+          "restaurant",
+          "event",
+          "realestate"
+        ],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 5,
@@ -201,12 +533,44 @@
       "whenToUse": "Use on portfolio, blog, or about pages for a playful, retro-styled image presentation. Great for personal sites, team pages, or creative showcases.",
       "isShell": false,
       "props": [
-        { "name": "src", "type": "string", "required": true, "default": null, "description": "Image source URL" },
-        { "name": "caption", "type": "string", "required": false, "default": null, "description": "Caption text displayed below the image" },
-        { "name": "rotation", "type": "number", "required": false, "default": "0", "description": "Rotation angle in degrees" },
-        { "name": "width", "type": "number", "required": false, "default": "260", "description": "Width of the polaroid frame in pixels" }
+        {
+          "name": "src",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Image source URL"
+        },
+        {
+          "name": "caption",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Caption text displayed below the image"
+        },
+        {
+          "name": "rotation",
+          "type": "number",
+          "required": false,
+          "default": "0",
+          "description": "Rotation angle in degrees"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "260",
+          "description": "Width of the polaroid frame in pixels"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["portfolio", "blog", "about"],
         "placement": "body",
@@ -224,13 +588,51 @@
       "whenToUse": "Use on landing pages, marketing pages, or about pages to add visual interest with animated illustrations or crisp SVG graphics. Ideal for feature sections and empty states.",
       "isShell": false,
       "props": [
-        { "name": "type", "type": "\"svg\" | \"lottie\"", "required": true, "default": null, "description": "Whether to render an SVG or a Lottie animation" },
-        { "name": "src", "type": "string", "required": true, "default": null, "description": "Source URL for the SVG or Lottie JSON file" },
-        { "name": "width", "type": "number", "required": false, "default": "200", "description": "Width of the rendered media in pixels" },
-        { "name": "height", "type": "number", "required": false, "default": "200", "description": "Height of the rendered media in pixels" },
-        { "name": "alt", "type": "string", "required": false, "default": null, "description": "Accessible alt text for the media" }
+        {
+          "name": "type",
+          "type": "\"svg\" | \"lottie\"",
+          "required": true,
+          "default": null,
+          "description": "Whether to render an SVG or a Lottie animation"
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Source URL for the SVG or Lottie JSON file"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Width of the rendered media in pixels"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "200",
+          "description": "Height of the rendered media in pixels"
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Accessible alt text for the media"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["landing", "marketing", "about"],
         "placement": "body",
@@ -248,12 +650,44 @@
       "whenToUse": "Use in settings pages, profile edit forms, or any form where users need to upload and crop an image. Ideal for avatar uploads, cover photo editors, and content management.",
       "isShell": false,
       "props": [
-        { "name": "onUpload", "type": "(file: File) => void", "required": false, "default": null, "description": "Callback fired with the cropped file when upload is confirmed" },
-        { "name": "accept", "type": "string", "required": false, "default": "\"image/*\"", "description": "Accepted file types for the file input" },
-        { "name": "maxSizeMB", "type": "number", "required": false, "default": "5", "description": "Maximum allowed file size in megabytes" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Upload Image\"", "description": "Label text for the upload button" }
+        {
+          "name": "onUpload",
+          "type": "(file: File) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired with the cropped file when upload is confirmed"
+        },
+        {
+          "name": "accept",
+          "type": "string",
+          "required": false,
+          "default": "\"image/*\"",
+          "description": "Accepted file types for the file input"
+        },
+        {
+          "name": "maxSizeMB",
+          "type": "number",
+          "required": false,
+          "default": "5",
+          "description": "Maximum allowed file size in megabytes"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Upload Image\"",
+          "description": "Label text for the upload button"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["settings", "profile", "forms"],
         "placement": "body",
@@ -271,22 +705,93 @@
       "whenToUse": "Use on contact pages, restaurant locations, real estate listings, event venues, business directories, or any page that needs to display a physical location.",
       "isShell": false,
       "props": [
-        { "name": "address", "type": "string", "required": false, "default": null, "description": "Physical address string for the map marker" },
-        { "name": "lat", "type": "number", "required": false, "default": null, "description": "Latitude coordinate for the map center" },
-        { "name": "lng", "type": "number", "required": false, "default": null, "description": "Longitude coordinate for the map center" },
-        { "name": "zoom", "type": "number", "required": false, "default": "14", "description": "Map zoom level" },
-        { "name": "height", "type": "number", "required": false, "default": "400", "description": "Map container height in pixels" },
-        { "name": "provider", "type": "\"google\" | \"openstreetmap\"", "required": false, "default": "\"openstreetmap\"", "description": "Map provider to use" },
-        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional title displayed above the map" },
-        { "name": "borderRadius", "type": "number", "required": false, "default": "theme", "description": "Border radius override for the map container" }
+        {
+          "name": "address",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Physical address string for the map marker"
+        },
+        {
+          "name": "lat",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Latitude coordinate for the map center"
+        },
+        {
+          "name": "lng",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Longitude coordinate for the map center"
+        },
+        {
+          "name": "zoom",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Map zoom level"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "400",
+          "description": "Map container height in pixels"
+        },
+        {
+          "name": "provider",
+          "type": "\"google\" | \"openstreetmap\"",
+          "required": false,
+          "default": "\"openstreetmap\"",
+          "description": "Map provider to use"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional title displayed above the map"
+        },
+        {
+          "name": "borderRadius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius override for the map container"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["restaurant", "realestate", "event", "fitness", "health", "community", "agency", "landing", "contact", "education"],
+        "pageTypes": [
+          "restaurant",
+          "realestate",
+          "event",
+          "fitness",
+          "health",
+          "community",
+          "agency",
+          "landing",
+          "contact",
+          "education"
+        ],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 7,
-        "pairsWellWith": ["forms.ContactForm", "onboarding.ContactSupportBlock", "content.HeadingSection"],
+        "pairsWellWith": [
+          "forms.ContactForm",
+          "onboarding.ContactSupportBlock",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }

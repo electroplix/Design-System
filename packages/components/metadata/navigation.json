@@ -14,28 +14,147 @@
       "whenToUse": "Use as the primary navigation element at the top of every page. Essential for marketing sites, dashboards, blogs, and any web app requiring consistent top-level navigation.",
       "isShell": false,
       "props": [
-        { "name": "logoText", "type": "string", "required": false, "default": "\"MyBrand\"", "description": "Brand/logo text displayed in the nav bar" },
-        { "name": "links", "type": "NavLink[]", "required": false, "default": "[]", "description": "Array of navigation links: {label, href}" },
-        { "name": "showSearch", "type": "boolean", "required": false, "default": "false", "description": "Whether to display a search input in the nav" },
-        { "name": "showCTA", "type": "boolean", "required": false, "default": "false", "description": "Whether to show the call-to-action button" },
-        { "name": "ctaText", "type": "string", "required": false, "default": "\"Get Started\"", "description": "Text for the CTA button" },
-        { "name": "ctaHref", "type": "string", "required": false, "default": "\"#\"", "description": "URL for the CTA button" },
-        { "name": "sticky", "type": "boolean", "required": false, "default": "false", "description": "Whether the nav sticks to the top on scroll" },
-        { "name": "height", "type": "number", "required": false, "default": "72", "description": "Height of the navigation bar in pixels" },
-        { "name": "padding", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "logoText",
+          "type": "string",
+          "required": false,
+          "default": "\"MyBrand\"",
+          "description": "Brand/logo text displayed in the nav bar"
+        },
+        {
+          "name": "links",
+          "type": "NavLink[]",
+          "required": false,
+          "default": "[]",
+          "description": "Array of navigation links: {label, href}"
+        },
+        {
+          "name": "showSearch",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to display a search input in the nav"
+        },
+        {
+          "name": "showCTA",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to show the call-to-action button"
+        },
+        {
+          "name": "ctaText",
+          "type": "string",
+          "required": false,
+          "default": "\"Get Started\"",
+          "description": "Text for the CTA button"
+        },
+        {
+          "name": "ctaHref",
+          "type": "string",
+          "required": false,
+          "default": "\"#\"",
+          "description": "URL for the CTA button"
+        },
+        {
+          "name": "sticky",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the nav sticks to the top on scroll"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "72",
+          "description": "Height of the navigation bar in pixels"
+        },
+        {
+          "name": "padding",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "height", "padding", "sticky", "showSearch", "showCTA"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "height",
+        "padding",
+        "sticky",
+        "showSearch",
+        "showCTA"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "restaurant", "fitness", "education", "community", "nonprofit", "realestate", "event", "agency", "health"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "restaurant",
+          "fitness",
+          "education",
+          "community",
+          "nonprofit",
+          "realestate",
+          "event",
+          "agency",
+          "health"
+        ],
         "placement": "header",
         "priority": 10,
         "sequenceOrder": 1,
-        "pairsWellWith": ["hero.StaticHero", "hero.SplitHero", "hero.VideoHeaderHero", "content.HeadingSection"],
+        "pairsWellWith": [
+          "hero.StaticHero",
+          "hero.SplitHero",
+          "hero.VideoHeaderHero",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -47,22 +166,114 @@
       "whenToUse": "Use when you have many navigation items organized into groups. Ideal for ecommerce sites with multiple product categories, enterprise dashboards, or documentation portals.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "label", "type": "string", "required": true, "default": null, "description": "The trigger label for the mega menu" },
-        { "name": "sections", "type": "MegaMenuSection[]", "required": true, "default": null, "description": "Array of sections: {title, links: MenuLink[]{label, href, description?}}" },
-        { "name": "maxW", "type": "number", "required": false, "default": "800", "description": "Maximum width of the dropdown panel" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The trigger label for the mega menu"
+        },
+        {
+          "name": "sections",
+          "type": "MegaMenuSection[]",
+          "required": true,
+          "default": null,
+          "description": "Array of sections: {title, links: MenuLink[]{label, href, description?}}"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "800",
+          "description": "Maximum width of the dropdown panel"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["enterprise", "ecommerce", "documentation", "marketplace", "agency"],
         "placement": "header",
@@ -80,18 +291,86 @@
       "whenToUse": "Use for dashboard applications, admin panels, or documentation sites that need persistent vertical navigation with nested items.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "SidebarItem[]", "required": true, "default": null, "description": "Array of items: {label, href, icon?, children?: SidebarChild[]{label, href}}" },
-        { "name": "width", "type": "number", "required": false, "default": "260", "description": "Width of the sidebar in pixels" },
-        { "name": "padding", "type": "number", "required": false, "default": "16", "description": "Internal padding" },
-        { "name": "gap", "type": "number", "required": false, "default": "4", "description": "Gap between menu items" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius of the sidebar" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "items",
+          "type": "SidebarItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of items: {label, href, icon?, children?: SidebarChild[]{label, href}}"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "260",
+          "description": "Width of the sidebar in pixels"
+        },
+        {
+          "name": "padding",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Internal padding"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "4",
+          "description": "Gap between menu items"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius of the sidebar"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "admin", "documentation", "settings"],
         "placement": "sidebar",
@@ -109,20 +388,100 @@
       "whenToUse": "Use to organize related content into switchable panels. Ideal for settings pages, product details with multiple sections, or any UI requiring content segmentation.",
       "isShell": false,
       "props": [
-        { "name": "tabs", "type": "TabDef[]", "required": true, "default": null, "description": "Array of tab definitions: {label, icon?, content: ReactNode}" },
-        { "name": "defaultTab", "type": "number", "required": false, "default": "0", "description": "Index of the initially active tab" },
-        { "name": "orientation", "type": "\"horizontal\" | \"vertical\"", "required": false, "default": "\"horizontal\"", "description": "Tab layout direction" },
-        { "name": "showUnderline", "type": "boolean", "required": false, "default": "false", "description": "Show underline indicator on active tab" },
-        { "name": "radius", "type": "number", "required": false, "default": "14", "description": "Border radius for tab buttons" },
-        { "name": "padding", "type": "number", "required": false, "default": "12", "description": "Padding inside tab buttons" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between tab buttons" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "tabs",
+          "type": "TabDef[]",
+          "required": true,
+          "default": null,
+          "description": "Array of tab definitions: {label, icon?, content: ReactNode}"
+        },
+        {
+          "name": "defaultTab",
+          "type": "number",
+          "required": false,
+          "default": "0",
+          "description": "Index of the initially active tab"
+        },
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "required": false,
+          "default": "\"horizontal\"",
+          "description": "Tab layout direction"
+        },
+        {
+          "name": "showUnderline",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Show underline indicator on active tab"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Border radius for tab buttons"
+        },
+        {
+          "name": "padding",
+          "type": "number",
+          "required": false,
+          "default": "12",
+          "description": "Padding inside tab buttons"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between tab buttons"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "settings", "ecommerce", "documentation", "blog"],
         "placement": "body",
@@ -140,24 +499,128 @@
       "whenToUse": "Use on interior pages to show the user's location within the site structure. Essential for ecommerce category pages, documentation, and multi-level content sites.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"nav\"", "description": "HTML element to render as" },
-        { "name": "items", "type": "BreadcrumbItem[]", "required": true, "default": null, "description": "Array of breadcrumb items: {label, href?}" },
-        { "name": "showHomeIcon", "type": "boolean", "required": false, "default": "true", "description": "Show a home icon for the first item" },
-        { "name": "separatorColor", "type": "string", "required": false, "default": null, "description": "Color of the separator between items" },
-        { "name": "maxW", "type": "number", "required": false, "default": "1100", "description": "Maximum width" },
-        { "name": "px", "type": "number", "required": false, "default": "20", "description": "Horizontal padding" },
-        { "name": "py", "type": "number", "required": false, "default": "12", "description": "Vertical padding" },
-        { "name": "radius", "type": "number", "required": false, "default": "12", "description": "Border radius" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between items" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"nav\"",
+          "description": "HTML element to render as"
+        },
+        {
+          "name": "items",
+          "type": "BreadcrumbItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of breadcrumb items: {label, href?}"
+        },
+        {
+          "name": "showHomeIcon",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Show a home icon for the first item"
+        },
+        {
+          "name": "separatorColor",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Color of the separator between items"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "1100",
+          "description": "Maximum width"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "20",
+          "description": "Horizontal padding"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "12",
+          "description": "Vertical padding"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "12",
+          "description": "Border radius"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between items"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["ecommerce", "documentation", "blog", "portal", "dashboard"],
         "placement": "body",
@@ -175,20 +638,104 @@
       "whenToUse": "Use at the bottom of paginated content like search results, data tables, blog post lists, or product grids.",
       "isShell": false,
       "props": [
-        { "name": "currentPage", "type": "number", "required": true, "default": null, "description": "Currently active page number" },
-        { "name": "totalPages", "type": "number", "required": true, "default": null, "description": "Total number of pages" },
-        { "name": "onPageChange", "type": "(page: number) => void", "required": true, "default": null, "description": "Callback when a page is selected" },
-        { "name": "maxVisible", "type": "number", "required": false, "default": "5", "description": "Maximum number of page buttons visible" },
-        { "name": "showFirstLast", "type": "boolean", "required": false, "default": "true", "description": "Show first/last page buttons" },
-        { "name": "showPrevNext", "type": "boolean", "required": false, "default": "true", "description": "Show previous/next buttons" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "14", "description": "Font size for page numbers" },
-        { "name": "radius", "type": "number", "required": false, "default": "10", "description": "Border radius for buttons" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between buttons" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "currentPage",
+          "type": "number",
+          "required": true,
+          "default": null,
+          "description": "Currently active page number"
+        },
+        {
+          "name": "totalPages",
+          "type": "number",
+          "required": true,
+          "default": null,
+          "description": "Total number of pages"
+        },
+        {
+          "name": "onPageChange",
+          "type": "(page: number) => void",
+          "required": true,
+          "default": null,
+          "description": "Callback when a page is selected"
+        },
+        {
+          "name": "maxVisible",
+          "type": "number",
+          "required": false,
+          "default": "5",
+          "description": "Maximum number of page buttons visible"
+        },
+        {
+          "name": "showFirstLast",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Show first/last page buttons"
+        },
+        {
+          "name": "showPrevNext",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Show previous/next buttons"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size for page numbers"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Border radius for buttons"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between buttons"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
       "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius"],
       "aiHints": {
@@ -208,23 +755,89 @@
       "whenToUse": "Use for checkout flows, multi-step forms, onboarding wizards, or any process with defined sequential steps.",
       "isShell": false,
       "props": [
-        { "name": "steps", "type": "Step[]", "required": true, "default": null, "description": "Array of steps: {label, description?}" },
-        { "name": "currentStep", "type": "number", "required": true, "default": null, "description": "Zero-based index of the active step" },
-        { "name": "orientation", "type": "\"horizontal\" | \"vertical\"", "required": false, "default": "\"horizontal\"", "description": "Layout direction" },
-        { "name": "showNumbers", "type": "boolean", "required": false, "default": "true", "description": "Show step numbers in the indicators" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "steps",
+          "type": "Step[]",
+          "required": true,
+          "default": null,
+          "description": "Array of steps: {label, description?}"
+        },
+        {
+          "name": "currentStep",
+          "type": "number",
+          "required": true,
+          "default": null,
+          "description": "Zero-based index of the active step"
+        },
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "required": false,
+          "default": "\"horizontal\"",
+          "description": "Layout direction"
+        },
+        {
+          "name": "showNumbers",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Show step numbers in the indicators"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["ecommerce", "onboarding", "saas", "forms"],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 3,
-        "pairsWellWith": ["forms.MultiStepWizard", "forms.FormShell", "onboarding.OnboardingWizard"],
+        "pairsWellWith": [
+          "forms.MultiStepWizard",
+          "forms.FormShell",
+          "onboarding.OnboardingWizard"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -236,24 +849,128 @@
       "whenToUse": "Use for long-form pages like documentation, landing pages with multiple sections, or single-page applications needing section-based navigation.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"nav\"", "description": "HTML element to render as" },
-        { "name": "items", "type": "AnchorItem[]", "required": true, "default": null, "description": "Array of anchor items: {label, targetId}" },
-        { "name": "orientation", "type": "\"horizontal\" | \"vertical\"", "required": false, "default": "\"horizontal\"", "description": "Layout direction" },
-        { "name": "offset", "type": "number", "required": false, "default": "80", "description": "Scroll offset in pixels (to account for sticky headers)" },
-        { "name": "maxW", "type": "number", "required": false, "default": "1100", "description": "Maximum width" },
-        { "name": "px", "type": "number", "required": false, "default": "20", "description": "Horizontal padding" },
-        { "name": "py", "type": "number", "required": false, "default": "12", "description": "Vertical padding" },
-        { "name": "radius", "type": "number", "required": false, "default": "14", "description": "Border radius" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between items" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"nav\"",
+          "description": "HTML element to render as"
+        },
+        {
+          "name": "items",
+          "type": "AnchorItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of anchor items: {label, targetId}"
+        },
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "required": false,
+          "default": "\"horizontal\"",
+          "description": "Layout direction"
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "required": false,
+          "default": "80",
+          "description": "Scroll offset in pixels (to account for sticky headers)"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "1100",
+          "description": "Maximum width"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "20",
+          "description": "Horizontal padding"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "12",
+          "description": "Vertical padding"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Border radius"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between items"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["landing", "documentation", "marketing", "blog"],
         "placement": "body",
@@ -271,20 +988,100 @@
       "whenToUse": "Use for mobile-responsive navigation or as a secondary navigation drawer on desktop. Great for apps that need off-canvas menus.",
       "isShell": false,
       "props": [
-        { "name": "links", "type": "DrawerLink[]", "required": true, "default": null, "description": "Array of links: {label, href, icon?}" },
-        { "name": "width", "type": "number", "required": false, "default": "300", "description": "Width of the drawer" },
-        { "name": "padding", "type": "number", "required": false, "default": "24", "description": "Internal padding" },
-        { "name": "gap", "type": "number", "required": false, "default": "8", "description": "Gap between links" },
-        { "name": "overlayColor", "type": "string", "required": false, "default": "\"rgba(0,0,0,0.8)\"", "description": "Overlay backdrop color" },
-        { "name": "position", "type": "\"left\" | \"right\"", "required": false, "default": "\"left\"", "description": "Which side the drawer slides from" },
-        { "name": "logoText", "type": "string", "required": false, "default": "\"Menu\"", "description": "Text shown at the top of the drawer" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "links",
+          "type": "DrawerLink[]",
+          "required": true,
+          "default": null,
+          "description": "Array of links: {label, href, icon?}"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "300",
+          "description": "Width of the drawer"
+        },
+        {
+          "name": "padding",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Internal padding"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "8",
+          "description": "Gap between links"
+        },
+        {
+          "name": "overlayColor",
+          "type": "string",
+          "required": false,
+          "default": "\"rgba(0,0,0,0.8)\"",
+          "description": "Overlay backdrop color"
+        },
+        {
+          "name": "position",
+          "type": "\"left\" | \"right\"",
+          "required": false,
+          "default": "\"left\"",
+          "description": "Which side the drawer slides from"
+        },
+        {
+          "name": "logoText",
+          "type": "string",
+          "required": false,
+          "default": "\"Menu\"",
+          "description": "Text shown at the top of the drawer"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["landing", "marketing", "ecommerce", "blog", "portfolio"],
         "placement": "overlay",
@@ -302,20 +1099,104 @@
       "whenToUse": "Use on internationalized sites that support multiple languages. Typically placed in the header or footer.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element to render as" },
-        { "name": "languages", "type": "Language[]", "required": true, "default": null, "description": "Array of languages: {code, label, flag?}" },
-        { "name": "current", "type": "string", "required": true, "default": null, "description": "Currently selected language code" },
-        { "name": "onChange", "type": "(code: string) => void", "required": false, "default": null, "description": "Callback when language is changed" },
-        { "name": "px", "type": "number", "required": false, "default": "14", "description": "Horizontal padding" },
-        { "name": "py", "type": "number", "required": false, "default": "10", "description": "Vertical padding" },
-        { "name": "radius", "type": "number", "required": false, "default": "12", "description": "Border radius" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element to render as"
+        },
+        {
+          "name": "languages",
+          "type": "Language[]",
+          "required": true,
+          "default": null,
+          "description": "Array of languages: {code, label, flag?}"
+        },
+        {
+          "name": "current",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Currently selected language code"
+        },
+        {
+          "name": "onChange",
+          "type": "(code: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when language is changed"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Horizontal padding"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "10",
+          "description": "Vertical padding"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "12",
+          "description": "Border radius"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
       "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius"],
       "aiHints": {
@@ -335,26 +1216,130 @@
       "whenToUse": "Use on every page as the bottom-most section. Essential for navigation links, legal copy, social presence, and brand identity. Applies to all website types.",
       "isShell": false,
       "props": [
-        { "name": "columns", "type": "FooterColumn[]", "required": false, "default": "[]", "description": "Array of link column groups: {title, links: FooterLink[]}" },
-        { "name": "copyright", "type": "string", "required": false, "default": "auto", "description": "Copyright text displayed at the bottom. Auto-generates year if not provided" },
-        { "name": "socialLinks", "type": "FooterSocialLink[]", "required": false, "default": "[]", "description": "Array of social media links: {icon, href, label?}" },
-        { "name": "logo", "type": "string", "required": false, "default": null, "description": "URL or path to the brand logo image" },
-        { "name": "logoAlt", "type": "string", "required": false, "default": "\"Logo\"", "description": "Alt text for the logo image" },
-        { "name": "tagline", "type": "string", "required": false, "default": null, "description": "Short brand tagline displayed next to logo" },
-        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Additional content rendered between columns and copyright" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "columns",
+          "type": "FooterColumn[]",
+          "required": false,
+          "default": "[]",
+          "description": "Array of link column groups: {title, links: FooterLink[]}"
+        },
+        {
+          "name": "copyright",
+          "type": "string",
+          "required": false,
+          "default": "auto",
+          "description": "Copyright text displayed at the bottom. Auto-generates year if not provided"
+        },
+        {
+          "name": "socialLinks",
+          "type": "FooterSocialLink[]",
+          "required": false,
+          "default": "[]",
+          "description": "Array of social media links: {icon, href, label?}"
+        },
+        {
+          "name": "logo",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL or path to the brand logo image"
+        },
+        {
+          "name": "logoAlt",
+          "type": "string",
+          "required": false,
+          "default": "\"Logo\"",
+          "description": "Alt text for the logo image"
+        },
+        {
+          "name": "tagline",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Short brand tagline displayed next to logo"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Additional content rendered between columns and copyright"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "restaurant", "fitness", "education", "event", "nonprofit", "realestate", "agency", "health", "community", "marketplace", "documentation"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "restaurant",
+          "fitness",
+          "education",
+          "event",
+          "nonprofit",
+          "realestate",
+          "agency",
+          "health",
+          "community",
+          "marketplace",
+          "documentation"
+        ],
         "placement": "footer",
         "priority": 10,
         "sequenceOrder": 10,
-        "pairsWellWith": ["navigation.PrimaryNav", "forms.NewsletterSignup", "social.SocialShareBar", "siteIdentity.LogoDisplay"],
+        "pairsWellWith": [
+          "navigation.PrimaryNav",
+          "forms.NewsletterSignup",
+          "social.SocialShareBar",
+          "siteIdentity.LogoDisplay"
+        ],
         "maxPerPage": 1,
         "isContainer": true
       }

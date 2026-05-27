@@ -14,21 +14,108 @@
       "whenToUse": "Use on all pages to comply with cookie/privacy regulations. Displays as an overlay banner prompting users to accept or decline cookies.",
       "isShell": false,
       "props": [
-        { "name": "message", "type": "string", "required": false, "default": "\"We use cookies to improve your experience.\"", "description": "The consent message displayed to the user" },
-        { "name": "ctaLabel", "type": "string", "required": false, "default": "\"Accept\"", "description": "Label for the accept/CTA button" },
-        { "name": "declineLabel", "type": "string", "required": false, "default": "\"Decline\"", "description": "Label for the decline button" },
-        { "name": "onAccept", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the user accepts cookies" },
-        { "name": "onDecline", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the user declines cookies" },
-        { "name": "position", "type": "\"top\" | \"bottom\"", "required": false, "default": "\"bottom\"", "description": "Position of the consent banner on the viewport" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "message",
+          "type": "string",
+          "required": false,
+          "default": "\"We use cookies to improve your experience.\"",
+          "description": "The consent message displayed to the user"
+        },
+        {
+          "name": "ctaLabel",
+          "type": "string",
+          "required": false,
+          "default": "\"Accept\"",
+          "description": "Label for the accept/CTA button"
+        },
+        {
+          "name": "declineLabel",
+          "type": "string",
+          "required": false,
+          "default": "\"Decline\"",
+          "description": "Label for the decline button"
+        },
+        {
+          "name": "onAccept",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user accepts cookies"
+        },
+        {
+          "name": "onDecline",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user declines cookies"
+        },
+        {
+          "name": "position",
+          "type": "\"top\" | \"bottom\"",
+          "required": false,
+          "default": "\"bottom\"",
+          "description": "Position of the consent banner on the viewport"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "surfaceColor", "codeBg", "codeText", "mutedText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "surfaceColor",
+        "codeBg",
+        "codeText",
+        "mutedText"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "documentation"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "documentation"
+        ],
         "placement": "overlay",
         "priority": 6,
         "sequenceOrder": 10,
@@ -44,22 +131,86 @@
       "whenToUse": "Use on long-form content pages such as blog posts, documentation articles, or guides to show the reader how far they have scrolled.",
       "isShell": false,
       "props": [
-        { "name": "color", "type": "string", "required": false, "default": "\"linear-gradient(90deg, var(--accent), var(--accentHover))\"", "description": "Color or gradient for the progress bar" },
-        { "name": "height", "type": "number", "required": false, "default": "3", "description": "Height of the progress bar in pixels" },
-        { "name": "zIndex", "type": "number", "required": false, "default": "9997", "description": "CSS z-index of the progress bar" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "color",
+          "type": "string",
+          "required": false,
+          "default": "\"linear-gradient(90deg, var(--accent), var(--accentHover))\"",
+          "description": "Color or gradient for the progress bar"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "3",
+          "description": "Height of the progress bar in pixels"
+        },
+        {
+          "name": "zIndex",
+          "type": "number",
+          "required": false,
+          "default": "9997",
+          "description": "CSS z-index of the progress bar"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "surfaceColor", "codeBg", "codeText", "mutedText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "surfaceColor",
+        "codeBg",
+        "codeText",
+        "mutedText"
+      ],
       "aiHints": {
         "pageTypes": ["blog", "documentation"],
         "placement": "overlay",
         "priority": 4,
         "sequenceOrder": 1,
-        "pairsWellWith": ["navigation.PrimaryNav", "content.HeadingSection", "navigation.AnchorLinks"],
+        "pairsWellWith": [
+          "navigation.PrimaryNav",
+          "content.HeadingSection",
+          "navigation.AnchorLinks"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -71,18 +222,87 @@
       "whenToUse": "Use on all pages to give users control over the site's color scheme. Typically placed in the header or navigation bar.",
       "isShell": false,
       "props": [
-        { "name": "isDark", "type": "boolean", "required": false, "default": "true", "description": "Whether the current theme is dark mode" },
-        { "name": "onToggle", "type": "(dark: boolean) => void", "required": false, "default": null, "description": "Callback fired when the toggle is clicked, receives the new dark state" },
-        { "name": "size", "type": "number", "required": false, "default": "40", "description": "Size of the toggle button in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "isDark",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether the current theme is dark mode"
+        },
+        {
+          "name": "onToggle",
+          "type": "(dark: boolean) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the toggle is clicked, receives the new dark state"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false,
+          "default": "40",
+          "description": "Size of the toggle button in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "surfaceColor", "codeBg", "codeText", "mutedText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "surfaceColor",
+        "codeBg",
+        "codeText",
+        "mutedText"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "documentation"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "documentation"
+        ],
         "placement": "header",
         "priority": 5,
         "sequenceOrder": 1,
@@ -98,18 +318,90 @@
       "whenToUse": "Use in dashboards, search results, or any area where content may be absent. Guides the user with a friendly message and optional action.",
       "isShell": false,
       "props": [
-        { "name": "icon", "type": "string", "required": false, "default": "\"inbox\"", "description": "Icon name to display in the empty state" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Nothing here yet\"", "description": "Heading text for the empty state" },
-        { "name": "description", "type": "string", "required": false, "default": null, "description": "Optional descriptive text below the title" },
-        { "name": "ctaLabel", "type": "string", "required": false, "default": null, "description": "Label for the optional CTA button" },
-        { "name": "onCta", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the CTA button is clicked" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "icon",
+          "type": "string",
+          "required": false,
+          "default": "\"inbox\"",
+          "description": "Icon name to display in the empty state"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Nothing here yet\"",
+          "description": "Heading text for the empty state"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional descriptive text below the title"
+        },
+        {
+          "name": "ctaLabel",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Label for the optional CTA button"
+        },
+        {
+          "name": "onCta",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the CTA button is clicked"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "surfaceColor", "codeBg", "codeText", "mutedText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "surfaceColor",
+        "codeBg",
+        "codeText",
+        "mutedText"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "search"],
         "placement": "body",
@@ -127,19 +419,97 @@
       "whenToUse": "Use on mobile-focused or marketing pages to encourage native app downloads. Shows as an overlay banner that can be dismissed by the user.",
       "isShell": false,
       "props": [
-        { "name": "title", "type": "string", "required": false, "default": "\"Get Our App\"", "description": "Banner headline text" },
-        { "name": "description", "type": "string", "required": false, "default": "\"Download the app for a better experience.\"", "description": "Supporting description text" },
-        { "name": "iosUrl", "type": "string", "required": false, "default": null, "description": "URL to the iOS App Store listing" },
-        { "name": "androidUrl", "type": "string", "required": false, "default": null, "description": "URL to the Google Play Store listing" },
-        { "name": "icon", "type": "string", "required": false, "default": "\"smartphone\"", "description": "Icon name displayed in the banner" },
-        { "name": "onDismiss", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the user dismisses the banner" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Get Our App\"",
+          "description": "Banner headline text"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": "\"Download the app for a better experience.\"",
+          "description": "Supporting description text"
+        },
+        {
+          "name": "iosUrl",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL to the iOS App Store listing"
+        },
+        {
+          "name": "androidUrl",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL to the Google Play Store listing"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "required": false,
+          "default": "\"smartphone\"",
+          "description": "Icon name displayed in the banner"
+        },
+        {
+          "name": "onDismiss",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user dismisses the banner"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "surfaceColor", "codeBg", "codeText", "mutedText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "surfaceColor",
+        "codeBg",
+        "codeText",
+        "mutedText"
+      ],
       "aiHints": {
         "pageTypes": ["mobile", "marketing"],
         "placement": "overlay",
@@ -157,17 +527,83 @@
       "whenToUse": "Use in documentation, blog posts, or resource pages where users need to download files such as PDFs, templates, or datasets.",
       "isShell": false,
       "props": [
-        { "name": "fileName", "type": "string", "required": true, "default": null, "description": "Name of the file to download" },
-        { "name": "fileSize", "type": "string", "required": false, "default": null, "description": "Human-readable file size (e.g. \"2.4 MB\")" },
-        { "name": "href", "type": "string", "required": true, "default": null, "description": "URL to the downloadable file" },
-        { "name": "icon", "type": "string", "required": false, "default": "\"download\"", "description": "Icon name displayed on the download card" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "fileName",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Name of the file to download"
+        },
+        {
+          "name": "fileSize",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Human-readable file size (e.g. \"2.4 MB\")"
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "URL to the downloadable file"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "required": false,
+          "default": "\"download\"",
+          "description": "Icon name displayed on the download card"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "surfaceColor", "codeBg", "codeText", "mutedText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "surfaceColor",
+        "codeBg",
+        "codeText",
+        "mutedText"
+      ],
       "aiHints": {
         "pageTypes": ["documentation", "blog"],
         "placement": "body",
@@ -185,15 +621,69 @@
       "whenToUse": "Use in documentation, blog posts, or technical content to highlight inline code references, terminal commands, or short code snippets.",
       "isShell": false,
       "props": [
-        { "name": "children", "type": "string", "required": true, "default": null, "description": "The code text to display inline" },
-        { "name": "copyable", "type": "boolean", "required": false, "default": "true", "description": "Whether to show a copy-to-clipboard button" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "children",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The code text to display inline"
+        },
+        {
+          "name": "copyable",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to show a copy-to-clipboard button"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "surfaceColor", "codeBg", "codeText", "mutedText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "surfaceColor",
+        "codeBg",
+        "codeText",
+        "mutedText"
+      ],
       "aiHints": {
         "pageTypes": ["documentation", "blog"],
         "placement": "body",
@@ -211,15 +701,69 @@
       "whenToUse": "Use on blog index pages, news sections, or content aggregation pages to display a list of RSS feed entries.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "RSSItem[]", "required": true, "default": null, "description": "Array of RSS feed items: {id, title, link, date?, summary?}" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Latest Updates\"", "description": "Heading text displayed above the feed list" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "items",
+          "type": "RSSItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of RSS feed items: {id, title, link, date?, summary?}"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Latest Updates\"",
+          "description": "Heading text displayed above the feed list"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "surfaceColor", "codeBg", "codeText", "mutedText"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "surfaceColor",
+        "codeBg",
+        "codeText",
+        "mutedText"
+      ],
       "aiHints": {
         "pageTypes": ["blog", "news"],
         "placement": "body",

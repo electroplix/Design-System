@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import { Icon } from "../../core/icons";
-import { useNavTheme } from "../../core/provider";
+'use client';
+import React from 'react';
+import { Icon } from '../../core/icons';
+import { useNavTheme } from '../../core/provider';
 
 export type Step = {
   label: string;
@@ -11,7 +11,7 @@ export type Step = {
 export interface StepperProps {
   steps: Step[];
   currentStep: number;
-  orientation?: "horizontal" | "vertical";
+  orientation?: 'horizontal' | 'vertical';
   showNumbers?: boolean;
   bgColor?: string;
   textColor?: string;
@@ -26,18 +26,18 @@ export function Stepper(props: StepperProps) {
   const {
     steps,
     currentStep,
-    orientation = "horizontal",
+    orientation = 'horizontal',
     showNumbers = true,
-    bgColor = t.bgColor ?? "#ffffff",
-    textColor = t.textColor ?? "#09090b",
-    accentColor = t.accentColor ?? "#18181b",
-    borderColor = t.borderColor ?? "#e4e4e7",
+    bgColor = t.bgColor ?? '#ffffff',
+    textColor = t.textColor ?? '#09090b',
+    accentColor = t.accentColor ?? '#18181b',
+    borderColor = t.borderColor ?? '#e4e4e7',
     fontFamily = t.fontFamily,
   } = props;
 
-  const mutedColor = "#71717a";
-  const surfaceColor = "#fafafa";
-  const successColor = "#16a34a";
+  const mutedColor = '#71717a';
+  const surfaceColor = '#fafafa';
+  const successColor = '#16a34a';
 
   const idx = currentStep;
 
@@ -49,24 +49,17 @@ export function Stepper(props: StepperProps) {
         borderRadius: 16,
         background: bgColor,
         border: `1px solid ${borderColor}`,
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       <ol
         style={{
-          display: "flex",
-          flexDirection:
-            orientation === "vertical" ? "column" : "row",
-          gap: orientation === "vertical" ? 24 : 0,
-          alignItems:
-            orientation === "vertical"
-              ? "stretch"
-              : "center",
-          justifyContent:
-            orientation === "horizontal"
-              ? "space-between"
-              : "flex-start",
-          listStyle: "none",
+          display: 'flex',
+          flexDirection: orientation === 'vertical' ? 'column' : 'row',
+          gap: orientation === 'vertical' ? 24 : 0,
+          alignItems: orientation === 'vertical' ? 'stretch' : 'center',
+          justifyContent: orientation === 'horizontal' ? 'space-between' : 'flex-start',
+          listStyle: 'none',
           margin: 0,
           padding: 0,
         }}
@@ -80,23 +73,16 @@ export function Stepper(props: StepperProps) {
             <li
               key={s.label}
               style={{
-                display: "flex",
-                alignItems:
-                  orientation === "vertical"
-                    ? "flex-start"
-                    : "center",
-                flex:
-                  orientation === "horizontal" && !isLast
-                    ? 1
-                    : "none",
-                gap:
-                  orientation === "vertical" ? 12 : 0,
+                display: 'flex',
+                alignItems: orientation === 'vertical' ? 'flex-start' : 'center',
+                flex: orientation === 'horizontal' && !isLast ? 1 : 'none',
+                gap: orientation === 'vertical' ? 12 : 0,
               }}
             >
               <div
                 style={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 12,
                   flexShrink: 0,
                 }}
@@ -106,53 +92,29 @@ export function Stepper(props: StepperProps) {
                     width: 38,
                     height: 38,
                     borderRadius: 12,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: isDone
-                      ? successColor
-                      : isActive
-                      ? accentColor
-                      : surfaceColor,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: isDone ? successColor : isActive ? accentColor : surfaceColor,
                     border:
                       isDone || isActive
-                        ? `1px solid ${
-                            isDone
-                              ? successColor
-                              : accentColor
-                          }`
+                        ? `1px solid ${isDone ? successColor : accentColor}`
                         : `1px solid ${borderColor}`,
-                    color:
-                      isDone || isActive
-                        ? "#ffffff"
-                        : mutedColor,
+                    color: isDone || isActive ? '#ffffff' : mutedColor,
                     fontWeight: 700,
                     fontSize: 14,
-                    boxShadow:
-                      isActive
-                        ? "0 1px 2px rgba(9, 9, 11, 0.08)"
-                        : "0 1px 2px rgba(9, 9, 11, 0.03)",
-                    transition: "all 0.2s ease",
+                    boxShadow: isActive
+                      ? '0 1px 2px rgba(9, 9, 11, 0.08)'
+                      : '0 1px 2px rgba(9, 9, 11, 0.03)',
+                    transition: 'all 0.2s ease',
                   }}
                 >
                   {isDone ? (
-                    <Icon
-                      name="check"
-                      size={16}
-                      color="#ffffff"
-                    />
+                    <Icon name="check" size={16} color="#ffffff" />
                   ) : showNumbers ? (
                     i + 1
                   ) : (
-                    <Icon
-                      name="circle"
-                      size={8}
-                      color={
-                        isActive
-                          ? "#ffffff"
-                          : mutedColor
-                      }
-                    />
+                    <Icon name="circle" size={8} color={isActive ? '#ffffff' : mutedColor} />
                   )}
                 </div>
 
@@ -161,11 +123,8 @@ export function Stepper(props: StepperProps) {
                     style={{
                       fontWeight: 600,
                       fontSize: 14,
-                      color:
-                        isDone || isActive
-                          ? textColor
-                          : mutedColor,
-                      transition: "color 0.2s ease",
+                      color: isDone || isActive ? textColor : mutedColor,
+                      transition: 'color 0.2s ease',
                     }}
                   >
                     {s.label}
@@ -186,17 +145,15 @@ export function Stepper(props: StepperProps) {
                 </div>
               </div>
 
-              {orientation === "horizontal" && !isLast && (
+              {orientation === 'horizontal' && !isLast && (
                 <div
                   style={{
                     flex: 1,
                     height: 2,
                     marginInline: 16,
-                    background: isDone
-                      ? accentColor
-                      : borderColor,
+                    background: isDone ? accentColor : borderColor,
                     borderRadius: 999,
-                    transition: "background 0.2s ease",
+                    transition: 'background 0.2s ease',
                   }}
                 />
               )}

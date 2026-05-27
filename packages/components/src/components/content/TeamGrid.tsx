@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import { useContentTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React from 'react';
+import { useContentTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── TeamGrid ───────────────────────────────────────────── */
 
@@ -27,13 +27,13 @@ export interface TeamGridProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
 };
 
 export function TeamGrid({
@@ -59,7 +59,7 @@ export function TeamGrid({
   return (
     <section style={{ fontFamily: ff, color: fg }}>
       {(title || subtitle) && (
-        <div style={{ textAlign: "center", marginBottom: 32 }}>
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
           {title && (
             <h2
               style={{
@@ -68,7 +68,7 @@ export function TeamGrid({
                 margin: 0,
                 lineHeight: 1.15,
                 color: ui.black,
-                letterSpacing: "-0.04em",
+                letterSpacing: '-0.04em',
               }}
             >
               {title}
@@ -81,7 +81,7 @@ export function TeamGrid({
                 color: ui.muted,
                 marginTop: 10,
                 lineHeight: 1.6,
-                margin: "10px 0 0",
+                margin: '10px 0 0',
               }}
             >
               {subtitle}
@@ -92,16 +92,16 @@ export function TeamGrid({
 
       <div
         style={{
-          display: "grid",
+          display: 'grid',
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
           gap: 20,
         }}
       >
         {members.map((m) => {
           const initials = m.name
-            .split(" ")
+            .split(' ')
             .map((w) => w[0])
-            .join("")
+            .join('')
             .slice(0, 2)
             .toUpperCase();
 
@@ -111,19 +111,19 @@ export function TeamGrid({
               style={{
                 border: `1px solid ${border}`,
                 borderRadius: r,
-                overflow: "hidden",
+                overflow: 'hidden',
                 background: bg,
-                textAlign: "center",
-                transition: "all 180ms ease",
-                boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+                textAlign: 'center',
+                transition: 'all 180ms ease',
+                boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
               }}
             >
               {/* Avatar */}
               <div
                 style={{
-                  padding: "28px 20px 0",
-                  display: "flex",
-                  justifyContent: "center",
+                  padding: '28px 20px 0',
+                  display: 'flex',
+                  justifyContent: 'center',
                 }}
               >
                 {m.image ? (
@@ -133,10 +133,10 @@ export function TeamGrid({
                     style={{
                       width: 88,
                       height: 88,
-                      borderRadius: "50%",
-                      objectFit: "cover",
+                      borderRadius: '50%',
+                      objectFit: 'cover',
                       border: `1px solid ${ui.border}`,
-                      boxShadow: "0 1px 2px rgba(9, 9, 11, 0.05)",
+                      boxShadow: '0 1px 2px rgba(9, 9, 11, 0.05)',
                     }}
                   />
                 ) : (
@@ -144,12 +144,12 @@ export function TeamGrid({
                     style={{
                       width: 88,
                       height: 88,
-                      borderRadius: "50%",
+                      borderRadius: '50%',
                       background: ui.surface,
                       border: `1px solid ${ui.border}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       fontSize: 28,
                       fontWeight: 800,
                       color: accent,
@@ -161,13 +161,13 @@ export function TeamGrid({
               </div>
 
               {/* Info */}
-              <div style={{ padding: "18px 20px 22px" }}>
+              <div style={{ padding: '18px 20px 22px' }}>
                 <div
                   style={{
                     fontWeight: 700,
                     fontSize: 17,
                     color: ui.black,
-                    letterSpacing: "-0.02em",
+                    letterSpacing: '-0.02em',
                   }}
                 >
                   {m.name}
@@ -203,8 +203,8 @@ export function TeamGrid({
                 {m.socials && m.socials.length > 0 && (
                   <div
                     style={{
-                      display: "flex",
-                      justifyContent: "center",
+                      display: 'flex',
+                      justifyContent: 'center',
                       gap: 8,
                       marginTop: 16,
                     }}
@@ -218,16 +218,16 @@ export function TeamGrid({
                         style={{
                           width: 34,
                           height: 34,
-                          borderRadius: "50%",
+                          borderRadius: '50%',
                           border: `1px solid ${ui.border}`,
                           background: ui.white,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                           color: ui.text,
-                          textDecoration: "none",
-                          transition: "all 150ms ease",
-                          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+                          textDecoration: 'none',
+                          transition: 'all 150ms ease',
+                          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
                         }}
                       >
                         <Icon name={s.icon} size={14} color={ui.text} />

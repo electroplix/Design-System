@@ -1,5 +1,5 @@
-import React from "react";
-import { ElectroplixProvider } from "../core/provider";
+import React from 'react';
+import { ElectroplixProvider } from '../core/provider';
 
 /**
  * Wraps children in ElectroplixProvider for testing.

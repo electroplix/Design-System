@@ -14,17 +14,61 @@
       "whenToUse": "Use to highlight status, category, or metadata inline with other content. Ideal for tags, labels, and status indicators across any page type.",
       "isShell": false,
       "props": [
-        { "name": "children", "type": "ReactNode", "required": true, "default": null, "description": "Content to display inside the badge" },
-        { "name": "tone", "type": "\"neutral\" | \"success\" | \"warning\" | \"danger\" | \"info\"", "required": false, "default": "\"neutral\"", "description": "Semantic color tone for the badge" },
-        { "name": "pill", "type": "boolean", "required": false, "default": "true", "description": "Whether to render the badge with fully rounded pill shape" }
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Content to display inside the badge"
+        },
+        {
+          "name": "tone",
+          "type": "\"neutral\" | \"success\" | \"warning\" | \"danger\" | \"info\"",
+          "required": false,
+          "default": "\"neutral\"",
+          "description": "Semantic color tone for the badge"
+        },
+        {
+          "name": "pill",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to render the badge with fully rounded pill shape"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "admin", "documentation"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "admin",
+          "documentation"
+        ],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 5,
-        "pairsWellWith": ["dataDisplay.BadgeGroup", "dataDisplay.DataTable", "content.HeadingSection"],
+        "pairsWellWith": [
+          "dataDisplay.BadgeGroup",
+          "dataDisplay.DataTable",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 20,
         "isContainer": false
       }
@@ -36,11 +80,41 @@
       "whenToUse": "Use to display a collection of tags or labels together, such as blog post tags, product categories, or skill lists on portfolios.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "string[]", "required": true, "default": null, "description": "Array of label strings to render as individual badges" },
-        { "name": "tone", "type": "\"neutral\" | \"success\" | \"warning\" | \"danger\" | \"info\"", "required": false, "default": "\"neutral\"", "description": "Semantic color tone applied to all badges in the group" },
-        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional heading displayed above the badge group" }
+        {
+          "name": "items",
+          "type": "string[]",
+          "required": true,
+          "default": null,
+          "description": "Array of label strings to render as individual badges"
+        },
+        {
+          "name": "tone",
+          "type": "\"neutral\" | \"success\" | \"warning\" | \"danger\" | \"info\"",
+          "required": false,
+          "default": "\"neutral\"",
+          "description": "Semantic color tone applied to all badges in the group"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional heading displayed above the badge group"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog", "ecommerce"],
         "placement": "body",
@@ -58,22 +132,87 @@
       "whenToUse": "Use to visualize categorical or time-series data as vertical bars. Ideal for dashboards, analytics pages, and reports comparing discrete values.",
       "isShell": false,
       "props": [
-        { "name": "data", "type": "number[]", "required": true, "default": null, "description": "Array of numeric values for each bar" },
-        { "name": "labels", "type": "string[]", "required": false, "default": null, "description": "Array of labels for the x-axis corresponding to each data point" },
-        { "name": "width", "type": "number", "required": false, "default": "520", "description": "Width of the chart in pixels" },
-        { "name": "height", "type": "number", "required": false, "default": "260", "description": "Height of the chart in pixels" },
-        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional title displayed above the chart" },
-        { "name": "showGrid", "type": "boolean", "required": false, "default": "true", "description": "Whether to show horizontal grid lines" },
-        { "name": "padding", "type": "number", "required": false, "default": "32", "description": "Internal padding around the chart area in pixels" },
-        { "name": "barRadius", "type": "number", "required": false, "default": "6", "description": "Border radius of the top corners of each bar" }
+        {
+          "name": "data",
+          "type": "number[]",
+          "required": true,
+          "default": null,
+          "description": "Array of numeric values for each bar"
+        },
+        {
+          "name": "labels",
+          "type": "string[]",
+          "required": false,
+          "default": null,
+          "description": "Array of labels for the x-axis corresponding to each data point"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "520",
+          "description": "Width of the chart in pixels"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "260",
+          "description": "Height of the chart in pixels"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional title displayed above the chart"
+        },
+        {
+          "name": "showGrid",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to show horizontal grid lines"
+        },
+        {
+          "name": "padding",
+          "type": "number",
+          "required": false,
+          "default": "32",
+          "description": "Internal padding around the chart area in pixels"
+        },
+        {
+          "name": "barRadius",
+          "type": "number",
+          "required": false,
+          "default": "6",
+          "description": "Border radius of the top corners of each bar"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "analytics", "landing", "marketing", "saas", "nonprofit"],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 5,
-        "pairsWellWith": ["dataDisplay.LineChart", "dataDisplay.PieChart", "dataDisplay.Sparkline", "content.HeadingSection"],
+        "pairsWellWith": [
+          "dataDisplay.LineChart",
+          "dataDisplay.PieChart",
+          "dataDisplay.Sparkline",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 4,
         "isContainer": false
       }
@@ -85,16 +224,75 @@
       "whenToUse": "Use to display a monthly view with highlighted dates for events, bookings, or deadlines. Ideal for dashboard scheduling widgets and booking pages.",
       "isShell": false,
       "props": [
-        { "name": "year", "type": "number", "required": true, "default": null, "description": "Full year to display (e.g. 2026)" },
-        { "name": "month", "type": "number", "required": true, "default": null, "description": "Month to display (1-12)" },
-        { "name": "startOn", "type": "0 | 1", "required": false, "default": "0", "description": "Day the week starts on: 0 for Sunday, 1 for Monday" },
-        { "name": "marks", "type": "CalendarMark[]", "required": false, "default": "[]", "description": "Array of date marks: {date: number, label?: string, tone?: string}" },
-        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional title displayed above the calendar" },
-        { "name": "onDateClick", "type": "(date: number) => void", "required": false, "default": null, "description": "Callback fired when a date cell is clicked" }
+        {
+          "name": "year",
+          "type": "number",
+          "required": true,
+          "default": null,
+          "description": "Full year to display (e.g. 2026)"
+        },
+        {
+          "name": "month",
+          "type": "number",
+          "required": true,
+          "default": null,
+          "description": "Month to display (1-12)"
+        },
+        {
+          "name": "startOn",
+          "type": "0 | 1",
+          "required": false,
+          "default": "0",
+          "description": "Day the week starts on: 0 for Sunday, 1 for Monday"
+        },
+        {
+          "name": "marks",
+          "type": "CalendarMark[]",
+          "required": false,
+          "default": "[]",
+          "description": "Array of date marks: {date: number, label?: string, tone?: string}"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional title displayed above the calendar"
+        },
+        {
+          "name": "onDateClick",
+          "type": "(date: number) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when a date cell is clicked"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
-        "pageTypes": ["dashboard", "booking", "event", "schedule", "education", "fitness", "restaurant", "health", "community", "landing"],
+        "pageTypes": [
+          "dashboard",
+          "booking",
+          "event",
+          "schedule",
+          "education",
+          "fitness",
+          "restaurant",
+          "health",
+          "community",
+          "landing"
+        ],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 5,
@@ -110,22 +308,87 @@
       "whenToUse": "Use to display structured tabular data with interactive features. Essential for admin panels, dashboard data views, ecommerce order lists, and any page requiring sortable, searchable data.",
       "isShell": false,
       "props": [
-        { "name": "columns", "type": "DataTableColumn<T>[]", "required": true, "default": null, "description": "Array of column definitions: {key: keyof T, label: string, width?: number, align?: string, render?: (value, row) => ReactNode, sortable?: boolean}" },
-        { "name": "rows", "type": "T[]", "required": true, "default": null, "description": "Array of row data objects matching the column keys" },
-        { "name": "pageSize", "type": "number", "required": false, "default": "5", "description": "Number of rows displayed per page" },
-        { "name": "zebra", "type": "boolean", "required": false, "default": "true", "description": "Whether to apply alternating row background colors" },
-        { "name": "compact", "type": "boolean", "required": false, "default": "false", "description": "Whether to use compact row height and reduced padding" },
-        { "name": "caption", "type": "string", "required": false, "default": null, "description": "Optional table caption for accessibility" },
-        { "name": "initialSort", "type": "{ key: keyof T; dir: \"asc\" | \"desc\" }", "required": false, "default": null, "description": "Initial sort configuration: {key, dir}" },
-        { "name": "searchable", "type": "boolean", "required": false, "default": "false", "description": "Whether to show a search/filter input above the table" }
+        {
+          "name": "columns",
+          "type": "DataTableColumn<T>[]",
+          "required": true,
+          "default": null,
+          "description": "Array of column definitions: {key: keyof T, label: string, width?: number, align?: string, render?: (value, row) => ReactNode, sortable?: boolean}"
+        },
+        {
+          "name": "rows",
+          "type": "T[]",
+          "required": true,
+          "default": null,
+          "description": "Array of row data objects matching the column keys"
+        },
+        {
+          "name": "pageSize",
+          "type": "number",
+          "required": false,
+          "default": "5",
+          "description": "Number of rows displayed per page"
+        },
+        {
+          "name": "zebra",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to apply alternating row background colors"
+        },
+        {
+          "name": "compact",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to use compact row height and reduced padding"
+        },
+        {
+          "name": "caption",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional table caption for accessibility"
+        },
+        {
+          "name": "initialSort",
+          "type": "{ key: keyof T; dir: \"asc\" | \"desc\" }",
+          "required": false,
+          "default": null,
+          "description": "Initial sort configuration: {key, dir}"
+        },
+        {
+          "name": "searchable",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to show a search/filter input above the table"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "admin", "ecommerce"],
         "placement": "body",
         "priority": 9,
         "sequenceOrder": 5,
-        "pairsWellWith": ["navigation.Pagination", "navigation.Tabs", "dataDisplay.Badge", "content.HeadingSection"],
+        "pairsWellWith": [
+          "navigation.Pagination",
+          "navigation.Tabs",
+          "dataDisplay.Badge",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 3,
         "isContainer": false
       }
@@ -137,21 +400,80 @@
       "whenToUse": "Use to display trend data, time series, or continuous metrics. Ideal for dashboards and analytics pages showing performance over time.",
       "isShell": false,
       "props": [
-        { "name": "data", "type": "number[]", "required": true, "default": null, "description": "Array of numeric values for each data point on the line" },
-        { "name": "labels", "type": "string[]", "required": false, "default": null, "description": "Array of labels for the x-axis corresponding to each data point" },
-        { "name": "width", "type": "number", "required": false, "default": "520", "description": "Width of the chart in pixels" },
-        { "name": "height", "type": "number", "required": false, "default": "260", "description": "Height of the chart in pixels" },
-        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional title displayed above the chart" },
-        { "name": "showGrid", "type": "boolean", "required": false, "default": "true", "description": "Whether to show horizontal grid lines" },
-        { "name": "padding", "type": "number", "required": false, "default": "32", "description": "Internal padding around the chart area in pixels" }
+        {
+          "name": "data",
+          "type": "number[]",
+          "required": true,
+          "default": null,
+          "description": "Array of numeric values for each data point on the line"
+        },
+        {
+          "name": "labels",
+          "type": "string[]",
+          "required": false,
+          "default": null,
+          "description": "Array of labels for the x-axis corresponding to each data point"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "520",
+          "description": "Width of the chart in pixels"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "260",
+          "description": "Height of the chart in pixels"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional title displayed above the chart"
+        },
+        {
+          "name": "showGrid",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to show horizontal grid lines"
+        },
+        {
+          "name": "padding",
+          "type": "number",
+          "required": false,
+          "default": "32",
+          "description": "Internal padding around the chart area in pixels"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "analytics", "landing", "marketing", "saas"],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 5,
-        "pairsWellWith": ["dataDisplay.BarChart", "dataDisplay.Sparkline", "dataDisplay.PieChart", "content.HeadingSection"],
+        "pairsWellWith": [
+          "dataDisplay.BarChart",
+          "dataDisplay.Sparkline",
+          "dataDisplay.PieChart",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 4,
         "isContainer": false
       }
@@ -163,19 +485,66 @@
       "whenToUse": "Use to show composition or distribution of data. Ideal for dashboards and analytics pages displaying category breakdowns or budget allocations.",
       "isShell": false,
       "props": [
-        { "name": "data", "type": "number[]", "required": true, "default": null, "description": "Array of numeric values for each pie segment" },
-        { "name": "labels", "type": "string[]", "required": false, "default": null, "description": "Array of labels corresponding to each segment" },
-        { "name": "width", "type": "number", "required": false, "default": "280", "description": "Width of the chart in pixels" },
-        { "name": "height", "type": "number", "required": false, "default": "280", "description": "Height of the chart in pixels" },
-        { "name": "title", "type": "string", "required": false, "default": null, "description": "Optional title displayed above the chart" }
+        {
+          "name": "data",
+          "type": "number[]",
+          "required": true,
+          "default": null,
+          "description": "Array of numeric values for each pie segment"
+        },
+        {
+          "name": "labels",
+          "type": "string[]",
+          "required": false,
+          "default": null,
+          "description": "Array of labels corresponding to each segment"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "280",
+          "description": "Width of the chart in pixels"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "280",
+          "description": "Height of the chart in pixels"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional title displayed above the chart"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "analytics"],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 5,
-        "pairsWellWith": ["dataDisplay.BarChart", "dataDisplay.LineChart", "dataDisplay.Sparkline", "content.HeadingSection"],
+        "pairsWellWith": [
+          "dataDisplay.BarChart",
+          "dataDisplay.LineChart",
+          "dataDisplay.Sparkline",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 3,
         "isContainer": false
       }
@@ -187,17 +556,79 @@
       "whenToUse": "Use to indicate progress toward a goal, task completion, or loading state. Ideal for dashboards, onboarding flows, and file upload indicators.",
       "isShell": false,
       "props": [
-        { "name": "value", "type": "number", "required": true, "default": null, "description": "Current progress value (0-100)" },
-        { "name": "showLabel", "type": "boolean", "required": false, "default": "true", "description": "Whether to display the percentage label" },
-        { "name": "height", "type": "number", "required": false, "default": "12", "description": "Height of the progress bar in pixels" },
-        { "name": "rounded", "type": "boolean", "required": false, "default": "true", "description": "Whether to render the bar with rounded ends" },
-        { "name": "label", "type": "string", "required": false, "default": null, "description": "Optional text label displayed alongside the bar" },
-        { "name": "showTrend", "type": "boolean", "required": false, "default": "false", "description": "Whether to show a trend indicator comparing to previousValue" },
-        { "name": "previousValue", "type": "number", "required": false, "default": null, "description": "Previous progress value used for trend comparison" }
+        {
+          "name": "value",
+          "type": "number",
+          "required": true,
+          "default": null,
+          "description": "Current progress value (0-100)"
+        },
+        {
+          "name": "showLabel",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to display the percentage label"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "12",
+          "description": "Height of the progress bar in pixels"
+        },
+        {
+          "name": "rounded",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to render the bar with rounded ends"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional text label displayed alongside the bar"
+        },
+        {
+          "name": "showTrend",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to show a trend indicator comparing to previousValue"
+        },
+        {
+          "name": "previousValue",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Previous progress value used for trend comparison"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
-        "pageTypes": ["dashboard", "onboarding", "portfolio", "education", "fitness", "landing", "health"],
+        "pageTypes": [
+          "dashboard",
+          "onboarding",
+          "portfolio",
+          "education",
+          "fitness",
+          "landing",
+          "health"
+        ],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 5,
@@ -213,20 +644,72 @@
       "whenToUse": "Use to display product ratings, review scores, or user feedback. Essential for ecommerce product pages, review sections, and testimonials.",
       "isShell": false,
       "props": [
-        { "name": "value", "type": "number", "required": true, "default": null, "description": "Current rating value" },
-        { "name": "outOf", "type": "number", "required": false, "default": "5", "description": "Maximum number of stars" },
-        { "name": "size", "type": "number", "required": false, "default": "20", "description": "Size of each star in pixels" },
-        { "name": "showValue", "type": "boolean", "required": false, "default": "true", "description": "Whether to display the numeric value next to the stars" },
-        { "name": "interactive", "type": "boolean", "required": false, "default": "false", "description": "Whether users can click to set a rating" },
-        { "name": "onChange", "type": "(value: number) => void", "required": false, "default": null, "description": "Callback fired when the user selects a rating (requires interactive=true)" }
+        {
+          "name": "value",
+          "type": "number",
+          "required": true,
+          "default": null,
+          "description": "Current rating value"
+        },
+        {
+          "name": "outOf",
+          "type": "number",
+          "required": false,
+          "default": "5",
+          "description": "Maximum number of stars"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false,
+          "default": "20",
+          "description": "Size of each star in pixels"
+        },
+        {
+          "name": "showValue",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to display the numeric value next to the stars"
+        },
+        {
+          "name": "interactive",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether users can click to set a rating"
+        },
+        {
+          "name": "onChange",
+          "type": "(value: number) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user selects a rating (requires interactive=true)"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
         "pageTypes": ["ecommerce", "reviews", "marketplace", "restaurant", "agency"],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 6,
-        "pairsWellWith": ["dataDisplay.Badge", "ecommerce.ProductCard", "content.BlockquoteTestimonial"],
+        "pairsWellWith": [
+          "dataDisplay.Badge",
+          "ecommerce.ProductCard",
+          "content.BlockquoteTestimonial"
+        ],
         "maxPerPage": 10,
         "isContainer": false
       }
@@ -238,17 +721,52 @@
       "whenToUse": "Use to show compact trend data inline with other content, such as inside table cells, dashboard cards, or next to metrics.",
       "isShell": false,
       "props": [
-        { "name": "data", "type": "number[]", "required": true, "default": null, "description": "Array of numeric values to plot" },
-        { "name": "width", "type": "number", "required": false, "default": "160", "description": "Width of the sparkline in pixels" },
-        { "name": "height", "type": "number", "required": false, "default": "48", "description": "Height of the sparkline in pixels" }
+        {
+          "name": "data",
+          "type": "number[]",
+          "required": true,
+          "default": null,
+          "description": "Array of numeric values to plot"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "160",
+          "description": "Width of the sparkline in pixels"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "48",
+          "description": "Height of the sparkline in pixels"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "analytics"],
         "placement": "body",
         "priority": 4,
         "sequenceOrder": 5,
-        "pairsWellWith": ["dataDisplay.DataTable", "dataDisplay.BarChart", "dataDisplay.LineChart", "dataDisplay.ProgressBar"],
+        "pairsWellWith": [
+          "dataDisplay.DataTable",
+          "dataDisplay.BarChart",
+          "dataDisplay.LineChart",
+          "dataDisplay.ProgressBar"
+        ],
         "maxPerPage": 10,
         "isContainer": false
       }
@@ -260,11 +778,38 @@
       "whenToUse": "Use to display a chronological sequence of events, milestones, or changelog entries. Ideal for dashboards, portfolio case studies, and product changelogs.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "TimelineItem[]", "required": true, "default": null, "description": "Array of timeline items: {id: string, title: string, description?: string, time?: string, status?: \"done\" | \"in_progress\" | \"blocked\" | \"todo\"}" }
+        {
+          "name": "items",
+          "type": "TimelineItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of timeline items: {id: string, title: string, description?: string, time?: string, status?: \"done\" | \"in_progress\" | \"blocked\" | \"todo\"}"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "gridColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "gridColor"
+      ],
       "aiHints": {
-        "pageTypes": ["dashboard", "portfolio", "changelog", "education", "event", "landing", "marketing", "nonprofit"],
+        "pageTypes": [
+          "dashboard",
+          "portfolio",
+          "changelog",
+          "education",
+          "event",
+          "landing",
+          "marketing",
+          "nonprofit"
+        ],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 6,

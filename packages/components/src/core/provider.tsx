@@ -1,26 +1,51 @@
-"use client";
+'use client';
 /* ------------------------------------------------------------------ */
 /*  ElectroplixProvider — React context for global theme config       */
 /* ------------------------------------------------------------------ */
 
-import React, { createContext, useContext, useMemo } from "react";
-import type { ElectroplixConfig, BaseTheme } from "./types";
-import { defaultConfig, mergeTheme } from "./config";
+import React, { createContext, useContext, useMemo } from 'react';
+import type { ElectroplixConfig, BaseTheme } from './types';
+import { defaultConfig, mergeTheme } from './config';
 
 const Ctx = createContext<ElectroplixConfig>(defaultConfig);
 
 /** Keys that belong to BaseTheme (global overrides), not categories */
 const BASE_KEYS = new Set<string>([
-  "bgColor", "textColor", "accentColor", "borderColor", "fontFamily",
-  "radius", "spacing", "headingSize", "bodySize", "fontWeight",
-  "lineHeight", "letterSpacing", "shadow",
+  'bgColor',
+  'textColor',
+  'accentColor',
+  'borderColor',
+  'fontFamily',
+  'radius',
+  'spacing',
+  'headingSize',
+  'bodySize',
+  'fontWeight',
+  'lineHeight',
+  'letterSpacing',
+  'shadow',
 ]);
 
 /** Keys that map to per-category theme objects */
 const CATEGORY_KEYS = new Set<string>([
-  "blog", "buttons", "content", "dataDisplay", "ecommerce", "forms",
-  "hero", "listsCards", "marketing", "media", "miscellaneous", "modals",
-  "navigation", "onboarding", "search", "siteIdentity", "social", "userAccounts",
+  'blog',
+  'buttons',
+  'content',
+  'dataDisplay',
+  'ecommerce',
+  'forms',
+  'hero',
+  'listsCards',
+  'marketing',
+  'media',
+  'miscellaneous',
+  'modals',
+  'navigation',
+  'onboarding',
+  'search',
+  'siteIdentity',
+  'social',
+  'userAccounts',
 ]);
 
 /**
@@ -82,21 +107,57 @@ export function useElectroplixConfig(): ElectroplixConfig {
 /**
  * Shortcut hooks for individual categories.
  */
-export function useNavTheme() { return useElectroplixConfig().navigation; }
-export function useHeroTheme() { return useElectroplixConfig().hero; }
-export function useButtonTheme() { return useElectroplixConfig().buttons; }
-export function useFormsTheme() { return useElectroplixConfig().forms; }
-export function useContentTheme() { return useElectroplixConfig().content; }
-export function useDataDisplayTheme() { return useElectroplixConfig().dataDisplay; }
-export function useEcommerceTheme() { return useElectroplixConfig().ecommerce; }
-export function useListsCardsTheme() { return useElectroplixConfig().listsCards; }
-export function useMarketingTheme() { return useElectroplixConfig().marketing; }
-export function useMediaTheme() { return useElectroplixConfig().media; }
-export function useMiscTheme() { return useElectroplixConfig().miscellaneous; }
-export function useModalsTheme() { return useElectroplixConfig().modals; }
-export function useOnboardingTheme() { return useElectroplixConfig().onboarding; }
-export function useSearchTheme() { return useElectroplixConfig().search; }
-export function useSiteIdentityTheme() { return useElectroplixConfig().siteIdentity; }
-export function useSocialTheme() { return useElectroplixConfig().social; }
-export function useUserAccountsTheme() { return useElectroplixConfig().userAccounts; }
-export function useBlogTheme() { return useElectroplixConfig().blog; }
+export function useNavTheme() {
+  return useElectroplixConfig().navigation;
+}
+export function useHeroTheme() {
+  return useElectroplixConfig().hero;
+}
+export function useButtonTheme() {
+  return useElectroplixConfig().buttons;
+}
+export function useFormsTheme() {
+  return useElectroplixConfig().forms;
+}
+export function useContentTheme() {
+  return useElectroplixConfig().content;
+}
+export function useDataDisplayTheme() {
+  return useElectroplixConfig().dataDisplay;
+}
+export function useEcommerceTheme() {
+  return useElectroplixConfig().ecommerce;
+}
+export function useListsCardsTheme() {
+  return useElectroplixConfig().listsCards;
+}
+export function useMarketingTheme() {
+  return useElectroplixConfig().marketing;
+}
+export function useMediaTheme() {
+  return useElectroplixConfig().media;
+}
+export function useMiscTheme() {
+  return useElectroplixConfig().miscellaneous;
+}
+export function useModalsTheme() {
+  return useElectroplixConfig().modals;
+}
+export function useOnboardingTheme() {
+  return useElectroplixConfig().onboarding;
+}
+export function useSearchTheme() {
+  return useElectroplixConfig().search;
+}
+export function useSiteIdentityTheme() {
+  return useElectroplixConfig().siteIdentity;
+}
+export function useSocialTheme() {
+  return useElectroplixConfig().social;
+}
+export function useUserAccountsTheme() {
+  return useElectroplixConfig().userAccounts;
+}
+export function useBlogTheme() {
+  return useElectroplixConfig().blog;
+}

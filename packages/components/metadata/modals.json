@@ -14,21 +14,103 @@
       "whenToUse": "Use as the base shell for building custom overlay components. Provides backdrop, positioning, and close behavior out of the box.",
       "isShell": true,
       "props": [
-        { "name": "isOpen", "type": "boolean", "required": true, "default": null, "description": "Whether the overlay is visible" },
-        { "name": "onClose", "type": "() => void", "required": false, "default": null, "description": "Callback when the overlay is closed" },
-        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Content to render inside the overlay" },
-        { "name": "maxW", "type": "number", "required": false, "default": "480", "description": "Maximum width of the overlay panel in pixels" },
-        { "name": "showClose", "type": "boolean", "required": false, "default": "true", "description": "Whether to show the close button" },
-        { "name": "position", "type": "\"center\" | \"top\" | \"bottom\"", "required": false, "default": "\"center\"", "description": "Vertical position of the overlay panel" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether the overlay is visible"
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the overlay is closed"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Content to render inside the overlay"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "480",
+          "description": "Maximum width of the overlay panel in pixels"
+        },
+        {
+          "name": "showClose",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to show the close button"
+        },
+        {
+          "name": "position",
+          "type": "\"center\" | \"top\" | \"bottom\"",
+          "required": false,
+          "default": "\"center\"",
+          "description": "Vertical position of the overlay panel"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "overlay",
         "priority": 4,
         "sequenceOrder": 10,
@@ -44,21 +126,103 @@
       "whenToUse": "Use for general-purpose dialogs that need a title bar and optional footer actions. Suitable for information display, settings panels, or any content that requires a modal presentation.",
       "isShell": false,
       "props": [
-        { "name": "isOpen", "type": "boolean", "required": true, "default": null, "description": "Whether the modal is visible" },
-        { "name": "title", "type": "string", "required": false, "default": null, "description": "Title displayed in the modal header" },
-        { "name": "onClose", "type": "() => void", "required": false, "default": null, "description": "Callback when the modal is closed" },
-        { "name": "maxW", "type": "number", "required": false, "default": null, "description": "Maximum width of the modal in pixels" },
-        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Content to render inside the modal body" },
-        { "name": "footer", "type": "ReactNode", "required": false, "default": null, "description": "Content to render in the modal footer" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether the modal is visible"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Title displayed in the modal header"
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the modal is closed"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Maximum width of the modal in pixels"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Content to render inside the modal body"
+        },
+        {
+          "name": "footer",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Content to render in the modal footer"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "overlay",
         "priority": 7,
         "sequenceOrder": 10,
@@ -74,23 +238,117 @@
       "whenToUse": "Use when the user needs to confirm a significant action such as deleting data, cancelling a subscription, or submitting irreversible changes.",
       "isShell": false,
       "props": [
-        { "name": "isOpen", "type": "boolean", "required": true, "default": null, "description": "Whether the dialog is visible" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Are you sure?\"", "description": "Title displayed in the dialog header" },
-        { "name": "message", "type": "string", "required": false, "default": null, "description": "Descriptive message displayed in the dialog body" },
-        { "name": "confirmLabel", "type": "string", "required": false, "default": "\"Confirm\"", "description": "Label for the confirm button" },
-        { "name": "cancelLabel", "type": "string", "required": false, "default": "\"Cancel\"", "description": "Label for the cancel button" },
-        { "name": "danger", "type": "boolean", "required": false, "default": "false", "description": "Whether to style the confirm button as a destructive action" },
-        { "name": "onConfirm", "type": "() => void", "required": false, "default": null, "description": "Callback when the confirm button is clicked" },
-        { "name": "onCancel", "type": "() => void", "required": false, "default": null, "description": "Callback when the cancel button is clicked" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether the dialog is visible"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Are you sure?\"",
+          "description": "Title displayed in the dialog header"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Descriptive message displayed in the dialog body"
+        },
+        {
+          "name": "confirmLabel",
+          "type": "string",
+          "required": false,
+          "default": "\"Confirm\"",
+          "description": "Label for the confirm button"
+        },
+        {
+          "name": "cancelLabel",
+          "type": "string",
+          "required": false,
+          "default": "\"Cancel\"",
+          "description": "Label for the cancel button"
+        },
+        {
+          "name": "danger",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to style the confirm button as a destructive action"
+        },
+        {
+          "name": "onConfirm",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the confirm button is clicked"
+        },
+        {
+          "name": "onCancel",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the cancel button is clicked"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "overlay",
         "priority": 8,
         "sequenceOrder": 10,
@@ -106,19 +364,93 @@
       "whenToUse": "Use when you need a modal-based form for quick data entry without navigating away, such as adding a new item, editing settings, or submitting feedback.",
       "isShell": false,
       "props": [
-        { "name": "isOpen", "type": "boolean", "required": true, "default": null, "description": "Whether the dialog is visible" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Submit\"", "description": "Title displayed in the dialog header" },
-        { "name": "onClose", "type": "() => void", "required": false, "default": null, "description": "Callback when the dialog is closed" },
-        { "name": "onSubmit", "type": "(data: FormData) => void", "required": false, "default": null, "description": "Callback when the form is submitted with form data" },
-        { "name": "submitLabel", "type": "string", "required": false, "default": "\"Submit\"", "description": "Label for the submit button" },
-        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Form fields and content to render inside the dialog" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether the dialog is visible"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Submit\"",
+          "description": "Title displayed in the dialog header"
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the dialog is closed"
+        },
+        {
+          "name": "onSubmit",
+          "type": "(data: FormData) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the form is submitted with form data"
+        },
+        {
+          "name": "submitLabel",
+          "type": "string",
+          "required": false,
+          "default": "\"Submit\"",
+          "description": "Label for the submit button"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Form fields and content to render inside the dialog"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "forms"],
         "placement": "overlay",
@@ -136,17 +468,75 @@
       "whenToUse": "Use when a blocking async operation is happening and the user should wait, such as page transitions, large data fetches, or file uploads.",
       "isShell": false,
       "props": [
-        { "name": "isOpen", "type": "boolean", "required": true, "default": null, "description": "Whether the loading overlay is visible" },
-        { "name": "message", "type": "string", "required": false, "default": "\"Loading...\"", "description": "Loading message displayed below the spinner" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether the loading overlay is visible"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "required": false,
+          "default": "\"Loading...\"",
+          "description": "Loading message displayed below the spinner"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "overlay",
         "priority": 5,
         "sequenceOrder": 10,
@@ -162,18 +552,82 @@
       "whenToUse": "Use to provide additional context or explanations for UI elements like icons, abbreviations, or truncated text without cluttering the interface.",
       "isShell": false,
       "props": [
-        { "name": "text", "type": "string", "required": true, "default": null, "description": "Tooltip text content" },
-        { "name": "position", "type": "\"top\" | \"bottom\" | \"left\" | \"right\"", "required": false, "default": "\"top\"", "description": "Position of the tooltip relative to the trigger element" },
-        { "name": "children", "type": "ReactNode", "required": true, "default": null, "description": "Trigger element that activates the tooltip on hover" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "text",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Tooltip text content"
+        },
+        {
+          "name": "position",
+          "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+          "required": false,
+          "default": "\"top\"",
+          "description": "Position of the tooltip relative to the trigger element"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Trigger element that activates the tooltip on hover"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "overlay",
         "priority": 5,
         "sequenceOrder": 5,
@@ -189,18 +643,82 @@
       "whenToUse": "Use to show transient feedback messages for user actions such as form submissions, errors, success confirmations, or warnings.",
       "isShell": false,
       "props": [
-        { "name": "toasts", "type": "Toast[]", "required": true, "default": null, "description": "Array of toast objects: {id: string, message: string, variant?: \"info\" | \"success\" | \"warning\" | \"error\", duration?: number}" },
-        { "name": "onDismiss", "type": "(id: string) => void", "required": false, "default": null, "description": "Callback when a toast is dismissed" },
-        { "name": "position", "type": "\"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\"", "required": false, "default": "\"top-right\"", "description": "Screen corner position for the toast stack" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "toasts",
+          "type": "Toast[]",
+          "required": true,
+          "default": null,
+          "description": "Array of toast objects: {id: string, message: string, variant?: \"info\" | \"success\" | \"warning\" | \"error\", duration?: number}"
+        },
+        {
+          "name": "onDismiss",
+          "type": "(id: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when a toast is dismissed"
+        },
+        {
+          "name": "position",
+          "type": "\"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\"",
+          "required": false,
+          "default": "\"top-right\"",
+          "description": "Screen corner position for the toast stack"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "overlay",
         "priority": 7,
         "sequenceOrder": 10,
@@ -216,21 +734,103 @@
       "whenToUse": "Use on any site that needs to comply with cookie consent regulations (GDPR, ePrivacy). Typically shown on first visit.",
       "isShell": false,
       "props": [
-        { "name": "isOpen", "type": "boolean", "required": true, "default": null, "description": "Whether the cookie notice is visible" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Cookie Notice\"", "description": "Title displayed in the notice header" },
-        { "name": "message", "type": "string", "required": false, "default": "\"This site uses cookies.\"", "description": "Cookie consent message body" },
-        { "name": "onAccept", "type": "() => void", "required": false, "default": null, "description": "Callback when the accept button is clicked" },
-        { "name": "onDecline", "type": "() => void", "required": false, "default": null, "description": "Callback when the decline button is clicked" },
-        { "name": "onSettings", "type": "() => void", "required": false, "default": null, "description": "Callback when the settings/preferences button is clicked" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether the cookie notice is visible"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Cookie Notice\"",
+          "description": "Title displayed in the notice header"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "required": false,
+          "default": "\"This site uses cookies.\"",
+          "description": "Cookie consent message body"
+        },
+        {
+          "name": "onAccept",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the accept button is clicked"
+        },
+        {
+          "name": "onDecline",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the decline button is clicked"
+        },
+        {
+          "name": "onSettings",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the settings/preferences button is clicked"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "overlay",
         "priority": 5,
         "sequenceOrder": 10,
@@ -246,20 +846,100 @@
       "whenToUse": "Use for first-time visitor greetings, onboarding flows, feature announcements, or promotional popups on landing pages.",
       "isShell": false,
       "props": [
-        { "name": "isOpen", "type": "boolean", "required": true, "default": null, "description": "Whether the popup is visible" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Welcome!\"", "description": "Welcome title text" },
-        { "name": "message", "type": "string", "required": false, "default": null, "description": "Welcome message body" },
-        { "name": "ctaLabel", "type": "string", "required": false, "default": "\"Get Started\"", "description": "Label for the call-to-action button" },
-        { "name": "onCta", "type": "() => void", "required": false, "default": null, "description": "Callback when the CTA button is clicked" },
-        { "name": "onClose", "type": "() => void", "required": false, "default": null, "description": "Callback when the popup is closed" },
-        { "name": "image", "type": "string", "required": false, "default": null, "description": "URL of an optional hero/banner image" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether the popup is visible"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Welcome!\"",
+          "description": "Welcome title text"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Welcome message body"
+        },
+        {
+          "name": "ctaLabel",
+          "type": "string",
+          "required": false,
+          "default": "\"Get Started\"",
+          "description": "Label for the call-to-action button"
+        },
+        {
+          "name": "onCta",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the CTA button is clicked"
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the popup is closed"
+        },
+        {
+          "name": "image",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL of an optional hero/banner image"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["landing", "onboarding"],
         "placement": "overlay",

@@ -1,7 +1,7 @@
-"use client";
-import React, { useState } from "react";
-import { useDataDisplayTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState } from 'react';
+import { useDataDisplayTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── PieChart (donut) ───────────────────────────────────── */
 
@@ -13,20 +13,35 @@ export interface PieChartProps {
   title?: string;
 }
 
-const PIE_COLORS = ["#09090b", "#3f3f46", "#71717a", "#a1a1aa", "#d4d4d8", "#52525b", "#27272a", "#18181b"];
+const PIE_COLORS = [
+  '#09090b',
+  '#3f3f46',
+  '#71717a',
+  '#a1a1aa',
+  '#d4d4d8',
+  '#52525b',
+  '#27272a',
+  '#18181b',
+];
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  mutedSoft: "#a1a1aa",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  mutedSoft: '#a1a1aa',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
 };
 
-export function PieChart({ data = [], labels = [], width = 280, height = 280, title }: PieChartProps) {
+export function PieChart({
+  data = [],
+  labels = [],
+  width = 280,
+  height = 280,
+  title,
+}: PieChartProps) {
   const t = useDataDisplayTheme();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -53,9 +68,9 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
           background: bg,
           fontFamily: t.fontFamily,
           width,
-          textAlign: "center",
+          textAlign: 'center',
           margin: 0,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
         <div
@@ -65,14 +80,16 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
             borderRadius: 12,
             background: ui.surface,
             border: `1px solid ${ui.border}`,
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Icon name="pie-chart" size={22} color={ui.black} />
         </div>
-        <div style={{ color: ui.muted, marginTop: 10, fontSize: t.bodySize ?? 14 }}>No data available</div>
+        <div style={{ color: ui.muted, marginTop: 10, fontSize: t.bodySize ?? 14 }}>
+          No data available
+        </div>
       </figure>
     );
   }
@@ -81,13 +98,23 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
   const wedges = safeData.map((v, i) => {
     const a1 = a0 + (v / total) * Math.PI * 2;
     const midAngle = (a0 + a1) / 2;
-    const x0 = cx + r * Math.cos(a0), y0 = cy + r * Math.sin(a0);
-    const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
-    const ix0 = cx + innerR * Math.cos(a0), iy0 = cy + innerR * Math.sin(a0);
-    const ix1 = cx + innerR * Math.cos(a1), iy1 = cy + innerR * Math.sin(a1);
+    const x0 = cx + r * Math.cos(a0),
+      y0 = cy + r * Math.sin(a0);
+    const x1 = cx + r * Math.cos(a1),
+      y1 = cy + r * Math.sin(a1);
+    const ix0 = cx + innerR * Math.cos(a0),
+      iy0 = cy + innerR * Math.sin(a0);
+    const ix1 = cx + innerR * Math.cos(a1),
+      iy1 = cy + innerR * Math.sin(a1);
     const large = a1 - a0 > Math.PI ? 1 : 0;
     const d = `M ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1} L ${ix1} ${iy1} A ${innerR} ${innerR} 0 ${large} 0 ${ix0} ${iy0} Z`;
-    const w = { d, fill: PIE_COLORS[i % PIE_COLORS.length], percentage: ((v / total) * 100).toFixed(1), value: v, midAngle };
+    const w = {
+      d,
+      fill: PIE_COLORS[i % PIE_COLORS.length],
+      percentage: ((v / total) * 100).toFixed(1),
+      value: v,
+      midAngle,
+    };
     a0 = a1;
     return w;
   });
@@ -101,22 +128,22 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
         color: fg,
         background: bg,
         fontFamily: t.fontFamily,
-        width: "fit-content",
+        width: 'fit-content',
         margin: 0,
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       {title && (
         <figcaption
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 8,
             marginBottom: 12,
             fontWeight: 700,
             fontSize: t.headingSize ?? 18,
             color: ui.black,
-            letterSpacing: "-0.02em",
+            letterSpacing: '-0.02em',
           }}
         >
           <div
@@ -126,9 +153,9 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
               borderRadius: 8,
               background: ui.surface,
               border: `1px solid ${ui.border}`,
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               flexShrink: 0,
             }}
           >
@@ -138,8 +165,8 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
         </figcaption>
       )}
 
-      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-        <svg width={width} height={height} style={{ display: "block" }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+        <svg width={width} height={height} style={{ display: 'block' }}>
           {wedges.map((w, i) => {
             const isH = hoveredIndex === i;
             const tx = (isH ? 6 : 0) * Math.cos(w.midAngle);
@@ -152,10 +179,10 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
                 stroke={bg}
                 strokeWidth={2}
                 style={{
-                  cursor: "pointer",
-                  transition: "transform 200ms ease, filter 200ms ease, opacity 200ms ease",
+                  cursor: 'pointer',
+                  transition: 'transform 200ms ease, filter 200ms ease, opacity 200ms ease',
                   transform: `translate(${tx}px, ${ty}px)`,
-                  filter: isH ? "drop-shadow(0 4px 10px rgba(9, 9, 11, 0.16))" : "none",
+                  filter: isH ? 'drop-shadow(0 4px 10px rgba(9, 9, 11, 0.16))' : 'none',
                   opacity: hoveredIndex === null || isH ? 1 : 0.72,
                 }}
                 onMouseEnter={() => setHoveredIndex(i)}
@@ -163,31 +190,45 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
               />
             );
           })}
-          <text x={cx} y={cy - 8} fontSize={24} fill={ui.black} textAnchor="middle" fontWeight={800}>
+          <text
+            x={cx}
+            y={cy - 8}
+            fontSize={24}
+            fill={ui.black}
+            textAnchor="middle"
+            fontWeight={800}
+          >
             {hoveredIndex !== null ? wedges[hoveredIndex].value : total}
           </text>
-          <text x={cx} y={cy + 14} fontSize={12} fill={ui.muted} textAnchor="middle" fontWeight={500}>
-            {hoveredIndex !== null ? `${wedges[hoveredIndex].percentage}%` : "Total"}
+          <text
+            x={cx}
+            y={cy + 14}
+            fontSize={12}
+            fill={ui.muted}
+            textAnchor="middle"
+            fontWeight={500}
+          >
+            {hoveredIndex !== null ? `${wedges[hoveredIndex].percentage}%` : 'Total'}
           </text>
         </svg>
 
         {labels.length === safeData.length && (
-          <div style={{ display: "grid", gap: 8, fontSize: 13 }}>
+          <div style={{ display: 'grid', gap: 8, fontSize: 13 }}>
             {labels.map((lb, i) => {
               const isH = hoveredIndex === i;
               return (
                 <div
                   key={i}
                   style={{
-                    display: "flex",
-                    alignItems: "center",
+                    display: 'flex',
+                    alignItems: 'center',
                     gap: 10,
-                    padding: "6px 10px",
+                    padding: '6px 10px',
                     borderRadius: 8,
-                    background: isH ? ui.surfaceHover : "transparent",
-                    border: `1px solid ${isH ? ui.border : "transparent"}`,
-                    cursor: "pointer",
-                    transition: "all 150ms ease",
+                    background: isH ? ui.surfaceHover : 'transparent',
+                    border: `1px solid ${isH ? ui.border : 'transparent'}`,
+                    cursor: 'pointer',
+                    transition: 'all 150ms ease',
                     color: ui.text,
                   }}
                   onMouseEnter={() => setHoveredIndex(i)}
@@ -203,7 +244,13 @@ export function PieChart({ data = [], labels = [], width = 280, height = 280, ti
                     }}
                   />
                   <span style={{ color: isH ? ui.black : ui.muted }}>{lb}</span>
-                  <span style={{ marginLeft: "auto", fontWeight: 700, color: isH ? ui.black : ui.muted }}>
+                  <span
+                    style={{
+                      marginLeft: 'auto',
+                      fontWeight: 700,
+                      color: isH ? ui.black : ui.muted,
+                    }}
+                  >
                     {wedges[i]?.percentage}%
                   </span>
                 </div>

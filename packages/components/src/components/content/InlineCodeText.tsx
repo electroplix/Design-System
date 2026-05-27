@@ -1,7 +1,7 @@
-"use client";
-import React, { useMemo, useState } from "react";
-import { useContentTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useMemo, useState } from 'react';
+import { useContentTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── InlineCodeText ─────────────────────────────────────── */
 
@@ -28,17 +28,17 @@ export interface InlineCodeProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
 };
 
 export function InlineCodeText({
-  as: Tag = "section",
+  as: Tag = 'section',
   bgColor,
   textColor,
   fontFamily,
@@ -48,11 +48,11 @@ export function InlineCodeText({
   radius = 16,
   gap = 16,
   style = {},
-  className = "",
-  text = "Use the `npm install` command to install packages. Then run `npm start` to begin.",
+  className = '',
+  text = 'Use the `npm install` command to install packages. Then run `npm start` to begin.',
   codeBg,
   codeColor,
-  codePx = "4px 8px",
+  codePx = '4px 8px',
   codeRadius = 6,
   size = 16,
   accentColor,
@@ -73,20 +73,17 @@ export function InlineCodeText({
 
   const codeSnippets = useMemo(() => {
     const matches = text.match(/`([^`]+?)`/g);
-    return matches ? matches.map((m) => m.replace(/`/g, "")) : [];
+    return matches ? matches.map((m) => m.replace(/`/g, '')) : [];
   }, [text]);
 
   const rendered = useMemo(() => {
-    const safe = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    return safe.replace(
-      /`([^`]+?)`/g,
-      (_, m) => `<code class="__inline_code">${m}</code>`,
-    );
+    const safe = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return safe.replace(/`([^`]+?)`/g, (_, m) => `<code class="__inline_code">${m}</code>`);
   }, [text]);
 
   const handleCopy = async () => {
     if (codeSnippets.length > 0) {
-      await navigator.clipboard.writeText(codeSnippets.join("\n"));
+      await navigator.clipboard.writeText(codeSnippets.join('\n'));
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -103,14 +100,14 @@ export function InlineCodeText({
         paddingBlock: py,
         borderRadius: radius,
         border: `1px solid ${border}`,
-        display: "grid",
-        justifyItems: "start",
-        placeItems: "start",
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        display: 'grid',
+        justifyItems: 'start',
+        placeItems: 'start',
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
     >
-      <div style={{ width: "100%", maxWidth: maxW, display: "grid", gap }}>
+      <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         <style>{`
           .__inline_code {
             background: ${effectiveCodeBg};
@@ -130,7 +127,7 @@ export function InlineCodeText({
           }
         `}</style>
 
-        <div style={{ position: "relative", width: "100%" }}>
+        <div style={{ position: 'relative', width: '100%' }}>
           <p
             style={{
               fontSize: size,
@@ -147,24 +144,24 @@ export function InlineCodeText({
             <button
               onClick={handleCopy}
               style={{
-                position: "absolute",
+                position: 'absolute',
                 top: 0,
                 right: 0,
                 background: copied ? ui.black : ui.white,
                 border: `1px solid ${copied ? ui.black : ui.border}`,
                 borderRadius: 8,
                 padding: 8,
-                cursor: "pointer",
+                cursor: 'pointer',
                 color: copied ? ui.white : ui.text,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "all 150ms ease",
-                boxShadow: "0 1px 2px rgba(9, 9, 11, 0.05)",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 150ms ease',
+                boxShadow: '0 1px 2px rgba(9, 9, 11, 0.05)',
               }}
-              title={copied ? "Copied!" : "Copy code snippets"}
+              title={copied ? 'Copied!' : 'Copy code snippets'}
             >
-              <Icon name={copied ? "check" : "copy"} size={16} />
+              <Icon name={copied ? 'check' : 'copy'} size={16} />
             </button>
           )}
         </div>

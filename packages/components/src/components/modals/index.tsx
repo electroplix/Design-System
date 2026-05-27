@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useEffect, useRef } from "react";
-import { useModalsTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState, useEffect, useRef } from 'react';
+import { useModalsTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -9,16 +9,16 @@ function useML() {
   const t = useModalsTheme();
 
   return {
-    accent: t.accentColor ?? "#18181b",
-    fg: t.textColor ?? "#09090b",
-    muted: "#71717a",
-    bg: t.bgColor ?? "#ffffff",
-    surface: "#fafafa",
-    surfaceHover: "#f4f4f5",
-    border: t.borderColor ?? "#e4e4e7",
-    danger: "#dc2626",
-    warning: "#ca8a04",
-    success: "#16a34a",
+    accent: t.accentColor ?? '#18181b',
+    fg: t.textColor ?? '#09090b',
+    muted: '#71717a',
+    bg: t.bgColor ?? '#ffffff',
+    surface: '#fafafa',
+    surfaceHover: '#f4f4f5',
+    border: t.borderColor ?? '#e4e4e7',
+    danger: '#dc2626',
+    warning: '#ca8a04',
+    success: '#16a34a',
     r: t.radius ?? 16,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
@@ -34,7 +34,7 @@ export interface OverlayBaseProps {
   children?: React.ReactNode;
   maxW?: number;
   showClose?: boolean;
-  position?: "center" | "top" | "bottom";
+  position?: 'center' | 'top' | 'bottom';
 }
 
 export function OverlayBase({
@@ -43,7 +43,7 @@ export function OverlayBase({
   children,
   maxW = 480,
   showClose = true,
-  position = "center",
+  position = 'center',
 }: OverlayBaseProps) {
   const ml = useML();
 
@@ -51,53 +51,51 @@ export function OverlayBase({
     if (!isOpen) return;
 
     const h = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose?.();
+      if (e.key === 'Escape') onClose?.();
     };
 
-    window.addEventListener("keydown", h);
-    return () => window.removeEventListener("keydown", h);
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
-  const align =
-    position === "top" ? "flex-start" : position === "bottom" ? "flex-end" : "center";
+  const align = position === 'top' ? 'flex-start' : position === 'bottom' ? 'flex-end' : 'center';
 
   return (
     <div
       style={{
-        position: "fixed",
+        position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        display: "flex",
+        display: 'flex',
         alignItems: align,
-        justifyContent: "center",
+        justifyContent: 'center',
         padding: 24,
       }}
     >
       <div
         onClick={onClose}
         style={{
-          position: "absolute",
+          position: 'absolute',
           inset: 0,
-          background: "rgba(9, 9, 11, 0.45)",
-          backdropFilter: "blur(6px)",
+          background: 'rgba(9, 9, 11, 0.45)',
+          backdropFilter: 'blur(6px)',
         }}
       />
 
       <div
         style={{
-          position: "relative",
+          position: 'relative',
           background: ml.bg,
           border: `1px solid ${ml.border}`,
           borderRadius: ml.r,
           maxWidth: maxW,
-          width: "100%",
+          width: '100%',
           fontFamily: ml.ff,
           color: ml.fg,
-          overflow: "hidden",
-          boxShadow:
-            "0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)",
+          overflow: 'hidden',
+          boxShadow: '0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)',
         }}
       >
         {showClose && (
@@ -105,7 +103,7 @@ export function OverlayBase({
             onClick={onClose}
             aria-label="Close"
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 12,
               right: 12,
               width: 32,
@@ -113,13 +111,13 @@ export function OverlayBase({
               background: ml.surface,
               border: `1px solid ${ml.border}`,
               borderRadius: 10,
-              cursor: "pointer",
+              cursor: 'pointer',
               color: ml.muted,
               zIndex: 1,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
             }}
           >
             <Icon name="x" size={18} />
@@ -158,12 +156,12 @@ export function GenericModal({
       {title && (
         <div
           style={{
-            padding: "18px 20px",
+            padding: '18px 20px',
             borderBottom: `1px solid ${ml.border}`,
             background: ml.surface,
             fontWeight: 700,
             fontSize: 18,
-            letterSpacing: "-0.025em",
+            letterSpacing: '-0.025em',
             color: ml.fg,
           }}
         >
@@ -176,11 +174,11 @@ export function GenericModal({
       {footer && (
         <div
           style={{
-            padding: "12px 20px",
+            padding: '12px 20px',
             borderTop: `1px solid ${ml.border}`,
             background: ml.surface,
-            display: "flex",
-            justifyContent: "flex-end",
+            display: 'flex',
+            justifyContent: 'flex-end',
             gap: 8,
           }}
         >
@@ -206,10 +204,10 @@ export interface ConfirmDialogProps {
 
 export function ConfirmDialog({
   isOpen,
-  title = "Are you sure?",
+  title = 'Are you sure?',
   message,
-  confirmLabel = "Confirm",
-  cancelLabel = "Cancel",
+  confirmLabel = 'Confirm',
+  cancelLabel = 'Cancel',
   danger = false,
   onConfirm,
   onCancel,
@@ -219,29 +217,29 @@ export function ConfirmDialog({
 
   return (
     <OverlayBase isOpen={isOpen} onClose={onCancel} maxW={400}>
-      <div style={{ padding: 24, textAlign: "center" }}>
+      <div style={{ padding: 24, textAlign: 'center' }}>
         <div
           style={{
             width: 52,
             height: 52,
-            borderRadius: "50%",
-            background: danger ? "#fef2f2" : ml.surface,
-            border: `1px solid ${danger ? "#fecaca" : ml.border}`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "0 auto 16px",
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+            borderRadius: '50%',
+            background: danger ? '#fef2f2' : ml.surface,
+            border: `1px solid ${danger ? '#fecaca' : ml.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 16px',
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
           }}
         >
-          <Icon name={danger ? "alert-triangle" : "help-circle"} size={24} color={col} />
+          <Icon name={danger ? 'alert-triangle' : 'help-circle'} size={24} color={col} />
         </div>
 
         <div
           style={{
             fontWeight: 700,
             fontSize: 18,
-            letterSpacing: "-0.025em",
+            letterSpacing: '-0.025em',
             color: ml.fg,
           }}
         >
@@ -263,24 +261,24 @@ export function ConfirmDialog({
 
         <div
           style={{
-            display: "flex",
+            display: 'flex',
             gap: 8,
             marginTop: 20,
-            justifyContent: "center",
+            justifyContent: 'center',
           }}
         >
           <button
             onClick={onCancel}
             style={{
-              padding: "10px 20px",
+              padding: '10px 20px',
               borderRadius: 12,
               border: `1px solid ${ml.border}`,
-              background: "#ffffff",
+              background: '#ffffff',
               color: ml.fg,
               fontWeight: 600,
-              cursor: "pointer",
+              cursor: 'pointer',
               fontSize: 14,
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             {cancelLabel}
@@ -289,15 +287,15 @@ export function ConfirmDialog({
           <button
             onClick={onConfirm}
             style={{
-              padding: "10px 20px",
+              padding: '10px 20px',
               borderRadius: 12,
               border: `1px solid ${col}`,
               background: col,
-              color: "#ffffff",
+              color: '#ffffff',
               fontWeight: 700,
-              cursor: "pointer",
+              cursor: 'pointer',
               fontSize: 14,
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
             }}
           >
             {confirmLabel}
@@ -321,10 +319,10 @@ export interface FormDialogProps {
 
 export function FormDialog({
   isOpen,
-  title = "Submit",
+  title = 'Submit',
   onClose,
   onSubmit,
-  submitLabel = "Submit",
+  submitLabel = 'Submit',
   children,
 }: FormDialogProps) {
   const ml = useML();
@@ -339,12 +337,12 @@ export function FormDialog({
     <OverlayBase isOpen={isOpen} onClose={onClose} maxW={480}>
       <div
         style={{
-          padding: "18px 20px",
+          padding: '18px 20px',
           borderBottom: `1px solid ${ml.border}`,
           background: ml.surface,
           fontWeight: 700,
           fontSize: 18,
-          letterSpacing: "-0.025em",
+          letterSpacing: '-0.025em',
           color: ml.fg,
         }}
       >
@@ -356,11 +354,11 @@ export function FormDialog({
 
         <div
           style={{
-            padding: "12px 20px",
+            padding: '12px 20px',
             borderTop: `1px solid ${ml.border}`,
             background: ml.surface,
-            display: "flex",
-            justifyContent: "flex-end",
+            display: 'flex',
+            justifyContent: 'flex-end',
             gap: 8,
           }}
         >
@@ -368,15 +366,15 @@ export function FormDialog({
             type="button"
             onClick={onClose}
             style={{
-              padding: "10px 18px",
+              padding: '10px 18px',
               borderRadius: 12,
               border: `1px solid ${ml.border}`,
-              background: "#ffffff",
+              background: '#ffffff',
               color: ml.fg,
               fontWeight: 600,
-              cursor: "pointer",
+              cursor: 'pointer',
               fontSize: 14,
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             Cancel
@@ -385,15 +383,15 @@ export function FormDialog({
           <button
             type="submit"
             style={{
-              padding: "10px 18px",
+              padding: '10px 18px',
               borderRadius: 12,
               border: `1px solid ${ml.accent}`,
               background: ml.accent,
-              color: "#ffffff",
+              color: '#ffffff',
               fontWeight: 700,
-              cursor: "pointer",
+              cursor: 'pointer',
               fontSize: 14,
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
             }}
           >
             {submitLabel}
@@ -411,7 +409,7 @@ export interface LoadingOverlayProps {
   message?: string;
 }
 
-export function LoadingOverlay({ isOpen, message = "Loading..." }: LoadingOverlayProps) {
+export function LoadingOverlay({ isOpen, message = 'Loading...' }: LoadingOverlayProps) {
   const ml = useML();
 
   if (!isOpen) return null;
@@ -419,15 +417,15 @@ export function LoadingOverlay({ isOpen, message = "Loading..." }: LoadingOverla
   return (
     <div
       style={{
-        position: "fixed",
+        position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "rgba(255, 255, 255, 0.72)",
-        backdropFilter: "blur(6px)",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'rgba(255, 255, 255, 0.72)',
+        backdropFilter: 'blur(6px)',
         fontFamily: ml.ff,
         color: ml.fg,
       }}
@@ -438,8 +436,8 @@ export function LoadingOverlay({ isOpen, message = "Loading..." }: LoadingOverla
           height: 40,
           border: `2px solid ${ml.border}`,
           borderTopColor: ml.accent,
-          borderRadius: "50%",
-          animation: "eplxSpin 0.8s linear infinite",
+          borderRadius: '50%',
+          animation: 'eplxSpin 0.8s linear infinite',
         }}
       />
 
@@ -463,28 +461,28 @@ export function LoadingOverlay({ isOpen, message = "Loading..." }: LoadingOverla
 
 export interface TooltipProps {
   text: string;
-  position?: "top" | "bottom" | "left" | "right";
+  position?: 'top' | 'bottom' | 'left' | 'right';
   children: React.ReactNode;
 }
 
-export function Tooltip({ text, position = "top", children }: TooltipProps) {
+export function Tooltip({ text, position = 'top', children }: TooltipProps) {
   const ml = useML();
   const [show, setShow] = useState(false);
 
   const pos: React.CSSProperties =
-    position === "top"
-      ? { bottom: "calc(100% + 8px)", left: "50%", transform: "translateX(-50%)" }
-      : position === "bottom"
-      ? { top: "calc(100% + 8px)", left: "50%", transform: "translateX(-50%)" }
-      : position === "left"
-      ? { right: "calc(100% + 8px)", top: "50%", transform: "translateY(-50%)" }
-      : { left: "calc(100% + 8px)", top: "50%", transform: "translateY(-50%)" };
+    position === 'top'
+      ? { bottom: 'calc(100% + 8px)', left: '50%', transform: 'translateX(-50%)' }
+      : position === 'bottom'
+        ? { top: 'calc(100% + 8px)', left: '50%', transform: 'translateX(-50%)' }
+        : position === 'left'
+          ? { right: 'calc(100% + 8px)', top: '50%', transform: 'translateY(-50%)' }
+          : { left: 'calc(100% + 8px)', top: '50%', transform: 'translateY(-50%)' };
 
   return (
     <span
       style={{
-        position: "relative",
-        display: "inline-flex",
+        position: 'relative',
+        display: 'inline-flex',
       }}
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
@@ -494,20 +492,20 @@ export function Tooltip({ text, position = "top", children }: TooltipProps) {
       {show && (
         <span
           style={{
-            position: "absolute",
+            position: 'absolute',
             ...pos,
-            whiteSpace: "nowrap",
-            padding: "6px 12px",
+            whiteSpace: 'nowrap',
+            padding: '6px 12px',
             borderRadius: 10,
-            background: "#ffffff",
+            background: '#ffffff',
             border: `1px solid ${ml.border}`,
             color: ml.fg,
             fontSize: 13,
             fontWeight: 500,
             fontFamily: ml.ff,
-            pointerEvents: "none",
+            pointerEvents: 'none',
             zIndex: 50,
-            boxShadow: "0 8px 20px rgba(9, 9, 11, 0.08)",
+            boxShadow: '0 8px 20px rgba(9, 9, 11, 0.08)',
           }}
         >
           {text}
@@ -519,7 +517,7 @@ export function Tooltip({ text, position = "top", children }: TooltipProps) {
 
 /* ── ToastBanners ───────────────────────────────────────── */
 
-export type ToastVariant = "info" | "success" | "warning" | "error";
+export type ToastVariant = 'info' | 'success' | 'warning' | 'error';
 
 export interface Toast {
   id: string;
@@ -531,74 +529,72 @@ export interface Toast {
 export interface ToastBannersProps {
   toasts: Toast[];
   onDismiss?: (id: string) => void;
-  position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
 }
 
 const TOAST_COLORS: Record<ToastVariant, { bg: string; border: string; icon: string }> = {
   info: {
-    bg: "#ffffff",
-    border: "#e4e4e7",
-    icon: "#18181b",
+    bg: '#ffffff',
+    border: '#e4e4e7',
+    icon: '#18181b',
   },
   success: {
-    bg: "#ffffff",
-    border: "#d4d4d8",
-    icon: "#16a34a",
+    bg: '#ffffff',
+    border: '#d4d4d8',
+    icon: '#16a34a',
   },
   warning: {
-    bg: "#ffffff",
-    border: "#d4d4d8",
-    icon: "#ca8a04",
+    bg: '#ffffff',
+    border: '#d4d4d8',
+    icon: '#ca8a04',
   },
   error: {
-    bg: "#ffffff",
-    border: "#fecaca",
-    icon: "#dc2626",
+    bg: '#ffffff',
+    border: '#fecaca',
+    icon: '#dc2626',
   },
 };
 
 export function ToastBanners({
   toasts = [],
   onDismiss,
-  position = "top-right",
+  position = 'top-right',
 }: ToastBannersProps) {
   const ml = useML();
 
-  const posStyle: React.CSSProperties = position.includes("top")
-    ? { top: 16 }
-    : { bottom: 16 };
+  const posStyle: React.CSSProperties = position.includes('top') ? { top: 16 } : { bottom: 16 };
 
-  Object.assign(posStyle, position.includes("right") ? { right: 16 } : { left: 16 });
+  Object.assign(posStyle, position.includes('right') ? { right: 16 } : { left: 16 });
 
   return (
     <div
       style={{
-        position: "fixed",
+        position: 'fixed',
         zIndex: 9990,
-        display: "grid",
+        display: 'grid',
         gap: 8,
         width: 340,
         ...posStyle,
       }}
     >
       {toasts.map((t) => {
-        const v = TOAST_COLORS[t.variant ?? "info"];
+        const v = TOAST_COLORS[t.variant ?? 'info'];
 
         return (
           <div
             key={t.id}
             style={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 12,
-              padding: "12px 16px",
+              padding: '12px 16px',
               borderRadius: ml.r,
               background: v.bg,
               border: `1px solid ${v.border}`,
               fontFamily: ml.ff,
               color: ml.fg,
-              animation: "eplxSlideIn 0.25s ease-out",
-              boxShadow: "0 10px 25px rgba(9, 9, 11, 0.06)",
+              animation: 'eplxSlideIn 0.25s ease-out',
+              boxShadow: '0 10px 25px rgba(9, 9, 11, 0.06)',
             }}
           >
             <Icon name={v.icon} size={20} color={v.icon} />
@@ -620,14 +616,14 @@ export function ToastBanners({
                 background: ml.surface,
                 border: `1px solid ${ml.border}`,
                 borderRadius: 8,
-                cursor: "pointer",
+                cursor: 'pointer',
                 color: ml.muted,
                 padding: 0,
                 width: 26,
                 height: 26,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <Icon name="x" size={14} />
@@ -654,8 +650,8 @@ export interface CookieNoticeProps {
 
 export function CookieNotice({
   isOpen,
-  title = "Cookie Notice",
-  message = "This site uses cookies.",
+  title = 'Cookie Notice',
+  message = 'This site uses cookies.',
   onAccept,
   onDecline,
   onSettings,
@@ -667,7 +663,7 @@ export function CookieNotice({
   return (
     <div
       style={{
-        position: "fixed",
+        position: 'fixed',
         bottom: 16,
         right: 16,
         zIndex: 9990,
@@ -678,8 +674,7 @@ export function CookieNotice({
         padding: 20,
         fontFamily: ml.ff,
         color: ml.fg,
-        boxShadow:
-          "0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)",
+        boxShadow: '0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)',
       }}
     >
       <div
@@ -687,7 +682,7 @@ export function CookieNotice({
           fontWeight: 700,
           fontSize: 16,
           marginBottom: 8,
-          letterSpacing: "-0.02em",
+          letterSpacing: '-0.02em',
           color: ml.fg,
         }}
       >
@@ -707,7 +702,7 @@ export function CookieNotice({
 
       <div
         style={{
-          display: "flex",
+          display: 'flex',
           gap: 8,
           marginTop: 14,
         }}
@@ -716,15 +711,15 @@ export function CookieNotice({
           onClick={onAccept}
           style={{
             flex: 1,
-            padding: "8px 14px",
+            padding: '8px 14px',
             borderRadius: 12,
             border: `1px solid ${ml.accent}`,
             background: ml.accent,
-            color: "#ffffff",
+            color: '#ffffff',
             fontWeight: 700,
             fontSize: 13,
-            cursor: "pointer",
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+            cursor: 'pointer',
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
           }}
         >
           Accept
@@ -734,15 +729,15 @@ export function CookieNotice({
           onClick={onDecline}
           style={{
             flex: 1,
-            padding: "8px 14px",
+            padding: '8px 14px',
             borderRadius: 12,
             border: `1px solid ${ml.border}`,
-            background: "#ffffff",
+            background: '#ffffff',
             color: ml.fg,
             fontWeight: 600,
             fontSize: 13,
-            cursor: "pointer",
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+            cursor: 'pointer',
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
           }}
         >
           Decline
@@ -752,17 +747,17 @@ export function CookieNotice({
           <button
             onClick={onSettings}
             style={{
-              padding: "8px 14px",
+              padding: '8px 14px',
               borderRadius: 12,
               border: `1px solid ${ml.border}`,
-              background: "#ffffff",
+              background: '#ffffff',
               color: ml.fg,
               fontSize: 13,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             <Icon name="settings" size={16} />
@@ -787,9 +782,9 @@ export interface WelcomePopupProps {
 
 export function WelcomePopup({
   isOpen,
-  title = "Welcome!",
+  title = 'Welcome!',
   message,
-  ctaLabel = "Get Started",
+  ctaLabel = 'Get Started',
   onCta,
   onClose,
   image,
@@ -800,7 +795,7 @@ export function WelcomePopup({
     <OverlayBase isOpen={isOpen} onClose={onClose} maxW={420}>
       <div
         style={{
-          textAlign: "center",
+          textAlign: 'center',
           padding: 32,
         }}
       >
@@ -809,11 +804,11 @@ export function WelcomePopup({
             src={image}
             alt=""
             style={{
-              width: "100%",
+              width: '100%',
               borderRadius: ml.r - 4,
               marginBottom: 16,
               border: `1px solid ${ml.border}`,
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
             }}
           />
         )}
@@ -822,7 +817,7 @@ export function WelcomePopup({
           style={{
             fontWeight: 700,
             fontSize: 24,
-            letterSpacing: "-0.035em",
+            letterSpacing: '-0.035em',
             color: ml.fg,
           }}
         >
@@ -846,15 +841,15 @@ export function WelcomePopup({
           onClick={onCta}
           style={{
             marginTop: 20,
-            padding: "12px 28px",
+            padding: '12px 28px',
             borderRadius: 14,
             border: `1px solid ${ml.accent}`,
             background: ml.accent,
-            color: "#ffffff",
+            color: '#ffffff',
             fontWeight: 700,
             fontSize: 16,
-            cursor: "pointer",
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+            cursor: 'pointer',
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
           }}
         >
           {ctaLabel}

@@ -1,16 +1,14 @@
-"use client";
+'use client';
 /* ------------------------------------------------------------------ */
 /*  Shared utilities for @electroplix/components                      */
 /* ------------------------------------------------------------------ */
 
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback } from 'react';
 
 /* ----------------------- style helpers ---------------------------- */
 
 /** Build a CSS style object from theme tokens + optional overrides. */
-export function sx(
-  ...sources: Array<React.CSSProperties | undefined>
-): React.CSSProperties {
+export function sx(...sources: Array<React.CSSProperties | undefined>): React.CSSProperties {
   const result: React.CSSProperties = {};
   for (const s of sources) {
     if (!s) continue;
@@ -21,17 +19,13 @@ export function sx(
 
 /** Conditionally join CSS class names (tiny clsx alternative). */
 export function cn(...args: Array<string | false | null | undefined>): string {
-  return args.filter(Boolean).join(" ");
+  return args.filter(Boolean).join(' ');
 }
 
 /** Format money value with currency. */
-export function money(
-  value: number,
-  currency: string = "USD",
-  locale: string = "en-US",
-): string {
+export function money(value: number, currency: string = 'USD', locale: string = 'en-US'): string {
   return new Intl.NumberFormat(locale, {
-    style: "currency",
+    style: 'currency',
     currency,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -40,14 +34,14 @@ export function money(
 
 /** Truncate text to a max length with ellipsis. */
 export function truncate(text: string, max: number): string {
-  return text.length > max ? text.slice(0, max) + "…" : text;
+  return text.length > max ? text.slice(0, max) + '…' : text;
 }
 
 /** Generate a readable "time ago" string from a Date or ISO string. */
 export function timeAgo(date: Date | string): string {
-  const d = typeof date === "string" ? new Date(date) : date;
+  const d = typeof date === 'string' ? new Date(date) : date;
   const s = Math.floor((Date.now() - d.getTime()) / 1000);
-  if (s < 60) return "just now";
+  if (s < 60) return 'just now';
   const m = Math.floor(s / 60);
   if (m < 60) return `${m}m ago`;
   const h = Math.floor(m / 60);
@@ -65,9 +59,7 @@ export function timeAgo(date: Date | string): string {
  * Trap keyboard focus inside a container (useful for modals / drawers).
  * Returns a ref to attach to the container element.
  */
-export function useFocusTrap<T extends HTMLElement = HTMLDivElement>(
-  active: boolean = true,
-) {
+export function useFocusTrap<T extends HTMLElement = HTMLDivElement>(active: boolean = true) {
   const ref = useRef<T>(null);
 
   useEffect(() => {
@@ -82,7 +74,7 @@ export function useFocusTrap<T extends HTMLElement = HTMLDivElement>(
     first.focus();
 
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key !== "Tab") return;
+      if (e.key !== 'Tab') return;
       if (e.shiftKey) {
         if (document.activeElement === first) {
           e.preventDefault();
@@ -95,8 +87,8 @@ export function useFocusTrap<T extends HTMLElement = HTMLDivElement>(
         }
       }
     }
-    el.addEventListener("keydown", onKeyDown);
-    return () => el.removeEventListener("keydown", onKeyDown);
+    el.addEventListener('keydown', onKeyDown);
+    return () => el.removeEventListener('keydown', onKeyDown);
   }, [active]);
 
   return ref;
@@ -107,9 +99,7 @@ export function useFocusTrap<T extends HTMLElement = HTMLDivElement>(
 /**
  * Run a callback when user clicks outside of the referenced element.
  */
-export function useClickOutside<T extends HTMLElement = HTMLDivElement>(
-  handler: () => void,
-) {
+export function useClickOutside<T extends HTMLElement = HTMLDivElement>(handler: () => void) {
   const ref = useRef<T>(null);
 
   useEffect(() => {
@@ -118,8 +108,8 @@ export function useClickOutside<T extends HTMLElement = HTMLDivElement>(
         handler();
       }
     }
-    document.addEventListener("mousedown", onMouseDown);
-    return () => document.removeEventListener("mousedown", onMouseDown);
+    document.addEventListener('mousedown', onMouseDown);
+    return () => document.removeEventListener('mousedown', onMouseDown);
   }, [handler]);
 
   return ref;
@@ -142,8 +132,8 @@ export function useMediaQuery(query: string): boolean {
     function handler(e: MediaQueryListEvent) {
       setMatches(e.matches);
     }
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
   }, [query]);
 
   return matches;
@@ -183,21 +173,21 @@ export function baseButtonStyle(opts: {
   transition?: string;
 }): React.CSSProperties {
   return {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: 8,
-    background: opts.bg ?? "#2563eb",
-    color: opts.color ?? "#fff",
-    border: opts.border ?? "none",
+    background: opts.bg ?? '#2563eb',
+    color: opts.color ?? '#fff',
+    border: opts.border ?? 'none',
     borderRadius: opts.radius ?? 8,
     padding: `${opts.py ?? 10}px ${opts.px ?? 18}px`,
     fontSize: opts.fontSize ?? 15,
-    fontWeight: opts.fontWeight ?? "500",
-    cursor: "pointer",
-    transition: opts.transition ?? "all 0.2s ease",
-    boxShadow: opts.shadow ?? "none",
-    textDecoration: "none",
+    fontWeight: opts.fontWeight ?? '500',
+    cursor: 'pointer',
+    transition: opts.transition ?? 'all 0.2s ease',
+    boxShadow: opts.shadow ?? 'none',
+    textDecoration: 'none',
     lineHeight: 1,
   };
 }
@@ -213,15 +203,15 @@ export function inputStyle(opts: {
   fontSize?: number;
 }): React.CSSProperties {
   return {
-    width: "100%",
-    padding: "10px 14px",
-    background: opts.bg ?? "rgba(128,128,128,0.1)",
-    color: opts.text ?? "#E5E7EB",
-    border: `1px solid ${opts.border ?? "rgba(255,255,255,0.12)"}`,
+    width: '100%',
+    padding: '10px 14px',
+    background: opts.bg ?? 'rgba(128,128,128,0.1)',
+    color: opts.text ?? '#E5E7EB',
+    border: `1px solid ${opts.border ?? 'rgba(255,255,255,0.12)'}`,
     borderRadius: opts.radius ?? 8,
     fontSize: opts.fontSize ?? 14,
-    outline: "none",
-    transition: "border-color 0.2s ease",
+    outline: 'none',
+    transition: 'border-color 0.2s ease',
   };
 }
 
@@ -232,11 +222,11 @@ export function labelStyle(opts?: {
   fontWeight?: string;
 }): React.CSSProperties {
   return {
-    display: "block",
+    display: 'block',
     marginBottom: 6,
     fontSize: opts?.fontSize ?? 13,
-    fontWeight: opts?.fontWeight ?? "500",
-    color: opts?.color ?? "rgba(255,255,255,0.8)",
+    fontWeight: opts?.fontWeight ?? '500',
+    color: opts?.color ?? 'rgba(255,255,255,0.8)',
   };
 }
 
@@ -247,10 +237,7 @@ export interface ValidationRule {
   message: string;
 }
 
-export function validate(
-  value: string,
-  rules: ValidationRule[],
-): string | null {
+export function validate(value: string, rules: ValidationRule[]): string | null {
   for (const rule of rules) {
     if (!rule.test(value)) return rule.message;
   }
@@ -259,12 +246,12 @@ export function validate(
 
 export const emailRule: ValidationRule = {
   test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
-  message: "Invalid email address",
+  message: 'Invalid email address',
 };
 
 export const requiredRule: ValidationRule = {
   test: (v) => v.trim().length > 0,
-  message: "This field is required",
+  message: 'This field is required',
 };
 
 export const minLengthRule = (min: number): ValidationRule => ({

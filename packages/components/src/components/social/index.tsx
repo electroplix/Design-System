@@ -1,7 +1,7 @@
-"use client";
-import React, { useState } from "react";
-import { useSocialTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState } from 'react';
+import { useSocialTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -9,15 +9,15 @@ function useSC() {
   const t = useSocialTheme();
 
   return {
-    accent: t.accentColor ?? "#18181b",
-    fg: t.textColor ?? "#09090b",
-    muted: "#71717a",
-    bg: t.bgColor ?? "#ffffff",
-    surface: "#fafafa",
-    surfaceHover: "#f4f4f5",
-    border: t.borderColor ?? "#e4e4e7",
-    danger: "#dc2626",
-    star: "#f59e0b",
+    accent: t.accentColor ?? '#18181b',
+    fg: t.textColor ?? '#09090b',
+    muted: '#71717a',
+    bg: t.bgColor ?? '#ffffff',
+    surface: '#fafafa',
+    surfaceHover: '#f4f4f5',
+    border: t.borderColor ?? '#e4e4e7',
+    danger: '#dc2626',
+    star: '#f59e0b',
     r: t.radius ?? 16,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
@@ -28,30 +28,24 @@ function useSC() {
 
 /* ── SocialShareBar ─────────────────────────────────────── */
 
-export type ShareNetwork =
-  | "twitter"
-  | "facebook"
-  | "linkedin"
-  | "reddit"
-  | "email"
-  | "copy";
+export type ShareNetwork = 'twitter' | 'facebook' | 'linkedin' | 'reddit' | 'email' | 'copy';
 
 const SHARE_ICONS: Record<ShareNetwork, string> = {
-  twitter: "twitter",
-  facebook: "facebook",
-  linkedin: "linkedin",
-  reddit: "globe",
-  email: "mail",
-  copy: "copy",
+  twitter: 'twitter',
+  facebook: 'facebook',
+  linkedin: 'linkedin',
+  reddit: 'globe',
+  email: 'mail',
+  copy: 'copy',
 };
 
 const SHARE_COLORS: Record<ShareNetwork, string> = {
-  twitter: "#18181b",
-  facebook: "#18181b",
-  linkedin: "#18181b",
-  reddit: "#18181b",
-  email: "#18181b",
-  copy: "#18181b",
+  twitter: '#18181b',
+  facebook: '#18181b',
+  linkedin: '#18181b',
+  reddit: '#18181b',
+  email: '#18181b',
+  copy: '#18181b',
 };
 
 export interface SocialShareBarProps {
@@ -63,8 +57,8 @@ export interface SocialShareBarProps {
 
 export function SocialShareBar({
   url,
-  title = "",
-  networks = ["twitter", "facebook", "linkedin", "email", "copy"],
+  title = '',
+  networks = ['twitter', 'facebook', 'linkedin', 'email', 'copy'],
   compact = false,
 }: SocialShareBarProps) {
   const sc = useSC();
@@ -73,7 +67,7 @@ export function SocialShareBar({
   const share = (n: ShareNetwork) => {
     const enc = encodeURIComponent;
 
-    if (n === "copy") {
+    if (n === 'copy') {
       navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
@@ -88,11 +82,11 @@ export function SocialShareBar({
       email: `mailto:?subject=${enc(title)}&body=${enc(url)}`,
     };
 
-    window.open(urls[n], "_blank", "noopener,width=600,height=400");
+    window.open(urls[n], '_blank', 'noopener,width=600,height=400');
   };
 
   return (
-    <div style={{ display: "flex", gap: 8, fontFamily: sc.ff }}>
+    <div style={{ display: 'flex', gap: 8, fontFamily: sc.ff }}>
       {networks.map((n) => (
         <button
           key={n}
@@ -101,20 +95,20 @@ export function SocialShareBar({
           style={{
             width: compact ? 36 : 44,
             height: compact ? 36 : 44,
-            borderRadius: "50%",
+            borderRadius: '50%',
             border: `1px solid ${sc.border}`,
-            background: "#ffffff",
+            background: '#ffffff',
             color: SHARE_COLORS[n],
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            transition: "all 0.15s",
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'all 0.15s',
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
           }}
         >
           <Icon
-            name={n === "copy" && copied ? "check" : SHARE_ICONS[n]}
+            name={n === 'copy' && copied ? 'check' : SHARE_ICONS[n]}
             size={compact ? 16 : 20}
             color={SHARE_COLORS[n]}
           />
@@ -126,42 +120,34 @@ export function SocialShareBar({
 
 /* ── SocialLoginButtons ─────────────────────────────────── */
 
-export type SocialProvider =
-  | "google"
-  | "github"
-  | "twitter"
-  | "facebook"
-  | "discord";
+export type SocialProvider = 'google' | 'github' | 'twitter' | 'facebook' | 'discord';
 
-const PROVIDER_META: Record<
-  SocialProvider,
-  { label: string; icon: string; color: string }
-> = {
-  google: { label: "Google", icon: "globe", color: "#18181b" },
-  github: { label: "GitHub", icon: "github", color: "#18181b" },
-  twitter: { label: "Twitter", icon: "twitter", color: "#18181b" },
-  facebook: { label: "Facebook", icon: "facebook", color: "#18181b" },
-  discord: { label: "Discord", icon: "message-circle", color: "#18181b" },
+const PROVIDER_META: Record<SocialProvider, { label: string; icon: string; color: string }> = {
+  google: { label: 'Google', icon: 'globe', color: '#18181b' },
+  github: { label: 'GitHub', icon: 'github', color: '#18181b' },
+  twitter: { label: 'Twitter', icon: 'twitter', color: '#18181b' },
+  facebook: { label: 'Facebook', icon: 'facebook', color: '#18181b' },
+  discord: { label: 'Discord', icon: 'message-circle', color: '#18181b' },
 };
 
 export interface SocialLoginButtonsProps {
   providers: SocialProvider[];
   onLogin?: (provider: SocialProvider) => void;
-  layout?: "horizontal" | "vertical";
+  layout?: 'horizontal' | 'vertical';
 }
 
 export function SocialLoginButtons({
   providers = [],
   onLogin,
-  layout = "vertical",
+  layout = 'vertical',
 }: SocialLoginButtonsProps) {
   const sc = useSC();
 
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: layout === "vertical" ? "column" : "row",
+        display: 'flex',
+        flexDirection: layout === 'vertical' ? 'column' : 'row',
         gap: 10,
         fontFamily: sc.ff,
       }}
@@ -174,20 +160,20 @@ export function SocialLoginButtons({
             key={p}
             onClick={() => onLogin?.(p)}
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               gap: 10,
-              padding: "12px 20px",
+              padding: '12px 20px',
               borderRadius: sc.r,
               border: `1px solid ${sc.border}`,
-              background: "#ffffff",
+              background: '#ffffff',
               color: sc.fg,
               fontWeight: 600,
               fontSize: 14,
-              cursor: "pointer",
-              transition: "border-color 0.15s, box-shadow 0.15s",
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+              cursor: 'pointer',
+              transition: 'border-color 0.15s, box-shadow 0.15s',
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             <Icon name={m.icon} size={20} color={m.color} />
@@ -201,12 +187,7 @@ export function SocialLoginButtons({
 
 /* ── SocialEmbed ────────────────────────────────────────── */
 
-export type EmbedType =
-  | "youtube"
-  | "twitter"
-  | "instagram"
-  | "spotify"
-  | "custom";
+export type EmbedType = 'youtube' | 'twitter' | 'instagram' | 'spotify' | 'custom';
 
 export interface SocialEmbedProps {
   type: EmbedType;
@@ -216,17 +197,11 @@ export interface SocialEmbedProps {
   title?: string;
 }
 
-export function SocialEmbed({
-  type,
-  url,
-  width = "100%",
-  height = 400,
-  title,
-}: SocialEmbedProps) {
+export function SocialEmbed({ type, url, width = '100%', height = 400, title }: SocialEmbedProps) {
   const sc = useSC();
   let embedUrl = url;
 
-  if (type === "youtube") {
+  if (type === 'youtube') {
     const m = url.match(/(?:v=|youtu\.be\/)([^&]+)/);
     if (m) embedUrl = `https://www.youtube.com/embed/${m[1]}`;
   }
@@ -235,10 +210,10 @@ export function SocialEmbed({
     <div
       style={{
         borderRadius: sc.r,
-        overflow: "hidden",
+        overflow: 'hidden',
         border: `1px solid ${sc.border}`,
-        background: "#000000",
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        background: '#000000',
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       <iframe
@@ -246,7 +221,7 @@ export function SocialEmbed({
         width={width}
         height={height}
         title={title ?? `${type} embed`}
-        style={{ border: "none", display: "block" }}
+        style={{ border: 'none', display: 'block' }}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
@@ -278,31 +253,31 @@ export function FollowLike({
   const sc = useSC();
 
   return (
-    <div style={{ display: "flex", gap: 10, fontFamily: sc.ff }}>
+    <div style={{ display: 'flex', gap: 10, fontFamily: sc.ff }}>
       <button
         onClick={isFollowed ? onUnfollow : onFollow}
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 6,
-          padding: "8px 16px",
+          padding: '8px 16px',
           borderRadius: 12,
           border: isFollowed ? `1px solid ${sc.accent}` : `1px solid ${sc.border}`,
-          background: isFollowed ? sc.accent : "#ffffff",
-          color: isFollowed ? "#ffffff" : sc.fg,
+          background: isFollowed ? sc.accent : '#ffffff',
+          color: isFollowed ? '#ffffff' : sc.fg,
           fontWeight: 700,
           fontSize: 13,
-          cursor: "pointer",
-          transition: "all 0.2s",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+          cursor: 'pointer',
+          transition: 'all 0.2s',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
         <Icon
-          name={isFollowed ? "check" : "user-plus"}
+          name={isFollowed ? 'check' : 'user-plus'}
           size={16}
-          color={isFollowed ? "#ffffff" : sc.fg}
+          color={isFollowed ? '#ffffff' : sc.fg}
         />
-        {isFollowed ? "Following" : "Follow"}
+        {isFollowed ? 'Following' : 'Follow'}
         {followerCount !== undefined && (
           <span style={{ opacity: 0.7, marginLeft: 4 }}>{followerCount}</span>
         )}
@@ -311,19 +286,19 @@ export function FollowLike({
       <button
         onClick={onLike}
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 6,
-          padding: "8px 14px",
+          padding: '8px 14px',
           borderRadius: 12,
-          border: `1px solid ${isLiked ? "#fecaca" : sc.border}`,
-          background: isLiked ? "#fef2f2" : "#ffffff",
+          border: `1px solid ${isLiked ? '#fecaca' : sc.border}`,
+          background: isLiked ? '#fef2f2' : '#ffffff',
           color: isLiked ? sc.danger : sc.fg,
           fontWeight: 600,
           fontSize: 13,
-          cursor: "pointer",
-          transition: "all 0.2s",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+          cursor: 'pointer',
+          transition: 'all 0.2s',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
         <Icon name="heart" size={16} color={isLiked ? sc.danger : sc.fg} />
@@ -347,18 +322,15 @@ export interface ReactionsBarProps {
   onReact?: (label: string) => void;
 }
 
-export function ReactionsBar({
-  reactions = [],
-  onReact,
-}: ReactionsBarProps) {
+export function ReactionsBar({ reactions = [], onReact }: ReactionsBarProps) {
   const sc = useSC();
 
   return (
     <div
       style={{
-        display: "flex",
+        display: 'flex',
         gap: 6,
-        flexWrap: "wrap",
+        flexWrap: 'wrap',
         fontFamily: sc.ff,
       }}
     >
@@ -367,18 +339,18 @@ export function ReactionsBar({
           key={r.label}
           onClick={() => onReact?.(r.label)}
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 6,
-            padding: "6px 12px",
+            padding: '6px 12px',
             borderRadius: 999,
             border: `1px solid ${r.active ? sc.accent : sc.border}`,
-            background: r.active ? sc.surface : "#ffffff",
+            background: r.active ? sc.surface : '#ffffff',
             color: sc.fg,
             fontSize: 13,
-            cursor: "pointer",
-            transition: "all 0.15s",
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+            cursor: 'pointer',
+            transition: 'all 0.15s',
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
           }}
         >
           <span>{r.emoji}</span>
@@ -406,20 +378,16 @@ export interface CommentsBoxProps {
   title?: string;
 }
 
-export function CommentsBox({
-  comments = [],
-  onSubmit,
-  title = "Comments",
-}: CommentsBoxProps) {
+export function CommentsBox({ comments = [], onSubmit, title = 'Comments' }: CommentsBoxProps) {
   const sc = useSC();
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
 
   const send = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (text.trim()) {
       onSubmit?.(text.trim());
-      setText("");
+      setText('');
     }
   };
 
@@ -430,7 +398,7 @@ export function CommentsBox({
           fontWeight: 700,
           fontSize: sc.hs,
           marginBottom: 14,
-          letterSpacing: "-0.025em",
+          letterSpacing: '-0.025em',
           color: sc.fg,
         }}
       >
@@ -440,7 +408,7 @@ export function CommentsBox({
       <form
         onSubmit={send}
         style={{
-          display: "flex",
+          display: 'flex',
           gap: 8,
           marginBottom: 16,
         }}
@@ -451,15 +419,15 @@ export function CommentsBox({
           placeholder="Write a comment..."
           style={{
             flex: 1,
-            padding: "10px 14px",
+            padding: '10px 14px',
             borderRadius: 12,
             border: `1px solid ${sc.border}`,
-            background: "#ffffff",
+            background: '#ffffff',
             color: sc.fg,
             fontSize: 14,
-            outline: "none",
+            outline: 'none',
             fontFamily: sc.ff,
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
           }}
         />
 
@@ -467,30 +435,30 @@ export function CommentsBox({
           type="submit"
           disabled={!text.trim()}
           style={{
-            padding: "10px 16px",
+            padding: '10px 16px',
             borderRadius: 12,
             border: `1px solid ${sc.accent}`,
             background: sc.accent,
-            color: "#ffffff",
+            color: '#ffffff',
             fontWeight: 700,
             fontSize: 13,
-            cursor: text.trim() ? "pointer" : "not-allowed",
+            cursor: text.trim() ? 'pointer' : 'not-allowed',
             opacity: text.trim() ? 1 : 0.45,
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
           }}
         >
           Post
         </button>
       </form>
 
-      <div style={{ display: "grid", gap: 4 }}>
+      <div style={{ display: 'grid', gap: 4 }}>
         {comments.map((c) => (
           <div
             key={c.id}
             style={{
-              display: "flex",
+              display: 'flex',
               gap: 12,
-              padding: "12px 0",
+              padding: '12px 0',
               borderBottom: `1px solid ${sc.border}`,
             }}
           >
@@ -501,8 +469,8 @@ export function CommentsBox({
                 style={{
                   width: 36,
                   height: 36,
-                  borderRadius: "50%",
-                  objectFit: "cover",
+                  borderRadius: '50%',
+                  objectFit: 'cover',
                   flexShrink: 0,
                   border: `1px solid ${sc.border}`,
                 }}
@@ -512,12 +480,12 @@ export function CommentsBox({
                 style={{
                   width: 36,
                   height: 36,
-                  borderRadius: "50%",
+                  borderRadius: '50%',
                   background: sc.surface,
                   border: `1px solid ${sc.border}`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   fontWeight: 700,
                   fontSize: 14,
                   color: sc.fg,
@@ -529,7 +497,7 @@ export function CommentsBox({
             )}
 
             <div style={{ flex: 1 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span
                   style={{
                     fontWeight: 700,
@@ -540,9 +508,7 @@ export function CommentsBox({
                   {c.author}
                 </span>
 
-                {c.time && (
-                  <span style={{ fontSize: 12, color: sc.muted }}>{c.time}</span>
-                )}
+                {c.time && <span style={{ fontSize: 12, color: sc.muted }}>{c.time}</span>}
               </div>
 
               <div
@@ -559,8 +525,8 @@ export function CommentsBox({
               {c.likes !== undefined && (
                 <div
                   style={{
-                    display: "flex",
-                    alignItems: "center",
+                    display: 'flex',
+                    alignItems: 'center',
                     gap: 4,
                     marginTop: 6,
                     fontSize: 13,
@@ -589,8 +555,8 @@ export function ReviewsForm({ onSubmit }: ReviewsFormProps) {
   const sc = useSC();
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const [name, setName] = useState("");
-  const [review, setReview] = useState("");
+  const [name, setName] = useState('');
+  const [review, setReview] = useState('');
 
   const handle = (e: React.FormEvent) => {
     e.preventDefault();
@@ -608,7 +574,7 @@ export function ReviewsForm({ onSubmit }: ReviewsFormProps) {
     <form
       onSubmit={handle}
       style={{
-        display: "grid",
+        display: 'grid',
         gap: 14,
         fontFamily: sc.ff,
         color: sc.fg,
@@ -619,14 +585,14 @@ export function ReviewsForm({ onSubmit }: ReviewsFormProps) {
         style={{
           fontWeight: 700,
           fontSize: sc.hs,
-          letterSpacing: "-0.025em",
+          letterSpacing: '-0.025em',
           color: sc.fg,
         }}
       >
         Leave a Review
       </div>
 
-      <div style={{ display: "flex", gap: 4 }}>
+      <div style={{ display: 'flex', gap: 4 }}>
         {[1, 2, 3, 4, 5].map((s) => (
           <button
             key={s}
@@ -635,17 +601,13 @@ export function ReviewsForm({ onSubmit }: ReviewsFormProps) {
             onMouseLeave={() => setHover(0)}
             onClick={() => setRating(s)}
             style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
               padding: 2,
             }}
           >
-            <Icon
-              name="star"
-              size={28}
-              color={(hover || rating) >= s ? sc.star : "#d4d4d8"}
-            />
+            <Icon name="star" size={28} color={(hover || rating) >= s ? sc.star : '#d4d4d8'} />
           </button>
         ))}
       </div>
@@ -655,15 +617,15 @@ export function ReviewsForm({ onSubmit }: ReviewsFormProps) {
         onChange={(e) => setName(e.target.value)}
         placeholder="Your name"
         style={{
-          padding: "10px 14px",
+          padding: '10px 14px',
           borderRadius: 12,
           border: `1px solid ${sc.border}`,
-          background: "#ffffff",
+          background: '#ffffff',
           color: sc.fg,
           fontSize: 14,
-          outline: "none",
+          outline: 'none',
           fontFamily: sc.ff,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       />
 
@@ -673,32 +635,32 @@ export function ReviewsForm({ onSubmit }: ReviewsFormProps) {
         placeholder="Write your review..."
         rows={4}
         style={{
-          padding: "10px 14px",
+          padding: '10px 14px',
           borderRadius: 12,
           border: `1px solid ${sc.border}`,
-          background: "#ffffff",
+          background: '#ffffff',
           color: sc.fg,
           fontSize: 14,
-          outline: "none",
-          resize: "vertical",
+          outline: 'none',
+          resize: 'vertical',
           fontFamily: sc.ff,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       />
 
       <button
         type="submit"
         style={{
-          padding: "12px 20px",
+          padding: '12px 20px',
           borderRadius: 12,
           border: `1px solid ${sc.accent}`,
           background: sc.accent,
-          color: "#ffffff",
+          color: '#ffffff',
           fontWeight: 700,
           fontSize: 14,
-          cursor: "pointer",
-          justifySelf: "start",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+          cursor: 'pointer',
+          justifySelf: 'start',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
         }}
       >
         Submit Review

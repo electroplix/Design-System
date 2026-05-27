@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useHeroTheme } from "../../core/provider";
+import React from 'react';
+import { useHeroTheme } from '../../core/provider';
 
 export interface VideoHeaderHeroProps {
   as?: React.ElementType;
@@ -31,23 +31,23 @@ export interface VideoHeaderHeroProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#d4d4d8",
-  border: "#27272a",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#d4d4d8',
+  border: '#27272a',
 };
 
 export function VideoHeaderHero(props: VideoHeaderHeroProps) {
   const t = useHeroTheme();
 
   const {
-    as: Tag = "section",
+    as: Tag = 'section',
     videoSrc,
     poster,
     overlay = 0.5,
-    title = "See It in Action",
-    subtitle = "Watch how our platform transforms your workflow.",
+    title = 'See It in Action',
+    subtitle = 'Watch how our platform transforms your workflow.',
     titleSize = 48,
     subtitleSize = 20,
     controls = false,
@@ -59,20 +59,19 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
     accentColor,
     borderColor,
     fontFamily = t.fontFamily,
-    minH = t.minH ?? "70vh",
+    minH = t.minH ?? '70vh',
     maxW = t.maxW ?? 1200,
     px = t.px ?? 24,
     py = t.py ?? 64,
     radius = t.cardRadius ?? 20,
     style = {},
-    className = "",
+    className = '',
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.black;
   const fg = textColor ?? t.textColor ?? ui.white;
 
-  const border =
-    borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
+  const border = borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
 
   const accent = accentColor ?? t.accentColor ?? ui.white;
 
@@ -80,18 +79,18 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
     <Tag
       className={className}
       style={{
-        display: "grid",
-        placeItems: "center",
+        display: 'grid',
+        placeItems: 'center',
         background: bg,
         color: fg,
         fontFamily,
-        minHeight: typeof minH === "number" ? `${minH}px` : minH,
+        minHeight: typeof minH === 'number' ? `${minH}px` : minH,
         padding: `${py}px ${px}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
-        position: "relative",
-        overflow: "hidden",
-        boxShadow: "0 1px 2px rgba(0,0,0,0.24)",
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 1px 2px rgba(0,0,0,0.24)',
         ...style,
       }}
     >
@@ -105,11 +104,11 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
           controls={controls}
           poster={poster}
           style={{
-            position: "absolute",
+            position: 'absolute',
             inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
             zIndex: 0,
           }}
         >
@@ -121,7 +120,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
       <div
         aria-hidden
         style={{
-          position: "absolute",
+          position: 'absolute',
           inset: 0,
           background: `
             linear-gradient(
@@ -130,7 +129,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
               rgba(9,9,11,${overlay})
             )
           `,
-          backdropFilter: "blur(1px)",
+          backdropFilter: 'blur(1px)',
           zIndex: 1,
         }}
       />
@@ -139,28 +138,28 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
       <div
         aria-hidden
         style={{
-          position: "absolute",
-          top: "-10%",
-          left: "50%",
-          transform: "translateX(-50%)",
+          position: 'absolute',
+          top: '-10%',
+          left: '50%',
+          transform: 'translateX(-50%)',
           width: 520,
           height: 520,
-          borderRadius: "999px",
-          background: "rgba(255,255,255,0.05)",
-          filter: "blur(90px)",
+          borderRadius: '999px',
+          background: 'rgba(255,255,255,0.05)',
+          filter: 'blur(90px)',
           zIndex: 1,
-          pointerEvents: "none",
+          pointerEvents: 'none',
         }}
       />
 
       {/* content */}
       <div
         style={{
-          position: "relative",
+          position: 'relative',
           zIndex: 2,
-          textAlign: "center",
+          textAlign: 'center',
           maxWidth: maxW,
-          width: "100%",
+          width: '100%',
         }}
       >
         {title && (
@@ -170,7 +169,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
               margin: 0,
               fontWeight: 800,
               lineHeight: 1.05,
-              letterSpacing: "-0.05em",
+              letterSpacing: '-0.05em',
               color: fg,
             }}
           >
@@ -186,7 +185,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
               marginTop: 20,
               marginBottom: 0,
               maxWidth: 640,
-              marginInline: "auto",
+              marginInline: 'auto',
               lineHeight: 1.7,
             }}
           >
@@ -200,7 +199,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
             width: 72,
             height: 1,
             background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-            margin: "36px auto 0",
+            margin: '36px auto 0',
             opacity: 0.6,
           }}
         />

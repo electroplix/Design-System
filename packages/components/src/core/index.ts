@@ -27,7 +27,7 @@ export type {
   Currency,
   PatternKind,
   ShellProps,
-} from "./types";
+} from './types';
 
 // Config helpers (server-safe — no React)
 export {
@@ -52,7 +52,7 @@ export {
   defaultSiteIdentityTheme,
   defaultSocialTheme,
   defaultUserAccountsTheme,
-} from "./config";
+} from './config';
 
 // Provider + hooks (client-only — "use client")
 export {
@@ -76,11 +76,11 @@ export {
   useSocialTheme,
   useUserAccountsTheme,
   useBlogTheme,
-} from "./provider";
+} from './provider';
 
 // Icons (client-only)
-export { Icon, ICON_NAMES } from "./icons";
-export type { IconProps, IconName } from "./icons";
+export { Icon, ICON_NAMES } from './icons';
+export type { IconProps, IconName } from './icons';
 
 // Utilities (mixed — some client-only hooks, some pure)
 export {
@@ -101,5 +101,5 @@ export {
   requiredRule,
   minLengthRule,
   maxLengthRule,
-} from "./utils";
-export type { ValidationRule } from "./utils";
+} from './utils';
+export type { ValidationRule } from './utils';

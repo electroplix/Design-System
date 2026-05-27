@@ -14,26 +14,135 @@
       "whenToUse": "Use as the outermost wrapper for any form page. Provides structural consistency for all child form elements including inputs, selects, and submit buttons.",
       "isShell": true,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"form\"", "description": "HTML element or component to render as" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width of the form shell in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between child elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" },
-        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Child form elements to render inside the shell" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"form\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width of the form shell in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between child elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Child form elements to render inside the shell"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "contact", "settings", "onboarding", "auth"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "contact",
+          "settings",
+          "onboarding",
+          "auth"
+        ],
         "placement": "body",
         "priority": 4,
         "sequenceOrder": 4,
-        "pairsWellWith": ["forms.InputField", "forms.TextAreaField", "forms.SelectDropdown", "forms.RadioGroup", "forms.ToggleSwitch", "forms.ContactForm", "forms.ValidationWrapper"],
+        "pairsWellWith": [
+          "forms.InputField",
+          "forms.TextAreaField",
+          "forms.SelectDropdown",
+          "forms.RadioGroup",
+          "forms.ToggleSwitch",
+          "forms.ContactForm",
+          "forms.ValidationWrapper"
+        ],
         "maxPerPage": 3,
         "isContainer": true
       }
@@ -45,41 +154,237 @@
       "whenToUse": "Use for any single-line text entry such as name, email, phone, password, or URL fields. Ideal inside FormShell or any form composition.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Input Field\"", "description": "Label text displayed above the input" },
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Form field name attribute" },
-        { "name": "type", "type": "string", "required": false, "default": "\"text\"", "description": "HTML input type (text, email, password, tel, url, number, etc.)" },
-        { "name": "value", "type": "string", "required": false, "default": null, "description": "Controlled input value" },
-        { "name": "defaultValue", "type": "string", "required": false, "default": null, "description": "Default uncontrolled value" },
-        { "name": "placeholder", "type": "string", "required": false, "default": "\"Enter text...\"", "description": "Placeholder text when input is empty" },
-        { "name": "onChange", "type": "(e: ChangeEvent) => void", "required": false, "default": null, "description": "Callback fired when input value changes" },
-        { "name": "helpText", "type": "string", "required": false, "default": null, "description": "Helper text displayed below the input" },
-        { "name": "required", "type": "boolean", "required": false, "default": "false", "description": "Whether the field is required" },
-        { "name": "error", "type": "string", "required": false, "default": null, "description": "Error message to display below the input" },
-        { "name": "icon", "type": "ReactNode", "required": false, "default": null, "description": "Icon element displayed inside the input" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the input element" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "13", "description": "Font size of the label in pixels" },
-        { "name": "inputSize", "type": "number", "required": false, "default": "14", "description": "Font size of the input text in pixels" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Input Field\"",
+          "description": "Label text displayed above the input"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Form field name attribute"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "default": "\"text\"",
+          "description": "HTML input type (text, email, password, tel, url, number, etc.)"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Controlled input value"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Default uncontrolled value"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "default": "\"Enter text...\"",
+          "description": "Placeholder text when input is empty"
+        },
+        {
+          "name": "onChange",
+          "type": "(e: ChangeEvent) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when input value changes"
+        },
+        {
+          "name": "helpText",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Helper text displayed below the input"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the field is required"
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Error message to display below the input"
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Icon element displayed inside the input"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the input element"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "13",
+          "description": "Font size of the label in pixels"
+        },
+        {
+          "name": "inputSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the input text in pixels"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas", "contact", "settings", "onboarding", "auth"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas",
+          "contact",
+          "settings",
+          "onboarding",
+          "auth"
+        ],
         "placement": "body",
         "priority": 9,
         "sequenceOrder": 5,
-        "pairsWellWith": ["forms.FormShell", "forms.TextAreaField", "forms.SelectDropdown", "forms.ValidationWrapper"],
+        "pairsWellWith": [
+          "forms.FormShell",
+          "forms.TextAreaField",
+          "forms.SelectDropdown",
+          "forms.ValidationWrapper"
+        ],
         "maxPerPage": 10,
         "isContainer": false
       }
@@ -91,33 +396,200 @@
       "whenToUse": "Use when the user needs to enter multiple lines of text such as messages, comments, bios, descriptions, or blog post content.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Message\"", "description": "Label text displayed above the textarea" },
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Form field name attribute" },
-        { "name": "value", "type": "string", "required": false, "default": null, "description": "Controlled textarea value" },
-        { "name": "defaultValue", "type": "string", "required": false, "default": null, "description": "Default uncontrolled value" },
-        { "name": "placeholder", "type": "string", "required": false, "default": "\"Write your message here...\"", "description": "Placeholder text when textarea is empty" },
-        { "name": "rows", "type": "number", "required": false, "default": "5", "description": "Number of visible text rows" },
-        { "name": "onChange", "type": "(e: ChangeEvent) => void", "required": false, "default": null, "description": "Callback fired when textarea value changes" },
-        { "name": "showPreview", "type": "boolean", "required": false, "default": "false", "description": "Whether to show a live preview of the entered text" },
-        { "name": "maxLength", "type": "number", "required": false, "default": null, "description": "Maximum character count with counter display" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the textarea element" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "13", "description": "Font size of the label in pixels" },
-        { "name": "inputSize", "type": "number", "required": false, "default": "14", "description": "Font size of the textarea text in pixels" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Message\"",
+          "description": "Label text displayed above the textarea"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Form field name attribute"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Controlled textarea value"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Default uncontrolled value"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "default": "\"Write your message here...\"",
+          "description": "Placeholder text when textarea is empty"
+        },
+        {
+          "name": "rows",
+          "type": "number",
+          "required": false,
+          "default": "5",
+          "description": "Number of visible text rows"
+        },
+        {
+          "name": "onChange",
+          "type": "(e: ChangeEvent) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when textarea value changes"
+        },
+        {
+          "name": "showPreview",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to show a live preview of the entered text"
+        },
+        {
+          "name": "maxLength",
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Maximum character count with counter display"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the textarea element"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "13",
+          "description": "Font size of the label in pixels"
+        },
+        {
+          "name": "inputSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the textarea text in pixels"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
         "pageTypes": ["contact", "blog", "dashboard", "settings", "saas", "forms"],
         "placement": "body",
@@ -135,37 +607,197 @@
       "whenToUse": "Use when the user needs to choose one option from a predefined list, such as country, category, role, or sort order selectors.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Form field name attribute" },
-        { "name": "options", "type": "SelectOption[]", "required": true, "default": null, "description": "Array of options: {label, value, disabled?}" },
-        { "name": "value", "type": "string", "required": false, "default": null, "description": "Controlled select value" },
-        { "name": "defaultValue", "type": "string", "required": false, "default": null, "description": "Default uncontrolled value" },
-        { "name": "onChange", "type": "(e: ChangeEvent) => void", "required": false, "default": null, "description": "Callback fired when selection changes" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Select an option\"", "description": "Label text displayed above the select" },
-        { "name": "placeholder", "type": "string", "required": false, "default": "\"Choose...\"", "description": "Placeholder option text" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "13", "description": "Font size of the label in pixels" },
-        { "name": "selectSize", "type": "number", "required": false, "default": "14", "description": "Font size of the select text in pixels" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the select element" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Form field name attribute"
+        },
+        {
+          "name": "options",
+          "type": "SelectOption[]",
+          "required": true,
+          "default": null,
+          "description": "Array of options: {label, value, disabled?}"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Controlled select value"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Default uncontrolled value"
+        },
+        {
+          "name": "onChange",
+          "type": "(e: ChangeEvent) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when selection changes"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Select an option\"",
+          "description": "Label text displayed above the select"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "default": "\"Choose...\"",
+          "description": "Placeholder option text"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "13",
+          "description": "Font size of the label in pixels"
+        },
+        {
+          "name": "selectSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the select text in pixels"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the select element"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
         "pageTypes": ["forms", "settings", "dashboard", "ecommerce", "saas", "admin"],
         "placement": "body",
         "priority": 8,
         "sequenceOrder": 5,
-        "pairsWellWith": ["forms.FormShell", "forms.InputField", "forms.RadioGroup", "forms.ValidationWrapper"],
+        "pairsWellWith": [
+          "forms.FormShell",
+          "forms.InputField",
+          "forms.RadioGroup",
+          "forms.ValidationWrapper"
+        ],
         "maxPerPage": 8,
         "isContainer": false
       }
@@ -177,35 +809,183 @@
       "whenToUse": "Use when the user must pick exactly one option from a small set of visible choices, such as plan selection, gender, payment method, or preference settings.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Form field name attribute (shared across radios)" },
-        { "name": "options", "type": "RadioOption[]", "required": true, "default": null, "description": "Array of radio options: {label, value, helpText?}" },
-        { "name": "value", "type": "string", "required": false, "default": null, "description": "Controlled selected value" },
-        { "name": "defaultValue", "type": "string", "required": false, "default": null, "description": "Default uncontrolled value" },
-        { "name": "onChange", "type": "(e: ChangeEvent) => void", "required": false, "default": null, "description": "Callback fired when selection changes" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Choose an option\"", "description": "Group label displayed above the radio buttons" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "13", "description": "Font size of the group label in pixels" },
-        { "name": "itemSize", "type": "number", "required": false, "default": "14", "description": "Font size of each radio option label in pixels" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between radio items in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Form field name attribute (shared across radios)"
+        },
+        {
+          "name": "options",
+          "type": "RadioOption[]",
+          "required": true,
+          "default": null,
+          "description": "Array of radio options: {label, value, helpText?}"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Controlled selected value"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Default uncontrolled value"
+        },
+        {
+          "name": "onChange",
+          "type": "(e: ChangeEvent) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when selection changes"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Choose an option\"",
+          "description": "Group label displayed above the radio buttons"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "13",
+          "description": "Font size of the group label in pixels"
+        },
+        {
+          "name": "itemSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of each radio option label in pixels"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between radio items in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
         "pageTypes": ["forms", "settings", "dashboard", "saas", "onboarding"],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 5,
-        "pairsWellWith": ["forms.FormShell", "forms.SelectDropdown", "forms.ToggleSwitch", "forms.ValidationWrapper"],
+        "pairsWellWith": [
+          "forms.FormShell",
+          "forms.SelectDropdown",
+          "forms.ToggleSwitch",
+          "forms.ValidationWrapper"
+        ],
         "maxPerPage": 5,
         "isContainer": false
       }
@@ -217,28 +997,165 @@
       "whenToUse": "Use for boolean settings like enabling notifications, dark mode, auto-save, or any on/off preference in settings and dashboard pages.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Enable Feature\"", "description": "Label text displayed next to the toggle" },
-        { "name": "description", "type": "string", "required": false, "default": null, "description": "Additional description text displayed below the label" },
-        { "name": "checked", "type": "boolean", "required": false, "default": null, "description": "Controlled checked state" },
-        { "name": "defaultChecked", "type": "boolean", "required": false, "default": null, "description": "Default uncontrolled checked state" },
-        { "name": "onChange", "type": "(checked: boolean) => void", "required": false, "default": null, "description": "Callback fired when toggle state changes" },
-        { "name": "size", "type": "number", "required": false, "default": "24", "description": "Size of the toggle switch in pixels" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "14", "description": "Font size of the label in pixels" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Enable Feature\"",
+          "description": "Label text displayed next to the toggle"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Additional description text displayed below the label"
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Controlled checked state"
+        },
+        {
+          "name": "defaultChecked",
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Default uncontrolled checked state"
+        },
+        {
+          "name": "onChange",
+          "type": "(checked: boolean) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when toggle state changes"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Size of the toggle switch in pixels"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the label in pixels"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
         "pageTypes": ["settings", "dashboard", "admin", "saas", "onboarding"],
         "placement": "body",
@@ -256,36 +1173,202 @@
       "whenToUse": "Use for collecting date or time information such as appointment scheduling, event dates, booking forms, or deadline selectors.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Select Date\"", "description": "Label text displayed above the input" },
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Form field name attribute" },
-        { "name": "mode", "type": "\"date\" | \"time\" | \"datetime-local\" | \"month\" | \"week\"", "required": false, "default": "\"date\"", "description": "Input mode controlling the type of picker shown" },
-        { "name": "value", "type": "string", "required": false, "default": null, "description": "Controlled input value" },
-        { "name": "defaultValue", "type": "string", "required": false, "default": null, "description": "Default uncontrolled value" },
-        { "name": "onChange", "type": "(e: ChangeEvent) => void", "required": false, "default": null, "description": "Callback fired when the date/time value changes" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "13", "description": "Font size of the label in pixels" },
-        { "name": "inputSize", "type": "number", "required": false, "default": "14", "description": "Font size of the input text in pixels" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the input element" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Select Date\"",
+          "description": "Label text displayed above the input"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Form field name attribute"
+        },
+        {
+          "name": "mode",
+          "type": "\"date\" | \"time\" | \"datetime-local\" | \"month\" | \"week\"",
+          "required": false,
+          "default": "\"date\"",
+          "description": "Input mode controlling the type of picker shown"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Controlled input value"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Default uncontrolled value"
+        },
+        {
+          "name": "onChange",
+          "type": "(e: ChangeEvent) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the date/time value changes"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "13",
+          "description": "Font size of the label in pixels"
+        },
+        {
+          "name": "inputSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the input text in pixels"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the input element"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
-        "pageTypes": ["forms", "booking", "ecommerce", "dashboard", "saas", "events", "restaurant", "fitness", "event", "health", "education"],
+        "pageTypes": [
+          "forms",
+          "booking",
+          "ecommerce",
+          "dashboard",
+          "saas",
+          "events",
+          "restaurant",
+          "fitness",
+          "event",
+          "health",
+          "education"
+        ],
         "placement": "body",
         "priority": 6,
         "sequenceOrder": 5,
-        "pairsWellWith": ["forms.FormShell", "forms.InputField", "forms.SelectDropdown", "forms.ValidationWrapper"],
+        "pairsWellWith": [
+          "forms.FormShell",
+          "forms.InputField",
+          "forms.SelectDropdown",
+          "forms.ValidationWrapper"
+        ],
         "maxPerPage": 5,
         "isContainer": false
       }
@@ -297,27 +1380,158 @@
       "whenToUse": "Use for file upload functionality such as profile image uploads, document attachments, resume submissions, or media uploads in forms and settings pages.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "multiple", "type": "boolean", "required": false, "default": "true", "description": "Whether to allow multiple file selection" },
-        { "name": "accept", "type": "string", "required": false, "default": "\"*\"", "description": "Accepted file types (MIME types or extensions)" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Upload files\"", "description": "Label text displayed in the upload area" },
-        { "name": "onFiles", "type": "(files: File[]) => void", "required": false, "default": null, "description": "Callback fired when files are selected or dropped" },
-        { "name": "maxSize", "type": "number", "required": false, "default": "10485760", "description": "Maximum file size in bytes (default 10 MB)" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the upload drop zone" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "required": false,
+          "default": "true",
+          "description": "Whether to allow multiple file selection"
+        },
+        {
+          "name": "accept",
+          "type": "string",
+          "required": false,
+          "default": "\"*\"",
+          "description": "Accepted file types (MIME types or extensions)"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Upload files\"",
+          "description": "Label text displayed in the upload area"
+        },
+        {
+          "name": "onFiles",
+          "type": "(files: File[]) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when files are selected or dropped"
+        },
+        {
+          "name": "maxSize",
+          "type": "number",
+          "required": false,
+          "default": "10485760",
+          "description": "Maximum file size in bytes (default 10 MB)"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the upload drop zone"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
         "pageTypes": ["forms", "settings", "dashboard", "admin", "saas"],
         "placement": "body",
@@ -335,33 +1549,184 @@
       "whenToUse": "Use for contact pages, support forms, or any page where visitors need to send a message. Provides a complete, ready-to-use form composition.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"form\"", "description": "HTML element or component to render as" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Contact us\"", "description": "Title text displayed at the top of the form" },
-        { "name": "onSubmit", "type": "(data: ContactFormData) => void", "required": false, "default": null, "description": "Callback fired when the form is submitted with {name, email, message}" },
-        { "name": "titleSize", "type": "number", "required": false, "default": "18", "description": "Font size of the title in pixels" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "13", "description": "Font size of field labels in pixels" },
-        { "name": "inputSize", "type": "number", "required": false, "default": "14", "description": "Font size of input text in pixels" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of input elements" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between form fields in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"form\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Contact us\"",
+          "description": "Title text displayed at the top of the form"
+        },
+        {
+          "name": "onSubmit",
+          "type": "(data: ContactFormData) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the form is submitted with {name, email, message}"
+        },
+        {
+          "name": "titleSize",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Font size of the title in pixels"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "13",
+          "description": "Font size of field labels in pixels"
+        },
+        {
+          "name": "inputSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of input text in pixels"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of input elements"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between form fields in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "contact", "portfolio", "saas", "restaurant", "fitness", "education", "event", "agency", "realestate", "health", "nonprofit", "community"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "contact",
+          "portfolio",
+          "saas",
+          "restaurant",
+          "fitness",
+          "education",
+          "event",
+          "agency",
+          "realestate",
+          "health",
+          "nonprofit",
+          "community"
+        ],
         "placement": "body",
         "priority": 8,
         "sequenceOrder": 6,
-        "pairsWellWith": ["forms.FormShell", "content.HeadingSection", "forms.ValidationWrapper", "forms.Captcha"],
+        "pairsWellWith": [
+          "forms.FormShell",
+          "content.HeadingSection",
+          "forms.ValidationWrapper",
+          "forms.Captcha"
+        ],
         "maxPerPage": 1,
         "isContainer": true
       }
@@ -373,31 +1738,185 @@
       "whenToUse": "Use on landing pages, blog sidebars, footers, or marketing pages to capture email addresses for newsletters and mailing lists.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"form\"", "description": "HTML element or component to render as" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Stay Updated\"", "description": "Title text displayed above the form" },
-        { "name": "subtitle", "type": "string", "required": false, "default": "\"Get the latest news...\"", "description": "Subtitle text displayed below the title" },
-        { "name": "onSubmit", "type": "(email: string) => void", "required": false, "default": null, "description": "Callback fired when the form is submitted with the email" },
-        { "name": "buttonText", "type": "string", "required": false, "default": "\"Subscribe\"", "description": "Text for the submit button" },
-        { "name": "titleSize", "type": "number", "required": false, "default": "20", "description": "Font size of the title in pixels" },
-        { "name": "subtitleSize", "type": "number", "required": false, "default": "14", "description": "Font size of the subtitle in pixels" },
-        { "name": "inputSize", "type": "number", "required": false, "default": "14", "description": "Font size of the email input in pixels" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the email input" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"form\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Stay Updated\"",
+          "description": "Title text displayed above the form"
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "required": false,
+          "default": "\"Get the latest news...\"",
+          "description": "Subtitle text displayed below the title"
+        },
+        {
+          "name": "onSubmit",
+          "type": "(email: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the form is submitted with the email"
+        },
+        {
+          "name": "buttonText",
+          "type": "string",
+          "required": false,
+          "default": "\"Subscribe\"",
+          "description": "Text for the submit button"
+        },
+        {
+          "name": "titleSize",
+          "type": "number",
+          "required": false,
+          "default": "20",
+          "description": "Font size of the title in pixels"
+        },
+        {
+          "name": "subtitleSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the subtitle in pixels"
+        },
+        {
+          "name": "inputSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the email input in pixels"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the email input"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "blog", "portfolio", "saas", "restaurant", "fitness", "education", "community", "event"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "blog",
+          "portfolio",
+          "saas",
+          "restaurant",
+          "fitness",
+          "education",
+          "community",
+          "event"
+        ],
         "placement": "body",
         "priority": 8,
         "sequenceOrder": 7,
@@ -413,32 +1932,172 @@
       "whenToUse": "Use for complex forms that benefit from being split into multiple steps, such as onboarding flows, checkout processes, registration wizards, or configuration setups.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "steps", "type": "WizardStep[]", "required": true, "default": null, "description": "Array of wizard steps: {title, description?, content: ReactNode, validate?: () => string[]}" },
-        { "name": "onFinish", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the final step is completed" },
-        { "name": "titleSize", "type": "number", "required": false, "default": "18", "description": "Font size of step titles in pixels" },
-        { "name": "descSize", "type": "number", "required": false, "default": "14", "description": "Font size of step descriptions in pixels" },
-        { "name": "navBtnSize", "type": "number", "required": false, "default": "14", "description": "Font size of navigation buttons in pixels" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "steps",
+          "type": "WizardStep[]",
+          "required": true,
+          "default": null,
+          "description": "Array of wizard steps: {title, description?, content: ReactNode, validate?: () => string[]}"
+        },
+        {
+          "name": "onFinish",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the final step is completed"
+        },
+        {
+          "name": "titleSize",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Font size of step titles in pixels"
+        },
+        {
+          "name": "descSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of step descriptions in pixels"
+        },
+        {
+          "name": "navBtnSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of navigation buttons in pixels"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
-        "pageTypes": ["onboarding", "ecommerce", "saas", "forms", "admin", "event", "education", "agency", "realestate"],
+        "pageTypes": [
+          "onboarding",
+          "ecommerce",
+          "saas",
+          "forms",
+          "admin",
+          "event",
+          "education",
+          "agency",
+          "realestate"
+        ],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 4,
-        "pairsWellWith": ["navigation.Stepper", "forms.FormShell", "forms.InputField", "forms.ValidationWrapper"],
+        "pairsWellWith": [
+          "navigation.Stepper",
+          "forms.FormShell",
+          "forms.InputField",
+          "forms.ValidationWrapper"
+        ],
         "maxPerPage": 1,
         "isContainer": true
       }
@@ -450,26 +2109,151 @@
       "whenToUse": "Use before submit buttons on public-facing forms like contact forms, registration, and login pages to prevent spam and bot submissions.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "mode", "type": "\"checkbox\" | \"math\"", "required": false, "default": "\"checkbox\"", "description": "Captcha mode: simple checkbox or math challenge" },
-        { "name": "label", "type": "string", "required": false, "default": "\"I'm not a robot\"", "description": "Label text for the captcha element" },
-        { "name": "onVerify", "type": "(verified: boolean) => void", "required": false, "default": null, "description": "Callback fired when verification succeeds or fails" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "14", "description": "Font size of the label in pixels" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the captcha input area" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "mode",
+          "type": "\"checkbox\" | \"math\"",
+          "required": false,
+          "default": "\"checkbox\"",
+          "description": "Captcha mode: simple checkbox or math challenge"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"I'm not a robot\"",
+          "description": "Label text for the captcha element"
+        },
+        {
+          "name": "onVerify",
+          "type": "(verified: boolean) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when verification succeeds or fails"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the label in pixels"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the captcha input area"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
         "pageTypes": ["forms", "auth", "contact", "landing"],
         "placement": "body",
@@ -487,36 +2271,190 @@
       "whenToUse": "Use for address entry in checkout forms, shipping forms, registration, or any form that requires a physical address with autocomplete suggestions.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "label", "type": "string", "required": false, "default": "\"Address\"", "description": "Label text displayed above the input" },
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Form field name attribute" },
-        { "name": "suggestions", "type": "string[]", "required": false, "default": "[\"123 Main St, Springfield, IL\", \"456 Oak Ave, Portland, OR\", \"789 Pine Rd, Austin, TX\", \"321 Elm Blvd, Denver, CO\", \"654 Maple Dr, Seattle, WA\"]", "description": "Array of address suggestion strings to display" },
-        { "name": "onQuery", "type": "(query: string) => void", "required": false, "default": null, "description": "Callback fired when the user types to fetch new suggestions" },
-        { "name": "placeholder", "type": "string", "required": false, "default": "\"Start typing your address...\"", "description": "Placeholder text when input is empty" },
-        { "name": "onSelect", "type": "(address: string) => void", "required": false, "default": null, "description": "Callback fired when a suggestion is selected" },
-        { "name": "labelSize", "type": "number", "required": false, "default": "13", "description": "Font size of the label in pixels" },
-        { "name": "inputSize", "type": "number", "required": false, "default": "14", "description": "Font size of the input text in pixels" },
-        { "name": "inputBg", "type": "string", "required": false, "default": "theme", "description": "Background color of the input element" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "default": "\"Address\"",
+          "description": "Label text displayed above the input"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Form field name attribute"
+        },
+        {
+          "name": "suggestions",
+          "type": "string[]",
+          "required": false,
+          "default": "[\"123 Main St, Springfield, IL\", \"456 Oak Ave, Portland, OR\", \"789 Pine Rd, Austin, TX\", \"321 Elm Blvd, Denver, CO\", \"654 Maple Dr, Seattle, WA\"]",
+          "description": "Array of address suggestion strings to display"
+        },
+        {
+          "name": "onQuery",
+          "type": "(query: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user types to fetch new suggestions"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "default": "\"Start typing your address...\"",
+          "description": "Placeholder text when input is empty"
+        },
+        {
+          "name": "onSelect",
+          "type": "(address: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when a suggestion is selected"
+        },
+        {
+          "name": "labelSize",
+          "type": "number",
+          "required": false,
+          "default": "13",
+          "description": "Font size of the label in pixels"
+        },
+        {
+          "name": "inputSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the input text in pixels"
+        },
+        {
+          "name": "inputBg",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color of the input element"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
         "pageTypes": ["ecommerce", "forms", "checkout", "onboarding"],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 5,
-        "pairsWellWith": ["forms.FormShell", "forms.InputField", "forms.SelectDropdown", "forms.ValidationWrapper"],
+        "pairsWellWith": [
+          "forms.FormShell",
+          "forms.InputField",
+          "forms.SelectDropdown",
+          "forms.ValidationWrapper"
+        ],
         "maxPerPage": 2,
         "isContainer": false
       }
@@ -528,33 +2466,169 @@
       "whenToUse": "Use to wrap form sections or entire forms to provide a consolidated view of validation errors or a success state after submission.",
       "isShell": false,
       "props": [
-        { "name": "as", "type": "ElementType", "required": false, "default": "\"div\"", "description": "HTML element or component to render as" },
-        { "name": "errors", "type": "string[]", "required": false, "default": "[]", "description": "Array of error message strings to display" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Please fix the following\"", "description": "Title text displayed above the error list" },
-        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Child form content to wrap" },
-        { "name": "success", "type": "boolean", "required": false, "default": "false", "description": "Whether to show the success state instead of errors" },
-        { "name": "successMessage", "type": "string", "required": false, "default": "\"All validations passed!\"", "description": "Message displayed when in success state" },
-        { "name": "titleSize", "type": "number", "required": false, "default": "14", "description": "Font size of the title in pixels" },
-        { "name": "maxW", "type": "number", "required": false, "default": "700", "description": "Maximum width in pixels" },
-        { "name": "px", "type": "number", "required": false, "default": "24", "description": "Horizontal padding in pixels" },
-        { "name": "py", "type": "number", "required": false, "default": "24", "description": "Vertical padding in pixels" },
-        { "name": "radius", "type": "number", "required": false, "default": "16", "description": "Border radius in pixels" },
-        { "name": "gap", "type": "number", "required": false, "default": "16", "description": "Gap between elements in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent/highlight color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" },
-        { "name": "style", "type": "CSSProperties", "required": false, "default": null, "description": "Custom inline styles" },
-        { "name": "className", "type": "string", "required": false, "default": null, "description": "Custom CSS class" }
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"div\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "errors",
+          "type": "string[]",
+          "required": false,
+          "default": "[]",
+          "description": "Array of error message strings to display"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Please fix the following\"",
+          "description": "Title text displayed above the error list"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Child form content to wrap"
+        },
+        {
+          "name": "success",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to show the success state instead of errors"
+        },
+        {
+          "name": "successMessage",
+          "type": "string",
+          "required": false,
+          "default": "\"All validations passed!\"",
+          "description": "Message displayed when in success state"
+        },
+        {
+          "name": "titleSize",
+          "type": "number",
+          "required": false,
+          "default": "14",
+          "description": "Font size of the title in pixels"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "700",
+          "description": "Maximum width in pixels"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding in pixels"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Vertical padding in pixels"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Border radius in pixels"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Gap between elements in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent/highlight color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "inputBg", "inputText", "maxW", "px", "py", "gap"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "inputBg",
+        "inputText",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
       "aiHints": {
         "pageTypes": ["forms", "contact", "auth", "settings", "ecommerce", "saas"],
         "placement": "body",
         "priority": 4,
         "sequenceOrder": 5,
-        "pairsWellWith": ["forms.FormShell", "forms.InputField", "forms.ContactForm", "forms.MultiStepWizard"],
+        "pairsWellWith": [
+          "forms.FormShell",
+          "forms.InputField",
+          "forms.ContactForm",
+          "forms.MultiStepWizard"
+        ],
         "maxPerPage": 3,
         "isContainer": true
       }

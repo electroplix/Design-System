@@ -1,17 +1,17 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { useBlogTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { useBlogTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
 function useBG() {
   const t = useBlogTheme();
   return {
-    accent: t.accentColor ?? "#18181b",
-    fg: t.textColor ?? "#18181b",
-    bg: t.bgColor ?? "#ffffff",
-    border: t.borderColor ?? "#e4e4e7",
+    accent: t.accentColor ?? '#18181b',
+    fg: t.textColor ?? '#18181b',
+    bg: t.bgColor ?? '#ffffff',
+    border: t.borderColor ?? '#e4e4e7',
     r: t.radius ?? 14,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
@@ -21,16 +21,16 @@ function useBG() {
 }
 
 const ui = {
-  card: "#ffffff",
-  muted: "#71717a",
-  mutedSoft: "#a1a1aa",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  border: "#e4e4e7",
-  text: "#18181b",
-  textSoft: "#52525b",
-  black: "#09090b",
-  ring: "rgba(24, 24, 27, 0.08)",
+  card: '#ffffff',
+  muted: '#71717a',
+  mutedSoft: '#a1a1aa',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  border: '#e4e4e7',
+  text: '#18181b',
+  textSoft: '#52525b',
+  black: '#09090b',
+  ring: 'rgba(24, 24, 27, 0.08)',
 };
 
 /* ── BlogPost type ──────────────────────────────────────── */
@@ -53,28 +53,28 @@ export interface BlogPost {
 export interface BlogCardProps {
   post: BlogPost;
   onClick?: (post: BlogPost) => void;
-  variant?: "vertical" | "horizontal";
+  variant?: 'vertical' | 'horizontal';
 }
 
-export function BlogCard({ post, onClick, variant = "vertical" }: BlogCardProps) {
+export function BlogCard({ post, onClick, variant = 'vertical' }: BlogCardProps) {
   const bg = useBG();
-  const isH = variant === "horizontal";
+  const isH = variant === 'horizontal';
 
   return (
     <article
       onClick={() => onClick?.(post)}
       style={{
-        display: "flex",
-        flexDirection: isH ? "row" : "column",
+        display: 'flex',
+        flexDirection: isH ? 'row' : 'column',
         border: `1px solid ${ui.border}`,
         borderRadius: bg.r,
-        overflow: "hidden",
+        overflow: 'hidden',
         background: ui.card,
-        cursor: onClick ? "pointer" : "default",
+        cursor: onClick ? 'pointer' : 'default',
         fontFamily: bg.ff,
         color: ui.text,
-        transition: "border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease",
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        transition: 'border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease',
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       {post.coverImage && (
@@ -82,26 +82,26 @@ export function BlogCard({ post, onClick, variant = "vertical" }: BlogCardProps)
           src={post.coverImage}
           alt={post.title}
           style={{
-            width: isH ? 200 : "100%",
-            height: isH ? "auto" : 180,
-            objectFit: "cover",
+            width: isH ? 200 : '100%',
+            height: isH ? 'auto' : 180,
+            objectFit: 'cover',
             flexShrink: 0,
             background: ui.surface,
           }}
         />
       )}
-      <div style={{ padding: 16, display: "grid", gap: 8, flex: 1 }}>
+      <div style={{ padding: 16, display: 'grid', gap: 8, flex: 1 }}>
         {post.category && (
           <span
             style={{
-              width: "fit-content",
-              padding: "3px 8px",
+              width: 'fit-content',
+              padding: '3px 8px',
               borderRadius: 999,
               border: `1px solid ${ui.border}`,
               background: ui.surface,
               fontSize: 11,
               fontWeight: 700,
-              textTransform: "uppercase",
+              textTransform: 'uppercase',
               letterSpacing: 0.8,
               color: ui.textSoft,
             }}
@@ -109,23 +109,42 @@ export function BlogCard({ post, onClick, variant = "vertical" }: BlogCardProps)
             {post.category}
           </span>
         )}
-        <div style={{ fontWeight: 700, fontSize: 17, lineHeight: 1.3, letterSpacing: "-0.02em", color: ui.black }}>{post.title}</div>
+        <div
+          style={{
+            fontWeight: 700,
+            fontSize: 17,
+            lineHeight: 1.3,
+            letterSpacing: '-0.02em',
+            color: ui.black,
+          }}
+        >
+          {post.title}
+        </div>
         {post.excerpt && (
           <div
             style={{
               fontSize: 14,
               color: ui.muted,
               lineHeight: 1.5,
-              display: "-webkit-box",
+              display: '-webkit-box',
               WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
             }}
           >
             {post.excerpt}
           </div>
         )}
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: "auto", fontSize: 12, color: ui.muted }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            marginTop: 'auto',
+            fontSize: 12,
+            color: ui.muted,
+          }}
+        >
           {post.author && <span>{post.author.name}</span>}
           {post.date && <span>· {post.date}</span>}
           {post.readTime && <span>· {post.readTime}</span>}
@@ -148,14 +167,14 @@ export interface AuthorBylineProps {
 export function AuthorByline({ name, avatar, bio, date, readTime }: AuthorBylineProps) {
   const bg = useBG();
   const initials = name
-    .split(" ")
+    .split(' ')
     .map((w) => w[0])
-    .join("")
+    .join('')
     .slice(0, 2)
     .toUpperCase();
 
   return (
-    <div style={{ display: "flex", gap: 14, fontFamily: bg.ff, color: ui.text }}>
+    <div style={{ display: 'flex', gap: 14, fontFamily: bg.ff, color: ui.text }}>
       {avatar ? (
         <img
           src={avatar}
@@ -163,10 +182,10 @@ export function AuthorByline({ name, avatar, bio, date, readTime }: AuthorByline
           style={{
             width: 48,
             height: 48,
-            borderRadius: "50%",
-            objectFit: "cover",
+            borderRadius: '50%',
+            objectFit: 'cover',
             border: `1px solid ${ui.border}`,
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.05)",
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.05)',
           }}
         />
       ) : (
@@ -174,12 +193,12 @@ export function AuthorByline({ name, avatar, bio, date, readTime }: AuthorByline
           style={{
             width: 48,
             height: 48,
-            borderRadius: "50%",
+            borderRadius: '50%',
             background: ui.surface,
             border: `1px solid ${ui.border}`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             fontWeight: 700,
             fontSize: 16,
             color: ui.black,
@@ -192,7 +211,7 @@ export function AuthorByline({ name, avatar, bio, date, readTime }: AuthorByline
       <div>
         <div style={{ fontWeight: 700, fontSize: 16, color: ui.black }}>{name}</div>
         {bio && <div style={{ fontSize: 13, color: ui.muted, marginTop: 2 }}>{bio}</div>}
-        <div style={{ display: "flex", gap: 8, fontSize: 12, color: ui.mutedSoft, marginTop: 4 }}>
+        <div style={{ display: 'flex', gap: 8, fontSize: 12, color: ui.mutedSoft, marginTop: 4 }}>
           {date && <span>{date}</span>}
           {readTime && <span>· {readTime}</span>}
         </div>
@@ -213,22 +232,23 @@ export function TagList({ tags = [], onTagClick, activeTag }: TagListProps) {
   const bg = useBG();
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, fontFamily: bg.ff }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, fontFamily: bg.ff }}>
       {tags.map((t) => (
         <button
           key={t}
           onClick={() => onTagClick?.(t)}
           style={{
-            padding: "5px 12px",
+            padding: '5px 12px',
             borderRadius: 999,
             border: `1px solid ${t === activeTag ? ui.black : ui.border}`,
             background: t === activeTag ? ui.black : ui.card,
-            color: t === activeTag ? "#ffffff" : ui.textSoft,
+            color: t === activeTag ? '#ffffff' : ui.textSoft,
             fontSize: 13,
             fontWeight: 600,
-            cursor: onTagClick ? "pointer" : "default",
-            transition: "background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease",
-            boxShadow: t === activeTag ? "0 1px 2px rgba(9, 9, 11, 0.12)" : "none",
+            cursor: onTagClick ? 'pointer' : 'default',
+            transition:
+              'background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease',
+            boxShadow: t === activeTag ? '0 1px 2px rgba(9, 9, 11, 0.12)' : 'none',
           }}
         >
           {t}
@@ -252,10 +272,10 @@ export function BlogBadge({ label, color }: BlogBadgeProps) {
   return (
     <span
       style={{
-        display: "inline-flex",
-        alignItems: "center",
-        width: "fit-content",
-        padding: "3px 10px",
+        display: 'inline-flex',
+        alignItems: 'center',
+        width: 'fit-content',
+        padding: '3px 10px',
         borderRadius: 999,
         border: `1px solid ${ui.border}`,
         background: color ? `${c}10` : ui.surface,
@@ -289,27 +309,29 @@ export function ReadingBar({ color, height = 3, containerRef }: ReadingBarProps)
         setPct(Math.min(1, Math.max(0, -top / (ch - window.innerHeight))) * 100);
       } else {
         const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-        setPct(scrollHeight <= clientHeight ? 0 : (scrollTop / (scrollHeight - clientHeight)) * 100);
+        setPct(
+          scrollHeight <= clientHeight ? 0 : (scrollTop / (scrollHeight - clientHeight)) * 100,
+        );
       }
     };
 
-    window.addEventListener("scroll", h, { passive: true });
+    window.addEventListener('scroll', h, { passive: true });
     h();
-    return () => window.removeEventListener("scroll", h);
+    return () => window.removeEventListener('scroll', h);
   }, [containerRef]);
 
   return (
     <div
       style={{
-        position: "fixed",
+        position: 'fixed',
         top: 0,
         left: 0,
         width: `${pct}%`,
         height,
         background: color ?? bg.accent ?? ui.black,
         zIndex: 9997,
-        transition: "width 0.1s ease",
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.12)",
+        transition: 'width 0.1s ease',
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.12)',
       }}
     />
   );
@@ -330,7 +352,7 @@ export interface ArticleRendererProps {
  */
 export function ArticleRenderer({ html, maxW = 720 }: ArticleRendererProps) {
   const bg = useBG();
-  const safeHtml = html.replace(/<script[\s\S]*?<\/script>/gi, "");
+  const safeHtml = html.replace(/<script[\s\S]*?<\/script>/gi, '');
 
   return (
     <article
@@ -341,8 +363,8 @@ export function ArticleRenderer({ html, maxW = 720 }: ArticleRendererProps) {
         fontSize: 17,
         lineHeight: 1.8,
         maxWidth: maxW,
-        overflowWrap: "break-word",
-        wordBreak: "break-word",
+        overflowWrap: 'break-word',
+        wordBreak: 'break-word',
       }}
     />
   );
@@ -356,13 +378,33 @@ export interface RelatedPostsProps {
   onPostClick?: (post: BlogPost) => void;
 }
 
-export function RelatedPosts({ posts = [], title = "Related Posts", onPostClick }: RelatedPostsProps) {
+export function RelatedPosts({
+  posts = [],
+  title = 'Related Posts',
+  onPostClick,
+}: RelatedPostsProps) {
   const bg = useBG();
 
   return (
     <section style={{ fontFamily: bg.ff, color: ui.text }}>
-      <div style={{ fontWeight: 700, fontSize: 20, marginBottom: 16, letterSpacing: "-0.02em", color: ui.black }}>{title}</div>
-      <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(posts.length, 3)}, 1fr)`, gap: 16 }}>
+      <div
+        style={{
+          fontWeight: 700,
+          fontSize: 20,
+          marginBottom: 16,
+          letterSpacing: '-0.02em',
+          color: ui.black,
+        }}
+      >
+        {title}
+      </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${Math.min(posts.length, 3)}, 1fr)`,
+          gap: 16,
+        }}
+      >
         {posts.map((p) => (
           <BlogCard key={p.id} post={p} onClick={onPostClick} />
         ))}
@@ -389,28 +431,46 @@ export function ArchiveList({ groups = [], onPostClick }: ArchiveListProps) {
     <div style={{ fontFamily: bg.ff, color: ui.text }}>
       {groups.map((g) => (
         <div key={g.label} style={{ marginBottom: 24 }}>
-          <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10, display: "flex", alignItems: "center", gap: 8, color: ui.black }}>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: 18,
+              marginBottom: 10,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              color: ui.black,
+            }}
+          >
             <Icon name="calendar" size={18} color={ui.black} />
             {g.label}
           </div>
-          <div style={{ display: "grid", gap: 4 }}>
+          <div style={{ display: 'grid', gap: 4 }}>
             {g.posts.map((p) => (
               <div
                 key={p.id}
                 onClick={() => onPostClick?.(p)}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 12,
-                  padding: "10px 12px",
+                  padding: '10px 12px',
                   borderRadius: bg.r - 6,
                   border: `1px solid transparent`,
-                  background: "transparent",
-                  cursor: onPostClick ? "pointer" : "default",
-                  transition: "background 0.15s ease, border-color 0.15s ease",
+                  background: 'transparent',
+                  cursor: onPostClick ? 'pointer' : 'default',
+                  transition: 'background 0.15s ease, border-color 0.15s ease',
                 }}
               >
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: ui.black, flexShrink: 0 }} />
+                <div
+                  style={{
+                    width: 6,
+                    height: 6,
+                    borderRadius: '50%',
+                    background: ui.black,
+                    flexShrink: 0,
+                  }}
+                />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 600, fontSize: 15, color: ui.black }}>{p.title}</div>
                   <div style={{ fontSize: 12, color: ui.mutedSoft }}>{p.date}</div>
@@ -440,16 +500,20 @@ export interface CommentsSectionProps {
   title?: string;
 }
 
-export function CommentsSection({ comments = [], onSubmit, title = "Comments" }: CommentsSectionProps) {
+export function CommentsSection({
+  comments = [],
+  onSubmit,
+  title = 'Comments',
+}: CommentsSectionProps) {
   const bg = useBG();
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [replyTo, setReplyTo] = useState<string | null>(null);
 
   const send = (e: React.FormEvent) => {
     e.preventDefault();
     if (text.trim()) {
       onSubmit?.(text.trim(), replyTo ?? undefined);
-      setText("");
+      setText('');
       setReplyTo(null);
     }
   };
@@ -458,13 +522,13 @@ export function CommentsSection({ comments = [], onSubmit, title = "Comments" }:
     <div key={c.id} style={{ marginLeft: depth * 28, marginBottom: 12 }}>
       <div
         style={{
-          display: "flex",
+          display: 'flex',
           gap: 12,
-          padding: "12px",
+          padding: '12px',
           borderRadius: bg.r,
           border: `1px solid ${ui.border}`,
           background: ui.card,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       >
         {c.avatar ? (
@@ -474,8 +538,8 @@ export function CommentsSection({ comments = [], onSubmit, title = "Comments" }:
             style={{
               width: 32,
               height: 32,
-              borderRadius: "50%",
-              objectFit: "cover",
+              borderRadius: '50%',
+              objectFit: 'cover',
               border: `1px solid ${ui.border}`,
             }}
           />
@@ -484,12 +548,12 @@ export function CommentsSection({ comments = [], onSubmit, title = "Comments" }:
             style={{
               width: 32,
               height: 32,
-              borderRadius: "50%",
+              borderRadius: '50%',
               background: ui.surface,
               border: `1px solid ${ui.border}`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               fontSize: 13,
               fontWeight: 700,
               color: ui.black,
@@ -500,19 +564,21 @@ export function CommentsSection({ comments = [], onSubmit, title = "Comments" }:
           </div>
         )}
         <div style={{ flex: 1 }}>
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <span style={{ fontWeight: 700, fontSize: 14, color: ui.black }}>{c.author}</span>
             {c.date && <span style={{ fontSize: 12, color: ui.mutedSoft }}>{c.date}</span>}
           </div>
-          <div style={{ fontSize: 14, marginTop: 4, lineHeight: 1.5, color: ui.textSoft }}>{c.text}</div>
+          <div style={{ fontSize: 14, marginTop: 4, lineHeight: 1.5, color: ui.textSoft }}>
+            {c.text}
+          </div>
           <button
             onClick={() => setReplyTo(c.id)}
             style={{
-              background: "none",
-              border: "none",
+              background: 'none',
+              border: 'none',
               color: ui.black,
               fontSize: 12,
-              cursor: "pointer",
+              cursor: 'pointer',
               marginTop: 6,
               padding: 0,
               fontWeight: 600,
@@ -528,25 +594,33 @@ export function CommentsSection({ comments = [], onSubmit, title = "Comments" }:
 
   return (
     <section style={{ fontFamily: bg.ff, color: ui.text }}>
-      <div style={{ fontWeight: 700, fontSize: bg.hs, marginBottom: 16, letterSpacing: "-0.02em", color: ui.black }}>
+      <div
+        style={{
+          fontWeight: 700,
+          fontSize: bg.hs,
+          marginBottom: 16,
+          letterSpacing: '-0.02em',
+          color: ui.black,
+        }}
+      >
         {title} ({comments.length})
       </div>
-      <form onSubmit={send} style={{ display: "flex", gap: 8, marginBottom: 20 }}>
+      <form onSubmit={send} style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder={replyTo ? "Write a reply..." : "Write a comment..."}
+          placeholder={replyTo ? 'Write a reply...' : 'Write a comment...'}
           style={{
             flex: 1,
-            padding: "10px 14px",
+            padding: '10px 14px',
             borderRadius: bg.r - 4,
             border: `1px solid ${ui.border}`,
             background: ui.card,
             color: ui.text,
             fontSize: 14,
-            outline: "none",
+            outline: 'none',
             fontFamily: bg.ff,
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
           }}
         />
         {replyTo && (
@@ -558,11 +632,11 @@ export function CommentsSection({ comments = [], onSubmit, title = "Comments" }:
               border: `1px solid ${ui.border}`,
               borderRadius: bg.r - 4,
               color: ui.textSoft,
-              cursor: "pointer",
+              cursor: 'pointer',
               width: 40,
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <Icon name="x" size={18} />
@@ -572,16 +646,16 @@ export function CommentsSection({ comments = [], onSubmit, title = "Comments" }:
           type="submit"
           disabled={!text.trim()}
           style={{
-            padding: "10px 16px",
+            padding: '10px 16px',
             borderRadius: bg.r - 4,
             border: `1px solid ${text.trim() ? ui.black : ui.border}`,
             background: text.trim() ? ui.black : ui.surface,
-            color: text.trim() ? "#ffffff" : ui.mutedSoft,
+            color: text.trim() ? '#ffffff' : ui.mutedSoft,
             fontWeight: 700,
             fontSize: 13,
-            cursor: text.trim() ? "pointer" : "not-allowed",
+            cursor: text.trim() ? 'pointer' : 'not-allowed',
             opacity: 1,
-            boxShadow: text.trim() ? "0 1px 2px rgba(9, 9, 11, 0.12)" : "none",
+            boxShadow: text.trim() ? '0 1px 2px rgba(9, 9, 11, 0.12)' : 'none',
           }}
         >
           Post

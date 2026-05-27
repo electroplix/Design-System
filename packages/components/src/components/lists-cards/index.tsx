@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useMemo, useState } from "react";
-import { useListsCardsTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+import React, { useMemo, useState } from 'react';
+import { useListsCardsTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -10,29 +10,29 @@ function useLC() {
   const t = useListsCardsTheme();
 
   return {
-    accent: t.accentColor ?? "#09090b",
-    fg: t.textColor ?? "#18181b",
-    bg: t.bgColor ?? "#ffffff",
-    border: t.borderColor ?? "#e4e4e7",
+    accent: t.accentColor ?? '#09090b',
+    fg: t.textColor ?? '#18181b',
+    bg: t.bgColor ?? '#ffffff',
+    border: t.borderColor ?? '#e4e4e7',
     r: t.radius ?? 14,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
     hs: t.headingSize ?? 18,
     bs: t.bodySize ?? 14,
-    cardBg: t.cardBg ?? "#ffffff",
-    cardBorder: t.cardBorder ?? "#e4e4e7",
+    cardBg: t.cardBg ?? '#ffffff',
+    cardBorder: t.cardBorder ?? '#e4e4e7',
     cardRadius: t.cardRadius ?? 12,
   };
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
 };
 
 /* ── BlockShell ─────────────────────────────────────────── */
@@ -53,7 +53,7 @@ export interface BlockShellProps {
 }
 
 export function BlockShell({
-  as: Tag = "section",
+  as: Tag = 'section',
   bgColor,
   textColor,
   fontFamily,
@@ -63,7 +63,7 @@ export function BlockShell({
   radius,
   gap = 16,
   style = {},
-  className = "",
+  className = '',
   children,
 }: BlockShellProps) {
   const lc = useLC();
@@ -79,17 +79,17 @@ export function BlockShell({
         paddingBlock: py,
         borderRadius: radius ?? lc.r,
         border: `1px solid ${lc.border}`,
-        display: "grid",
-        justifyItems: "start",
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        display: 'grid',
+        justifyItems: 'start',
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
     >
       <div
         style={{
-          width: "100%",
+          width: '100%',
           maxWidth: maxW,
-          display: "grid",
+          display: 'grid',
           gap,
         }}
       >
@@ -112,10 +112,7 @@ export interface AccordionProps {
   allowMultiple?: boolean;
 }
 
-export function Accordion({
-  items = [],
-  allowMultiple = false,
-}: AccordionProps) {
+export function Accordion({ items = [], allowMultiple = false }: AccordionProps) {
   const lc = useLC();
 
   const [open, setOpen] = useState<Set<string>>(new Set());
@@ -133,7 +130,7 @@ export function Accordion({
   return (
     <div
       style={{
-        display: "grid",
+        display: 'grid',
         gap: 10,
         fontFamily: lc.ff,
       }}
@@ -145,32 +142,26 @@ export function Accordion({
           <div
             key={it.id}
             style={{
-              border: `1px solid ${
-                isOpen ? lc.accent : lc.border
-              }`,
+              border: `1px solid ${isOpen ? lc.accent : lc.border}`,
               borderRadius: lc.r,
-              overflow: "hidden",
+              overflow: 'hidden',
               background: ui.white,
-              transition: "all 0.2s ease",
-              boxShadow: isOpen
-                ? "0 1px 2px rgba(9,9,11,0.08)"
-                : "0 1px 2px rgba(9,9,11,0.03)",
+              transition: 'all 0.2s ease',
+              boxShadow: isOpen ? '0 1px 2px rgba(9,9,11,0.08)' : '0 1px 2px rgba(9,9,11,0.03)',
             }}
           >
             <button
               onClick={() => toggle(it.id)}
               style={{
-                width: "100%",
-                padding: "16px 18px",
-                background: isOpen
-                  ? ui.surface
-                  : ui.white,
-                border: "none",
+                width: '100%',
+                padding: '16px 18px',
+                background: isOpen ? ui.surface : ui.white,
+                border: 'none',
                 color: lc.fg,
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                cursor: "pointer",
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                cursor: 'pointer',
                 fontSize: lc.bs,
                 fontWeight: 600,
                 fontFamily: lc.ff,
@@ -178,21 +169,13 @@ export function Accordion({
             >
               {it.title}
 
-              <Icon
-                name={
-                  isOpen
-                    ? "chevron-up"
-                    : "chevron-down"
-                }
-                size={18}
-                color={lc.fg}
-              />
+              <Icon name={isOpen ? 'chevron-up' : 'chevron-down'} size={18} color={lc.fg} />
             </button>
 
             {isOpen && (
               <div
                 style={{
-                  padding: "0 18px 18px",
+                  padding: '0 18px 18px',
                   fontSize: lc.bs,
                   lineHeight: 1.7,
                   color: ui.muted,
@@ -220,10 +203,7 @@ export interface GenericListProps {
   title?: string;
 }
 
-export function GenericList({
-  items = [],
-  title,
-}: GenericListProps) {
+export function GenericList({ items = [], title }: GenericListProps) {
   const lc = useLC();
 
   return (
@@ -235,7 +215,7 @@ export function GenericList({
         background: ui.white,
         color: lc.fg,
         fontFamily: lc.ff,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
     >
       {title && (
@@ -244,16 +224,12 @@ export function GenericList({
             fontWeight: 700,
             fontSize: lc.hs,
             marginBottom: 14,
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 8,
           }}
         >
-          <Icon
-            name="list"
-            size={18}
-            color={lc.accent}
-          />
+          <Icon name="list" size={18} color={lc.accent} />
 
           {title}
         </div>
@@ -261,7 +237,7 @@ export function GenericList({
 
       <div
         style={{
-          display: "grid",
+          display: 'grid',
           gap: 6,
         }}
       >
@@ -269,27 +245,23 @@ export function GenericList({
           <div
             key={it.id}
             style={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 12,
-              padding: "12px 14px",
+              padding: '12px 14px',
               borderRadius: lc.r - 6,
               background: ui.surface,
-              transition: "background 0.15s",
+              transition: 'background 0.15s',
             }}
           >
             {it.icon ? (
-              <Icon
-                name={it.icon}
-                size={18}
-                color={lc.accent}
-              />
+              <Icon name={it.icon} size={18} color={lc.accent} />
             ) : (
               <div
                 style={{
                   width: 6,
                   height: 6,
-                  borderRadius: "50%",
+                  borderRadius: '50%',
                   background: lc.accent,
                 }}
               />
@@ -339,11 +311,7 @@ export interface FeatureGridProps {
   title?: string;
 }
 
-export function FeatureGrid({
-  items = [],
-  columns = 3,
-  title,
-}: FeatureGridProps) {
+export function FeatureGrid({ items = [], columns = 3, title }: FeatureGridProps) {
   const lc = useLC();
 
   return (
@@ -367,7 +335,7 @@ export function FeatureGrid({
 
       <div
         style={{
-          display: "grid",
+          display: 'grid',
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
           gap: 16,
         }}
@@ -380,9 +348,9 @@ export function FeatureGrid({
               borderRadius: lc.r,
               padding: lc.sp,
               background: ui.white,
-              display: "grid",
+              display: 'grid',
               gap: 12,
-              boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+              boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             {it.icon && (
@@ -393,16 +361,12 @@ export function FeatureGrid({
                   borderRadius: 12,
                   background: ui.surface,
                   border: `1px solid ${lc.border}`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
-                <Icon
-                  name={it.icon}
-                  size={20}
-                  color={lc.accent}
-                />
+                <Icon name={it.icon} size={20} color={lc.accent} />
               </div>
             )}
 
@@ -449,17 +413,13 @@ export interface ItemCardGridProps {
   onItemClick?: (id: string) => void;
 }
 
-export function ItemCardGrid({
-  items = [],
-  columns = 3,
-  onItemClick,
-}: ItemCardGridProps) {
+export function ItemCardGrid({ items = [], columns = 3, onItemClick }: ItemCardGridProps) {
   const lc = useLC();
 
   return (
     <div
       style={{
-        display: "grid",
+        display: 'grid',
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap: 16,
       }}
@@ -471,15 +431,13 @@ export function ItemCardGrid({
           style={{
             border: `1px solid ${lc.border}`,
             borderRadius: lc.r,
-            overflow: "hidden",
+            overflow: 'hidden',
             background: ui.white,
-            cursor: onItemClick
-              ? "pointer"
-              : "default",
-            transition: "all 0.2s ease",
+            cursor: onItemClick ? 'pointer' : 'default',
+            transition: 'all 0.2s ease',
             fontFamily: lc.ff,
             color: lc.fg,
-            boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+            boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
           }}
         >
           {it.image && (
@@ -487,9 +445,9 @@ export function ItemCardGrid({
               src={it.image}
               alt={it.title}
               style={{
-                width: "100%",
+                width: '100%',
                 height: 160,
-                objectFit: "cover",
+                objectFit: 'cover',
               }}
             />
           )}
@@ -500,13 +458,13 @@ export function ItemCardGrid({
                 style={{
                   fontSize: 11,
                   fontWeight: 700,
-                  padding: "4px 9px",
+                  padding: '4px 9px',
                   borderRadius: 999,
                   background: ui.surface,
                   border: `1px solid ${lc.border}`,
                   color: lc.fg,
                   marginBottom: 8,
-                  display: "inline-block",
+                  display: 'inline-block',
                 }}
               >
                 {it.badge}
@@ -562,20 +520,14 @@ export interface PricingTableProps {
   onSelect?: (planId: string) => void;
 }
 
-export function PricingTable({
-  plans = [],
-  onSelect,
-}: PricingTableProps) {
+export function PricingTable({ plans = [], onSelect }: PricingTableProps) {
   const lc = useLC();
 
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: `repeat(${Math.min(
-          plans.length,
-          4,
-        )}, 1fr)`,
+        display: 'grid',
+        gridTemplateColumns: `repeat(${Math.min(plans.length, 4)}, 1fr)`,
         gap: 16,
         fontFamily: lc.ff,
         color: lc.fg,
@@ -585,32 +537,28 @@ export function PricingTable({
         <div
           key={p.id}
           style={{
-            border: `1px solid ${
-              p.highlighted
-                ? lc.accent
-                : lc.border
-            }`,
+            border: `1px solid ${p.highlighted ? lc.accent : lc.border}`,
             borderRadius: lc.r,
             padding: lc.sp + 10,
             background: ui.white,
-            display: "grid",
+            display: 'grid',
             gap: 18,
-            position: "relative",
+            position: 'relative',
             boxShadow: p.highlighted
-              ? "0 4px 20px rgba(9,9,11,0.06)"
-              : "0 1px 2px rgba(9,9,11,0.04)",
+              ? '0 4px 20px rgba(9,9,11,0.06)'
+              : '0 1px 2px rgba(9,9,11,0.04)',
           }}
         >
           {p.highlighted && (
             <div
               style={{
-                position: "absolute",
+                position: 'absolute',
                 top: 14,
                 right: 14,
-                padding: "5px 10px",
+                padding: '5px 10px',
                 borderRadius: 999,
                 background: lc.accent,
-                color: "#fff",
+                color: '#fff',
                 fontSize: 11,
                 fontWeight: 700,
               }}
@@ -630,8 +578,8 @@ export function PricingTable({
 
           <div
             style={{
-              display: "flex",
-              alignItems: "baseline",
+              display: 'flex',
+              alignItems: 'baseline',
               gap: 4,
             }}
           >
@@ -659,7 +607,7 @@ export function PricingTable({
 
           <div
             style={{
-              display: "grid",
+              display: 'grid',
               gap: 10,
             }}
           >
@@ -667,31 +615,21 @@ export function PricingTable({
               <div
                 key={i}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 10,
                   fontSize: 14,
                 }}
               >
                 <Icon
-                  name={
-                    f.included
-                      ? "check"
-                      : "x"
-                  }
+                  name={f.included ? 'check' : 'x'}
                   size={16}
-                  color={
-                    f.included
-                      ? "#16a34a"
-                      : "#ef4444"
-                  }
+                  color={f.included ? '#16a34a' : '#ef4444'}
                 />
 
                 <span
                   style={{
-                    color: f.included
-                      ? lc.fg
-                      : ui.muted,
+                    color: f.included ? lc.fg : ui.muted,
                   }}
                 >
                   {f.label}
@@ -703,25 +641,19 @@ export function PricingTable({
           <button
             onClick={() => onSelect?.(p.id)}
             style={{
-              padding: "13px 16px",
+              padding: '13px 16px',
               borderRadius: lc.r - 4,
-              border: p.highlighted
-                ? `1px solid ${lc.accent}`
-                : `1px solid ${lc.border}`,
-              background: p.highlighted
-                ? lc.accent
-                : ui.white,
-              color: p.highlighted
-                ? "#fff"
-                : lc.fg,
+              border: p.highlighted ? `1px solid ${lc.accent}` : `1px solid ${lc.border}`,
+              background: p.highlighted ? lc.accent : ui.white,
+              color: p.highlighted ? '#fff' : lc.fg,
               fontWeight: 700,
               fontSize: 14,
-              cursor: "pointer",
-              marginTop: "auto",
-              transition: "all 0.2s ease",
+              cursor: 'pointer',
+              marginTop: 'auto',
+              transition: 'all 0.2s ease',
             }}
           >
-            {p.cta ?? "Get Started"}
+            {p.cta ?? 'Get Started'}
           </button>
         </div>
       ))}
@@ -745,9 +677,7 @@ export interface SortableTableProps<T> {
   caption?: string;
 }
 
-export function SortableTable<
-  T extends Record<string, unknown>,
->({
+export function SortableTable<T extends Record<string, unknown>>({
   columns = [],
   rows = [],
   caption,
@@ -757,7 +687,7 @@ export function SortableTable<
   const [sort, setSort] = useState<
     | {
         key: keyof T;
-        dir: "asc" | "desc";
+        dir: 'asc' | 'desc';
       }
     | undefined
   >();
@@ -771,10 +701,7 @@ export function SortableTable<
 
       if (av === bv) return 0;
 
-      return (
-        (av > bv ? 1 : -1) *
-        (sort.dir === "asc" ? 1 : -1)
-      );
+      return (av > bv ? 1 : -1) * (sort.dir === 'asc' ? 1 : -1);
     });
   }, [rows, sort]);
 
@@ -783,11 +710,7 @@ export function SortableTable<
 
     setSort((prev) => ({
       key: col.key,
-      dir:
-        prev?.key === col.key &&
-        prev.dir === "asc"
-          ? "desc"
-          : "asc",
+      dir: prev?.key === col.key && prev.dir === 'asc' ? 'desc' : 'asc',
     }));
   };
 
@@ -796,11 +719,11 @@ export function SortableTable<
       style={{
         border: `1px solid ${lc.border}`,
         borderRadius: lc.r,
-        overflow: "hidden",
+        overflow: 'hidden',
         background: ui.white,
         color: lc.fg,
         fontFamily: lc.ff,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
     >
       {caption && (
@@ -816,11 +739,11 @@ export function SortableTable<
         </div>
       )}
 
-      <div style={{ overflowX: "auto" }}>
+      <div style={{ overflowX: 'auto' }}>
         <table
           style={{
-            width: "100%",
-            borderCollapse: "collapse",
+            width: '100%',
+            borderCollapse: 'collapse',
           }}
         >
           <thead>
@@ -834,13 +757,11 @@ export function SortableTable<
                   key={String(c.key)}
                   onClick={() => handleSort(c)}
                   style={{
-                    padding: "14px 16px",
+                    padding: '14px 16px',
                     fontWeight: 700,
                     fontSize: lc.bs,
-                    textAlign: "left",
-                    cursor: c.sortable
-                      ? "pointer"
-                      : "default",
+                    textAlign: 'left',
+                    cursor: c.sortable ? 'pointer' : 'default',
                     borderBottom: `1px solid ${lc.border}`,
                     width: c.width,
                     color: ui.muted,
@@ -848,8 +769,8 @@ export function SortableTable<
                 >
                   <span
                     style={{
-                      display: "flex",
-                      alignItems: "center",
+                      display: 'flex',
+                      alignItems: 'center',
                       gap: 6,
                     }}
                   >
@@ -858,10 +779,7 @@ export function SortableTable<
                     {c.sortable && (
                       <Icon
                         name={
-                          sort?.key === c.key &&
-                          sort.dir === "desc"
-                            ? "chevron-down"
-                            : "chevron-up"
+                          sort?.key === c.key && sort.dir === 'desc' ? 'chevron-down' : 'chevron-up'
                         }
                         size={14}
                       />
@@ -884,16 +802,12 @@ export function SortableTable<
                   <td
                     key={String(c.key)}
                     style={{
-                      padding: "14px 16px",
+                      padding: '14px 16px',
                       fontSize: lc.bs,
                       color: lc.fg,
                     }}
                   >
-                    {c.render
-                      ? c.render(row)
-                      : String(
-                          row[c.key] ?? "—",
-                        )}
+                    {c.render ? c.render(row) : String(row[c.key] ?? '—')}
                   </td>
                 ))}
               </tr>
@@ -919,15 +833,13 @@ export interface LCTimelineProps {
   items: LCTimelineItem[];
 }
 
-export function LCTimeline({
-  items = [],
-}: LCTimelineProps) {
+export function LCTimeline({ items = [] }: LCTimelineProps) {
   const lc = useLC();
 
   return (
     <div
       style={{
-        position: "relative",
+        position: 'relative',
         paddingLeft: 36,
         fontFamily: lc.ff,
         color: lc.fg,
@@ -935,7 +847,7 @@ export function LCTimeline({
     >
       <div
         style={{
-          position: "absolute",
+          position: 'absolute',
           left: 11,
           top: 12,
           bottom: 12,
@@ -948,34 +860,28 @@ export function LCTimeline({
         <div
           key={it.id}
           style={{
-            position: "relative",
-            paddingBottom:
-              i < items.length - 1 ? 22 : 0,
+            position: 'relative',
+            paddingBottom: i < items.length - 1 ? 22 : 0,
           }}
         >
           <div
             style={{
-              position: "absolute",
+              position: 'absolute',
               left: -36,
               top: 14,
               width: 24,
               height: 24,
-              borderRadius: "50%",
+              borderRadius: '50%',
               background: ui.white,
               border: `2px solid ${lc.accent}`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               zIndex: 1,
-              boxShadow:
-                "0 1px 2px rgba(9,9,11,0.05)",
+              boxShadow: '0 1px 2px rgba(9,9,11,0.05)',
             }}
           >
-            <Icon
-              name={it.icon ?? "circle"}
-              size={12}
-              color={lc.accent}
-            />
+            <Icon name={it.icon ?? 'circle'} size={12} color={lc.accent} />
           </div>
 
           <div
@@ -984,8 +890,7 @@ export function LCTimeline({
               borderRadius: lc.r,
               padding: lc.sp,
               background: ui.white,
-              boxShadow:
-                "0 1px 2px rgba(9,9,11,0.04)",
+              boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             <div

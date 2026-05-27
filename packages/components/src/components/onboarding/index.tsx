@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useRef, useEffect } from "react";
-import { useOnboardingTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState, useRef, useEffect } from 'react';
+import { useOnboardingTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -9,15 +9,15 @@ function useOB() {
   const t = useOnboardingTheme();
 
   return {
-    accent: t.accentColor ?? "#18181b",
-    fg: t.textColor ?? "#09090b",
-    muted: "#71717a",
-    bg: t.bgColor ?? "#ffffff",
-    surface: "#fafafa",
-    surfaceHover: "#f4f4f5",
-    border: t.borderColor ?? "#e4e4e7",
-    success: "#16a34a",
-    danger: "#dc2626",
+    accent: t.accentColor ?? '#18181b',
+    fg: t.textColor ?? '#09090b',
+    muted: '#71717a',
+    bg: t.bgColor ?? '#ffffff',
+    surface: '#fafafa',
+    surfaceHover: '#f4f4f5',
+    border: t.borderColor ?? '#e4e4e7',
+    success: '#16a34a',
+    danger: '#dc2626',
     r: t.radius ?? 16,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
@@ -42,7 +42,7 @@ export interface FAQAccordionProps {
 
 export function FAQAccordion({
   items = [],
-  title = "Frequently Asked Questions",
+  title = 'Frequently Asked Questions',
   allowMultiple = false,
 }: FAQAccordionProps) {
   const ob = useOB();
@@ -63,7 +63,7 @@ export function FAQAccordion({
             fontWeight: 700,
             fontSize: 24,
             marginBottom: 20,
-            letterSpacing: "-0.035em",
+            letterSpacing: '-0.035em',
             color: ob.fg,
           }}
         >
@@ -71,7 +71,7 @@ export function FAQAccordion({
         </h2>
       )}
 
-      <div style={{ display: "grid", gap: 8 }}>
+      <div style={{ display: 'grid', gap: 8 }}>
         {items.map((it) => {
           const isO = open.has(it.id);
 
@@ -79,46 +79,42 @@ export function FAQAccordion({
             <div
               key={it.id}
               style={{
-                border: `1px solid ${isO ? "#d4d4d8" : ob.border}`,
+                border: `1px solid ${isO ? '#d4d4d8' : ob.border}`,
                 borderRadius: ob.r,
-                overflow: "hidden",
-                transition: "border-color 0.2s, box-shadow 0.2s",
-                background: "#ffffff",
+                overflow: 'hidden',
+                transition: 'border-color 0.2s, box-shadow 0.2s',
+                background: '#ffffff',
                 boxShadow: isO
-                  ? "0 8px 24px rgba(9, 9, 11, 0.06)"
-                  : "0 1px 2px rgba(9, 9, 11, 0.03)",
+                  ? '0 8px 24px rgba(9, 9, 11, 0.06)'
+                  : '0 1px 2px rgba(9, 9, 11, 0.03)',
               }}
             >
               <button
                 onClick={() => toggle(it.id)}
                 style={{
-                  width: "100%",
-                  padding: "14px 16px",
-                  background: isO ? ob.surface : "#ffffff",
-                  border: "none",
+                  width: '100%',
+                  padding: '14px 16px',
+                  background: isO ? ob.surface : '#ffffff',
+                  border: 'none',
                   color: ob.fg,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  cursor: "pointer",
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  cursor: 'pointer',
                   fontWeight: 600,
                   fontSize: 15,
                   fontFamily: ob.ff,
-                  textAlign: "left",
+                  textAlign: 'left',
                 }}
               >
                 {it.question}
-                <Icon
-                  name={isO ? "chevron-up" : "chevron-down"}
-                  size={18}
-                  color={ob.muted}
-                />
+                <Icon name={isO ? 'chevron-up' : 'chevron-down'} size={18} color={ob.muted} />
               </button>
 
               {isO && (
                 <div
                   style={{
-                    padding: "0 16px 14px",
+                    padding: '0 16px 14px',
                     fontSize: ob.bs,
                     lineHeight: 1.6,
                     color: ob.muted,
@@ -154,7 +150,7 @@ export interface OnboardingWizardProps {
 export function OnboardingWizard({
   steps = [],
   onComplete,
-  completeLabel = "Finish",
+  completeLabel = 'Finish',
 }: OnboardingWizardProps) {
   const ob = useOB();
   const [idx, setIdx] = useState(0);
@@ -170,13 +166,13 @@ export function OnboardingWizard({
         fontFamily: ob.ff,
         color: ob.fg,
         maxWidth: 560,
-        margin: "0 auto",
+        margin: '0 auto',
       }}
     >
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 4,
           marginBottom: 24,
         }}
@@ -187,18 +183,17 @@ export function OnboardingWizard({
               style={{
                 width: 32,
                 height: 32,
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 fontWeight: 700,
                 fontSize: 13,
                 background: i <= idx ? ob.accent : ob.surface,
-                color: i <= idx ? "#ffffff" : ob.muted,
+                color: i <= idx ? '#ffffff' : ob.muted,
                 border: `1px solid ${i <= idx ? ob.accent : ob.border}`,
-                transition: "all 0.2s",
-                boxShadow:
-                  i <= idx ? "0 1px 2px rgba(9, 9, 11, 0.08)" : "none",
+                transition: 'all 0.2s',
+                boxShadow: i <= idx ? '0 1px 2px rgba(9, 9, 11, 0.08)' : 'none',
               }}
             >
               {i < idx ? <Icon name="check" size={16} color="#ffffff" /> : i + 1}
@@ -222,14 +217,14 @@ export function OnboardingWizard({
           border: `1px solid ${ob.border}`,
           borderRadius: ob.r,
           padding: 24,
-          background: "#ffffff",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+          background: '#ffffff',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 10,
             marginBottom: 12,
           }}
@@ -240,7 +235,7 @@ export function OnboardingWizard({
             style={{
               fontWeight: 700,
               fontSize: ob.hs,
-              letterSpacing: "-0.025em",
+              letterSpacing: '-0.025em',
               color: ob.fg,
             }}
           >
@@ -266,8 +261,8 @@ export function OnboardingWizard({
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
           marginTop: 16,
         }}
       >
@@ -275,16 +270,16 @@ export function OnboardingWizard({
           onClick={() => setIdx(Math.max(0, idx - 1))}
           disabled={idx === 0}
           style={{
-            padding: "10px 18px",
+            padding: '10px 18px',
             borderRadius: 12,
             border: `1px solid ${ob.border}`,
-            background: "#ffffff",
+            background: '#ffffff',
             color: ob.fg,
             fontWeight: 600,
-            cursor: idx === 0 ? "not-allowed" : "pointer",
+            cursor: idx === 0 ? 'not-allowed' : 'pointer',
             opacity: idx === 0 ? 0.45 : 1,
             fontSize: 14,
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
           }}
         >
           Back
@@ -293,18 +288,18 @@ export function OnboardingWizard({
         <button
           onClick={() => (isLast ? onComplete?.() : setIdx(idx + 1))}
           style={{
-            padding: "10px 18px",
+            padding: '10px 18px',
             borderRadius: 12,
             border: `1px solid ${ob.accent}`,
             background: ob.accent,
-            color: "#ffffff",
+            color: '#ffffff',
             fontWeight: 700,
-            cursor: "pointer",
+            cursor: 'pointer',
             fontSize: 14,
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
           }}
         >
-          {isLast ? completeLabel : "Next"}
+          {isLast ? completeLabel : 'Next'}
         </button>
       </div>
     </div>
@@ -327,12 +322,7 @@ export interface ProductTourProps {
   onComplete?: () => void;
 }
 
-export function ProductTour({
-  steps = [],
-  isOpen,
-  onClose,
-  onComplete,
-}: ProductTourProps) {
+export function ProductTour({ steps = [], isOpen, onClose, onComplete }: ProductTourProps) {
   const ob = useOB();
   const [idx, setIdx] = useState(0);
 
@@ -342,33 +332,32 @@ export function ProductTour({
   const isLast = idx === steps.length - 1;
 
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 10000 }}>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 10000 }}>
       <div
         onClick={onClose}
         style={{
-          position: "absolute",
+          position: 'absolute',
           inset: 0,
-          background: "rgba(9, 9, 11, 0.45)",
-          backdropFilter: "blur(6px)",
+          background: 'rgba(9, 9, 11, 0.45)',
+          backdropFilter: 'blur(6px)',
         }}
       />
 
       <div
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
           background: ob.bg,
           border: `1px solid ${ob.border}`,
           borderRadius: ob.r,
           padding: 24,
           maxWidth: 380,
-          width: "90%",
+          width: '90%',
           fontFamily: ob.ff,
           color: ob.fg,
-          boxShadow:
-            "0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)",
+          boxShadow: '0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)',
         }}
       >
         <div
@@ -377,8 +366,8 @@ export function ProductTour({
             fontWeight: 700,
             color: ob.muted,
             marginBottom: 8,
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
           }}
         >
           Step {idx + 1} of {steps.length}
@@ -388,7 +377,7 @@ export function ProductTour({
           style={{
             fontWeight: 700,
             fontSize: 18,
-            letterSpacing: "-0.025em",
+            letterSpacing: '-0.025em',
             color: ob.fg,
           }}
         >
@@ -408,45 +397,43 @@ export function ProductTour({
 
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: 'flex',
+            justifyContent: 'space-between',
             marginTop: 16,
           }}
         >
           <button
             onClick={onClose}
             style={{
-              padding: "8px 14px",
+              padding: '8px 14px',
               borderRadius: 12,
               border: `1px solid ${ob.border}`,
-              background: "#ffffff",
+              background: '#ffffff',
               color: ob.fg,
               fontSize: 13,
               fontWeight: 600,
-              cursor: "pointer",
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+              cursor: 'pointer',
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             Skip
           </button>
 
           <button
-            onClick={() =>
-              isLast ? (onComplete?.(), onClose?.()) : setIdx(idx + 1)
-            }
+            onClick={() => (isLast ? (onComplete?.(), onClose?.()) : setIdx(idx + 1))}
             style={{
-              padding: "8px 14px",
+              padding: '8px 14px',
               borderRadius: 12,
               border: `1px solid ${ob.accent}`,
               background: ob.accent,
-              color: "#ffffff",
+              color: '#ffffff',
               fontWeight: 700,
               fontSize: 13,
-              cursor: "pointer",
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+              cursor: 'pointer',
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
             }}
           >
-            {isLast ? "Done" : "Next"}
+            {isLast ? 'Done' : 'Next'}
           </button>
         </div>
       </div>
@@ -458,33 +445,29 @@ export function ProductTour({
 
 export interface TooltipHelpProps {
   text: string;
-  position?: "top" | "bottom" | "left" | "right";
+  position?: 'top' | 'bottom' | 'left' | 'right';
   iconSize?: number;
 }
 
-export function TooltipHelp({
-  text,
-  position = "top",
-  iconSize = 16,
-}: TooltipHelpProps) {
+export function TooltipHelp({ text, position = 'top', iconSize = 16 }: TooltipHelpProps) {
   const ob = useOB();
   const [show, setShow] = useState(false);
 
   const pos: React.CSSProperties =
-    position === "top"
-      ? { bottom: "calc(100% + 8px)", left: "50%", transform: "translateX(-50%)" }
-      : position === "bottom"
-      ? { top: "calc(100% + 8px)", left: "50%", transform: "translateX(-50%)" }
-      : position === "left"
-      ? { right: "calc(100% + 8px)", top: "50%", transform: "translateY(-50%)" }
-      : { left: "calc(100% + 8px)", top: "50%", transform: "translateY(-50%)" };
+    position === 'top'
+      ? { bottom: 'calc(100% + 8px)', left: '50%', transform: 'translateX(-50%)' }
+      : position === 'bottom'
+        ? { top: 'calc(100% + 8px)', left: '50%', transform: 'translateX(-50%)' }
+        : position === 'left'
+          ? { right: 'calc(100% + 8px)', top: '50%', transform: 'translateY(-50%)' }
+          : { left: 'calc(100% + 8px)', top: '50%', transform: 'translateY(-50%)' };
 
   return (
     <span
       style={{
-        position: "relative",
-        display: "inline-flex",
-        cursor: "help",
+        position: 'relative',
+        display: 'inline-flex',
+        cursor: 'help',
       }}
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
@@ -494,20 +477,20 @@ export function TooltipHelp({
       {show && (
         <span
           style={{
-            position: "absolute",
+            position: 'absolute',
             ...pos,
-            whiteSpace: "nowrap",
-            padding: "6px 12px",
+            whiteSpace: 'nowrap',
+            padding: '6px 12px',
             borderRadius: 10,
-            background: "#ffffff",
+            background: '#ffffff',
             border: `1px solid ${ob.border}`,
             color: ob.fg,
             fontSize: 13,
             fontFamily: ob.ff,
-            pointerEvents: "none",
+            pointerEvents: 'none',
             zIndex: 50,
             maxWidth: 240,
-            boxShadow: "0 8px 20px rgba(9, 9, 11, 0.08)",
+            boxShadow: '0 8px 20px rgba(9, 9, 11, 0.08)',
           }}
         >
           {text}
@@ -522,7 +505,7 @@ export function TooltipHelp({
 export interface Message {
   id: string;
   text: string;
-  sender: "user" | "agent";
+  sender: 'user' | 'agent';
   time?: string;
 }
 
@@ -537,16 +520,16 @@ export interface SupportChatProps {
 export function SupportChat({
   messages = [],
   onSend,
-  title = "Support Chat",
+  title = 'Support Chat',
   isOpen = false,
   onToggle,
 }: SupportChatProps) {
   const ob = useOB();
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
+    endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages.length]);
 
   const send = (e: React.FormEvent) => {
@@ -554,7 +537,7 @@ export function SupportChat({
 
     if (text.trim()) {
       onSend?.(text.trim());
-      setText("");
+      setText('');
     }
   };
 
@@ -563,59 +546,57 @@ export function SupportChat({
       <button
         onClick={onToggle}
         style={{
-          position: "fixed",
+          position: 'fixed',
           bottom: 24,
           right: 24,
           width: 56,
           height: 56,
-          borderRadius: "50%",
+          borderRadius: '50%',
           border: `1px solid ${ob.accent}`,
           background: ob.accent,
-          color: "#ffffff",
-          cursor: "pointer",
+          color: '#ffffff',
+          cursor: 'pointer',
           zIndex: 9999,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow:
-            "0 12px 30px rgba(9, 9, 11, 0.18), 0 2px 8px rgba(9, 9, 11, 0.08)",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 12px 30px rgba(9, 9, 11, 0.18), 0 2px 8px rgba(9, 9, 11, 0.08)',
         }}
       >
-        <Icon name={isOpen ? "x" : "message-circle"} size={24} color="#ffffff" />
+        <Icon name={isOpen ? 'x' : 'message-circle'} size={24} color="#ffffff" />
       </button>
 
       {isOpen && (
         <div
           style={{
-            position: "fixed",
+            position: 'fixed',
             bottom: 96,
             right: 24,
             width: 360,
             maxHeight: 480,
-            display: "flex",
-            flexDirection: "column",
+            display: 'flex',
+            flexDirection: 'column',
             borderRadius: ob.r,
             border: `1px solid ${ob.border}`,
             background: ob.bg,
             zIndex: 9999,
             fontFamily: ob.ff,
             color: ob.fg,
-            overflow: "hidden",
-            boxShadow:
-              "0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)",
+            overflow: 'hidden',
+            boxShadow: '0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)',
           }}
         >
           <div
             style={{
-              padding: "14px 16px",
+              padding: '14px 16px',
               borderBottom: `1px solid ${ob.border}`,
               background: ob.surface,
               fontWeight: 700,
               fontSize: 16,
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 8,
-              letterSpacing: "-0.02em",
+              letterSpacing: '-0.02em',
             }}
           >
             <Icon name="message-circle" size={18} color={ob.accent} />
@@ -625,30 +606,27 @@ export function SupportChat({
           <div
             style={{
               flex: 1,
-              overflowY: "auto",
+              overflowY: 'auto',
               padding: 12,
-              display: "grid",
+              display: 'grid',
               gap: 8,
-              background: "#ffffff",
+              background: '#ffffff',
             }}
           >
             {messages.map((m) => (
               <div
                 key={m.id}
                 style={{
-                  alignSelf: m.sender === "user" ? "flex-end" : "flex-start",
-                  maxWidth: "80%",
-                  padding: "10px 14px",
+                  alignSelf: m.sender === 'user' ? 'flex-end' : 'flex-start',
+                  maxWidth: '80%',
+                  padding: '10px 14px',
                   borderRadius: 14,
-                  background: m.sender === "user" ? ob.accent : ob.surface,
-                  border:
-                    m.sender === "user"
-                      ? `1px solid ${ob.accent}`
-                      : `1px solid ${ob.border}`,
-                  color: m.sender === "user" ? "#ffffff" : ob.fg,
+                  background: m.sender === 'user' ? ob.accent : ob.surface,
+                  border: m.sender === 'user' ? `1px solid ${ob.accent}` : `1px solid ${ob.border}`,
+                  color: m.sender === 'user' ? '#ffffff' : ob.fg,
                   fontSize: 14,
                   lineHeight: 1.45,
-                  boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+                  boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
                 }}
               >
                 {m.text}
@@ -659,7 +637,7 @@ export function SupportChat({
                       fontSize: 10,
                       opacity: 0.65,
                       marginTop: 4,
-                      textAlign: "right",
+                      textAlign: 'right',
                     }}
                   >
                     {m.time}
@@ -674,9 +652,9 @@ export function SupportChat({
           <form
             onSubmit={send}
             style={{
-              display: "flex",
+              display: 'flex',
               gap: 8,
-              padding: "10px 12px",
+              padding: '10px 12px',
               borderTop: `1px solid ${ob.border}`,
               background: ob.surface,
             }}
@@ -687,30 +665,30 @@ export function SupportChat({
               placeholder="Type a message..."
               style={{
                 flex: 1,
-                padding: "10px 14px",
+                padding: '10px 14px',
                 borderRadius: 12,
                 border: `1px solid ${ob.border}`,
-                background: "#ffffff",
+                background: '#ffffff',
                 color: ob.fg,
                 fontSize: 14,
-                outline: "none",
-                boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+                outline: 'none',
+                boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
               }}
             />
 
             <button
               type="submit"
               style={{
-                padding: "10px 14px",
+                padding: '10px 14px',
                 borderRadius: 12,
                 border: `1px solid ${ob.accent}`,
                 background: ob.accent,
-                color: "#ffffff",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+                color: '#ffffff',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
               }}
             >
               <Icon name="send" size={18} color="#ffffff" />
@@ -734,8 +712,8 @@ export interface ContactSupportBlockProps {
 export function ContactSupportBlock({
   email,
   phone,
-  title = "Need Help?",
-  description = "Our team is here to help.",
+  title = 'Need Help?',
+  description = 'Our team is here to help.',
 }: ContactSupportBlockProps) {
   const ob = useOB();
 
@@ -747,25 +725,25 @@ export function ContactSupportBlock({
         padding: 24,
         fontFamily: ob.ff,
         color: ob.fg,
-        textAlign: "center",
+        textAlign: 'center',
         background: ob.bg,
         maxWidth: 420,
-        margin: "0 auto",
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        margin: '0 auto',
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       <div
         style={{
           width: 56,
           height: 56,
-          borderRadius: "50%",
+          borderRadius: '50%',
           background: ob.surface,
           border: `1px solid ${ob.border}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "0 auto 12px",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '0 auto 12px',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       >
         <Icon name="headphones" size={24} color={ob.accent} />
@@ -775,7 +753,7 @@ export function ContactSupportBlock({
         style={{
           fontWeight: 700,
           fontSize: 20,
-          letterSpacing: "-0.03em",
+          letterSpacing: '-0.03em',
           color: ob.fg,
         }}
       >
@@ -795,8 +773,8 @@ export function ContactSupportBlock({
 
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           gap: 8,
           marginTop: 16,
         }}
@@ -805,19 +783,19 @@ export function ContactSupportBlock({
           <a
             href={`mailto:${email}`}
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               gap: 8,
-              padding: "10px 16px",
+              padding: '10px 16px',
               borderRadius: 12,
               border: `1px solid ${ob.border}`,
               color: ob.fg,
-              background: "#ffffff",
-              textDecoration: "none",
+              background: '#ffffff',
+              textDecoration: 'none',
               fontSize: 14,
               fontWeight: 600,
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             <Icon name="mail" size={18} color={ob.muted} />
@@ -829,19 +807,19 @@ export function ContactSupportBlock({
           <a
             href={`tel:${phone}`}
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               gap: 8,
-              padding: "10px 16px",
+              padding: '10px 16px',
               borderRadius: 12,
               border: `1px solid ${ob.border}`,
               color: ob.fg,
-              background: "#ffffff",
-              textDecoration: "none",
+              background: '#ffffff',
+              textDecoration: 'none',
               fontSize: 14,
               fontWeight: 600,
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             <Icon name="phone" size={18} color={ob.muted} />

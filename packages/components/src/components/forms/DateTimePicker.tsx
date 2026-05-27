@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Icon } from "../../core/icons";
-import { useFormsTheme } from "../../core/provider";
+import React, { useState } from 'react';
+import { Icon } from '../../core/icons';
+import { useFormsTheme } from '../../core/provider';
 
 export interface DateTimePickerProps {
   as?: React.ElementType;
   label?: string;
   name: string;
-  mode?: "date" | "time" | "datetime-local" | "month" | "week";
+  mode?: 'date' | 'time' | 'datetime-local' | 'month' | 'week';
   value?: string;
   defaultValue?: string;
   onChange?: (v: string) => void;
@@ -30,24 +30,24 @@ export interface DateTimePickerProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  ring: "rgba(9,9,11,0.08)",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  ring: 'rgba(9,9,11,0.08)',
 };
 
 export function DateTimePicker(props: DateTimePickerProps) {
   const t = useFormsTheme();
 
   const {
-    as: Tag = "div",
-    label = "Select Date",
-    name = "datetime",
-    mode = "date",
+    as: Tag = 'div',
+    label = 'Select Date',
+    name = 'datetime',
+    mode = 'date',
     value,
     defaultValue,
     onChange,
@@ -65,7 +65,7 @@ export function DateTimePicker(props: DateTimePickerProps) {
     labelSize = 13,
     inputSize = 14,
     style = {},
-    className = "",
+    className = '',
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -75,10 +75,10 @@ export function DateTimePicker(props: DateTimePickerProps) {
   const inputSurface = inputBg ?? t.inputBg ?? ui.white;
 
   const [isFocused, setIsFocused] = useState(false);
-  const [local, setLocal] = useState(defaultValue || "");
+  const [local, setLocal] = useState(defaultValue || '');
 
   const cur = value ?? local;
-  const iconName = mode === "time" ? "clock" : "calendar";
+  const iconName = mode === 'time' ? 'clock' : 'calendar';
 
   return (
     <Tag
@@ -94,8 +94,8 @@ export function DateTimePicker(props: DateTimePickerProps) {
       <div
         style={{
           maxWidth: maxW,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           gap,
         }}
       >
@@ -106,24 +106,24 @@ export function DateTimePicker(props: DateTimePickerProps) {
               fontSize: labelSize,
               fontWeight: 600,
               color: fg,
-              letterSpacing: "-0.01em",
+              letterSpacing: '-0.01em',
             }}
           >
             {label}
           </label>
         )}
 
-        <div style={{ position: "relative" }}>
+        <div style={{ position: 'relative' }}>
           <div
             style={{
-              position: "absolute",
+              position: 'absolute',
               left: 14,
-              top: "50%",
-              transform: "translateY(-50%)",
+              top: '50%',
+              transform: 'translateY(-50%)',
               color: isFocused ? accent : ui.muted,
-              transition: "color 0.2s ease",
-              pointerEvents: "none",
-              display: "flex",
+              transition: 'color 0.2s ease',
+              pointerEvents: 'none',
+              display: 'flex',
               zIndex: 2,
             }}
           >
@@ -142,58 +142,56 @@ export function DateTimePicker(props: DateTimePickerProps) {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             style={{
-              width: "100%",
-              padding: "14px 14px 14px 44px",
+              width: '100%',
+              padding: '14px 14px 14px 44px',
               borderRadius: radius,
               border: `1px solid ${isFocused ? accent : border}`,
               background: inputSurface,
               color: fg,
               fontSize: inputSize,
-              outline: "none",
-              transition: "all 0.2s ease",
-              boxShadow: isFocused
-                ? `0 0 0 4px ${ui.ring}`
-                : "0 1px 2px rgba(9,9,11,0.04)",
-              colorScheme: "light",
-              boxSizing: "border-box",
+              outline: 'none',
+              transition: 'all 0.2s ease',
+              boxShadow: isFocused ? `0 0 0 4px ${ui.ring}` : '0 1px 2px rgba(9,9,11,0.04)',
+              colorScheme: 'light',
+              boxSizing: 'border-box',
             }}
           />
         </div>
 
-        {mode === "date" && (
+        {mode === 'date' && (
           <div
             style={{
-              display: "flex",
+              display: 'flex',
               gap: 8,
-              flexWrap: "wrap",
+              flexWrap: 'wrap',
             }}
           >
-            {["Today", "Tomorrow", "Next Week"].map((l) => (
+            {['Today', 'Tomorrow', 'Next Week'].map((l) => (
               <button
                 key={l}
                 type="button"
                 onClick={() => {
                   const d = new Date();
 
-                  if (l === "Tomorrow") d.setDate(d.getDate() + 1);
-                  if (l === "Next Week") d.setDate(d.getDate() + 7);
+                  if (l === 'Tomorrow') d.setDate(d.getDate() + 1);
+                  if (l === 'Next Week') d.setDate(d.getDate() + 7);
 
-                  const f = d.toISOString().split("T")[0];
+                  const f = d.toISOString().split('T')[0];
 
                   setLocal(f);
                   onChange?.(f);
                 }}
                 style={{
-                  padding: "8px 14px",
+                  padding: '8px 14px',
                   borderRadius: 8,
                   border: `1px solid ${border}`,
                   background: ui.white,
                   color: fg,
                   fontSize: 12,
                   fontWeight: 500,
-                  cursor: "pointer",
-                  transition: "all 0.15s ease",
-                  boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                  boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
                 }}
               >
                 {l}

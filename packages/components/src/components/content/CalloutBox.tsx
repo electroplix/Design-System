@@ -1,11 +1,11 @@
-"use client";
-import React, { useState } from "react";
-import { useContentTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState } from 'react';
+import { useContentTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── CalloutBox ─────────────────────────────────────────── */
 
-export type CalloutVariant = "info" | "success" | "warning" | "danger";
+export type CalloutVariant = 'info' | 'success' | 'warning' | 'danger';
 
 export interface CalloutBoxProps {
   as?: React.ElementType;
@@ -31,13 +31,13 @@ export interface CalloutBoxProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
 };
 
 const variantConfig: Record<
@@ -45,37 +45,37 @@ const variantConfig: Record<
   { bg: string; color: string; border: string; iconBg: string; icon: string }
 > = {
   info: {
-    bg: "#ffffff",
-    color: "#18181b",
-    border: "#dbeafe",
-    iconBg: "#f4f4f5",
-    icon: "info",
+    bg: '#ffffff',
+    color: '#18181b',
+    border: '#dbeafe',
+    iconBg: '#f4f4f5',
+    icon: 'info',
   },
   success: {
-    bg: "#ffffff",
-    color: "#18181b",
-    border: "#dcfce7",
-    iconBg: "#f4f4f5",
-    icon: "check-circle",
+    bg: '#ffffff',
+    color: '#18181b',
+    border: '#dcfce7',
+    iconBg: '#f4f4f5',
+    icon: 'check-circle',
   },
   warning: {
-    bg: "#ffffff",
-    color: "#18181b",
-    border: "#fef3c7",
-    iconBg: "#f4f4f5",
-    icon: "alert-triangle",
+    bg: '#ffffff',
+    color: '#18181b',
+    border: '#fef3c7',
+    iconBg: '#f4f4f5',
+    icon: 'alert-triangle',
   },
   danger: {
-    bg: "#ffffff",
-    color: "#18181b",
-    border: "#fee2e2",
-    iconBg: "#f4f4f5",
-    icon: "alert-circle",
+    bg: '#ffffff',
+    color: '#18181b',
+    border: '#fee2e2',
+    iconBg: '#f4f4f5',
+    icon: 'alert-circle',
   },
 };
 
 export function CalloutBox({
-  as: Tag = "section",
+  as: Tag = 'section',
   bgColor,
   textColor,
   fontFamily,
@@ -85,10 +85,10 @@ export function CalloutBox({
   radius = 0,
   gap = 16,
   style = {},
-  className = "",
-  variant = "info",
-  title = "Note",
-  message = "This is an important message.",
+  className = '',
+  variant = 'info',
+  title = 'Note',
+  message = 'This is an important message.',
   icon,
   titleSize = 16,
   messageSize = 14,
@@ -116,36 +116,34 @@ export function CalloutBox({
     <Tag
       className={className}
       style={{
-        background: "transparent",
-        color: "inherit",
+        background: 'transparent',
+        color: 'inherit',
         fontFamily: ff,
         paddingInline: px,
         paddingBlock: py,
         borderRadius: radius,
-        display: "grid",
-        justifyItems: "start",
-        placeItems: "start",
+        display: 'grid',
+        justifyItems: 'start',
+        placeItems: 'start',
         ...style,
       }}
     >
-      <div style={{ width: "100%", maxWidth: maxW, display: "grid", gap }}>
+      <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{
-            width: "100%",
+            width: '100%',
             background: localBg,
-            border: border ? `1px solid ${ui.border}` : "none",
+            border: border ? `1px solid ${ui.border}` : 'none',
             borderRadius: 14,
-            padding: "16px 18px",
-            display: "flex",
+            padding: '16px 18px',
+            display: 'flex',
             gap: 14,
-            alignItems: "flex-start",
-            transition: "all 180ms ease",
-            transform: isHovered ? "translateY(-1px)" : "none",
-            boxShadow: isHovered
-              ? "0 4px 12px rgba(0,0,0,0.06)"
-              : "0 1px 2px rgba(0,0,0,0.03)",
+            alignItems: 'flex-start',
+            transition: 'all 180ms ease',
+            transform: isHovered ? 'translateY(-1px)' : 'none',
+            boxShadow: isHovered ? '0 4px 12px rgba(0,0,0,0.06)' : '0 1px 2px rgba(0,0,0,0.03)',
           }}
         >
           {/* Icon */}
@@ -156,9 +154,9 @@ export function CalloutBox({
               borderRadius: 10,
               background: config.iconBg,
               border: `1px solid ${ui.border}`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               flexShrink: 0,
             }}
           >
@@ -179,7 +177,7 @@ export function CalloutBox({
                   color: localColor,
                   marginBottom: message ? 6 : 0,
                   lineHeight: 1.3,
-                  letterSpacing: "-0.01em",
+                  letterSpacing: '-0.01em',
                 }}
               >
                 {title}
@@ -204,25 +202,25 @@ export function CalloutBox({
             <button
               onClick={handleDismiss}
               style={{
-                background: "transparent",
-                border: "none",
+                background: 'transparent',
+                border: 'none',
                 padding: 4,
-                cursor: "pointer",
+                cursor: 'pointer',
                 opacity: 0.6,
                 color: ui.muted,
                 borderRadius: 6,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "all 150ms ease",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 150ms ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.opacity = "1";
+                e.currentTarget.style.opacity = '1';
                 e.currentTarget.style.background = ui.surfaceHover;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.opacity = "0.6";
-                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.opacity = '0.6';
+                e.currentTarget.style.background = 'transparent';
               }}
             >
               <Icon name="x" size={18} color={ui.muted} />

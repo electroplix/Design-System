@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useRef, useEffect, useMemo } from "react";
-import { useSearchTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { useSearchTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -9,13 +9,13 @@ function useSR() {
   const t = useSearchTheme();
 
   return {
-    accent: t.accentColor ?? "#18181b",
-    fg: t.textColor ?? "#09090b",
-    muted: "#71717a",
-    bg: t.bgColor ?? "#ffffff",
-    surface: "#fafafa",
-    surfaceHover: "#f4f4f5",
-    border: t.borderColor ?? "#e4e4e7",
+    accent: t.accentColor ?? '#18181b',
+    fg: t.textColor ?? '#09090b',
+    muted: '#71717a',
+    bg: t.bgColor ?? '#ffffff',
+    surface: '#fafafa',
+    surfaceHover: '#f4f4f5',
+    border: t.borderColor ?? '#e4e4e7',
     r: t.radius ?? 16,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
@@ -34,9 +34,9 @@ export interface SiteSearchBarProps {
 }
 
 export function SiteSearchBar({
-  placeholder = "Search...",
+  placeholder = 'Search...',
   onSearch,
-  defaultValue = "",
+  defaultValue = '',
   autoFocus = false,
 }: SiteSearchBarProps) {
   const sr = useSR();
@@ -53,18 +53,18 @@ export function SiteSearchBar({
   };
 
   return (
-    <form onSubmit={handle} style={{ display: "flex", gap: 8, fontFamily: sr.ff }}>
+    <form onSubmit={handle} style={{ display: 'flex', gap: 8, fontFamily: sr.ff }}>
       <div
         style={{
           flex: 1,
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 10,
-          padding: "12px 16px",
+          padding: '12px 16px',
           borderRadius: sr.r,
           border: `1px solid ${sr.border}`,
-          background: "#ffffff",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          background: '#ffffff',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       >
         <Icon name="search" size={18} color={sr.muted} />
@@ -76,11 +76,11 @@ export function SiteSearchBar({
           placeholder={placeholder}
           style={{
             flex: 1,
-            background: "none",
-            border: "none",
+            background: 'none',
+            border: 'none',
             color: sr.fg,
             fontSize: sr.bs,
-            outline: "none",
+            outline: 'none',
             fontFamily: sr.ff,
           }}
         />
@@ -89,20 +89,20 @@ export function SiteSearchBar({
           <button
             type="button"
             onClick={() => {
-              setQ("");
-              onSearch?.("");
+              setQ('');
+              onSearch?.('');
             }}
             style={{
               background: sr.surface,
               border: `1px solid ${sr.border}`,
               borderRadius: 8,
-              cursor: "pointer",
+              cursor: 'pointer',
               padding: 0,
               width: 26,
               height: 26,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               color: sr.muted,
             }}
           >
@@ -114,15 +114,15 @@ export function SiteSearchBar({
       <button
         type="submit"
         style={{
-          padding: "12px 20px",
+          padding: '12px 20px',
           borderRadius: sr.r,
           border: `1px solid ${sr.accent}`,
           background: sr.accent,
-          color: "#ffffff",
+          color: '#ffffff',
           fontWeight: 700,
           fontSize: 14,
-          cursor: "pointer",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+          cursor: 'pointer',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
         }}
       >
         Search
@@ -143,22 +143,20 @@ export interface AutoSuggestProps {
 export function AutoSuggest({
   suggestions = [],
   onSelect,
-  placeholder = "Type to search...",
+  placeholder = 'Type to search...',
   onQueryChange,
 }: AutoSuggestProps) {
   const sr = useSR();
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState('');
   const [show, setShow] = useState(false);
   const [hi, setHi] = useState(-1);
 
   const filtered = useMemo(
     () =>
       q.trim()
-        ? suggestions
-            .filter((s) => s.toLowerCase().includes(q.toLowerCase()))
-            .slice(0, 8)
+        ? suggestions.filter((s) => s.toLowerCase().includes(q.toLowerCase())).slice(0, 8)
         : [],
-    [q, suggestions]
+    [q, suggestions],
   );
 
   const change = (v: string) => {
@@ -175,32 +173,32 @@ export function AutoSuggest({
   };
 
   const keyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowDown") {
+    if (e.key === 'ArrowDown') {
       e.preventDefault();
       setHi((h) => Math.min(h + 1, filtered.length - 1));
-    } else if (e.key === "ArrowUp") {
+    } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       setHi((h) => Math.max(h - 1, 0));
-    } else if (e.key === "Enter" && hi >= 0) {
+    } else if (e.key === 'Enter' && hi >= 0) {
       e.preventDefault();
       pick(filtered[hi]);
-    } else if (e.key === "Escape") {
+    } else if (e.key === 'Escape') {
       setShow(false);
     }
   };
 
   return (
-    <div style={{ position: "relative", fontFamily: sr.ff }}>
+    <div style={{ position: 'relative', fontFamily: sr.ff }}>
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 10,
-          padding: "12px 16px",
+          padding: '12px 16px',
           borderRadius: sr.r,
           border: `1px solid ${sr.border}`,
-          background: "#ffffff",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          background: '#ffffff',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       >
         <Icon name="search" size={18} color={sr.muted} />
@@ -214,11 +212,11 @@ export function AutoSuggest({
           placeholder={placeholder}
           style={{
             flex: 1,
-            background: "none",
-            border: "none",
+            background: 'none',
+            border: 'none',
             color: sr.fg,
             fontSize: sr.bs,
-            outline: "none",
+            outline: 'none',
             fontFamily: sr.ff,
           }}
         />
@@ -227,17 +225,16 @@ export function AutoSuggest({
       {show && filtered.length > 0 && (
         <div
           style={{
-            position: "absolute",
-            top: "calc(100% + 4px)",
+            position: 'absolute',
+            top: 'calc(100% + 4px)',
             left: 0,
             right: 0,
             background: sr.bg,
             border: `1px solid ${sr.border}`,
             borderRadius: sr.r,
-            overflow: "hidden",
+            overflow: 'hidden',
             zIndex: 50,
-            boxShadow:
-              "0 12px 30px rgba(9, 9, 11, 0.10), 0 2px 8px rgba(9, 9, 11, 0.04)",
+            boxShadow: '0 12px 30px rgba(9, 9, 11, 0.10), 0 2px 8px rgba(9, 9, 11, 0.04)',
           }}
         >
           {filtered.map((s, i) => (
@@ -245,12 +242,12 @@ export function AutoSuggest({
               key={s}
               onMouseDown={() => pick(s)}
               style={{
-                padding: "10px 16px",
+                padding: '10px 16px',
                 fontSize: sr.bs,
-                cursor: "pointer",
-                background: i === hi ? sr.surface : "#ffffff",
+                cursor: 'pointer',
+                background: i === hi ? sr.surface : '#ffffff',
                 color: sr.fg,
-                transition: "background 0.1s",
+                transition: 'background 0.1s',
               }}
             >
               {s}
@@ -282,15 +279,11 @@ export interface FacetFiltersProps {
   onChange?: (facetId: string, optionId: string, checked: boolean) => void;
 }
 
-export function FacetFilters({
-  facets = [],
-  selected = {},
-  onChange,
-}: FacetFiltersProps) {
+export function FacetFilters({ facets = [], selected = {}, onChange }: FacetFiltersProps) {
   const sr = useSR();
 
   return (
-    <div style={{ display: "grid", gap: 16, fontFamily: sr.ff, color: sr.fg }}>
+    <div style={{ display: 'grid', gap: 16, fontFamily: sr.ff, color: sr.fg }}>
       {facets.map((f) => (
         <div key={f.id}>
           <div
@@ -298,15 +291,15 @@ export function FacetFilters({
               fontWeight: 700,
               fontSize: 12,
               marginBottom: 8,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
               color: sr.muted,
             }}
           >
             {f.name}
           </div>
 
-          <div style={{ display: "grid", gap: 4 }}>
+          <div style={{ display: 'grid', gap: 4 }}>
             {f.options.map((o) => {
               const isChecked = selected[f.id]?.has(o.id) ?? false;
 
@@ -314,15 +307,15 @@ export function FacetFilters({
                 <label
                   key={o.id}
                   style={{
-                    display: "flex",
-                    alignItems: "center",
+                    display: 'flex',
+                    alignItems: 'center',
                     gap: 10,
-                    padding: "8px 10px",
+                    padding: '8px 10px',
                     borderRadius: 10,
-                    cursor: "pointer",
-                    transition: "background 0.1s",
-                    background: isChecked ? sr.surface : "transparent",
-                    border: `1px solid ${isChecked ? sr.border : "transparent"}`,
+                    cursor: 'pointer',
+                    transition: 'background 0.1s',
+                    background: isChecked ? sr.surface : 'transparent',
+                    border: `1px solid ${isChecked ? sr.border : 'transparent'}`,
                   }}
                 >
                   <input
@@ -332,9 +325,7 @@ export function FacetFilters({
                     style={{ accentColor: sr.accent }}
                   />
 
-                  <span style={{ flex: 1, fontSize: sr.bs, color: sr.fg }}>
-                    {o.label}
-                  </span>
+                  <span style={{ flex: 1, fontSize: sr.bs, color: sr.fg }}>{o.label}</span>
 
                   {o.count !== undefined && (
                     <span
@@ -380,17 +371,17 @@ export function SearchResultCard({ item, onClick }: SearchResultCardProps) {
     <div
       onClick={() => onClick?.(item)}
       style={{
-        display: "flex",
+        display: 'flex',
         gap: 14,
         padding: sr.sp,
         border: `1px solid ${sr.border}`,
         borderRadius: sr.r,
         background: sr.bg,
-        cursor: onClick ? "pointer" : "default",
+        cursor: onClick ? 'pointer' : 'default',
         fontFamily: sr.ff,
         color: sr.fg,
-        transition: "border-color 0.2s, box-shadow 0.2s",
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        transition: 'border-color 0.2s, box-shadow 0.2s',
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       {item.image && (
@@ -400,7 +391,7 @@ export function SearchResultCard({ item, onClick }: SearchResultCardProps) {
           style={{
             width: 80,
             height: 60,
-            objectFit: "cover",
+            objectFit: 'cover',
             borderRadius: sr.r - 6,
             flexShrink: 0,
             border: `1px solid ${sr.border}`,
@@ -409,12 +400,12 @@ export function SearchResultCard({ item, onClick }: SearchResultCardProps) {
       )}
 
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <div
             style={{
               fontWeight: 700,
               fontSize: 16,
-              letterSpacing: "-0.02em",
+              letterSpacing: '-0.02em',
               color: sr.fg,
             }}
           >
@@ -426,7 +417,7 @@ export function SearchResultCard({ item, onClick }: SearchResultCardProps) {
               style={{
                 fontSize: 11,
                 fontWeight: 700,
-                padding: "2px 8px",
+                padding: '2px 8px',
                 borderRadius: 999,
                 background: sr.surface,
                 border: `1px solid ${sr.border}`,
@@ -445,10 +436,10 @@ export function SearchResultCard({ item, onClick }: SearchResultCardProps) {
               color: sr.muted,
               marginTop: 4,
               lineHeight: 1.5,
-              display: "-webkit-box",
+              display: '-webkit-box',
               WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
             }}
           >
             {item.description}
@@ -480,19 +471,14 @@ export interface SearchResultsProps {
   loading?: boolean;
 }
 
-export function SearchResults({
-  items = [],
-  query,
-  onItemClick,
-  loading,
-}: SearchResultsProps) {
+export function SearchResults({ items = [], query, onItemClick, loading }: SearchResultsProps) {
   const sr = useSR();
 
   if (loading)
     return (
       <div
         style={{
-          textAlign: "center",
+          textAlign: 'center',
           padding: 32,
           fontFamily: sr.ff,
           color: sr.fg,
@@ -504,9 +490,9 @@ export function SearchResults({
             height: 32,
             border: `2px solid ${sr.border}`,
             borderTopColor: sr.accent,
-            borderRadius: "50%",
-            margin: "0 auto",
-            animation: "eplxSpin 0.8s linear infinite",
+            borderRadius: '50%',
+            margin: '0 auto',
+            animation: 'eplxSpin 0.8s linear infinite',
           }}
         />
 
@@ -517,7 +503,7 @@ export function SearchResults({
   if (!items.length) return <SearchEmptyState query={query} />;
 
   return (
-    <div style={{ display: "grid", gap: 8 }}>
+    <div style={{ display: 'grid', gap: 8 }}>
       {query && (
         <div
           style={{
@@ -527,7 +513,7 @@ export function SearchResults({
             marginBottom: 4,
           }}
         >
-          {items.length} result{items.length !== 1 ? "s" : ""} for "{query}"
+          {items.length} result{items.length !== 1 ? 's' : ''} for "{query}"
         </div>
       )}
 
@@ -546,17 +532,13 @@ export interface SearchEmptyStateProps {
   description?: string;
 }
 
-export function SearchEmptyState({
-  query,
-  title,
-  description,
-}: SearchEmptyStateProps) {
+export function SearchEmptyState({ query, title, description }: SearchEmptyStateProps) {
   const sr = useSR();
 
   return (
     <div
       style={{
-        textAlign: "center",
+        textAlign: 'center',
         padding: 48,
         fontFamily: sr.ff,
         color: sr.fg,
@@ -566,14 +548,14 @@ export function SearchEmptyState({
         style={{
           width: 56,
           height: 56,
-          borderRadius: "50%",
+          borderRadius: '50%',
           background: sr.surface,
           border: `1px solid ${sr.border}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "0 auto 12px",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '0 auto 12px',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       >
         <Icon name="search" size={24} color={sr.muted} />
@@ -583,11 +565,11 @@ export function SearchEmptyState({
         style={{
           fontWeight: 700,
           fontSize: 18,
-          letterSpacing: "-0.025em",
+          letterSpacing: '-0.025em',
           color: sr.fg,
         }}
       >
-        {title ?? (query ? "No results found" : "Start searching")}
+        {title ?? (query ? 'No results found' : 'Start searching')}
       </div>
 
       <div
@@ -601,7 +583,7 @@ export function SearchEmptyState({
         {description ??
           (query
             ? `We couldn't find anything for "${query}". Try a different search.`
-            : "Type a query to see results.")}
+            : 'Type a query to see results.')}
       </div>
     </div>
   );

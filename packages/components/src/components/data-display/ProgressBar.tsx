@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { useDataDisplayTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { useDataDisplayTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── ProgressBar ────────────────────────────────────────── */
 
@@ -16,15 +16,15 @@ export interface ProgressBarProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  mutedSoft: "#a1a1aa",
-  border: "#e4e4e7",
-  surface: "#f4f4f5",
-  success: "#16a34a",
-  danger: "#dc2626",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  mutedSoft: '#a1a1aa',
+  border: '#e4e4e7',
+  surface: '#f4f4f5',
+  success: '#16a34a',
+  danger: '#dc2626',
 };
 
 export function ProgressBar({
@@ -43,7 +43,8 @@ export function ProgressBar({
   const grid = t.gridColor ?? ui.surface;
   const r = t.radius ?? 14;
   const [animatedValue, setAnimatedValue] = useState(0);
-  const safeValue = typeof value === "number" && !isNaN(value) ? Math.max(0, Math.min(100, value)) : 0;
+  const safeValue =
+    typeof value === 'number' && !isNaN(value) ? Math.max(0, Math.min(100, value)) : 0;
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimatedValue(safeValue), 100);
@@ -54,26 +55,26 @@ export function ProgressBar({
   const trendColor = trend > 0 ? ui.success : trend < 0 ? ui.danger : ui.muted;
 
   return (
-    <div style={{ width: "100%", fontFamily: t.fontFamily }}>
+    <div style={{ width: '100%', fontFamily: t.fontFamily }}>
       {(showLabel || label) && (
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             marginBottom: 8,
             fontSize: t.bodySize ?? 14,
             color: fg,
           }}
         >
-          <span style={{ fontWeight: 600, color: ui.text }}>{label || "Progress"}</span>
+          <span style={{ fontWeight: 600, color: ui.text }}>{label || 'Progress'}</span>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {showTrend && previousValue !== undefined && (
               <span
                 style={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 4,
                   fontSize: 12,
                   color: trendColor,
@@ -81,7 +82,7 @@ export function ProgressBar({
                 }}
               >
                 <Icon
-                  name={trend > 0 ? "trending-up" : trend < 0 ? "trending-down" : "minus"}
+                  name={trend > 0 ? 'trending-up' : trend < 0 ? 'trending-down' : 'minus'}
                   size={14}
                   color={trendColor}
                 />
@@ -99,36 +100,37 @@ export function ProgressBar({
         aria-valuemin={0}
         aria-valuemax={100}
         style={{
-          width: "100%",
+          width: '100%',
           background: grid,
           border: `1px solid ${ui.border}`,
           borderRadius: rounded ? 999 : r - 8,
-          overflow: "hidden",
+          overflow: 'hidden',
           height,
-          position: "relative",
-          boxShadow: "inset 0 1px 2px rgba(9, 9, 11, 0.04)",
+          position: 'relative',
+          boxShadow: 'inset 0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
         <div
           style={{
             width: `${animatedValue}%`,
             background: accent,
-            height: "100%",
+            height: '100%',
             borderRadius: rounded ? 999 : r - 8,
-            transition: "width 800ms cubic-bezier(0.4, 0, 0.2, 1)",
-            position: "relative",
-            overflow: "hidden",
+            transition: 'width 800ms cubic-bezier(0.4, 0, 0.2, 1)',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
           <div
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
               bottom: 0,
-              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent)",
-              animation: "epx-shimmer 2s infinite",
+              background:
+                'linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent)',
+              animation: 'epx-shimmer 2s infinite',
             }}
           />
         </div>
@@ -137,12 +139,12 @@ export function ProgressBar({
           <div
             key={mark}
             style={{
-              position: "absolute",
+              position: 'absolute',
               left: `${mark}%`,
               top: 0,
               bottom: 0,
               width: 1,
-              background: "rgba(255,255,255,0.55)",
+              background: 'rgba(255,255,255,0.55)',
             }}
           />
         ))}

@@ -1,7 +1,7 @@
-"use client";
-import React, { useState } from "react";
-import { useUserAccountsTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useState } from 'react';
+import { useUserAccountsTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -9,16 +9,16 @@ function useUA() {
   const t = useUserAccountsTheme();
 
   return {
-    accent: t.accentColor ?? "#18181b",
-    fg: t.textColor ?? "#09090b",
-    muted: "#71717a",
-    bg: t.bgColor ?? "#ffffff",
-    surface: "#fafafa",
-    surfaceHover: "#f4f4f5",
-    border: t.borderColor ?? "#e4e4e7",
-    danger: "#dc2626",
-    success: "#16a34a",
-    warning: "#ca8a04",
+    accent: t.accentColor ?? '#18181b',
+    fg: t.textColor ?? '#09090b',
+    muted: '#71717a',
+    bg: t.bgColor ?? '#ffffff',
+    surface: '#fafafa',
+    surfaceHover: '#f4f4f5',
+    border: t.borderColor ?? '#e4e4e7',
+    danger: '#dc2626',
+    success: '#16a34a',
+    warning: '#ca8a04',
     r: t.radius ?? 16,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
@@ -29,38 +29,38 @@ function useUA() {
 
 function fieldStyle(ua: ReturnType<typeof useUA>): React.CSSProperties {
   return {
-    width: "100%",
-    padding: "12px 14px",
+    width: '100%',
+    padding: '12px 14px',
     borderRadius: 12,
     border: `1px solid ${ua.border}`,
-    background: "#ffffff",
+    background: '#ffffff',
     color: ua.fg,
     fontSize: 14,
-    outline: "none",
+    outline: 'none',
     fontFamily: ua.ff,
-    boxSizing: "border-box" as const,
-    boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+    boxSizing: 'border-box' as const,
+    boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
   };
 }
 
 function btnPrimary(ua: ReturnType<typeof useUA>): React.CSSProperties {
   return {
-    padding: "12px 20px",
+    padding: '12px 20px',
     borderRadius: 12,
     border: `1px solid ${ua.accent}`,
     background: ua.accent,
-    color: "#ffffff",
+    color: '#ffffff',
     fontWeight: 700,
     fontSize: 14,
-    cursor: "pointer",
-    boxShadow: "0 1px 2px rgba(9, 9, 11, 0.08)",
+    cursor: 'pointer',
+    boxShadow: '0 1px 2px rgba(9, 9, 11, 0.08)',
   };
 }
 
 /* ── AuthForm ───────────────────────────────────────────── */
 
 export interface AuthFormProps {
-  mode: "login" | "register";
+  mode: 'login' | 'register';
   onSubmit?: (data: { email: string; password: string; name?: string }) => void;
   onToggleMode?: () => void;
   onForgotPassword?: () => void;
@@ -69,7 +69,7 @@ export interface AuthFormProps {
 }
 
 export function AuthForm({
-  mode = "login",
+  mode = 'login',
   onSubmit,
   onToggleMode,
   onForgotPassword,
@@ -77,16 +77,16 @@ export function AuthForm({
   error,
 }: AuthFormProps) {
   const ua = useUA();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
 
   const handle = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit?.({
       email,
       password,
-      name: mode === "register" ? name : undefined,
+      name: mode === 'register' ? name : undefined,
     });
   };
 
@@ -94,7 +94,7 @@ export function AuthForm({
     <form
       onSubmit={handle}
       style={{
-        display: "grid",
+        display: 'grid',
         gap: 14,
         fontFamily: ua.ff,
         color: ua.fg,
@@ -105,14 +105,14 @@ export function AuthForm({
         style={{
           fontWeight: 700,
           fontSize: 24,
-          letterSpacing: "-0.035em",
+          letterSpacing: '-0.035em',
           color: ua.fg,
         }}
       >
-        {mode === "login" ? "Sign In" : "Create Account"}
+        {mode === 'login' ? 'Sign In' : 'Create Account'}
       </div>
 
-      {mode === "register" && (
+      {mode === 'register' && (
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -143,10 +143,10 @@ export function AuthForm({
       {error && (
         <div
           style={{
-            padding: "10px 14px",
+            padding: '10px 14px',
             borderRadius: 12,
-            background: "#fef2f2",
-            border: "1px solid #fecaca",
+            background: '#fef2f2',
+            border: '1px solid #fecaca',
             color: ua.danger,
             fontSize: 13,
             lineHeight: 1.45,
@@ -162,29 +162,29 @@ export function AuthForm({
         style={{
           ...btnPrimary(ua),
           opacity: loading ? 0.6 : 1,
-          cursor: loading ? "not-allowed" : "pointer",
+          cursor: loading ? 'not-allowed' : 'pointer',
         }}
       >
-        {loading ? "Please wait..." : mode === "login" ? "Sign In" : "Create Account"}
+        {loading ? 'Please wait...' : mode === 'login' ? 'Sign In' : 'Create Account'}
       </button>
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
           fontSize: 13,
           color: ua.muted,
         }}
       >
-        {onForgotPassword && mode === "login" && (
+        {onForgotPassword && mode === 'login' && (
           <button
             type="button"
             onClick={onForgotPassword}
             style={{
-              background: "none",
-              border: "none",
+              background: 'none',
+              border: 'none',
               color: ua.fg,
-              cursor: "pointer",
+              cursor: 'pointer',
               fontSize: 13,
               fontWeight: 600,
               padding: 0,
@@ -199,16 +199,16 @@ export function AuthForm({
             type="button"
             onClick={onToggleMode}
             style={{
-              background: "none",
-              border: "none",
+              background: 'none',
+              border: 'none',
               color: ua.fg,
-              cursor: "pointer",
+              cursor: 'pointer',
               fontSize: 13,
               fontWeight: 600,
               padding: 0,
             }}
           >
-            {mode === "login" ? "Create an account" : "Already have an account?"}
+            {mode === 'login' ? 'Create an account' : 'Already have an account?'}
           </button>
         )}
       </div>
@@ -224,19 +224,15 @@ export interface PasswordResetProps {
   success?: boolean;
 }
 
-export function PasswordReset({
-  onSubmit,
-  loading,
-  success,
-}: PasswordResetProps) {
+export function PasswordReset({ onSubmit, loading, success }: PasswordResetProps) {
   const ua = useUA();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
 
   if (success)
     return (
       <div
         style={{
-          textAlign: "center",
+          textAlign: 'center',
           padding: 32,
           fontFamily: ua.ff,
           color: ua.fg,
@@ -246,14 +242,14 @@ export function PasswordReset({
           style={{
             width: 56,
             height: 56,
-            borderRadius: "50%",
-            background: "#f0fdf4",
-            border: "1px solid #bbf7d0",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "0 auto 12px",
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+            borderRadius: '50%',
+            background: '#f0fdf4',
+            border: '1px solid #bbf7d0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 12px',
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
           }}
         >
           <Icon name="check-circle" size={28} color={ua.success} />
@@ -263,7 +259,7 @@ export function PasswordReset({
           style={{
             fontWeight: 700,
             fontSize: 18,
-            letterSpacing: "-0.025em",
+            letterSpacing: '-0.025em',
             color: ua.fg,
           }}
         >
@@ -290,7 +286,7 @@ export function PasswordReset({
         onSubmit?.(email);
       }}
       style={{
-        display: "grid",
+        display: 'grid',
         gap: 14,
         fontFamily: ua.ff,
         color: ua.fg,
@@ -301,7 +297,7 @@ export function PasswordReset({
         style={{
           fontWeight: 700,
           fontSize: 22,
-          letterSpacing: "-0.035em",
+          letterSpacing: '-0.035em',
           color: ua.fg,
         }}
       >
@@ -333,10 +329,10 @@ export function PasswordReset({
         style={{
           ...btnPrimary(ua),
           opacity: loading ? 0.6 : 1,
-          cursor: loading ? "not-allowed" : "pointer",
+          cursor: loading ? 'not-allowed' : 'pointer',
         }}
       >
-        {loading ? "Sending..." : "Send Reset Link"}
+        {loading ? 'Sending...' : 'Send Reset Link'}
       </button>
     </form>
   );
@@ -350,13 +346,9 @@ export interface MultiFactorAuthInputProps {
   error?: string;
 }
 
-export function MultiFactorAuthInput({
-  length = 6,
-  onComplete,
-  error,
-}: MultiFactorAuthInputProps) {
+export function MultiFactorAuthInput({ length = 6, onComplete, error }: MultiFactorAuthInputProps) {
   const ua = useUA();
-  const [vals, setVals] = useState<string[]>(Array(length).fill(""));
+  const [vals, setVals] = useState<string[]>(Array(length).fill(''));
   const refs = Array.from({ length }, () => React.createRef<HTMLInputElement>());
 
   const change = (i: number, v: string) => {
@@ -367,11 +359,11 @@ export function MultiFactorAuthInput({
     setVals(next);
 
     if (v && i < length - 1) refs[i + 1].current?.focus();
-    if (next.every(Boolean)) onComplete?.(next.join(""));
+    if (next.every(Boolean)) onComplete?.(next.join(''));
   };
 
   const keyDown = (i: number, e: React.KeyboardEvent) => {
-    if (e.key === "Backspace" && !vals[i] && i > 0) {
+    if (e.key === 'Backspace' && !vals[i] && i > 0) {
       refs[i - 1].current?.focus();
     }
   };
@@ -383,14 +375,14 @@ export function MultiFactorAuthInput({
           fontWeight: 700,
           fontSize: 18,
           marginBottom: 12,
-          letterSpacing: "-0.025em",
+          letterSpacing: '-0.025em',
           color: ua.fg,
         }}
       >
         Enter verification code
       </div>
 
-      <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+      <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
         {vals.map((v, i) => (
           <input
             key={i}
@@ -403,18 +395,16 @@ export function MultiFactorAuthInput({
             style={{
               width: 48,
               height: 56,
-              textAlign: "center",
+              textAlign: 'center',
               fontSize: 24,
               fontWeight: 700,
               borderRadius: 12,
-              border: `1px solid ${error ? "#fecaca" : v ? ua.accent : ua.border}`,
-              background: "#ffffff",
+              border: `1px solid ${error ? '#fecaca' : v ? ua.accent : ua.border}`,
+              background: '#ffffff',
               color: ua.fg,
-              outline: "none",
-              transition: "border-color 0.2s, box-shadow 0.2s",
-              boxShadow: v
-                ? "0 0 0 3px rgba(9, 9, 11, 0.06)"
-                : "0 1px 2px rgba(9, 9, 11, 0.03)",
+              outline: 'none',
+              transition: 'border-color 0.2s, box-shadow 0.2s',
+              boxShadow: v ? '0 0 0 3px rgba(9, 9, 11, 0.06)' : '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           />
         ))}
@@ -426,7 +416,7 @@ export function MultiFactorAuthInput({
             color: ua.danger,
             fontSize: 13,
             marginTop: 8,
-            textAlign: "center",
+            textAlign: 'center',
           }}
         >
           {error}
@@ -458,16 +448,16 @@ export function ProfileOverview({
   const ua = useUA();
 
   const initials = name
-    .split(" ")
+    .split(' ')
     .map((w) => w[0])
-    .join("")
+    .join('')
     .slice(0, 2)
     .toUpperCase();
 
   return (
     <div
       style={{
-        display: "flex",
+        display: 'flex',
         gap: 20,
         fontFamily: ua.ff,
         color: ua.fg,
@@ -475,7 +465,7 @@ export function ProfileOverview({
         border: `1px solid ${ua.border}`,
         borderRadius: ua.r,
         background: ua.bg,
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       {avatar ? (
@@ -485,10 +475,10 @@ export function ProfileOverview({
           style={{
             width: 72,
             height: 72,
-            borderRadius: "50%",
-            objectFit: "cover",
+            borderRadius: '50%',
+            objectFit: 'cover',
             border: `1px solid ${ua.border}`,
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
           }}
         />
       ) : (
@@ -496,17 +486,17 @@ export function ProfileOverview({
           style={{
             width: 72,
             height: 72,
-            borderRadius: "50%",
+            borderRadius: '50%',
             background: ua.surface,
             border: `1px solid ${ua.border}`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             fontWeight: 800,
             fontSize: 24,
             color: ua.fg,
             flexShrink: 0,
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
           }}
         >
           {initials}
@@ -518,16 +508,14 @@ export function ProfileOverview({
           style={{
             fontWeight: 700,
             fontSize: 20,
-            letterSpacing: "-0.03em",
+            letterSpacing: '-0.03em',
             color: ua.fg,
           }}
         >
           {name}
         </div>
 
-        {role && (
-          <div style={{ fontSize: 14, color: ua.muted, marginTop: 2 }}>{role}</div>
-        )}
+        {role && <div style={{ fontSize: 14, color: ua.muted, marginTop: 2 }}>{role}</div>}
 
         {email && (
           <div
@@ -535,8 +523,8 @@ export function ProfileOverview({
               fontSize: 14,
               color: ua.muted,
               marginTop: 2,
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 6,
             }}
           >
@@ -546,15 +534,13 @@ export function ProfileOverview({
         )}
 
         {joinDate && (
-          <div style={{ fontSize: 12, color: ua.muted, marginTop: 4 }}>
-            Joined {joinDate}
-          </div>
+          <div style={{ fontSize: 12, color: ua.muted, marginTop: 4 }}>Joined {joinDate}</div>
         )}
 
         {stats && stats.length > 0 && (
-          <div style={{ display: "flex", gap: 20, marginTop: 12 }}>
+          <div style={{ display: 'flex', gap: 20, marginTop: 12 }}>
             {stats.map((s) => (
-              <div key={s.label} style={{ textAlign: "center" }}>
+              <div key={s.label} style={{ textAlign: 'center' }}>
                 <div
                   style={{
                     fontWeight: 700,
@@ -586,8 +572,8 @@ export interface ProfileSettingsProps {
 }
 
 export function ProfileSettings({
-  name: initName = "",
-  email: initEmail = "",
+  name: initName = '',
+  email: initEmail = '',
   avatar,
   onSave,
   onAvatarChange,
@@ -606,7 +592,7 @@ export function ProfileSettings({
     <form
       onSubmit={save}
       style={{
-        display: "grid",
+        display: 'grid',
         gap: 16,
         fontFamily: ua.ff,
         color: ua.fg,
@@ -617,28 +603,28 @@ export function ProfileSettings({
         style={{
           fontWeight: 700,
           fontSize: 20,
-          letterSpacing: "-0.03em",
+          letterSpacing: '-0.03em',
           color: ua.fg,
         }}
       >
         Profile Settings
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
         <div
           onClick={() => ref.current?.click()}
           style={{
             width: 64,
             height: 64,
-            borderRadius: "50%",
+            borderRadius: '50%',
             background: ua.surface,
             border: `1px solid ${ua.border}`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            overflow: "hidden",
-            boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            overflow: 'hidden',
+            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
           }}
         >
           {avatar ? (
@@ -646,9 +632,9 @@ export function ProfileSettings({
               src={avatar}
               alt=""
               style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
               }}
             />
           ) : (
@@ -664,13 +650,13 @@ export function ProfileSettings({
             const f = ev.target.files?.[0];
             if (f) onAvatarChange?.(f);
           }}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
         />
 
         <div style={{ fontSize: 14, color: ua.muted }}>Click to change photo</div>
       </div>
 
-      <div style={{ display: "grid", gap: 6 }}>
+      <div style={{ display: 'grid', gap: 6 }}>
         <label
           style={{
             fontSize: 13,
@@ -684,7 +670,7 @@ export function ProfileSettings({
         <input value={n} onChange={(ev) => setN(ev.target.value)} style={fieldStyle(ua)} />
       </div>
 
-      <div style={{ display: "grid", gap: 6 }}>
+      <div style={{ display: 'grid', gap: 6 }}>
         <label
           style={{
             fontSize: 13,
@@ -703,7 +689,7 @@ export function ProfileSettings({
         />
       </div>
 
-      <button type="submit" style={{ ...btnPrimary(ua), justifySelf: "start" }}>
+      <button type="submit" style={{ ...btnPrimary(ua), justifySelf: 'start' }}>
         Save Changes
       </button>
     </form>
@@ -727,7 +713,7 @@ export interface AccountSettingsProps {
 
 export function AccountSettings({
   sections = [],
-  title = "Account Settings",
+  title = 'Account Settings',
 }: AccountSettingsProps) {
   const ua = useUA();
 
@@ -738,27 +724,27 @@ export function AccountSettings({
           fontWeight: 700,
           fontSize: 22,
           marginBottom: 16,
-          letterSpacing: "-0.035em",
+          letterSpacing: '-0.035em',
           color: ua.fg,
         }}
       >
         {title}
       </div>
 
-      <div style={{ display: "grid", gap: 4 }}>
+      <div style={{ display: 'grid', gap: 4 }}>
         {sections.map((s) => (
           <div
             key={s.id}
             style={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 14,
-              padding: "16px 18px",
+              padding: '16px 18px',
               border: `1px solid ${ua.border}`,
               borderRadius: ua.r,
               background: ua.bg,
-              transition: "border-color 0.15s, box-shadow 0.15s",
-              boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+              transition: 'border-color 0.15s, box-shadow 0.15s',
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
             }}
           >
             {s.icon && (
@@ -769,9 +755,9 @@ export function AccountSettings({
                   borderRadius: 10,
                   background: ua.surface,
                   border: `1px solid ${ua.border}`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   flexShrink: 0,
                 }}
               >
@@ -791,9 +777,7 @@ export function AccountSettings({
               </div>
 
               {s.description && (
-                <div style={{ fontSize: 13, color: ua.muted, marginTop: 2 }}>
-                  {s.description}
-                </div>
+                <div style={{ fontSize: 13, color: ua.muted, marginTop: 2 }}>{s.description}</div>
               )}
             </div>
 
@@ -809,41 +793,37 @@ export function AccountSettings({
 
 export interface RoleBadgeProps {
   role: string;
-  variant?: "admin" | "moderator" | "editor" | "viewer" | "custom";
+  variant?: 'admin' | 'moderator' | 'editor' | 'viewer' | 'custom';
   color?: string;
 }
 
 const ROLE_COLORS: Record<string, string> = {
-  admin: "#dc2626",
-  moderator: "#ca8a04",
-  editor: "#2563eb",
-  viewer: "#71717a",
+  admin: '#dc2626',
+  moderator: '#ca8a04',
+  editor: '#2563eb',
+  viewer: '#71717a',
 };
 
-export function RoleBadge({
-  role,
-  variant = "custom",
-  color,
-}: RoleBadgeProps) {
+export function RoleBadge({ role, variant = 'custom', color }: RoleBadgeProps) {
   const ua = useUA();
   const c = color ?? ROLE_COLORS[variant] ?? ua.accent;
 
   return (
     <span
       style={{
-        display: "inline-flex",
-        alignItems: "center",
+        display: 'inline-flex',
+        alignItems: 'center',
         gap: 5,
-        padding: "3px 10px",
+        padding: '3px 10px',
         borderRadius: 999,
-        background: "#ffffff",
+        background: '#ffffff',
         border: `1px solid ${ua.border}`,
         color: c,
         fontSize: 12,
         fontWeight: 700,
         fontFamily: ua.ff,
-        textTransform: "capitalize",
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+        textTransform: 'capitalize',
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
       }}
     >
       <Icon name="shield" size={13} color={c} />

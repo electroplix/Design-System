@@ -1,7 +1,7 @@
-"use client";
-import React, { useState } from "react";
-import { Icon } from "../../core/icons";
-import { useNavTheme } from "../../core/provider";
+'use client';
+import React, { useState } from 'react';
+import { Icon } from '../../core/icons';
+import { useNavTheme } from '../../core/provider';
 
 export type MenuLink = {
   label: string;
@@ -35,24 +35,24 @@ export function MegaMenu(props: MegaMenuProps) {
   const t = useNavTheme();
 
   const {
-    as: Tag = "div",
+    as: Tag = 'div',
     label,
     sections,
     maxW = 800,
     px = 24,
     py = 24,
     radius = 16,
-    bgColor = t.bgColor ?? "#ffffff",
-    textColor = t.textColor ?? "#09090b",
-    accentColor = t.accentColor ?? "#18181b",
-    borderColor = t.borderColor ?? "#e4e4e7",
+    bgColor = t.bgColor ?? '#ffffff',
+    textColor = t.textColor ?? '#09090b',
+    accentColor = t.accentColor ?? '#18181b',
+    borderColor = t.borderColor ?? '#e4e4e7',
     fontFamily = t.fontFamily,
     style = {},
-    className = "",
+    className = '',
   } = props;
 
-  const mutedColor = "#71717a";
-  const surfaceColor = "#fafafa";
+  const mutedColor = '#71717a';
+  const surfaceColor = '#fafafa';
 
   const [open, setOpen] = useState(false);
 
@@ -60,8 +60,8 @@ export function MegaMenu(props: MegaMenuProps) {
     <Tag
       className={className}
       style={{
-        position: "relative",
-        display: "inline-block",
+        position: 'relative',
+        display: 'inline-block',
         fontFamily,
         ...style,
       }}
@@ -70,21 +70,19 @@ export function MegaMenu(props: MegaMenuProps) {
     >
       <button
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 8,
-          padding: "10px 16px",
+          padding: '10px 16px',
           borderRadius: 12,
-          border: `1px solid ${
-            open ? accentColor : borderColor
-          }`,
-          background: open ? surfaceColor : "#ffffff",
+          border: `1px solid ${open ? accentColor : borderColor}`,
+          background: open ? surfaceColor : '#ffffff',
           color: open ? accentColor : textColor,
-          cursor: "pointer",
+          cursor: 'pointer',
           fontWeight: 600,
           fontSize: 14,
-          transition: "all 0.2s ease",
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          transition: 'all 0.2s ease',
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       >
         {label}
@@ -94,8 +92,8 @@ export function MegaMenu(props: MegaMenuProps) {
           size={16}
           color={open ? accentColor : mutedColor}
           style={{
-            transition: "transform 0.2s ease",
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            transition: 'transform 0.2s ease',
+            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
           }}
         />
       </button>
@@ -103,19 +101,18 @@ export function MegaMenu(props: MegaMenuProps) {
       {open && (
         <div
           style={{
-            position: "absolute",
-            top: "calc(100% + 10px)",
+            position: 'absolute',
+            top: 'calc(100% + 10px)',
             left: 0,
             minWidth: maxW,
-            background: "#ffffff",
+            background: '#ffffff',
             border: `1px solid ${borderColor}`,
             borderRadius: radius,
             padding: py,
             paddingInline: px,
             zIndex: 50,
-            boxShadow:
-              "0 24px 64px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.05)",
-            display: "grid",
+            boxShadow: '0 24px 64px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.05)',
+            display: 'grid',
             gridTemplateColumns: `repeat(${sections.length}, 1fr)`,
             gap: 32,
           }}
@@ -126,8 +123,8 @@ export function MegaMenu(props: MegaMenuProps) {
                 style={{
                   fontSize: 12,
                   fontWeight: 700,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
                   color: mutedColor,
                   marginBottom: 16,
                 }}
@@ -137,7 +134,7 @@ export function MegaMenu(props: MegaMenuProps) {
 
               <div
                 style={{
-                  display: "grid",
+                  display: 'grid',
                   gap: 6,
                 }}
               >
@@ -146,13 +143,13 @@ export function MegaMenu(props: MegaMenuProps) {
                     key={j}
                     href={link.href}
                     style={{
-                      display: "block",
-                      padding: "12px 14px",
+                      display: 'block',
+                      padding: '12px 14px',
                       borderRadius: 12,
                       color: textColor,
-                      textDecoration: "none",
-                      transition: "all 0.2s ease",
-                      border: "1px solid transparent",
+                      textDecoration: 'none',
+                      transition: 'all 0.2s ease',
+                      border: '1px solid transparent',
                     }}
                     onMouseEnter={(e) => {
                       const el = e.currentTarget as HTMLElement;
@@ -163,14 +160,14 @@ export function MegaMenu(props: MegaMenuProps) {
                     onMouseLeave={(e) => {
                       const el = e.currentTarget as HTMLElement;
 
-                      el.style.background = "transparent";
-                      el.style.borderColor = "transparent";
+                      el.style.background = 'transparent';
+                      el.style.borderColor = 'transparent';
                     }}
                   >
                     <div
                       style={{
-                        display: "flex",
-                        alignItems: "center",
+                        display: 'flex',
+                        alignItems: 'center',
                         gap: 6,
                       }}
                     >

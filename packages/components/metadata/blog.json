@@ -14,22 +14,89 @@
       "whenToUse": "Use on blog listing pages, landing pages, or marketing pages to showcase blog posts as clickable preview cards.",
       "isShell": false,
       "props": [
-        { "name": "post", "type": "BlogPost", "required": true, "default": null, "description": "Blog post object: {id, title, slug?, excerpt?, coverImage?, author?: {name, avatar?}, date?, readTime?, tags?, category?}" },
-        { "name": "onClick", "type": "(post: BlogPost) => void", "required": false, "default": null, "description": "Callback when the card is clicked" },
-        { "name": "variant", "type": "\"vertical\" | \"horizontal\"", "required": false, "default": "\"vertical\"", "description": "Card layout direction" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "post",
+          "type": "BlogPost",
+          "required": true,
+          "default": null,
+          "description": "Blog post object: {id, title, slug?, excerpt?, coverImage?, author?: {name, avatar?}, date?, readTime?, tags?, category?}"
+        },
+        {
+          "name": "onClick",
+          "type": "(post: BlogPost) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when the card is clicked"
+        },
+        {
+          "name": "variant",
+          "type": "\"vertical\" | \"horizontal\"",
+          "required": false,
+          "default": "\"vertical\"",
+          "description": "Card layout direction"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog", "landing", "marketing", "education", "community", "restaurant"],
         "placement": "body",
         "priority": 9,
         "sequenceOrder": 5,
-        "pairsWellWith": ["blog.TagList", "blog.AuthorByline", "navigation.Pagination", "blog.RelatedPosts", "forms.NewsletterSignup"],
+        "pairsWellWith": [
+          "blog.TagList",
+          "blog.AuthorByline",
+          "navigation.Pagination",
+          "blog.RelatedPosts",
+          "forms.NewsletterSignup"
+        ],
         "maxPerPage": 12,
         "isContainer": false
       }
@@ -41,18 +108,91 @@
       "whenToUse": "Use within blog post pages to show the author's identity, publication date, and reading time. Typically placed below the post title or above article content.",
       "isShell": false,
       "props": [
-        { "name": "name", "type": "string", "required": true, "default": null, "description": "Author display name" },
-        { "name": "avatar", "type": "string", "required": false, "default": null, "description": "URL to the author's avatar image" },
-        { "name": "bio", "type": "string", "required": false, "default": null, "description": "Short author biography" },
-        { "name": "date", "type": "string", "required": false, "default": null, "description": "Publication date string" },
-        { "name": "readTime", "type": "string", "required": false, "default": null, "description": "Estimated reading time (e.g. '5 min read')" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Author display name"
+        },
+        {
+          "name": "avatar",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL to the author's avatar image"
+        },
+        {
+          "name": "bio",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Short author biography"
+        },
+        {
+          "name": "date",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Publication date string"
+        },
+        {
+          "name": "readTime",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Estimated reading time (e.g. '5 min read')"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog"],
         "placement": "body",
@@ -70,16 +210,77 @@
       "whenToUse": "Use on blog listing pages or individual post pages to display and filter by tags. Also useful in ecommerce for product tag filtering.",
       "isShell": false,
       "props": [
-        { "name": "tags", "type": "string[]", "required": true, "default": null, "description": "Array of tag label strings" },
-        { "name": "onTagClick", "type": "(tag: string) => void", "required": false, "default": null, "description": "Callback when a tag is clicked" },
-        { "name": "activeTag", "type": "string", "required": false, "default": null, "description": "Currently active/selected tag" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "tags",
+          "type": "string[]",
+          "required": true,
+          "default": null,
+          "description": "Array of tag label strings"
+        },
+        {
+          "name": "onTagClick",
+          "type": "(tag: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when a tag is clicked"
+        },
+        {
+          "name": "activeTag",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Currently active/selected tag"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog", "ecommerce"],
         "placement": "body",
@@ -97,15 +298,70 @@
       "whenToUse": "Use on blog cards or article headers to indicate the post category, status (e.g. 'New', 'Featured'), or content type.",
       "isShell": false,
       "props": [
-        { "name": "label", "type": "string", "required": true, "default": null, "description": "Badge text label" },
-        { "name": "color", "type": "string", "required": false, "default": "theme accent", "description": "Badge background color" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "label",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Badge text label"
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "required": false,
+          "default": "theme accent",
+          "description": "Badge background color"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog"],
         "placement": "body",
@@ -123,16 +379,77 @@
       "whenToUse": "Use on blog post or documentation pages to give readers a visual indicator of their reading progress through the article.",
       "isShell": false,
       "props": [
-        { "name": "color", "type": "string", "required": false, "default": "gradient from accent", "description": "Bar color or gradient" },
-        { "name": "height", "type": "number", "required": false, "default": "3", "description": "Bar height in pixels" },
-        { "name": "containerRef", "type": "RefObject<HTMLElement | null>", "required": false, "default": null, "description": "Ref to the scrollable container element; defaults to document/window scroll" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "color",
+          "type": "string",
+          "required": false,
+          "default": "gradient from accent",
+          "description": "Bar color or gradient"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "3",
+          "description": "Bar height in pixels"
+        },
+        {
+          "name": "containerRef",
+          "type": "RefObject<HTMLElement | null>",
+          "required": false,
+          "default": null,
+          "description": "Ref to the scrollable container element; defaults to document/window scroll"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog", "documentation"],
         "placement": "overlay",
@@ -150,21 +467,81 @@
       "whenToUse": "Use on blog post detail pages to render the full article body from HTML/rich-text content stored in a CMS.",
       "isShell": false,
       "props": [
-        { "name": "html", "type": "string", "required": true, "default": null, "description": "HTML string of the article content to render" },
-        { "name": "maxW", "type": "number", "required": false, "default": "720", "description": "Maximum content width in pixels for readability" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "html",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "HTML string of the article content to render"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "720",
+          "description": "Maximum content width in pixels for readability"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog"],
         "placement": "body",
         "priority": 9,
         "sequenceOrder": 5,
-        "pairsWellWith": ["blog.AuthorByline", "blog.ReadingBar", "blog.CommentsSection", "blog.RelatedPosts"],
+        "pairsWellWith": [
+          "blog.AuthorByline",
+          "blog.ReadingBar",
+          "blog.CommentsSection",
+          "blog.RelatedPosts"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -176,16 +553,77 @@
       "whenToUse": "Use at the bottom of blog post pages to encourage readers to explore more content. Typically placed after the article body and before comments.",
       "isShell": false,
       "props": [
-        { "name": "posts", "type": "BlogPost[]", "required": true, "default": null, "description": "Array of related blog posts: {id, title, slug?, excerpt?, coverImage?, author?: {name, avatar?}, date?, readTime?, tags?, category?}" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Related Posts\"", "description": "Section heading text" },
-        { "name": "onPostClick", "type": "(post: BlogPost) => void", "required": false, "default": null, "description": "Callback when a related post is clicked" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "posts",
+          "type": "BlogPost[]",
+          "required": true,
+          "default": null,
+          "description": "Array of related blog posts: {id, title, slug?, excerpt?, coverImage?, author?: {name, avatar?}, date?, readTime?, tags?, category?}"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Related Posts\"",
+          "description": "Section heading text"
+        },
+        {
+          "name": "onPostClick",
+          "type": "(post: BlogPost) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when a related post is clicked"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog"],
         "placement": "body",
@@ -203,15 +641,70 @@
       "whenToUse": "Use on blog archive or index pages to display posts grouped by month, year, or category. Provides a structured overview of all published content.",
       "isShell": false,
       "props": [
-        { "name": "groups", "type": "ArchiveGroup[]", "required": true, "default": null, "description": "Array of archive groups: {label, posts: BlogPost[]}" },
-        { "name": "onPostClick", "type": "(post: BlogPost) => void", "required": false, "default": null, "description": "Callback when a post in the archive is clicked" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "groups",
+          "type": "ArchiveGroup[]",
+          "required": true,
+          "default": null,
+          "description": "Array of archive groups: {label, posts: BlogPost[]}"
+        },
+        {
+          "name": "onPostClick",
+          "type": "(post: BlogPost) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when a post in the archive is clicked"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog"],
         "placement": "body",
@@ -229,16 +722,77 @@
       "whenToUse": "Use at the bottom of blog post pages to allow readers to leave comments and reply to existing ones. Supports nested reply threads.",
       "isShell": false,
       "props": [
-        { "name": "comments", "type": "BlogComment[]", "required": true, "default": null, "description": "Array of comments: {id, author, avatar?, text, date?, replies?: BlogComment[]}" },
-        { "name": "onSubmit", "type": "(text: string, parentId?: string) => void", "required": false, "default": null, "description": "Callback when a comment or reply is submitted" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Comments\"", "description": "Section heading text" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "comments",
+          "type": "BlogComment[]",
+          "required": true,
+          "default": null,
+          "description": "Array of comments: {id, author, avatar?, text, date?, replies?: BlogComment[]}"
+        },
+        {
+          "name": "onSubmit",
+          "type": "(text: string, parentId?: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback when a comment or reply is submitted"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Comments\"",
+          "description": "Section heading text"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder", "tagBg", "tagColor"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "tagBg",
+        "tagColor"
+      ],
       "aiHints": {
         "pageTypes": ["blog"],
         "placement": "body",

@@ -34,17 +34,10 @@
   },
   "typesVersions": {
     "*": {
-      "config": [
-        "./dist/config.d.ts"
-      ]
+      "config": ["./dist/config.d.ts"]
     }
   },
-  "files": [
-    "dist",
-    "cli.cjs",
-    "metadata",
-    "!**/*.tsbuildinfo"
-  ],
+  "files": ["dist", "cli.cjs", "metadata", "!**/*.tsbuildinfo"],
   "homepage": "https://electroplix.com",
   "author": "Electroplix",
   "peerDependencies": {

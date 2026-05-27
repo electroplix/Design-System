@@ -23,45 +23,45 @@ import type {
   SocialTheme,
   UserAccountsTheme,
   ElectroplixConfig,
-} from "./types";
+} from './types';
 
 /* ----------------------- base ------------------------------------- */
 
 const base: Required<BaseTheme> = {
-  bgColor: "#0b0b0c",
-  textColor: "#F3F4F6",
-  accentColor: "#8B5CF6",
-  borderColor: "rgba(255,255,255,0.12)",
-  fontFamily: "Inter, ui-sans-serif, system-ui",
+  bgColor: '#0b0b0c',
+  textColor: '#F3F4F6',
+  accentColor: '#8B5CF6',
+  borderColor: 'rgba(255,255,255,0.12)',
+  fontFamily: 'Inter, ui-sans-serif, system-ui',
   radius: 14,
   spacing: 14,
   headingSize: 20,
   bodySize: 14,
-  fontWeight: "400",
+  fontWeight: '400',
   lineHeight: 1.5,
   letterSpacing: 0,
-  shadow: "none",
+  shadow: 'none',
 };
 
 /* ----------------------- per-category ----------------------------- */
 
 export const defaultBlogTheme: Required<BlogTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 10,
-  cardBorder: "rgba(255,255,255,0.12)",
-  tagBg: "rgba(139,92,246,0.15)",
-  tagColor: "#C4B5FD",
+  cardBorder: 'rgba(255,255,255,0.12)',
+  tagBg: 'rgba(139,92,246,0.15)',
+  tagColor: '#C4B5FD',
 };
 
 export const defaultButtonTheme: Required<ButtonTheme> = {
-  bgColor: "#2563eb",
-  textColor: "#fff",
-  accentColor: "#8B5CF6",
-  borderColor: "transparent",
-  fontFamily: "Inter, sans-serif",
+  bgColor: '#2563eb',
+  textColor: '#fff',
+  accentColor: '#8B5CF6',
+  borderColor: 'transparent',
+  fontFamily: 'Inter, sans-serif',
   fontSize: 15,
-  fontWeight: "500",
+  fontWeight: '500',
   letterSpacing: 0,
   lineHeight: 1,
   radius: 8,
@@ -69,15 +69,15 @@ export const defaultButtonTheme: Required<ButtonTheme> = {
   paddingY: 10,
   gap: 8,
   opacity: 1,
-  shadow: "none",
+  shadow: 'none',
   transitionDuration: 200,
 };
 
 export const defaultContentTheme: Required<ContentTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 10,
-  cardBorder: "rgba(255,255,255,0.12)",
+  cardBorder: 'rgba(255,255,255,0.12)',
   maxW: 800,
   px: 24,
   py: 24,
@@ -86,32 +86,32 @@ export const defaultContentTheme: Required<ContentTheme> = {
 
 export const defaultDataDisplayTheme: Required<DataDisplayTheme> = {
   ...base,
-  cardBg: "#0b0b0c",
+  cardBg: '#0b0b0c',
   cardRadius: 12,
-  cardBorder: "rgba(255,255,255,0.1)",
-  gridColor: "rgba(255,255,255,0.08)",
+  cardBorder: 'rgba(255,255,255,0.1)',
+  gridColor: 'rgba(255,255,255,0.08)',
 };
 
 export const defaultEcommerceTheme: Required<EcommerceTheme> = {
   ...base,
   headingSize: 22,
-  accentColor: "#7C3AED",
-  borderColor: "rgba(255,255,255,0.12)",
-  cardBg: "#0b0b0c",
+  accentColor: '#7C3AED',
+  borderColor: 'rgba(255,255,255,0.12)',
+  cardBg: '#0b0b0c',
   cardRadius: 12,
-  cardBorder: "rgba(255,255,255,0.1)",
-  inputBg: "rgba(128,128,128,0.1)",
-  inputText: "#E5E7EB",
+  cardBorder: 'rgba(255,255,255,0.1)',
+  inputBg: 'rgba(128,128,128,0.1)',
+  inputText: '#E5E7EB',
   buttonSize: 14,
 };
 
 export const defaultFormsTheme: Required<FormsTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 10,
-  cardBorder: "rgba(255,255,255,0.12)",
-  inputBg: "rgba(128,128,128,0.1)",
-  inputText: "#E5E7EB",
+  cardBorder: 'rgba(255,255,255,0.12)',
+  inputBg: 'rgba(128,128,128,0.1)',
+  inputText: '#E5E7EB',
   maxW: 600,
   px: 24,
   py: 24,
@@ -120,9 +120,9 @@ export const defaultFormsTheme: Required<FormsTheme> = {
 
 export const defaultHeroTheme: Required<HeroTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 12,
-  cardBorder: "rgba(255,255,255,0.12)",
+  cardBorder: 'rgba(255,255,255,0.12)',
   minH: 480,
   maxW: 1200,
   px: 24,
@@ -132,11 +132,11 @@ export const defaultHeroTheme: Required<HeroTheme> = {
 
 export const defaultListsCardsTheme: Required<ListsCardsTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 10,
-  cardBorder: "rgba(255,255,255,0.12)",
-  inputBg: "rgba(128,128,128,0.1)",
-  inputText: "#E5E7EB",
+  cardBorder: 'rgba(255,255,255,0.12)',
+  inputBg: 'rgba(128,128,128,0.1)',
+  inputText: '#E5E7EB',
   maxW: 1200,
   px: 24,
   py: 24,
@@ -145,21 +145,21 @@ export const defaultListsCardsTheme: Required<ListsCardsTheme> = {
 
 export const defaultMarketingTheme: Required<MarketingTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 10,
-  cardBorder: "rgba(255,255,255,0.12)",
-  inputBg: "#191a1f",
-  inputText: "#E5E7EB",
-  mutedText: "rgba(255,255,255,0.7)",
-  gridColor: "rgba(255,255,255,0.08)",
-  shadow: "0 10px 25px rgba(0,0,0,0.35)",
+  cardBorder: 'rgba(255,255,255,0.12)',
+  inputBg: '#191a1f',
+  inputText: '#E5E7EB',
+  mutedText: 'rgba(255,255,255,0.7)',
+  gridColor: 'rgba(255,255,255,0.08)',
+  shadow: '0 10px 25px rgba(0,0,0,0.35)',
 };
 
 export const defaultMediaTheme: Required<MediaTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 10,
-  cardBorder: "rgba(255,255,255,0.12)",
+  cardBorder: 'rgba(255,255,255,0.12)',
 };
 
 export const defaultMiscTheme: Required<MiscTheme> = {
@@ -167,11 +167,11 @@ export const defaultMiscTheme: Required<MiscTheme> = {
   radius: 16,
   spacing: 16,
   headingSize: 18,
-  shadow: "0 20px 50px rgba(0,0,0,0.5)",
-  surfaceColor: "rgba(255,255,255,0.03)",
-  codeBg: "rgba(139,92,246,0.1)",
-  codeText: "#E5E7EB",
-  mutedText: "rgba(255,255,255,0.6)",
+  shadow: '0 20px 50px rgba(0,0,0,0.5)',
+  surfaceColor: 'rgba(255,255,255,0.03)',
+  codeBg: 'rgba(139,92,246,0.1)',
+  codeText: '#E5E7EB',
+  mutedText: 'rgba(255,255,255,0.6)',
 };
 
 export const defaultModalsTheme: Required<ModalsTheme> = { ...base };
@@ -187,30 +187,30 @@ export const defaultNavigationTheme: Required<NavigationTheme> = {
 
 export const defaultOnboardingTheme: Required<OnboardingTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 10,
-  cardBorder: "rgba(255,255,255,0.12)",
+  cardBorder: 'rgba(255,255,255,0.12)',
 };
 
 export const defaultSearchTheme: Required<SearchTheme> = {
   ...base,
-  cardBg: "rgba(128,128,128,0.1)",
+  cardBg: 'rgba(128,128,128,0.1)',
   cardRadius: 10,
-  cardBorder: "rgba(255,255,255,0.12)",
+  cardBorder: 'rgba(255,255,255,0.12)',
 };
 
 export const defaultSiteIdentityTheme: Required<SiteIdentityTheme> = { ...base };
 
 export const defaultSocialTheme: Required<SocialTheme> = {
   ...base,
-  mutedText: "rgba(255,255,255,0.65)",
-  buttonText: "#ffffff",
+  mutedText: 'rgba(255,255,255,0.65)',
+  buttonText: '#ffffff',
 };
 
 export const defaultUserAccountsTheme: Required<UserAccountsTheme> = {
   ...base,
-  inputBg: "rgba(128,128,128,0.1)",
-  inputText: "#E5E7EB",
+  inputBg: 'rgba(128,128,128,0.1)',
+  inputText: '#E5E7EB',
 };
 
 /* ----------------------- aggregate -------------------------------- */

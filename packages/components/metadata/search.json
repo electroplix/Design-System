@@ -14,19 +14,94 @@
       "whenToUse": "Use as the primary search entry point on any page. Ideal for landing pages, ecommerce storefronts, blog archives, documentation portals, and dashboard headers.",
       "isShell": false,
       "props": [
-        { "name": "placeholder", "type": "string", "required": false, "default": "\"Search...\"", "description": "Placeholder text displayed inside the search input" },
-        { "name": "onSearch", "type": "(query: string) => void", "required": true, "default": null, "description": "Callback fired when the user submits a search query" },
-        { "name": "defaultValue", "type": "string", "required": false, "default": "\"\"", "description": "Initial value pre-filled in the search input" },
-        { "name": "autoFocus", "type": "boolean", "required": false, "default": "false", "description": "Whether the search input should be focused on mount" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "default": "\"Search...\"",
+          "description": "Placeholder text displayed inside the search input"
+        },
+        {
+          "name": "onSearch",
+          "type": "(query: string) => void",
+          "required": true,
+          "default": null,
+          "description": "Callback fired when the user submits a search query"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "default": "\"\"",
+          "description": "Initial value pre-filled in the search input"
+        },
+        {
+          "name": "autoFocus",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the search input should be focused on mount"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "ecommerce", "blog", "documentation", "dashboard", "marketplace", "restaurant", "education", "community"],
+        "pageTypes": [
+          "landing",
+          "ecommerce",
+          "blog",
+          "documentation",
+          "dashboard",
+          "marketplace",
+          "restaurant",
+          "education",
+          "community"
+        ],
         "placement": "header",
         "priority": 8,
         "sequenceOrder": 2,
@@ -42,17 +117,82 @@
       "whenToUse": "Use when you want to provide type-ahead suggestions to help users find content faster. Great for ecommerce product search, documentation search, and any search-heavy interface.",
       "isShell": false,
       "props": [
-        { "name": "suggestions", "type": "string[]", "required": true, "default": null, "description": "Array of suggestion strings to display in the dropdown" },
-        { "name": "onSelect", "type": "(value: string) => void", "required": true, "default": null, "description": "Callback fired when a suggestion is selected" },
-        { "name": "placeholder", "type": "string", "required": false, "default": "\"Type to search...\"", "description": "Placeholder text displayed inside the input" },
-        { "name": "onQueryChange", "type": "(query: string) => void", "required": false, "default": null, "description": "Callback fired on every input change for real-time query tracking" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "suggestions",
+          "type": "string[]",
+          "required": true,
+          "default": null,
+          "description": "Array of suggestion strings to display in the dropdown"
+        },
+        {
+          "name": "onSelect",
+          "type": "(value: string) => void",
+          "required": true,
+          "default": null,
+          "description": "Callback fired when a suggestion is selected"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "default": "\"Type to search...\"",
+          "description": "Placeholder text displayed inside the input"
+        },
+        {
+          "name": "onQueryChange",
+          "type": "(query: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired on every input change for real-time query tracking"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
         "pageTypes": ["ecommerce", "documentation", "search"],
         "placement": "body",
@@ -70,18 +210,85 @@
       "whenToUse": "Use alongside search results to let users narrow down results by category, price range, brand, or other attributes. Essential for ecommerce catalogs, documentation, and any filterable dataset.",
       "isShell": false,
       "props": [
-        { "name": "facets", "type": "Facet[]", "required": true, "default": null, "description": "Array of facet groups: {id, name, options: FacetOption[]{id, label, count?}}" },
-        { "name": "selected", "type": "Record<string, Set<string>>", "required": false, "default": "{}", "description": "Map of selected option IDs keyed by facet ID" },
-        { "name": "onChange", "type": "(facetId: string, optionId: string, checked: boolean) => void", "required": true, "default": null, "description": "Callback fired when a filter option is toggled" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "facets",
+          "type": "Facet[]",
+          "required": true,
+          "default": null,
+          "description": "Array of facet groups: {id, name, options: FacetOption[]{id, label, count?}}"
+        },
+        {
+          "name": "selected",
+          "type": "Record<string, Set<string>>",
+          "required": false,
+          "default": "{}",
+          "description": "Map of selected option IDs keyed by facet ID"
+        },
+        {
+          "name": "onChange",
+          "type": "(facetId: string, optionId: string, checked: boolean) => void",
+          "required": true,
+          "default": null,
+          "description": "Callback fired when a filter option is toggled"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
-        "pageTypes": ["ecommerce", "search", "documentation", "marketplace", "realestate", "directory", "recruitment"],
+        "pageTypes": [
+          "ecommerce",
+          "search",
+          "documentation",
+          "marketplace",
+          "realestate",
+          "directory",
+          "recruitment"
+        ],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 4,
@@ -97,15 +304,68 @@
       "whenToUse": "Use as an individual result entry within a search results list. Suitable for search pages, ecommerce product results, and blog article listings.",
       "isShell": false,
       "props": [
-        { "name": "item", "type": "SearchItem", "required": true, "default": null, "description": "Search result data: {id, title, description?, url?, image?, badge?, meta?}" },
-        { "name": "onClick", "type": "(item: SearchItem) => void", "required": false, "default": null, "description": "Callback fired when the result card is clicked" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "item",
+          "type": "SearchItem",
+          "required": true,
+          "default": null,
+          "description": "Search result data: {id, title, description?, url?, image?, badge?, meta?}"
+        },
+        {
+          "name": "onClick",
+          "type": "(item: SearchItem) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the result card is clicked"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
         "pageTypes": ["search", "ecommerce", "blog"],
         "placement": "body",
@@ -123,17 +383,82 @@
       "whenToUse": "Use as the main search results container on dedicated search pages. Pairs with facet filters for refined browsing and pagination for large result sets.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "SearchItem[]", "required": true, "default": null, "description": "Array of search result items: SearchItem{id, title, description?, url?, image?, badge?, meta?}" },
-        { "name": "query", "type": "string", "required": false, "default": "\"\"", "description": "The current search query string for display context" },
-        { "name": "onItemClick", "type": "(item: SearchItem) => void", "required": false, "default": null, "description": "Callback fired when a result item is clicked" },
-        { "name": "loading", "type": "boolean", "required": false, "default": "false", "description": "Whether the results are currently loading" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "items",
+          "type": "SearchItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of search result items: SearchItem{id, title, description?, url?, image?, badge?, meta?}"
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "required": false,
+          "default": "\"\"",
+          "description": "The current search query string for display context"
+        },
+        {
+          "name": "onItemClick",
+          "type": "(item: SearchItem) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when a result item is clicked"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the results are currently loading"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
         "pageTypes": ["search", "ecommerce", "blog"],
         "placement": "body",
@@ -151,16 +476,75 @@
       "whenToUse": "Use inside search results containers when the result set is empty. Helps guide users to refine their query or explore alternative content.",
       "isShell": false,
       "props": [
-        { "name": "query", "type": "string", "required": false, "default": "\"\"", "description": "The search query that produced no results" },
-        { "name": "title", "type": "string", "required": false, "default": "auto", "description": "Heading text for the empty state (auto-generated from query if not provided)" },
-        { "name": "description", "type": "string", "required": false, "default": "auto", "description": "Descriptive text with suggestions (auto-generated if not provided)" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "query",
+          "type": "string",
+          "required": false,
+          "default": "\"\"",
+          "description": "The search query that produced no results"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "auto",
+          "description": "Heading text for the empty state (auto-generated from query if not provided)"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": "auto",
+          "description": "Descriptive text with suggestions (auto-generated if not provided)"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
         "pageTypes": ["search"],
         "placement": "body",

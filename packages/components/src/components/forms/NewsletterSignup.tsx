@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Icon } from "../../core/icons";
-import { useFormsTheme } from "../../core/provider";
+import React, { useState } from 'react';
+import { Icon } from '../../core/icons';
+import { useFormsTheme } from '../../core/provider';
 
 export interface NewsletterSignupProps {
   as?: React.ElementType;
@@ -29,27 +29,27 @@ export interface NewsletterSignupProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  success: "#16a34a",
-  successSoft: "#f0fdf4",
-  ring: "rgba(9,9,11,0.08)",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  success: '#16a34a',
+  successSoft: '#f0fdf4',
+  ring: 'rgba(9,9,11,0.08)',
 };
 
 export function NewsletterSignup(props: NewsletterSignupProps) {
   const t = useFormsTheme();
 
   const {
-    as: Tag = "section",
-    title = "Stay Updated",
-    subtitle = "Get the latest news delivered to your inbox.",
+    as: Tag = 'section',
+    title = 'Stay Updated',
+    subtitle = 'Get the latest news delivered to your inbox.',
     onSubmit,
-    buttonText = "Subscribe",
+    buttonText = 'Subscribe',
     bgColor,
     textColor,
     accentColor,
@@ -65,7 +65,7 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
     subtitleSize = 14,
     inputSize = 14,
     style = {},
-    className = "",
+    className = '',
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -74,7 +74,7 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
   const border = borderColor ?? t.borderColor ?? ui.border;
   const inputSurface = inputBg ?? t.inputBg ?? ui.white;
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -94,23 +94,23 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
         padding: `${py}px ${px}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
     >
       <div
         style={{
-          marginInline: "auto",
+          marginInline: 'auto',
           maxWidth: maxW,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           gap,
         }}
       >
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 12,
           }}
         >
@@ -121,16 +121,12 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
               borderRadius: 12,
               background: ui.black,
               border: `1px solid ${ui.black}`,
-              display: "grid",
-              placeItems: "center",
-              boxShadow: "0 1px 2px rgba(9,9,11,0.12)",
+              display: 'grid',
+              placeItems: 'center',
+              boxShadow: '0 1px 2px rgba(9,9,11,0.12)',
             }}
           >
-            <Icon
-              name="mail"
-              size={22}
-              style={{ color: ui.white } as any}
-            />
+            <Icon name="mail" size={22} style={{ color: ui.white } as any} />
           </div>
 
           <div>
@@ -138,9 +134,9 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
               style={{
                 fontSize: titleSize,
                 fontWeight: 700,
-                display: "block",
+                display: 'block',
                 color: fg,
-                letterSpacing: "-0.02em",
+                letterSpacing: '-0.02em',
               }}
             >
               {title}
@@ -166,29 +162,25 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
               borderRadius: 12,
               background: ui.successSoft,
               border: `1px solid rgba(22,163,74,0.16)`,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               gap: 12,
-              textAlign: "center",
-              boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+              textAlign: 'center',
+              boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             <div
               style={{
                 width: 52,
                 height: 52,
-                borderRadius: "999px",
+                borderRadius: '999px',
                 background: ui.success,
-                display: "grid",
-                placeItems: "center",
+                display: 'grid',
+                placeItems: 'center',
               }}
             >
-              <Icon
-                name="check"
-                size={26}
-                style={{ color: ui.white } as any}
-              />
+              <Icon name="check" size={26} style={{ color: ui.white } as any} />
             </div>
 
             <div
@@ -215,27 +207,27 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
           <form
             onSubmit={handleSubmit}
             style={{
-              display: "flex",
+              display: 'flex',
               gap: 10,
-              flexWrap: "wrap",
+              flexWrap: 'wrap',
             }}
           >
             <div
               style={{
-                position: "relative",
+                position: 'relative',
                 flex: 1,
                 minWidth: 200,
               }}
             >
               <div
                 style={{
-                  position: "absolute",
+                  position: 'absolute',
                   left: 14,
-                  top: "50%",
-                  transform: "translateY(-50%)",
+                  top: '50%',
+                  transform: 'translateY(-50%)',
                   color: isFocused ? accent : ui.muted,
-                  transition: "color 0.2s ease",
-                  display: "flex",
+                  transition: 'color 0.2s ease',
+                  display: 'flex',
                   zIndex: 2,
                 }}
               >
@@ -251,19 +243,17 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
                 onBlur={() => setIsFocused(false)}
                 required
                 style={{
-                  width: "100%",
-                  padding: "14px 14px 14px 44px",
+                  width: '100%',
+                  padding: '14px 14px 14px 44px',
                   borderRadius: 12,
                   border: `1px solid ${isFocused ? accent : border}`,
                   background: inputSurface,
                   color: fg,
                   fontSize: inputSize,
-                  outline: "none",
-                  transition: "all 0.2s ease",
-                  boxShadow: isFocused
-                    ? `0 0 0 4px ${ui.ring}`
-                    : "0 1px 2px rgba(9,9,11,0.04)",
-                  boxSizing: "border-box",
+                  outline: 'none',
+                  transition: 'all 0.2s ease',
+                  boxShadow: isFocused ? `0 0 0 4px ${ui.ring}` : '0 1px 2px rgba(9,9,11,0.04)',
+                  boxSizing: 'border-box',
                 }}
               />
             </div>
@@ -271,20 +261,20 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
             <button
               type="submit"
               style={{
-                padding: "14px 24px",
+                padding: '14px 24px',
                 borderRadius: 12,
                 border: `1px solid ${ui.black}`,
                 background: ui.black,
                 color: ui.white,
-                cursor: "pointer",
+                cursor: 'pointer',
                 fontSize: 14,
                 fontWeight: 600,
-                display: "flex",
-                alignItems: "center",
+                display: 'flex',
+                alignItems: 'center',
                 gap: 8,
-                boxShadow: "0 1px 2px rgba(9,9,11,0.12)",
-                whiteSpace: "nowrap",
-                transition: "all 0.2s ease",
+                boxShadow: '0 1px 2px rgba(9,9,11,0.12)',
+                whiteSpace: 'nowrap',
+                transition: 'all 0.2s ease',
               }}
             >
               {buttonText}
@@ -296,34 +286,28 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
         {!submitted && (
           <div
             style={{
-              display: "flex",
-              flexWrap: "wrap",
+              display: 'flex',
+              flexWrap: 'wrap',
               gap: 16,
               marginTop: 4,
             }}
           >
-            {["No spam, ever", "Unsubscribe anytime", "Weekly updates"].map(
-              (t) => (
-                <div
-                  key={t}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 12,
-                    color: ui.muted,
-                    fontWeight: 500,
-                  }}
-                >
-                  <Icon
-                    name="sparkles"
-                    size={12}
-                    style={{ color: ui.muted } as any}
-                  />
-                  {t}
-                </div>
-              ),
-            )}
+            {['No spam, ever', 'Unsubscribe anytime', 'Weekly updates'].map((t) => (
+              <div
+                key={t}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  fontSize: 12,
+                  color: ui.muted,
+                  fontWeight: 500,
+                }}
+              >
+                <Icon name="sparkles" size={12} style={{ color: ui.muted } as any} />
+                {t}
+              </div>
+            ))}
           </div>
         )}
       </div>

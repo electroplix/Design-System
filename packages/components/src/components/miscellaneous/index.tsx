@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useMiscTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+import { useState, useEffect } from 'react';
+import { useMiscTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -10,10 +10,10 @@ function useMS() {
   const t = useMiscTheme();
 
   return {
-    accent: t.accentColor ?? "#09090b",
-    fg: t.textColor ?? "#18181b",
-    bg: t.bgColor ?? "#ffffff",
-    border: t.borderColor ?? "#e4e4e7",
+    accent: t.accentColor ?? '#09090b',
+    fg: t.textColor ?? '#18181b',
+    bg: t.bgColor ?? '#ffffff',
+    border: t.borderColor ?? '#e4e4e7',
     r: t.radius ?? 14,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
@@ -22,12 +22,12 @@ function useMS() {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
 };
 
 /* ── CookieConsent ──────────────────────────────────────── */
@@ -38,16 +38,16 @@ export interface CookieConsentProps {
   declineLabel?: string;
   onAccept?: () => void;
   onDecline?: () => void;
-  position?: "top" | "bottom";
+  position?: 'top' | 'bottom';
 }
 
 export function CookieConsent({
-  message = "We use cookies to improve your experience.",
-  ctaLabel = "Accept",
-  declineLabel = "Decline",
+  message = 'We use cookies to improve your experience.',
+  ctaLabel = 'Accept',
+  declineLabel = 'Decline',
   onAccept,
   onDecline,
-  position = "bottom",
+  position = 'bottom',
 }: CookieConsentProps) {
   const ms = useMS();
   const [show, setShow] = useState(true);
@@ -57,44 +57,44 @@ export function CookieConsent({
   return (
     <div
       style={{
-        position: "fixed",
+        position: 'fixed',
         left: 16,
         right: 16,
-        ...(position === "top" ? { top: 16 } : { bottom: 16 }),
+        ...(position === 'top' ? { top: 16 } : { bottom: 16 }),
         zIndex: 9998,
         padding: 16,
         background: ui.white,
         border: `1px solid ${ms.border}`,
         borderRadius: ms.r,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         gap: 16,
-        flexWrap: "wrap",
+        flexWrap: 'wrap',
         fontFamily: ms.ff,
         color: ms.fg,
-        boxShadow: "0 12px 40px rgba(9,9,11,0.12)",
+        boxShadow: '0 12px 40px rgba(9,9,11,0.12)',
       }}
     >
       <Icon name="shield" size={20} color={ms.accent} />
 
       <span style={{ fontSize: ms.bs, color: ms.fg }}>{message}</span>
 
-      <div style={{ display: "flex", gap: 8 }}>
+      <div style={{ display: 'flex', gap: 8 }}>
         <button
           onClick={() => {
             setShow(false);
             onAccept?.();
           }}
           style={{
-            padding: "8px 18px",
+            padding: '8px 18px',
             borderRadius: ms.r - 4,
             border: `1px solid ${ms.accent}`,
             background: ms.accent,
             color: ui.white,
             fontWeight: 700,
             fontSize: 13,
-            cursor: "pointer",
+            cursor: 'pointer',
           }}
         >
           {ctaLabel}
@@ -106,14 +106,14 @@ export function CookieConsent({
             onDecline?.();
           }}
           style={{
-            padding: "8px 18px",
+            padding: '8px 18px',
             borderRadius: ms.r - 4,
             border: `1px solid ${ms.border}`,
             background: ui.white,
             color: ms.fg,
             fontWeight: 600,
             fontSize: 13,
-            cursor: "pointer",
+            cursor: 'pointer',
           }}
         >
           {declineLabel}
@@ -131,43 +131,34 @@ export interface ScrollProgressBarProps {
   zIndex?: number;
 }
 
-export function ScrollProgressBar({
-  color,
-  height = 3,
-  zIndex = 9997,
-}: ScrollProgressBarProps) {
+export function ScrollProgressBar({ color, height = 3, zIndex = 9997 }: ScrollProgressBarProps) {
   const ms = useMS();
   const [pct, setPct] = useState(0);
 
   useEffect(() => {
     const h = () => {
-      const { scrollTop, scrollHeight, clientHeight } =
-        document.documentElement;
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-      setPct(
-        scrollHeight <= clientHeight
-          ? 0
-          : (scrollTop / (scrollHeight - clientHeight)) * 100,
-      );
+      setPct(scrollHeight <= clientHeight ? 0 : (scrollTop / (scrollHeight - clientHeight)) * 100);
     };
 
-    window.addEventListener("scroll", h, { passive: true });
+    window.addEventListener('scroll', h, { passive: true });
     h();
 
-    return () => window.removeEventListener("scroll", h);
+    return () => window.removeEventListener('scroll', h);
   }, []);
 
   return (
     <div
       style={{
-        position: "fixed",
+        position: 'fixed',
         top: 0,
         left: 0,
         height,
         width: `${pct}%`,
         background: color ?? ms.accent,
         zIndex,
-        transition: "width 0.1s",
+        transition: 'width 0.1s',
       }}
     />
   );
@@ -181,11 +172,7 @@ export interface ThemeToggleProps {
   size?: number;
 }
 
-export function ThemeToggle({
-  isDark = true,
-  onToggle,
-  size = 40,
-}: ThemeToggleProps) {
+export function ThemeToggle({ isDark = true, onToggle, size = 40 }: ThemeToggleProps) {
   const ms = useMS();
   const [dark, setDark] = useState(isDark);
 
@@ -199,27 +186,23 @@ export function ThemeToggle({
   return (
     <button
       onClick={toggle}
-      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
       style={{
         width: size,
         height: size,
-        borderRadius: "999px",
+        borderRadius: '999px',
         border: `1px solid ${ms.border}`,
         background: ui.white,
         color: ms.fg,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        transition: "all 0.2s ease",
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        transition: 'all 0.2s ease',
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
     >
-      <Icon
-        name={dark ? "sun" : "moon"}
-        size={size * 0.5}
-        color={ms.accent}
-      />
+      <Icon name={dark ? 'sun' : 'moon'} size={size * 0.5} color={ms.accent} />
     </button>
   );
 }
@@ -235,8 +218,8 @@ export interface MiscEmptyStateProps {
 }
 
 export function EmptyState({
-  icon = "inbox",
-  title = "Nothing here yet",
+  icon = 'inbox',
+  title = 'Nothing here yet',
   description,
   ctaLabel,
   onCta,
@@ -246,7 +229,7 @@ export function EmptyState({
   return (
     <div
       style={{
-        textAlign: "center",
+        textAlign: 'center',
         padding: 48,
         fontFamily: ms.ff,
         color: ms.fg,
@@ -256,14 +239,14 @@ export function EmptyState({
         style={{
           width: 64,
           height: 64,
-          borderRadius: "999px",
+          borderRadius: '999px',
           background: ui.surface,
           border: `1px solid ${ms.border}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "0 auto 16px",
-          boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '0 auto 16px',
+          boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         }}
       >
         <Icon name={icon} size={28} color={ms.accent} />
@@ -289,14 +272,14 @@ export function EmptyState({
           onClick={onCta}
           style={{
             marginTop: 16,
-            padding: "10px 20px",
+            padding: '10px 20px',
             borderRadius: ms.r - 4,
             border: `1px solid ${ms.accent}`,
             background: ms.accent,
             color: ui.white,
             fontWeight: 700,
             fontSize: 14,
-            cursor: "pointer",
+            cursor: 'pointer',
           }}
         >
           {ctaLabel}
@@ -318,11 +301,11 @@ export interface AppInstallBannerProps {
 }
 
 export function AppInstallBanner({
-  title = "Get Our App",
-  description = "Download the app for a better experience.",
+  title = 'Get Our App',
+  description = 'Download the app for a better experience.',
   iosUrl,
   androidUrl,
-  icon = "smartphone",
+  icon = 'smartphone',
   onDismiss,
 }: AppInstallBannerProps) {
   const ms = useMS();
@@ -333,16 +316,16 @@ export function AppInstallBanner({
   return (
     <div
       style={{
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         gap: 14,
-        padding: "12px 16px",
+        padding: '12px 16px',
         border: `1px solid ${ms.border}`,
         borderRadius: ms.r,
         background: ui.white,
         fontFamily: ms.ff,
         color: ms.fg,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
     >
       <div
@@ -352,9 +335,9 @@ export function AppInstallBanner({
           borderRadius: 10,
           background: ui.surface,
           border: `1px solid ${ms.border}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           flexShrink: 0,
         }}
       >
@@ -367,20 +350,20 @@ export function AppInstallBanner({
         <div style={{ fontSize: 13, color: ui.muted }}>{description}</div>
       </div>
 
-      <div style={{ display: "flex", gap: 6 }}>
+      <div style={{ display: 'flex', gap: 6 }}>
         {iosUrl && (
           <a
             href={iosUrl}
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              padding: "6px 12px",
+              padding: '6px 12px',
               borderRadius: ms.r - 6,
               background: ms.accent,
               color: ui.white,
               fontSize: 12,
               fontWeight: 700,
-              textDecoration: "none",
+              textDecoration: 'none',
             }}
           >
             iOS
@@ -393,13 +376,13 @@ export function AppInstallBanner({
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              padding: "6px 12px",
+              padding: '6px 12px',
               borderRadius: ms.r - 6,
               background: ms.accent,
               color: ui.white,
               fontSize: 12,
               fontWeight: 700,
-              textDecoration: "none",
+              textDecoration: 'none',
             }}
           >
             Android
@@ -416,12 +399,12 @@ export function AppInstallBanner({
           background: ui.surface,
           border: `1px solid ${ms.border}`,
           borderRadius: 8,
-          cursor: "pointer",
+          cursor: 'pointer',
           color: ms.fg,
           width: 32,
           height: 32,
-          display: "grid",
-          placeItems: "center",
+          display: 'grid',
+          placeItems: 'center',
         }}
       >
         <Icon name="x" size={18} />
@@ -439,12 +422,7 @@ export interface DownloadBlockProps {
   icon?: string;
 }
 
-export function DownloadBlock({
-  fileName,
-  fileSize,
-  href,
-  icon = "download",
-}: DownloadBlockProps) {
+export function DownloadBlock({ fileName, fileSize, href, icon = 'download' }: DownloadBlockProps) {
   const ms = useMS();
 
   return (
@@ -452,18 +430,18 @@ export function DownloadBlock({
       href={href}
       download
       style={{
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         gap: 14,
-        padding: "14px 16px",
+        padding: '14px 16px',
         border: `1px solid ${ms.border}`,
         borderRadius: ms.r,
         background: ui.white,
-        textDecoration: "none",
+        textDecoration: 'none',
         color: ms.fg,
         fontFamily: ms.ff,
-        transition: "all 0.2s ease",
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        transition: 'all 0.2s ease',
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
     >
       <div
@@ -473,9 +451,9 @@ export function DownloadBlock({
           borderRadius: 10,
           background: ui.surface,
           border: `1px solid ${ms.border}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           flexShrink: 0,
         }}
       >
@@ -485,9 +463,7 @@ export function DownloadBlock({
       <div style={{ flex: 1 }}>
         <div style={{ fontWeight: 700, fontSize: 15 }}>{fileName}</div>
 
-        {fileSize && (
-          <div style={{ fontSize: 13, color: ui.muted }}>{fileSize}</div>
-        )}
+        {fileSize && <div style={{ fontSize: 13, color: ui.muted }}>{fileSize}</div>}
       </div>
 
       <Icon name="download" size={18} color={ms.accent} />
@@ -516,10 +492,10 @@ export function InlineCode({ children, copyable = true }: MiscInlineCodeProps) {
   return (
     <span
       style={{
-        display: "inline-flex",
-        alignItems: "center",
+        display: 'inline-flex',
+        alignItems: 'center',
         gap: 6,
-        padding: "3px 8px",
+        padding: '3px 8px',
         borderRadius: 6,
         background: ui.surface,
         border: `1px solid ${ms.border}`,
@@ -535,19 +511,15 @@ export function InlineCode({ children, copyable = true }: MiscInlineCodeProps) {
         <button
           onClick={copy}
           style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
             padding: 0,
-            display: "flex",
+            display: 'flex',
             color: ms.fg,
           }}
         >
-          <Icon
-            name={copied ? "check" : "copy"}
-            size={14}
-            color={ms.accent}
-          />
+          <Icon name={copied ? 'check' : 'copy'} size={14} color={ms.accent} />
         </button>
       )}
     </span>
@@ -569,7 +541,7 @@ export interface RSSFeedProps {
   title?: string;
 }
 
-export function RSSFeed({ items = [], title = "Latest Updates" }: RSSFeedProps) {
+export function RSSFeed({ items = [], title = 'Latest Updates' }: RSSFeedProps) {
   const ms = useMS();
 
   return (
@@ -581,7 +553,7 @@ export function RSSFeed({ items = [], title = "Latest Updates" }: RSSFeedProps) 
         fontFamily: ms.ff,
         color: ms.fg,
         background: ui.white,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
     >
       <div
@@ -589,8 +561,8 @@ export function RSSFeed({ items = [], title = "Latest Updates" }: RSSFeedProps) 
           fontWeight: 700,
           fontSize: 18,
           marginBottom: 12,
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 8,
         }}
       >
@@ -598,7 +570,7 @@ export function RSSFeed({ items = [], title = "Latest Updates" }: RSSFeedProps) 
         {title}
       </div>
 
-      <div style={{ display: "grid", gap: 6 }}>
+      <div style={{ display: 'grid', gap: 6 }}>
         {items.map((it) => (
           <a
             key={it.id}
@@ -606,12 +578,12 @@ export function RSSFeed({ items = [], title = "Latest Updates" }: RSSFeedProps) 
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: "block",
-              padding: "12px 14px",
+              display: 'block',
+              padding: '12px 14px',
               borderRadius: ms.r - 6,
               color: ms.fg,
-              textDecoration: "none",
-              transition: "background 0.15s",
+              textDecoration: 'none',
+              transition: 'background 0.15s',
               background: ui.surface,
             }}
           >
@@ -619,7 +591,7 @@ export function RSSFeed({ items = [], title = "Latest Updates" }: RSSFeedProps) 
 
             <div
               style={{
-                display: "flex",
+                display: 'flex',
                 gap: 8,
                 fontSize: 12,
                 color: ui.muted,

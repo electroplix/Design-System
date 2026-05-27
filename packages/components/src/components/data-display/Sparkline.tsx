@@ -1,7 +1,7 @@
-"use client";
-import React, { useId } from "react";
-import { useDataDisplayTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useId } from 'react';
+import { useDataDisplayTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── Sparkline ──────────────────────────────────────────── */
 
@@ -12,14 +12,14 @@ export interface SparklineProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  success: "#16a34a",
-  danger: "#dc2626",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  success: '#16a34a',
+  danger: '#dc2626',
 };
 
 export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProps) {
@@ -35,9 +35,9 @@ export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProp
         style={{
           width,
           height,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           color: ui.muted,
           background: ui.surface,
           border: `1px solid ${ui.border}`,
@@ -61,7 +61,7 @@ export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProp
     y: pad + (1 - (v - min) / range) * innerH,
   }));
 
-  const pathD = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
   const areaD = `${pathD} L ${points[points.length - 1].x} ${height - pad} L ${points[0].x} ${height - pad} Z`;
 
   const firstVal = safeData[0] ?? 0;
@@ -70,8 +70,8 @@ export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProp
   const trendColor = trendUp ? ui.success : ui.danger;
 
   return (
-    <div style={{ position: "relative", display: "inline-block" }}>
-      <svg width={width} height={height} style={{ display: "block" }}>
+    <div style={{ position: 'relative', display: 'inline-block' }}>
+      <svg width={width} height={height} style={{ display: 'block' }}>
         <defs>
           <linearGradient id={`epx-sparkG-${uid}`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={trendColor} stopOpacity={0.14} />
@@ -98,7 +98,7 @@ export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProp
       </svg>
       <div
         style={{
-          position: "absolute",
+          position: 'absolute',
           top: 2,
           right: 2,
           fontSize: 10,
@@ -108,12 +108,12 @@ export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProp
           background: bg,
           border: `1px solid ${ui.border}`,
           borderRadius: 999,
-          padding: "1px 5px",
+          padding: '1px 5px',
           lineHeight: 1.4,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
-        {trendUp ? "↑" : "↓"} {lastVal}
+        {trendUp ? '↑' : '↓'} {lastVal}
       </div>
     </div>
   );

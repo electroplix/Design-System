@@ -1,7 +1,7 @@
-"use client";
-import React, { ReactNode, useState } from "react";
-import { Icon } from "../../core/icons";
-import { useNavTheme } from "../../core/provider";
+'use client';
+import React, { ReactNode, useState } from 'react';
+import { Icon } from '../../core/icons';
+import { useNavTheme } from '../../core/provider';
 
 export type DrawerLink = {
   label: string;
@@ -15,7 +15,7 @@ export interface SideDrawerNavProps {
   padding?: number;
   gap?: number;
   overlayColor?: string;
-  position?: "left" | "right";
+  position?: 'left' | 'right';
   logoText?: string;
   bgColor?: string;
   textColor?: string;
@@ -32,18 +32,18 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
     width = 300,
     padding = 24,
     gap = 8,
-    overlayColor = "rgba(9, 9, 11, 0.45)",
-    position = "left",
-    logoText = "Menu",
-    bgColor = t.bgColor ?? "#ffffff",
-    textColor = t.textColor ?? "#09090b",
-    accentColor = t.accentColor ?? "#18181b",
-    borderColor = t.borderColor ?? "#e4e4e7",
+    overlayColor = 'rgba(9, 9, 11, 0.45)',
+    position = 'left',
+    logoText = 'Menu',
+    bgColor = t.bgColor ?? '#ffffff',
+    textColor = t.textColor ?? '#09090b',
+    accentColor = t.accentColor ?? '#18181b',
+    borderColor = t.borderColor ?? '#e4e4e7',
     fontFamily = t.fontFamily,
   } = props;
 
-  const mutedColor = "#71717a";
-  const surfaceColor = "#fafafa";
+  const mutedColor = '#71717a';
+  const surfaceColor = '#fafafa';
 
   const [open, setOpen] = useState(false);
 
@@ -52,19 +52,19 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
       <button
         onClick={() => setOpen(true)}
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 8,
-          padding: "10px 16px",
+          padding: '10px 16px',
           borderRadius: 12,
           border: `1px solid ${borderColor}`,
-          background: "#ffffff",
+          background: '#ffffff',
           color: textColor,
-          cursor: "pointer",
+          cursor: 'pointer',
           fontWeight: 600,
           fontSize: 14,
           fontFamily,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
         }}
       >
         <Icon name="menu" size={18} color={textColor} />
@@ -74,18 +74,18 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
       {open && (
         <div
           style={{
-            position: "fixed",
+            position: 'fixed',
             inset: 0,
             zIndex: 50,
-            display: "flex",
-            justifyContent: position === "right" ? "flex-end" : "flex-start",
+            display: 'flex',
+            justifyContent: position === 'right' ? 'flex-end' : 'flex-start',
           }}
         >
           <div
             style={{
               flex: 1,
               background: overlayColor,
-              backdropFilter: "blur(6px)",
+              backdropFilter: 'blur(6px)',
             }}
             onClick={() => setOpen(false)}
           />
@@ -97,21 +97,18 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
               color: textColor,
               padding,
               fontFamily,
-              height: "100%",
-              overflowY: "auto",
-              borderLeft:
-                position === "right" ? `1px solid ${borderColor}` : "none",
-              borderRight:
-                position === "left" ? `1px solid ${borderColor}` : "none",
-              boxShadow:
-                "0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)",
+              height: '100%',
+              overflowY: 'auto',
+              borderLeft: position === 'right' ? `1px solid ${borderColor}` : 'none',
+              borderRight: position === 'left' ? `1px solid ${borderColor}` : 'none',
+              boxShadow: '0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)',
             }}
           >
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
                 marginBottom: 32,
               }}
             >
@@ -120,7 +117,7 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
                   fontWeight: 800,
                   fontSize: 18,
                   color: textColor,
-                  letterSpacing: "-0.035em",
+                  letterSpacing: '-0.035em',
                   lineHeight: 1,
                 }}
               >
@@ -136,11 +133,11 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
                   border: `1px solid ${borderColor}`,
                   background: surfaceColor,
                   color: textColor,
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 1px 2px rgba(9, 9, 11, 0.03)",
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
                 }}
               >
                 <Icon name="x" size={18} color={mutedColor} />
@@ -149,7 +146,7 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
 
             <div
               style={{
-                display: "grid",
+                display: 'grid',
                 gap,
               }}
             >
@@ -158,17 +155,17 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
                   key={l.label}
                   href={l.href}
                   style={{
-                    display: "flex",
-                    alignItems: "center",
+                    display: 'flex',
+                    alignItems: 'center',
                     gap: 12,
-                    padding: "12px 14px",
+                    padding: '12px 14px',
                     borderRadius: 12,
                     color: mutedColor,
-                    textDecoration: "none",
+                    textDecoration: 'none',
                     fontWeight: 500,
                     fontSize: 15,
-                    transition: "all 0.2s ease",
-                    border: "1px solid transparent",
+                    transition: 'all 0.2s ease',
+                    border: '1px solid transparent',
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLElement;
@@ -180,9 +177,9 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLElement;
 
-                    el.style.background = "transparent";
+                    el.style.background = 'transparent';
                     el.style.color = mutedColor;
-                    el.style.borderColor = "transparent";
+                    el.style.borderColor = 'transparent';
                   }}
                 >
                   {l.icon}

@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import { useContentTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React from 'react';
+import { useContentTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── ParagraphBlock ─────────────────────────────────────── */
 
@@ -20,24 +20,24 @@ export interface ParagraphBlockProps {
   paragraphs: string[];
   size?: number;
   leading?: number;
-  align?: "left" | "center" | "right" | "justify";
+  align?: 'left' | 'center' | 'right' | 'justify';
   accentColor?: string;
   showDropCap?: boolean;
   title?: string;
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  mutedSoft: "#a1a1aa",
-  border: "#e4e4e7",
-  surface: "#fafafa",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  mutedSoft: '#a1a1aa',
+  border: '#e4e4e7',
+  surface: '#fafafa',
 };
 
 export function ParagraphBlock({
-  as: Tag = "section",
+  as: Tag = 'section',
   bgColor,
   textColor,
   fontFamily,
@@ -47,14 +47,14 @@ export function ParagraphBlock({
   radius = 16,
   gap = 16,
   style = {},
-  className = "",
+  className = '',
   paragraphs = [
-    "This is the first paragraph of content.",
-    "This is the second paragraph with more details.",
+    'This is the first paragraph of content.',
+    'This is the second paragraph with more details.',
   ],
   size = 16,
   leading = 1.75,
-  align = "left",
+  align = 'left',
   accentColor,
   showDropCap = false,
   title,
@@ -80,20 +80,20 @@ export function ParagraphBlock({
         paddingBlock: py,
         borderRadius: radius,
         border: `1px solid ${border}`,
-        display: "grid",
-        justifyItems: "start",
-        placeItems: "start",
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        display: 'grid',
+        justifyItems: 'start',
+        placeItems: 'start',
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
     >
-      <div style={{ width: "100%", maxWidth: maxW, display: "grid", gap }}>
+      <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         {/* Optional title */}
         {title && (
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 10,
               paddingBottom: gap - 4,
               borderBottom: `1px solid ${ui.border}`,
@@ -107,15 +107,24 @@ export function ParagraphBlock({
                 borderRadius: 10,
                 background: ui.surface,
                 border: `1px solid ${ui.border}`,
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 flexShrink: 0,
               }}
             >
               <Icon name="file-text" size={18} color={accent} />
             </div>
-            <span style={{ fontWeight: 700, fontSize: size + 2, color: ui.black, letterSpacing: "-0.02em" }}>{title}</span>
+            <span
+              style={{
+                fontWeight: 700,
+                fontSize: size + 2,
+                color: ui.black,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              {title}
+            </span>
           </div>
         )}
 
@@ -123,7 +132,7 @@ export function ParagraphBlock({
         {safeParagraphs.length === 0 ? (
           <p style={{ color: ui.mutedSoft, fontSize: size, margin: 0 }}>No content</p>
         ) : (
-          <div style={{ display: "grid", gap: 18 }}>
+          <div style={{ display: 'grid', gap: 18 }}>
             {safeParagraphs.map((p, i) => (
               <p
                 key={i}
@@ -140,14 +149,14 @@ export function ParagraphBlock({
                   <>
                     <span
                       style={{
-                        float: "left",
+                        float: 'left',
                         fontSize: size * 3.5,
                         fontWeight: 800,
                         lineHeight: 0.8,
                         marginRight: 10,
                         marginTop: 6,
                         color: accent,
-                        letterSpacing: "-0.06em",
+                        letterSpacing: '-0.06em',
                       }}
                     >
                       {p.charAt(0)}
@@ -169,19 +178,15 @@ export function ParagraphBlock({
               fontSize: 12,
               color: ui.muted,
               marginTop: 8,
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
               gap: 6,
             }}
           >
-            <span>
-              {safeParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0)} words
-            </span>
+            <span>{safeParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0)} words</span>
             <span>&bull;</span>
             <span>
-              {Math.ceil(
-                safeParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0) / 200,
-              )}{" "}
+              {Math.ceil(safeParagraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0) / 200)}{' '}
               min read
             </span>
           </div>

@@ -1,8 +1,8 @@
-"use client";
-import React from "react";
-import { useDataDisplayTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
-import { Badge, type BadgeTone } from "./Badge";
+'use client';
+import React from 'react';
+import { useDataDisplayTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
+import { Badge, type BadgeTone } from './Badge';
 
 /* ── BadgeGroup ─────────────────────────────────────────── */
 
@@ -21,10 +21,10 @@ export function BadgeGroup({ items = [], tone, title }: BadgeGroupProps) {
       <div
         style={{
           padding: t.spacing ?? 14,
-          background: t.cardBg ?? "#0b0b0c",
+          background: t.cardBg ?? '#0b0b0c',
           borderRadius: t.cardRadius ?? 12,
-          border: `1px solid ${t.cardBorder ?? "rgba(255,255,255,0.1)"}`,
-          color: t.textColor ?? "#E5E7EB",
+          border: `1px solid ${t.cardBorder ?? 'rgba(255,255,255,0.1)'}`,
+          color: t.textColor ?? '#E5E7EB',
           fontFamily: t.fontFamily,
           opacity: 0.6,
           fontSize: t.bodySize ?? 14,
@@ -39,33 +39,31 @@ export function BadgeGroup({ items = [], tone, title }: BadgeGroupProps) {
     <div
       style={{
         padding: t.spacing ?? 14,
-        background: t.cardBg ?? "#0b0b0c",
+        background: t.cardBg ?? '#0b0b0c',
         borderRadius: t.cardRadius ?? 12,
-        border: `1px solid ${t.cardBorder ?? "rgba(255,255,255,0.1)"}`,
+        border: `1px solid ${t.cardBorder ?? 'rgba(255,255,255,0.1)'}`,
         fontFamily: t.fontFamily,
       }}
     >
       {title && (
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 8,
             marginBottom: 12,
-            color: t.textColor ?? "#E5E7EB",
+            color: t.textColor ?? '#E5E7EB',
           }}
         >
           <Icon name="tag" size={16} />
-          <span style={{ fontWeight: 600, fontSize: (t.headingSize ?? 18) - 2 }}>
-            {title}
-          </span>
+          <span style={{ fontWeight: 600, fontSize: (t.headingSize ?? 18) - 2 }}>{title}</span>
           <span
             style={{
-              marginLeft: "auto",
+              marginLeft: 'auto',
               fontSize: 12,
               opacity: 0.6,
-              background: "rgba(255,255,255,0.1)",
-              padding: "2px 8px",
+              background: 'rgba(255,255,255,0.1)',
+              padding: '2px 8px',
               borderRadius: 999,
             }}
           >
@@ -73,7 +71,7 @@ export function BadgeGroup({ items = [], tone, title }: BadgeGroupProps) {
           </span>
         </div>
       )}
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         {safeItems.map((it, i) => (
           <Badge key={i} tone={tone}>
             {it}

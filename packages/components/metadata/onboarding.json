@@ -14,22 +14,98 @@
       "whenToUse": "Use on landing pages, marketing sites, SaaS pricing pages, or documentation to present frequently asked questions in a compact, scannable format.",
       "isShell": false,
       "props": [
-        { "name": "items", "type": "FAQItem[]", "required": true, "default": null, "description": "Array of FAQ items: {id, question, answer: string | ReactNode}" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Frequently Asked Questions\"", "description": "Heading displayed above the FAQ list" },
-        { "name": "allowMultiple", "type": "boolean", "required": false, "default": "false", "description": "Whether multiple items can be expanded simultaneously" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "items",
+          "type": "FAQItem[]",
+          "required": true,
+          "default": null,
+          "description": "Array of FAQ items: {id, question, answer: string | ReactNode}"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Frequently Asked Questions\"",
+          "description": "Heading displayed above the FAQ list"
+        },
+        {
+          "name": "allowMultiple",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether multiple items can be expanded simultaneously"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "saas", "documentation", "agency", "fitness", "education", "restaurant", "realestate", "health", "nonprofit", "community"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "saas",
+          "documentation",
+          "agency",
+          "fitness",
+          "education",
+          "restaurant",
+          "realestate",
+          "health",
+          "nonprofit",
+          "community"
+        ],
         "placement": "body",
         "priority": 7,
         "sequenceOrder": 7,
-        "pairsWellWith": ["content.HeadingSection", "onboarding.ContactSupportBlock", "search.SiteSearchBar"],
+        "pairsWellWith": [
+          "content.HeadingSection",
+          "onboarding.ContactSupportBlock",
+          "search.SiteSearchBar"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -41,16 +117,75 @@
       "whenToUse": "Use for new user onboarding, SaaS setup wizards, or dashboard first-run experiences that require guiding users through sequential steps.",
       "isShell": false,
       "props": [
-        { "name": "steps", "type": "WizardStep[]", "required": true, "default": null, "description": "Array of wizard steps: {id, title, description?, icon?, content?: ReactNode}" },
-        { "name": "onComplete", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the user completes all steps" },
-        { "name": "completeLabel", "type": "string", "required": false, "default": "\"Finish\"", "description": "Label for the final completion button" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "steps",
+          "type": "WizardStep[]",
+          "required": true,
+          "default": null,
+          "description": "Array of wizard steps: {id, title, description?, icon?, content?: ReactNode}"
+        },
+        {
+          "name": "onComplete",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user completes all steps"
+        },
+        {
+          "name": "completeLabel",
+          "type": "string",
+          "required": false,
+          "default": "\"Finish\"",
+          "description": "Label for the final completion button"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
         "pageTypes": ["onboarding", "saas", "dashboard"],
         "placement": "body",
@@ -68,17 +203,82 @@
       "whenToUse": "Use for first-time user experiences on dashboards, SaaS products, or complex applications to highlight important features and guide users through the interface.",
       "isShell": false,
       "props": [
-        { "name": "steps", "type": "TourStep[]", "required": true, "default": null, "description": "Array of tour steps: {id, title, content: string, targetSelector?}" },
-        { "name": "isOpen", "type": "boolean", "required": true, "default": null, "description": "Whether the product tour is currently visible" },
-        { "name": "onClose", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the user dismisses the tour" },
-        { "name": "onComplete", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the user completes all tour steps" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "steps",
+          "type": "TourStep[]",
+          "required": true,
+          "default": null,
+          "description": "Array of tour steps: {id, title, content: string, targetSelector?}"
+        },
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether the product tour is currently visible"
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user dismisses the tour"
+        },
+        {
+          "name": "onComplete",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user completes all tour steps"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
         "pageTypes": ["dashboard", "saas", "onboarding"],
         "placement": "overlay",
@@ -96,18 +296,88 @@
       "whenToUse": "Use inline next to form fields, settings, dashboard metrics, or any UI element that may need additional explanation without cluttering the interface.",
       "isShell": false,
       "props": [
-        { "name": "text", "type": "string", "required": true, "default": null, "description": "Tooltip text content displayed on hover" },
-        { "name": "position", "type": "\"top\" | \"bottom\" | \"left\" | \"right\"", "required": false, "default": "\"top\"", "description": "Position of the tooltip relative to the icon" },
-        { "name": "iconSize", "type": "number", "required": false, "default": "16", "description": "Size of the help icon in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "text",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Tooltip text content displayed on hover"
+        },
+        {
+          "name": "position",
+          "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+          "required": false,
+          "default": "\"top\"",
+          "description": "Position of the tooltip relative to the icon"
+        },
+        {
+          "name": "iconSize",
+          "type": "number",
+          "required": false,
+          "default": "16",
+          "description": "Size of the help icon in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "saas", "ecommerce", "documentation", "settings", "forms", "blog", "portfolio"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "saas",
+          "ecommerce",
+          "documentation",
+          "settings",
+          "forms",
+          "blog",
+          "portfolio"
+        ],
         "placement": "body",
         "priority": 4,
         "sequenceOrder": 5,
@@ -123,24 +393,116 @@
       "whenToUse": "Use on any page where users may need immediate help. Common on SaaS dashboards, ecommerce checkout flows, landing pages, and support portals.",
       "isShell": false,
       "props": [
-        { "name": "messages", "type": "Message[]", "required": false, "default": "[]", "description": "Array of chat messages: {id, text, sender: \"user\" | \"agent\", time?}" },
-        { "name": "onSend", "type": "(text: string) => void", "required": false, "default": null, "description": "Callback fired when the user sends a message" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Support Chat\"", "description": "Title displayed at the top of the chat widget" },
-        { "name": "isOpen", "type": "boolean", "required": false, "default": "false", "description": "Whether the chat widget is currently open" },
-        { "name": "onToggle", "type": "() => void", "required": false, "default": null, "description": "Callback fired when the chat widget is toggled open or closed" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "messages",
+          "type": "Message[]",
+          "required": false,
+          "default": "[]",
+          "description": "Array of chat messages: {id, text, sender: \"user\" | \"agent\", time?}"
+        },
+        {
+          "name": "onSend",
+          "type": "(text: string) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the user sends a message"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Support Chat\"",
+          "description": "Title displayed at the top of the chat widget"
+        },
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether the chat widget is currently open"
+        },
+        {
+          "name": "onToggle",
+          "type": "() => void",
+          "required": false,
+          "default": null,
+          "description": "Callback fired when the chat widget is toggled open or closed"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "saas", "ecommerce", "documentation", "settings", "forms", "blog", "portfolio", "restaurant", "fitness", "education", "health", "realestate", "agency"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "saas",
+          "ecommerce",
+          "documentation",
+          "settings",
+          "forms",
+          "blog",
+          "portfolio",
+          "restaurant",
+          "fitness",
+          "education",
+          "health",
+          "realestate",
+          "agency"
+        ],
         "placement": "overlay",
         "priority": 6,
         "sequenceOrder": 10,
-        "pairsWellWith": ["onboarding.ContactSupportBlock", "onboarding.FAQAccordion", "buttons.FloatingActionButton"],
+        "pairsWellWith": [
+          "onboarding.ContactSupportBlock",
+          "onboarding.FAQAccordion",
+          "buttons.FloatingActionButton"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -152,19 +514,95 @@
       "whenToUse": "Use on landing pages, marketing sites, contact pages, or footers to provide users with direct support contact information.",
       "isShell": false,
       "props": [
-        { "name": "email", "type": "string", "required": false, "default": null, "description": "Support email address" },
-        { "name": "phone", "type": "string", "required": false, "default": null, "description": "Support phone number" },
-        { "name": "title", "type": "string", "required": false, "default": "\"Need Help?\"", "description": "Heading text for the support block" },
-        { "name": "description", "type": "string", "required": false, "default": "\"Our team is here to help.\"", "description": "Subtext displayed below the title" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "email",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Support email address"
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Support phone number"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Need Help?\"",
+          "description": "Heading text for the support block"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": "\"Our team is here to help.\"",
+          "description": "Subtext displayed below the title"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing", "cardBg", "cardRadius", "cardBorder"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "contact", "restaurant", "fitness", "education", "health", "realestate", "agency", "nonprofit"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "contact",
+          "restaurant",
+          "fitness",
+          "education",
+          "health",
+          "realestate",
+          "agency",
+          "nonprofit"
+        ],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 8,

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { Icon } from "../../core/icons";
-import { useHeroTheme } from "../../core/provider";
+import React, { useEffect, useState } from 'react';
+import { Icon } from '../../core/icons';
+import { useHeroTheme } from '../../core/provider';
 
 export type Slide = {
   image: string;
@@ -33,21 +33,21 @@ export interface CarouselHeroProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  overlay: "rgba(9,9,11,0.72)",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  overlay: 'rgba(9,9,11,0.72)',
 };
 
 export function CarouselHero(props: CarouselHeroProps) {
   const t = useHeroTheme();
 
   const {
-    as: Tag = "section",
+    as: Tag = 'section',
     slides: rawSlides,
     autoplay = true,
     intervalMs = 4000,
@@ -58,40 +58,39 @@ export function CarouselHero(props: CarouselHeroProps) {
     accentColor,
     borderColor,
     fontFamily = t.fontFamily,
-    minH = t.minH ?? "70vh",
+    minH = t.minH ?? '70vh',
     maxW = t.maxW ?? 1200,
     px = t.px ?? 24,
     py = t.py ?? 48,
     radius = t.cardRadius ?? 20,
     gap = t.gap ?? 24,
     style = {},
-    className = "",
+    className = '',
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
   const fg = textColor ?? t.textColor ?? ui.text;
   const accent = accentColor ?? t.accentColor ?? ui.black;
-  const border =
-    borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
+  const border = borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
 
   const slides =
     Array.isArray(rawSlides) && rawSlides.length > 0
       ? rawSlides
       : [
           {
-            image: "",
-            title: "Welcome to Our Platform",
-            subtitle: "Discover amazing features",
+            image: '',
+            title: 'Welcome to Our Platform',
+            subtitle: 'Discover amazing features',
           },
           {
-            image: "",
-            title: "Built for Speed",
-            subtitle: "Lightning fast performance",
+            image: '',
+            title: 'Built for Speed',
+            subtitle: 'Lightning fast performance',
           },
           {
-            image: "",
-            title: "Modern Design",
-            subtitle: "Beautiful and responsive",
+            image: '',
+            title: 'Modern Design',
+            subtitle: 'Beautiful and responsive',
           },
         ];
 
@@ -108,13 +107,12 @@ export function CarouselHero(props: CarouselHeroProps) {
   }, [autoplay, slides.length, intervalMs]);
 
   const current = slides[idx] || {
-    image: "",
-    title: "",
-    subtitle: "",
+    image: '',
+    title: '',
+    subtitle: '',
   };
 
-  const prev = () =>
-    setIdx((i) => (i - 1 + slides.length) % slides.length);
+  const prev = () => setIdx((i) => (i - 1 + slides.length) % slides.length);
 
   const next = () => setIdx((i) => (i + 1) % slides.length);
 
@@ -122,51 +120,50 @@ export function CarouselHero(props: CarouselHeroProps) {
     <Tag
       className={className}
       style={{
-        display: "grid",
-        placeItems: "center",
+        display: 'grid',
+        placeItems: 'center',
         background: bg,
         color: fg,
         fontFamily,
-        minHeight: typeof minH === "number" ? `${minH}px` : minH,
+        minHeight: typeof minH === 'number' ? `${minH}px` : minH,
         padding: `${py}px ${px}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
-        position: "relative",
-        overflow: "hidden",
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
     >
       <div
         style={{
-          position: "absolute",
+          position: 'absolute',
           inset: 0,
-          background:
-            "linear-gradient(180deg, rgba(250,250,250,0.7), rgba(255,255,255,0))",
-          pointerEvents: "none",
+          background: 'linear-gradient(180deg, rgba(250,250,250,0.7), rgba(255,255,255,0))',
+          pointerEvents: 'none',
         }}
       />
 
       <div
         style={{
-          width: "100%",
+          width: '100%',
           maxWidth: maxW,
-          display: "grid",
+          display: 'grid',
           gap,
-          position: "relative",
+          position: 'relative',
           zIndex: 1,
         }}
       >
         <div
           style={{
-            position: "relative",
-            width: "100%",
+            position: 'relative',
+            width: '100%',
             height: 400,
             borderRadius: 16,
-            overflow: "hidden",
+            overflow: 'hidden',
             background: ui.surface,
             border: `1px solid ${border}`,
-            boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+            boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
           }}
         >
           {current.image ? (
@@ -174,31 +171,26 @@ export function CarouselHero(props: CarouselHeroProps) {
               src={current.image}
               alt={current.title || `slide-${idx + 1}`}
               style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transition: "opacity 0.5s ease",
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                transition: 'opacity 0.5s ease',
               }}
             />
           ) : (
             <div
               style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
                 background: ui.surface,
                 color: ui.muted,
               }}
             >
-              <Icon
-                name="image"
-                size={64}
-                color={ui.muted}
-                style={{ opacity: 0.55 }}
-              />
+              <Icon name="image" size={64} color={ui.muted} style={{ opacity: 0.55 }} />
 
               <span
                 style={{
@@ -219,23 +211,23 @@ export function CarouselHero(props: CarouselHeroProps) {
                 type="button"
                 onClick={prev}
                 style={{
-                  position: "absolute",
+                  position: 'absolute',
                   left: 16,
-                  top: "50%",
-                  transform: "translateY(-50%)",
+                  top: '50%',
+                  transform: 'translateY(-50%)',
                   width: 44,
                   height: 44,
-                  borderRadius: "999px",
+                  borderRadius: '999px',
                   border: `1px solid rgba(255,255,255,0.18)`,
                   background: ui.overlay,
                   color: ui.white,
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backdropFilter: "blur(10px)",
-                  boxShadow: "0 8px 24px rgba(9,9,11,0.16)",
-                  transition: "all 0.2s ease",
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backdropFilter: 'blur(10px)',
+                  boxShadow: '0 8px 24px rgba(9,9,11,0.16)',
+                  transition: 'all 0.2s ease',
                 }}
               >
                 <Icon name="chevron-left" size={24} />
@@ -245,23 +237,23 @@ export function CarouselHero(props: CarouselHeroProps) {
                 type="button"
                 onClick={next}
                 style={{
-                  position: "absolute",
+                  position: 'absolute',
                   right: 16,
-                  top: "50%",
-                  transform: "translateY(-50%)",
+                  top: '50%',
+                  transform: 'translateY(-50%)',
                   width: 44,
                   height: 44,
-                  borderRadius: "999px",
+                  borderRadius: '999px',
                   border: `1px solid rgba(255,255,255,0.18)`,
                   background: ui.overlay,
                   color: ui.white,
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backdropFilter: "blur(10px)",
-                  boxShadow: "0 8px 24px rgba(9,9,11,0.16)",
-                  transition: "all 0.2s ease",
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backdropFilter: 'blur(10px)',
+                  boxShadow: '0 8px 24px rgba(9,9,11,0.16)',
+                  transition: 'all 0.2s ease',
                 }}
               >
                 <Icon name="chevron-right" size={24} />
@@ -270,7 +262,7 @@ export function CarouselHero(props: CarouselHeroProps) {
           )}
         </div>
 
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: 'center' }}>
           {current.title && (
             <h2
               style={{
@@ -278,7 +270,7 @@ export function CarouselHero(props: CarouselHeroProps) {
                 margin: 0,
                 fontWeight: 700,
                 color: fg,
-                letterSpacing: "-0.04em",
+                letterSpacing: '-0.04em',
                 lineHeight: 1.05,
               }}
             >
@@ -304,9 +296,9 @@ export function CarouselHero(props: CarouselHeroProps) {
         {slides.length > 1 && (
           <div
             style={{
-              display: "flex",
+              display: 'flex',
               gap: 10,
-              justifyContent: "center",
+              justifyContent: 'center',
             }}
           >
             {slides.map((_, i) => (
@@ -319,16 +311,12 @@ export function CarouselHero(props: CarouselHeroProps) {
                   width: i === idx ? 32 : 10,
                   height: 10,
                   borderRadius: 999,
-                  border: `1px solid ${
-                    i === idx ? accent : border
-                  }`,
+                  border: `1px solid ${i === idx ? accent : border}`,
                   background: i === idx ? accent : ui.white,
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
                   boxShadow:
-                    i === idx
-                      ? "0 1px 2px rgba(9,9,11,0.12)"
-                      : "0 1px 2px rgba(9,9,11,0.04)",
+                    i === idx ? '0 1px 2px rgba(9,9,11,0.12)' : '0 1px 2px rgba(9,9,11,0.04)',
                 }}
               />
             ))}

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Icon } from "../../core/icons";
-import { useFormsTheme } from "../../core/provider";
+import React, { useState } from 'react';
+import { Icon } from '../../core/icons';
+import { useFormsTheme } from '../../core/provider';
 
 export interface ContactFormProps {
   as?: React.ElementType;
@@ -31,24 +31,24 @@ export interface ContactFormProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  success: "#16a34a",
-  successSoft: "#f0fdf4",
-  ring: "rgba(9,9,11,0.08)",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  success: '#16a34a',
+  successSoft: '#f0fdf4',
+  ring: 'rgba(9,9,11,0.08)',
 };
 
 export function ContactForm(props: ContactFormProps) {
   const t = useFormsTheme();
 
   const {
-    as: Tag = "section",
-    title = "Contact us",
+    as: Tag = 'section',
+    title = 'Contact us',
     onSubmit,
     bgColor,
     textColor,
@@ -65,7 +65,7 @@ export function ContactForm(props: ContactFormProps) {
     labelSize = 13,
     inputSize = 14,
     style = {},
-    className = "",
+    className = '',
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -74,29 +74,24 @@ export function ContactForm(props: ContactFormProps) {
   const border = borderColor ?? t.borderColor ?? ui.border;
   const inputSurface = inputBg ?? t.inputBg ?? ui.white;
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMsg] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMsg] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
 
   const iStyle = (field: string): React.CSSProperties => ({
-    width: "100%",
-    padding: "14px 14px 14px 44px",
+    width: '100%',
+    padding: '14px 14px 14px 44px',
     borderRadius: 12,
-    border: `1px solid ${
-      focused === field ? accent : border
-    }`,
+    border: `1px solid ${focused === field ? accent : border}`,
     background: inputSurface,
     color: fg,
     fontSize: inputSize,
-    outline: "none",
-    transition: "all 0.2s ease",
-    boxShadow:
-      focused === field
-        ? `0 0 0 4px ${ui.ring}`
-        : "0 1px 2px rgba(9,9,11,0.04)",
-    boxSizing: "border-box",
+    outline: 'none',
+    transition: 'all 0.2s ease',
+    boxShadow: focused === field ? `0 0 0 4px ${ui.ring}` : '0 1px 2px rgba(9,9,11,0.04)',
+    boxSizing: 'border-box',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -112,9 +107,9 @@ export function ContactForm(props: ContactFormProps) {
 
     setTimeout(() => {
       setSubmitted(false);
-      setName("");
-      setEmail("");
-      setMsg("");
+      setName('');
+      setEmail('');
+      setMsg('');
     }, 3000);
   };
 
@@ -128,24 +123,24 @@ export function ContactForm(props: ContactFormProps) {
         padding: `${py}px ${px}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
     >
       <div
         style={{
-          marginInline: "auto",
+          marginInline: 'auto',
           maxWidth: maxW,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           gap,
         }}
       >
         {/* Header */}
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 12,
           }}
         >
@@ -156,16 +151,12 @@ export function ContactForm(props: ContactFormProps) {
               borderRadius: 12,
               background: ui.black,
               border: `1px solid ${border}`,
-              display: "grid",
-              placeItems: "center",
-              boxShadow: "0 1px 2px rgba(9,9,11,0.08)",
+              display: 'grid',
+              placeItems: 'center',
+              boxShadow: '0 1px 2px rgba(9,9,11,0.08)',
             }}
           >
-            <Icon
-              name="message-square"
-              size={20}
-              style={{ color: ui.white } as any}
-            />
+            <Icon name="message-square" size={20} style={{ color: ui.white } as any} />
           </div>
 
           <div>
@@ -174,7 +165,7 @@ export function ContactForm(props: ContactFormProps) {
                 fontSize: titleSize,
                 fontWeight: 700,
                 color: fg,
-                letterSpacing: "-0.02em",
+                letterSpacing: '-0.02em',
               }}
             >
               {title}
@@ -200,29 +191,25 @@ export function ContactForm(props: ContactFormProps) {
               borderRadius: 14,
               background: ui.successSoft,
               border: `1px solid rgba(22,163,74,0.15)`,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               gap: 12,
-              textAlign: "center",
-              boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+              textAlign: 'center',
+              boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             <div
               style={{
                 width: 52,
                 height: 52,
-                borderRadius: "999px",
+                borderRadius: '999px',
                 background: ui.success,
-                display: "grid",
-                placeItems: "center",
+                display: 'grid',
+                placeItems: 'center',
               }}
             >
-              <Icon
-                name="check"
-                size={24}
-                style={{ color: ui.white } as any}
-              />
+              <Icon name="check" size={24} style={{ color: ui.white } as any} />
             </div>
 
             <div
@@ -248,8 +235,8 @@ export function ContactForm(props: ContactFormProps) {
           <form
             onSubmit={handleSubmit}
             style={{
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               gap: 14,
             }}
           >
@@ -257,7 +244,7 @@ export function ContactForm(props: ContactFormProps) {
             <div>
               <label
                 style={{
-                  display: "block",
+                  display: 'block',
                   fontSize: labelSize,
                   fontWeight: 600,
                   marginBottom: 8,
@@ -267,19 +254,16 @@ export function ContactForm(props: ContactFormProps) {
                 Name
               </label>
 
-              <div style={{ position: "relative" }}>
+              <div style={{ position: 'relative' }}>
                 <div
                   style={{
-                    position: "absolute",
+                    position: 'absolute',
                     left: 14,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    color:
-                      focused === "name"
-                        ? accent
-                        : ui.muted,
-                    transition: "color 0.2s ease",
-                    display: "flex",
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: focused === 'name' ? accent : ui.muted,
+                    transition: 'color 0.2s ease',
+                    display: 'flex',
                     zIndex: 2,
                   }}
                 >
@@ -289,10 +273,10 @@ export function ContactForm(props: ContactFormProps) {
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  onFocus={() => setFocused("name")}
+                  onFocus={() => setFocused('name')}
                   onBlur={() => setFocused(null)}
                   placeholder="John Doe"
-                  style={iStyle("name")}
+                  style={iStyle('name')}
                   required
                 />
               </div>
@@ -302,7 +286,7 @@ export function ContactForm(props: ContactFormProps) {
             <div>
               <label
                 style={{
-                  display: "block",
+                  display: 'block',
                   fontSize: labelSize,
                   fontWeight: 600,
                   marginBottom: 8,
@@ -312,19 +296,16 @@ export function ContactForm(props: ContactFormProps) {
                 Email
               </label>
 
-              <div style={{ position: "relative" }}>
+              <div style={{ position: 'relative' }}>
                 <div
                   style={{
-                    position: "absolute",
+                    position: 'absolute',
                     left: 14,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    color:
-                      focused === "email"
-                        ? accent
-                        : ui.muted,
-                    transition: "color 0.2s ease",
-                    display: "flex",
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: focused === 'email' ? accent : ui.muted,
+                    transition: 'color 0.2s ease',
+                    display: 'flex',
                     zIndex: 2,
                   }}
                 >
@@ -335,10 +316,10 @@ export function ContactForm(props: ContactFormProps) {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  onFocus={() => setFocused("email")}
+                  onFocus={() => setFocused('email')}
                   onBlur={() => setFocused(null)}
                   placeholder="john@example.com"
-                  style={iStyle("email")}
+                  style={iStyle('email')}
                   required
                 />
               </div>
@@ -348,7 +329,7 @@ export function ContactForm(props: ContactFormProps) {
             <div>
               <label
                 style={{
-                  display: "block",
+                  display: 'block',
                   fontSize: labelSize,
                   fontWeight: 600,
                   marginBottom: 8,
@@ -362,30 +343,24 @@ export function ContactForm(props: ContactFormProps) {
                 rows={5}
                 value={message}
                 onChange={(e) => setMsg(e.target.value)}
-                onFocus={() => setFocused("message")}
+                onFocus={() => setFocused('message')}
                 onBlur={() => setFocused(null)}
                 placeholder="How can we help you?"
                 required
                 style={{
-                  width: "100%",
+                  width: '100%',
                   padding: 14,
                   borderRadius: 12,
-                  border: `1px solid ${
-                    focused === "message"
-                      ? accent
-                      : border
-                  }`,
+                  border: `1px solid ${focused === 'message' ? accent : border}`,
                   background: inputSurface,
                   color: fg,
                   fontSize: inputSize,
-                  outline: "none",
-                  resize: "vertical",
-                  transition: "all 0.2s ease",
+                  outline: 'none',
+                  resize: 'vertical',
+                  transition: 'all 0.2s ease',
                   boxShadow:
-                    focused === "message"
-                      ? `0 0 0 4px ${ui.ring}`
-                      : "0 1px 2px rgba(9,9,11,0.04)",
-                  boxSizing: "border-box",
+                    focused === 'message' ? `0 0 0 4px ${ui.ring}` : '0 1px 2px rgba(9,9,11,0.04)',
+                  boxSizing: 'border-box',
                 }}
               />
             </div>
@@ -394,21 +369,20 @@ export function ContactForm(props: ContactFormProps) {
             <button
               type="submit"
               style={{
-                padding: "14px 20px",
+                padding: '14px 20px',
                 borderRadius: 12,
                 border: `1px solid ${ui.black}`,
                 background: ui.black,
                 color: ui.white,
                 fontWeight: 600,
                 fontSize: 14,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 gap: 8,
-                transition: "all 0.2s ease",
-                boxShadow:
-                  "0 1px 2px rgba(9,9,11,0.12)",
+                transition: 'all 0.2s ease',
+                boxShadow: '0 1px 2px rgba(9,9,11,0.12)',
               }}
             >
               <Icon name="send" size={18} />

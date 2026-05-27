@@ -5,7 +5,7 @@
 /*  specific extensions add only the props that their components need. */
 /* ------------------------------------------------------------------ */
 
-import type { CSSProperties, ElementType, ReactNode } from "react";
+import type { CSSProperties, ElementType, ReactNode } from 'react';
 
 /* ================================================================== */
 /*  Base theme — shared by EVERY component                            */
@@ -162,13 +162,13 @@ export interface UserAccountsTheme extends BaseTheme, InputTokens {
 /*  Currency (ecommerce)                                              */
 /* ================================================================== */
 
-export type Currency = "USD" | "INR" | "EUR" | "GBP";
+export type Currency = 'USD' | 'INR' | 'EUR' | 'GBP';
 
 /* ================================================================== */
 /*  Pattern (hero)                                                    */
 /* ================================================================== */
 
-export type PatternKind = "dots" | "grid" | "diagonal";
+export type PatternKind = 'dots' | 'grid' | 'diagonal';
 
 /* ================================================================== */
 /*  Shell props — used by wrapper/layout components                   */

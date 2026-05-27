@@ -1,37 +1,37 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useEffect } from "react";
-import { useMediaTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+import React, { useState, useRef, useEffect } from 'react';
+import { useMediaTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 function useMD() {
   const t = useMediaTheme();
 
   return {
-    accent: t.accentColor ?? "#09090b",
-    fg: t.textColor ?? "#18181b",
-    bg: t.bgColor ?? "#ffffff",
-    border: t.borderColor ?? "#e4e4e7",
+    accent: t.accentColor ?? '#09090b',
+    fg: t.textColor ?? '#18181b',
+    bg: t.bgColor ?? '#ffffff',
+    border: t.borderColor ?? '#e4e4e7',
     r: t.radius ?? 14,
     sp: t.spacing ?? 14,
     ff: t.fontFamily,
     hs: t.headingSize ?? 18,
     bs: t.bodySize ?? 14,
-    cardBg: t.cardBg ?? "#ffffff",
-    cardBorder: t.cardBorder ?? "#e4e4e7",
+    cardBg: t.cardBg ?? '#ffffff',
+    cardBorder: t.cardBorder ?? '#e4e4e7',
     cardRadius: t.cardRadius ?? 12,
   };
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  danger: "#ef4444",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  danger: '#ef4444',
 };
 
 /* ── MediaShell ─────────────────────────────────────────── */
@@ -67,11 +67,11 @@ export function MediaShell({
         border: `1px solid ${md.border}`,
         color: md.fg,
         fontFamily: md.ff,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
     >
-      <div style={{ width: "100%", maxWidth: maxW }}>{children}</div>
+      <div style={{ width: '100%', maxWidth: maxW }}>{children}</div>
     </section>
   );
 }
@@ -91,7 +91,7 @@ export interface ResponsiveVideoProps {
 export function ResponsiveVideo({
   src,
   poster,
-  aspectRatio = "16/9",
+  aspectRatio = '16/9',
   autoPlay = false,
   muted = true,
   loop = false,
@@ -102,13 +102,13 @@ export function ResponsiveVideo({
   return (
     <div
       style={{
-        position: "relative",
+        position: 'relative',
         aspectRatio,
         borderRadius: md.r,
-        overflow: "hidden",
+        overflow: 'hidden',
         background: ui.black,
         border: `1px solid ${md.border}`,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
     >
       <video
@@ -120,10 +120,10 @@ export function ResponsiveVideo({
         controls={controls}
         playsInline
         style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          display: 'block',
         }}
       />
     </div>
@@ -149,23 +149,23 @@ export function AudioEmbed({ src, title, showWaveform }: AudioEmbedProps) {
         padding: md.sp,
         fontFamily: md.ff,
         color: md.fg,
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         gap: 12,
         background: ui.white,
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
     >
       <div
         style={{
           width: 44,
           height: 44,
-          borderRadius: "999px",
+          borderRadius: '999px',
           background: ui.surface,
           border: `1px solid ${md.border}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           flexShrink: 0,
         }}
       >
@@ -186,7 +186,7 @@ export function AudioEmbed({ src, title, showWaveform }: AudioEmbedProps) {
           </div>
         )}
 
-        <audio src={src} controls style={{ width: "100%", height: 32 }} />
+        <audio src={src} controls style={{ width: '100%', height: 32 }} />
       </div>
     </div>
   );
@@ -216,14 +216,14 @@ export function AvatarProfile({
   const letters =
     initials ??
     name
-      .split(" ")
+      .split(' ')
       .map((w) => w[0])
-      .join("")
+      .join('')
       .slice(0, 2)
       .toUpperCase();
 
   return (
-    <div style={{ position: "relative", display: "inline-flex", flexShrink: 0 }}>
+    <div style={{ position: 'relative', display: 'inline-flex', flexShrink: 0 }}>
       {src ? (
         <img
           src={src}
@@ -231,10 +231,10 @@ export function AvatarProfile({
           style={{
             width: size,
             height: size,
-            borderRadius: "50%",
-            objectFit: "cover",
+            borderRadius: '50%',
+            objectFit: 'cover',
             border: `2px solid ${borderColor ?? md.border}`,
-            boxShadow: "0 1px 2px rgba(9,9,11,0.08)",
+            boxShadow: '0 1px 2px rgba(9,9,11,0.08)',
           }}
         />
       ) : (
@@ -242,17 +242,17 @@ export function AvatarProfile({
           style={{
             width: size,
             height: size,
-            borderRadius: "50%",
+            borderRadius: '50%',
             background: ui.surface,
             border: `2px solid ${borderColor ?? md.border}`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             fontWeight: 800,
             fontSize: size * 0.36,
             color: md.fg,
             fontFamily: md.ff,
-            boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+            boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
           }}
         >
           {letters}
@@ -262,10 +262,10 @@ export function AvatarProfile({
       {badge && (
         <span
           style={{
-            position: "absolute",
+            position: 'absolute',
             bottom: -2,
             right: -2,
-            padding: "2px 6px",
+            padding: '2px 6px',
             fontSize: 10,
             fontWeight: 700,
             borderRadius: 999,
@@ -300,7 +300,7 @@ export function IconGrid({ icons = [], columns = 6, iconSize = 24 }: IconGridPro
   return (
     <div
       style={{
-        display: "grid",
+        display: 'grid',
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap: 12,
         fontFamily: md.ff,
@@ -311,24 +311,22 @@ export function IconGrid({ icons = [], columns = 6, iconSize = 24 }: IconGridPro
         <div
           key={ic.name}
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             gap: 6,
             padding: 12,
             borderRadius: md.r,
             border: `1px solid ${md.border}`,
             background: ui.white,
-            transition: "all 0.15s ease",
-            boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+            transition: 'all 0.15s ease',
+            boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
           }}
         >
           <Icon name={ic.name} size={iconSize} color={md.accent} />
 
           {ic.label && (
-            <span style={{ fontSize: 11, color: ui.muted, fontWeight: 500 }}>
-              {ic.label}
-            </span>
+            <span style={{ fontSize: 11, color: ui.muted, fontWeight: 500 }}>{ic.label}</span>
           )}
         </div>
       ))}
@@ -356,40 +354,35 @@ export interface ImageGalleryProps {
   onSelect?: (item: GalleryItem) => void;
 }
 
-export function ImageGallery({
-  items = [],
-  columns = 3,
-  gap = 8,
-  onSelect,
-}: ImageGalleryProps) {
+export function ImageGallery({ items = [], columns = 3, gap = 8, onSelect }: ImageGalleryProps) {
   const md = useMD();
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: `repeat(${columns}, 1fr)`, gap }}>
+    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1fr)`, gap }}>
       {items.map((it) => (
         <div
           key={it.id}
           onClick={() => onSelect?.(it)}
           style={{
             borderRadius: md.r,
-            overflow: "hidden",
-            cursor: onSelect ? "pointer" : "default",
+            overflow: 'hidden',
+            cursor: onSelect ? 'pointer' : 'default',
             border: `1px solid ${md.border}`,
             background: ui.white,
-            transition: "all 0.2s ease",
-            boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+            transition: 'all 0.2s ease',
+            boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
           }}
         >
           <img
             src={it.src}
-            alt={it.alt ?? ""}
-            style={{ width: "100%", display: "block", objectFit: "cover" }}
+            alt={it.alt ?? ''}
+            style={{ width: '100%', display: 'block', objectFit: 'cover' }}
           />
 
           {it.caption && (
             <div
               style={{
-                padding: "10px 12px",
+                padding: '10px 12px',
                 fontSize: 13,
                 color: ui.muted,
                 fontFamily: md.ff,
@@ -424,13 +417,13 @@ export function LightboxGallery({ items = [], columns = 3 }: LightboxGalleryProp
     if (sel === null) return;
 
     const h = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSel(null);
-      if (e.key === "ArrowLeft") go(-1);
-      if (e.key === "ArrowRight") go(1);
+      if (e.key === 'Escape') setSel(null);
+      if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'ArrowRight') go(1);
     };
 
-    window.addEventListener("keydown", h);
-    return () => window.removeEventListener("keydown", h);
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
   }, [sel]);
 
   return (
@@ -444,42 +437,42 @@ export function LightboxGallery({ items = [], columns = 3 }: LightboxGalleryProp
       {sel !== null && (
         <div
           style={{
-            position: "fixed",
+            position: 'fixed',
             inset: 0,
             zIndex: 9999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <div
             onClick={() => setSel(null)}
             style={{
-              position: "absolute",
+              position: 'absolute',
               inset: 0,
-              background: "rgba(9,9,11,0.82)",
-              backdropFilter: "blur(8px)",
+              background: 'rgba(9,9,11,0.82)',
+              backdropFilter: 'blur(8px)',
             }}
           />
 
-          <div style={{ position: "relative", maxWidth: "90vw", maxHeight: "90vh" }}>
+          <div style={{ position: 'relative', maxWidth: '90vw', maxHeight: '90vh' }}>
             <img
               src={items[sel].src}
-              alt={items[sel].alt ?? ""}
+              alt={items[sel].alt ?? ''}
               style={{
-                maxWidth: "90vw",
-                maxHeight: "85vh",
+                maxWidth: '90vw',
+                maxHeight: '85vh',
                 borderRadius: md.r,
-                objectFit: "contain",
+                objectFit: 'contain',
                 border: `1px solid rgba(255,255,255,0.16)`,
-                boxShadow: "0 24px 80px rgba(0,0,0,0.32)",
+                boxShadow: '0 24px 80px rgba(0,0,0,0.32)',
               }}
             />
 
             {items[sel].caption && (
               <div
                 style={{
-                  textAlign: "center",
+                  textAlign: 'center',
                   color: ui.white,
                   marginTop: 10,
                   fontSize: 15,
@@ -495,20 +488,20 @@ export function LightboxGallery({ items = [], columns = 3 }: LightboxGalleryProp
           <button
             onClick={() => go(-1)}
             style={{
-              position: "absolute",
+              position: 'absolute',
               left: 16,
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "rgba(255,255,255,0.12)",
-              border: "1px solid rgba(255,255,255,0.16)",
-              borderRadius: "50%",
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'rgba(255,255,255,0.12)',
+              border: '1px solid rgba(255,255,255,0.16)',
+              borderRadius: '50%',
               width: 44,
               height: 44,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backdropFilter: "blur(10px)",
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backdropFilter: 'blur(10px)',
             }}
           >
             <Icon name="chevron-left" size={24} color="#fff" />
@@ -517,20 +510,20 @@ export function LightboxGallery({ items = [], columns = 3 }: LightboxGalleryProp
           <button
             onClick={() => go(1)}
             style={{
-              position: "absolute",
+              position: 'absolute',
               right: 16,
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "rgba(255,255,255,0.12)",
-              border: "1px solid rgba(255,255,255,0.16)",
-              borderRadius: "50%",
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'rgba(255,255,255,0.12)',
+              border: '1px solid rgba(255,255,255,0.16)',
+              borderRadius: '50%',
               width: 44,
               height: 44,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backdropFilter: "blur(10px)",
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backdropFilter: 'blur(10px)',
             }}
           >
             <Icon name="chevron-right" size={24} color="#fff" />
@@ -539,19 +532,19 @@ export function LightboxGallery({ items = [], columns = 3 }: LightboxGalleryProp
           <button
             onClick={() => setSel(null)}
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 16,
               right: 16,
-              background: "rgba(255,255,255,0.12)",
-              border: "1px solid rgba(255,255,255,0.16)",
-              borderRadius: "50%",
+              background: 'rgba(255,255,255,0.12)',
+              border: '1px solid rgba(255,255,255,0.16)',
+              borderRadius: '50%',
               width: 36,
               height: 36,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backdropFilter: "blur(10px)",
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backdropFilter: 'blur(10px)',
             }}
           >
             <Icon name="x" size={20} color="#fff" />
@@ -572,27 +565,27 @@ export interface MasonryGridProps {
 
 export function MasonryGrid({ items = [], columns = 3, gap = 8 }: MasonryGridProps) {
   const md = useMD();
-  const numColumns = typeof columns === "string" ? parseInt(columns, 10) || 1 : columns;
+  const numColumns = typeof columns === 'string' ? parseInt(columns, 10) || 1 : columns;
   const cols = Array.from<GalleryItem[]>({ length: numColumns }).map(() => []) as GalleryItem[][];
 
   items.forEach((it, i) => cols[i % numColumns].push(it));
 
   return (
-    <div style={{ display: "flex", gap }}>
+    <div style={{ display: 'flex', gap }}>
       {cols.map((col, ci) => (
-        <div key={ci} style={{ flex: 1, display: "flex", flexDirection: "column", gap }}>
+        <div key={ci} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap }}>
           {col.map((it) => (
             <div
               key={it.id}
               style={{
                 borderRadius: md.r,
-                overflow: "hidden",
+                overflow: 'hidden',
                 border: `1px solid ${md.border}`,
                 background: ui.white,
-                boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+                boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
               }}
             >
-              <img src={it.src} alt={it.alt ?? ""} style={{ width: "100%", display: "block" }} />
+              <img src={it.src} alt={it.alt ?? ''} style={{ width: '100%', display: 'block' }} />
             </div>
           ))}
         </div>
@@ -610,35 +603,34 @@ export interface PolaroidImageProps {
   width?: number;
 }
 
-export function PolaroidImage({
-  src,
-  caption,
-  rotation = 0,
-  width = 260,
-}: PolaroidImageProps) {
+export function PolaroidImage({ src, caption, rotation = 0, width = 260 }: PolaroidImageProps) {
   const md = useMD();
 
   return (
     <div
       style={{
-        display: "inline-block",
+        display: 'inline-block',
         width,
         padding: 12,
         paddingBottom: caption ? 40 : 12,
         background: ui.white,
         borderRadius: 8,
         border: `1px solid ${ui.border}`,
-        boxShadow: "0 8px 28px rgba(9,9,11,0.12)",
+        boxShadow: '0 8px 28px rgba(9,9,11,0.12)',
         transform: `rotate(${rotation}deg)`,
-        transition: "transform 0.3s",
+        transition: 'transform 0.3s',
       }}
     >
-      <img src={src} alt={caption ?? ""} style={{ width: "100%", display: "block", borderRadius: 4 }} />
+      <img
+        src={src}
+        alt={caption ?? ''}
+        style={{ width: '100%', display: 'block', borderRadius: 4 }}
+      />
 
       {caption && (
         <div
           style={{
-            textAlign: "center",
+            textAlign: 'center',
             marginTop: 10,
             fontSize: 14,
             color: ui.text,
@@ -655,29 +647,17 @@ export function PolaroidImage({
 /* ── LottieOrSVG ────────────────────────────────────────── */
 
 export interface LottieOrSVGProps {
-  type: "svg" | "lottie";
+  type: 'svg' | 'lottie';
   src: string;
   width?: number;
   height?: number;
   alt?: string;
 }
 
-export function LottieOrSVG({
-  type,
-  src,
-  width = 200,
-  height = 200,
-  alt,
-}: LottieOrSVGProps) {
-  if (type === "svg") {
+export function LottieOrSVG({ type, src, width = 200, height = 200, alt }: LottieOrSVGProps) {
+  if (type === 'svg') {
     return (
-      <img
-        src={src}
-        alt={alt ?? ""}
-        width={width}
-        height={height}
-        style={{ display: "block" }}
-      />
+      <img src={src} alt={alt ?? ''} width={width} height={height} style={{ display: 'block' }} />
     );
   }
 
@@ -686,8 +666,8 @@ export function LottieOrSVG({
       src={src}
       width={width}
       height={height}
-      title={alt ?? "animation"}
-      style={{ border: "none", overflow: "hidden" }}
+      title={alt ?? 'animation'}
+      style={{ border: 'none', overflow: 'hidden' }}
     />
   );
 }
@@ -703,18 +683,18 @@ export interface ImageCropperUploaderProps {
 
 export function ImageCropperUploader({
   onUpload,
-  accept = "image/*",
+  accept = 'image/*',
   maxSizeMB = 5,
-  label = "Upload Image",
+  label = 'Upload Image',
 }: ImageCropperUploaderProps) {
   const md = useMD();
   const ref = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(null);
-  const [err, setErr] = useState("");
+  const [err, setErr] = useState('');
 
   React.useEffect(() => {
     return () => {
-      if (preview && preview.startsWith("blob:")) URL.revokeObjectURL(preview);
+      if (preview && preview.startsWith('blob:')) URL.revokeObjectURL(preview);
     };
   }, [preview]);
 
@@ -728,9 +708,9 @@ export function ImageCropperUploader({
       return;
     }
 
-    if (preview && preview.startsWith("blob:")) URL.revokeObjectURL(preview);
+    if (preview && preview.startsWith('blob:')) URL.revokeObjectURL(preview);
 
-    setErr("");
+    setErr('');
     setPreview(URL.createObjectURL(f));
     onUpload?.(f);
   };
@@ -741,17 +721,17 @@ export function ImageCropperUploader({
         border: `2px dashed ${md.border}`,
         borderRadius: md.r,
         padding: 32,
-        textAlign: "center",
+        textAlign: 'center',
         fontFamily: md.ff,
         color: md.fg,
-        cursor: "pointer",
+        cursor: 'pointer',
         background: ui.surface,
-        transition: "all 0.2s ease",
-        boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+        transition: 'all 0.2s ease',
+        boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
       }}
       onClick={() => ref.current?.click()}
     >
-      <input ref={ref} type="file" accept={accept} onChange={handle} style={{ display: "none" }} />
+      <input ref={ref} type="file" accept={accept} onChange={handle} style={{ display: 'none' }} />
 
       {preview ? (
         <img
@@ -761,7 +741,7 @@ export function ImageCropperUploader({
             maxWidth: 240,
             maxHeight: 200,
             borderRadius: md.r - 4,
-            objectFit: "contain",
+            objectFit: 'contain',
             border: `1px solid ${md.border}`,
             background: ui.white,
           }}
@@ -772,17 +752,11 @@ export function ImageCropperUploader({
 
           <div style={{ fontWeight: 700, marginTop: 12 }}>{label}</div>
 
-          <div style={{ fontSize: 13, color: ui.muted, marginTop: 4 }}>
-            Max {maxSizeMB}MB
-          </div>
+          <div style={{ fontSize: 13, color: ui.muted, marginTop: 4 }}>Max {maxSizeMB}MB</div>
         </>
       )}
 
-      {err && (
-        <div style={{ color: ui.danger, fontSize: 13, marginTop: 8 }}>
-          {err}
-        </div>
-      )}
+      {err && <div style={{ color: ui.danger, fontSize: 13, marginTop: 8 }}>{err}</div>}
     </div>
   );
 }
@@ -795,7 +769,7 @@ export interface MapEmbedProps {
   lng?: number;
   zoom?: number;
   height?: number;
-  provider?: "google" | "openstreetmap";
+  provider?: 'google' | 'openstreetmap';
   title?: string;
   borderRadius?: number;
 }
@@ -806,7 +780,7 @@ export function MapEmbed({
   lng,
   zoom = 14,
   height = 400,
-  provider = "openstreetmap",
+  provider = 'openstreetmap',
   title,
   borderRadius,
 }: MapEmbedProps) {
@@ -815,7 +789,7 @@ export function MapEmbed({
 
   let src: string;
 
-  if (provider === "google" && (address || (lat !== undefined && lng !== undefined))) {
+  if (provider === 'google' && (address || (lat !== undefined && lng !== undefined))) {
     const q = address ? encodeURIComponent(address) : `${lat},${lng}`;
     src = `https://www.google.com/maps?q=${q}&z=${zoom}&output=embed`;
   } else {
@@ -831,30 +805,26 @@ export function MapEmbed({
 
   return (
     <div style={{ fontFamily: md.ff, color: md.fg }}>
-      {title && (
-        <div style={{ fontWeight: 700, fontSize: md.hs, marginBottom: 12 }}>
-          {title}
-        </div>
-      )}
+      {title && <div style={{ fontWeight: 700, fontSize: md.hs, marginBottom: 12 }}>{title}</div>}
 
       <div
         style={{
           borderRadius: r,
-          overflow: "hidden",
+          overflow: 'hidden',
           border: `1px solid ${md.border}`,
           background: ui.surface,
           height,
-          boxShadow: "0 1px 2px rgba(9,9,11,0.04)",
+          boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         }}
       >
         <iframe
           src={src}
           width="100%"
           height="100%"
-          style={{ border: "none", display: "block" }}
+          style={{ border: 'none', display: 'block' }}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title={title ?? "Map"}
+          title={title ?? 'Map'}
           allowFullScreen
         />
       </div>
@@ -865,8 +835,8 @@ export function MapEmbed({
             fontSize: 13,
             color: ui.muted,
             marginTop: 8,
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 6,
           }}
         >

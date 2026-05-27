@@ -1,7 +1,7 @@
-"use client";
-import React, { useId, useState } from "react";
-import { useDataDisplayTheme } from "../../core/provider";
-import { Icon } from "../../core/icons";
+'use client';
+import React, { useId, useState } from 'react';
+import { useDataDisplayTheme } from '../../core/provider';
+import { Icon } from '../../core/icons';
 
 /* ── LineChart ──────────────────────────────────────────── */
 
@@ -16,15 +16,15 @@ export interface LineChartProps {
 }
 
 const ui = {
-  white: "#ffffff",
-  black: "#09090b",
-  text: "#18181b",
-  muted: "#71717a",
-  mutedSoft: "#a1a1aa",
-  border: "#e4e4e7",
-  surface: "#fafafa",
-  surfaceHover: "#f4f4f5",
-  grid: "#f4f4f5",
+  white: '#ffffff',
+  black: '#09090b',
+  text: '#18181b',
+  muted: '#71717a',
+  mutedSoft: '#a1a1aa',
+  border: '#e4e4e7',
+  surface: '#fafafa',
+  surfaceHover: '#f4f4f5',
+  grid: '#f4f4f5',
 };
 
 export function LineChart({
@@ -64,9 +64,9 @@ export function LineChart({
           color: fg,
           background: bg,
           fontFamily: t.fontFamily,
-          textAlign: "center",
+          textAlign: 'center',
           margin: 0,
-          boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+          boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         }}
       >
         <div
@@ -76,14 +76,16 @@ export function LineChart({
             borderRadius: 12,
             background: ui.surface,
             border: `1px solid ${ui.border}`,
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Icon name="trending-up" size={22} color={ui.black} />
         </div>
-        <div style={{ color: ui.muted, marginTop: 10, fontSize: t.bodySize ?? 14 }}>No data available</div>
+        <div style={{ color: ui.muted, marginTop: 10, fontSize: t.bodySize ?? 14 }}>
+          No data available
+        </div>
       </figure>
     );
   }
@@ -94,7 +96,7 @@ export function LineChart({
     value: v,
   }));
 
-  const pathD = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
   const areaD = `${pathD} L ${points[points.length - 1].x} ${padding + innerH} L ${points[0].x} ${padding + innerH} Z`;
 
   return (
@@ -107,20 +109,20 @@ export function LineChart({
         background: bg,
         fontFamily: t.fontFamily,
         margin: 0,
-        boxShadow: "0 1px 2px rgba(9, 9, 11, 0.04)",
+        boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
       }}
     >
       {title && (
         <figcaption
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 8,
             marginBottom: 12,
             fontWeight: 700,
             fontSize: t.headingSize ?? 18,
             color: ui.black,
-            letterSpacing: "-0.02em",
+            letterSpacing: '-0.02em',
           }}
         >
           <div
@@ -130,9 +132,9 @@ export function LineChart({
               borderRadius: 8,
               background: ui.surface,
               border: `1px solid ${ui.border}`,
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               flexShrink: 0,
             }}
           >
@@ -142,7 +144,7 @@ export function LineChart({
         </figcaption>
       )}
 
-      <svg width={width} height={height} style={{ display: "block" }}>
+      <svg width={width} height={height} style={{ display: 'block' }}>
         <defs>
           <linearGradient id={`epx-lineG-${uid}`} x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor={accent} />
@@ -163,7 +165,7 @@ export function LineChart({
                 y1={padding + innerH * (1 - g)}
                 y2={padding + innerH * (1 - g)}
                 stroke={grid}
-                strokeDasharray={g === 0 ? "none" : "4,4"}
+                strokeDasharray={g === 0 ? 'none' : '4,4'}
               />
               <text
                 x={padding - 8}
@@ -212,14 +214,21 @@ export function LineChart({
                 fill={bg}
                 stroke={accent}
                 strokeWidth={2}
-                style={{ cursor: "pointer", transition: "r 150ms ease" }}
+                style={{ cursor: 'pointer', transition: 'r 150ms ease' }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
               />
               {isH && (
                 <g>
                   <rect x={p.x - 24} y={p.y - 32} width={48} height={22} rx={6} fill={ui.black} />
-                  <text x={p.x} y={p.y - 17} fontSize={12} fill={ui.white} textAnchor="middle" fontWeight={600}>
+                  <text
+                    x={p.x}
+                    y={p.y - 17}
+                    fontSize={12}
+                    fill={ui.white}
+                    textAnchor="middle"
+                    fontWeight={600}
+                  >
                     {p.value}
                   </text>
                 </g>
@@ -239,7 +248,7 @@ export function LineChart({
               textAnchor="middle"
               opacity={hoveredIndex === i ? 1 : 0.85}
               fontWeight={hoveredIndex === i ? 700 : 500}
-              style={{ transition: "all 200ms ease" }}
+              style={{ transition: 'all 200ms ease' }}
             >
               {lb}
             </text>

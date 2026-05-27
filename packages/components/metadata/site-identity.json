@@ -14,24 +14,104 @@
       "whenToUse": "Use on every page to display the brand logo, typically in the header. Links to the homepage by default.",
       "isShell": false,
       "props": [
-        { "name": "src", "type": "string", "required": true, "default": null, "description": "URL or path to the logo image" },
-        { "name": "alt", "type": "string", "required": false, "default": "\"Logo\"", "description": "Alt text for the logo image" },
-        { "name": "width", "type": "number", "required": false, "default": "140", "description": "Width of the logo in pixels" },
-        { "name": "height", "type": "number", "required": false, "default": "auto", "description": "Height of the logo in pixels (auto preserves aspect ratio)" },
-        { "name": "href", "type": "string", "required": false, "default": null, "description": "Optional link URL; wraps the logo in an anchor tag when provided" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "src",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "URL or path to the logo image"
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "required": false,
+          "default": "\"Logo\"",
+          "description": "Alt text for the logo image"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "default": "140",
+          "description": "Width of the logo in pixels"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "default": "auto",
+          "description": "Height of the logo in pixels (auto preserves aspect ratio)"
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Optional link URL; wraps the logo in an anchor tag when provided"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "header",
         "priority": 8,
         "sequenceOrder": 1,
-        "pairsWellWith": ["navigation.PrimaryNav", "siteIdentity.Taglines", "siteIdentity.BrandingShell"],
+        "pairsWellWith": [
+          "navigation.PrimaryNav",
+          "siteIdentity.Taglines",
+          "siteIdentity.BrandingShell"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -43,15 +123,65 @@
       "whenToUse": "Use on landing pages, marketing pages, or portfolio sites where an animated brand mark creates a strong first impression.",
       "isShell": false,
       "props": [
-        { "name": "text", "type": "string", "required": true, "default": null, "description": "Brand text to display and animate" },
-        { "name": "fontSize", "type": "number", "required": false, "default": "32", "description": "Font size of the brand mark in pixels" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color used for animation effects" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family for the brand mark text" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" }
+        {
+          "name": "text",
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Brand text to display and animate"
+        },
+        {
+          "name": "fontSize",
+          "type": "number",
+          "required": false,
+          "default": "32",
+          "description": "Font size of the brand mark in pixels"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color used for animation effects"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family for the brand mark text"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["landing", "marketing", "portfolio"],
         "placement": "header",
@@ -69,22 +199,82 @@
       "whenToUse": "Use on landing pages and marketing pages to reinforce brand messaging with a tagline below the logo or hero section.",
       "isShell": false,
       "props": [
-        { "name": "lines", "type": "string[]", "required": true, "default": null, "description": "Array of tagline strings to display" },
-        { "name": "rotate", "type": "boolean", "required": false, "default": "false", "description": "Whether to automatically rotate through taglines" },
-        { "name": "interval", "type": "number", "required": false, "default": "3000", "description": "Rotation interval in milliseconds (when rotate is true)" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "lines",
+          "type": "string[]",
+          "required": true,
+          "default": null,
+          "description": "Array of tagline strings to display"
+        },
+        {
+          "name": "rotate",
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "Whether to automatically rotate through taglines"
+        },
+        {
+          "name": "interval",
+          "type": "number",
+          "required": false,
+          "default": "3000",
+          "description": "Rotation interval in milliseconds (when rotate is true)"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["landing", "marketing"],
         "placement": "header",
         "priority": 4,
         "sequenceOrder": 2,
-        "pairsWellWith": ["siteIdentity.LogoDisplay", "hero.StaticHero", "siteIdentity.BrandingShell"],
+        "pairsWellWith": [
+          "siteIdentity.LogoDisplay",
+          "hero.StaticHero",
+          "siteIdentity.BrandingShell"
+        ],
         "maxPerPage": 1,
         "isContainer": false
       }
@@ -96,24 +286,104 @@
       "whenToUse": "Use as a wrapper to group brand identity elements (logo, name, tagline) together in the header or any brand-focused section.",
       "isShell": true,
       "props": [
-        { "name": "logoSrc", "type": "string", "required": false, "default": null, "description": "URL or path to the brand logo image" },
-        { "name": "brandName", "type": "string", "required": false, "default": null, "description": "Brand or company name text" },
-        { "name": "tagline", "type": "string", "required": false, "default": null, "description": "Brand tagline or slogan" },
-        { "name": "children", "type": "ReactNode", "required": false, "default": null, "description": "Additional content rendered inside the branding shell" },
-        { "name": "maxW", "type": "number", "required": false, "default": "900", "description": "Maximum width of the branding shell in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "logoSrc",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL or path to the brand logo image"
+        },
+        {
+          "name": "brandName",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Brand or company name text"
+        },
+        {
+          "name": "tagline",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Brand tagline or slogan"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Additional content rendered inside the branding shell"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "900",
+          "description": "Maximum width of the branding shell in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
-        "pageTypes": ["landing", "marketing", "dashboard", "blog", "ecommerce", "portfolio", "saas"],
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "dashboard",
+          "blog",
+          "ecommerce",
+          "portfolio",
+          "saas"
+        ],
         "placement": "header",
         "priority": 3,
         "sequenceOrder": 1,
-        "pairsWellWith": ["siteIdentity.LogoDisplay", "siteIdentity.Taglines", "siteIdentity.AnimatedBrandMark"],
+        "pairsWellWith": [
+          "siteIdentity.LogoDisplay",
+          "siteIdentity.Taglines",
+          "siteIdentity.AnimatedBrandMark"
+        ],
         "maxPerPage": 1,
         "isContainer": true
       }
@@ -125,22 +395,82 @@
       "whenToUse": "Use on landing pages, marketing pages, or about pages to showcase partner logos, client brands, or technology stack icons.",
       "isShell": false,
       "props": [
-        { "name": "icons", "type": "BrandIcon[]", "required": true, "default": null, "description": "Array of brand icons: {id, src, name, href?}" },
-        { "name": "columns", "type": "number", "required": false, "default": "6", "description": "Number of columns in the grid" },
-        { "name": "iconSize", "type": "number", "required": false, "default": "48", "description": "Size of each icon in pixels" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "icons",
+          "type": "BrandIcon[]",
+          "required": true,
+          "default": null,
+          "description": "Array of brand icons: {id, src, name, href?}"
+        },
+        {
+          "name": "columns",
+          "type": "number",
+          "required": false,
+          "default": "6",
+          "description": "Number of columns in the grid"
+        },
+        {
+          "name": "iconSize",
+          "type": "number",
+          "required": false,
+          "default": "48",
+          "description": "Size of each icon in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["landing", "marketing", "about", "event", "agency", "education", "saas"],
         "placement": "body",
         "priority": 5,
         "sequenceOrder": 7,
-        "pairsWellWith": ["marketing.TrustBadges", "siteIdentity.BrandingShell", "content.HeadingSection"],
+        "pairsWellWith": [
+          "marketing.TrustBadges",
+          "siteIdentity.BrandingShell",
+          "content.HeadingSection"
+        ],
         "maxPerPage": 2,
         "isContainer": false
       }
@@ -152,15 +482,65 @@
       "whenToUse": "Use in settings or admin pages where site administrators can upload or change the site favicon.",
       "isShell": false,
       "props": [
-        { "name": "onUpload", "type": "(file: File) => void", "required": false, "default": null, "description": "Callback invoked with the selected file when a favicon is uploaded" },
-        { "name": "currentSrc", "type": "string", "required": false, "default": null, "description": "URL of the currently active favicon for preview" },
-        { "name": "bgColor", "type": "string", "required": false, "default": "theme", "description": "Background color override" },
-        { "name": "textColor", "type": "string", "required": false, "default": "theme", "description": "Text color override" },
-        { "name": "accentColor", "type": "string", "required": false, "default": "theme", "description": "Accent color override" },
-        { "name": "borderColor", "type": "string", "required": false, "default": "theme", "description": "Border color override" },
-        { "name": "fontFamily", "type": "string", "required": false, "default": "theme", "description": "Font family override" }
+        {
+          "name": "onUpload",
+          "type": "(file: File) => void",
+          "required": false,
+          "default": null,
+          "description": "Callback invoked with the selected file when a favicon is uploaded"
+        },
+        {
+          "name": "currentSrc",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "URL of the currently active favicon for preview"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Border color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        }
       ],
-      "themeTokens": ["bgColor", "textColor", "accentColor", "borderColor", "fontFamily", "radius", "spacing"],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing"
+      ],
       "aiHints": {
         "pageTypes": ["settings", "admin"],
         "placement": "body",
