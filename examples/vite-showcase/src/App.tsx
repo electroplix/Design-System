@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { ElectroplixProvider, StaticHero, PrimaryNav } from '@electroplix/components';
+import { ElectroplixProvider, PrimaryNav, StaticHero } from '@electroplix/components';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import ButtonsPage from './pages/ButtonsPage';
 import FormsPage from './pages/FormsPage';
 import NavigationPage from './pages/NavigationPage';
