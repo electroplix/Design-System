@@ -4,9 +4,9 @@ Electroplix Design System is a modular, production-grade collection of UI compon
 
 <!-- Badges: replace placeholders with your CI/status badges -->
 
-[![Build Status](https://img.shields.io/badge/build-pending-lightgray)]()
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()
 [![License](https://img.shields.io/badge/license-MIT-blue)]()
-[![Latest Release](https://img.shields.io/badge/release-0.0.0-lightgray)]()
+[![Latest Release](https://img.shields.io/badge/release-0.5.0--alpha.0-blue)]()
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)]()
 
 ## Overview
@@ -18,45 +18,38 @@ Electroplix Design System is a modular, production-grade collection of UI compon
 - Accessibility: WCAG-compliant components and accessible patterns.
 - Performance: Lightweight builds and tree-shaking-friendly packages.
 - Security: Dependency hygiene and security-first development.
-- Reusability: Multi-package NX-friendly structure for apps and micro-frontends.
+- Reusability: Multi-package Nx-friendly structure for apps and micro-frontends.
 
 ## Contents
-- `/packages/components` — UI components (React by default; adapters optional)
-- `/packages/tokens` — Design tokens (colors, spacing, typography, shadows)
-- `/packages/styles` — Theme utilities, CSS-in-JS or Tailwind integrations
-- `/packages/utils` — Well-tested utilities (forms, formatters, i18n helpers)
-- `/docs` — Usage guides, accessibility checklist, contribution docs
-- `/examples` — Tiny example apps and integration demos (Next.js, Vite)
+- `/packages/components` — UI components (React 19)
+- `/examples/vite-showcase` — Gallery app for component validation
+- `/e2e/components-e2e` — Playwright end-to-end tests
 - `/scripts` — Build, release, and audit helpers
 
 ## Quick Start
 
 1. Install
 
-- npm:
-
-```bash
-npm install @electroplix/components @electroplix/tokens
-```
-
-- pnpm:
-
-```bash
-pnpm add @electroplix/components @electroplix/tokens
-```
-
-2. Import (example — React)
-
-```js
-import { Button } from '@electroplix/components';
-import { ThemeProvider } from '@electroplix/styles';
-```
-
-3. Run local examples (monorepo root)
-
 ```bash
 pnpm install
-pnpm --filter examples dev
+```
+
+2. Build All
+
+```bash
+pnpm run build
+```
+
+3. Run Showcase
+
+```bash
+pnpm nx dev vite-showcase
+```
+
+4. Run Storybook
+
+```bash
+pnpm nx storybook components
 ```
 
 ## Core Principles
@@ -67,35 +60,30 @@ pnpm --filter examples dev
 - Test Coverage: Unit tests, visual regression tests, and accessibility audits.
 
 ## Usage & Conventions
-- Folder layout: each package follows `src`, `tests`, `stories`/`examples`, `package.json`.
+- Folder layout: each package follows `src`, `__tests__`, `stories`/`examples`, `package.json`.
 - Export policy: small default bundle + named exports for tree-shaking.
-- Linting & Formatting: ESLint + Prettier at workspace root.
+- Linting & Formatting: **Biome** at workspace root.
 - Types: Fully typed with TypeScript; builds emit declaration files.
 
 ## Security & Auditing
 - Regular dependency scans via Dependabot and automated security checks in CI.
-- All incoming dependencies require an approval step; critical deps are pinned and audited.
-- Contribution checklist includes a security review and dependency impact note.
-- Releases are signed; changelogs are required (maintain `CHANGELOG.md`).
+- Releases follow the **Nx Release** workflow with conventional commits.
+- Maintain `CHANGELOG.md` for historical traceability.
 
 ## Accessibility
 - Each component documents keyboard behaviors, focus management, and limitations.
-- Automated a11y checks in CI (axe-core + Storybook integration).
-- Accessibility testing matrix for screen readers and major browsers.
+- Automated a11y checks in CI.
 
 ## Contributing
-- Code of Conduct: include `CODE_OF_CONDUCT.md`.
-
-PR process
-- Fork → feature branch → PR with tests and Storybook demo.
-- All PRs require: unit tests, Storybook story, accessibility checks, CI green.
+- PR process: Fork → feature branch → PR with tests and Storybook demo.
+- All PRs require: unit tests, Storybook story, Green CI.
 
 Developer setup
 
 ```bash
 pnpm install
-pnpm nx run-many --target=test --all
-pnpm nx run examples:dev
+pnpm nx run-many -t test
+pnpm nx dev vite-showcase
 ```
 
 Test & release
