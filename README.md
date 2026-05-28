@@ -21,9 +21,12 @@ Electroplix Design System is a modular, production-grade collection of UI compon
 - Reusability: Multi-package Nx-friendly structure for apps and micro-frontends.
 
 ## Contents
-- `/packages/components` — UI components (React 19)
-- `/examples/vite-showcase` — Gallery app for component validation
-- `/e2e/components-e2e` — Playwright end-to-end tests
+- `/packages/components` — UI components (React 19, 158 components across 18 categories)
+- `/examples/vite-showcase` — Component gallery covering every component
+- `/examples/nextjs15-e2e` — Next.js 15.3.8 SSR validation harness
+- `/examples/nextjs16-e2e` — Next.js 16.x SSR validation harness
+- `/e2e/components-e2e` — Playwright end-to-end tests for the showcase
+- `/docs` — Architecture notes (showcase, Next.js strategy)
 - `/scripts` — Build, release, and audit helpers
 
 ## Quick Start
