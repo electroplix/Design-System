@@ -101,10 +101,12 @@
       "include": [
         "**/*.config.ts",
         "**/*.config.js",
+        "**/*.config.mjs",
         "**/main.ts",
         "**/preview.tsx",
         "**/main.tsx",
-        "examples/**/*.tsx"
+        "examples/**/*.tsx",
+        "examples/**/*.ts"
       ],
       "linter": {
         "rules": {
