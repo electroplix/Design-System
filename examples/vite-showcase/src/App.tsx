@@ -29,7 +29,7 @@ function App() {
   return (
     <ElectroplixProvider>
       <BrowserRouter>
-        <PrimaryNav logo="ELECTROPLIX" />
+        <PrimaryNav logoText="ELECTROPLIX" />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/buttons" element={<ButtonsPage />} />

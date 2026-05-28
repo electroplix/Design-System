@@ -20,19 +20,28 @@ import { TestWrapper } from './test-utils';
 const wrap = (ui: React.ReactElement) => render(<TestWrapper>{ui}</TestWrapper>);
 const noop = () => {};
 
-const sampleProduct = { id: '1', title: 'Widget', name: 'Widget', price: 29.99 };
+const sampleProduct = {
+  id: '1',
+  title: 'Widget',
+  price: 29.99,
+  image: 'https://via.placeholder.com/150',
+};
 
 describe('Ecommerce components', () => {
   it('CartDrawer renders', () => {
     const { container } = wrap(
-      <CartDrawer items={[{ id: 'item-1', name: 'Item 1', price: 10 }]} />,
+      <CartDrawer
+        items={[{ id: 'item-1', title: 'Item 1', price: 10, qty: 1, image: '' }]}
+      />,
     );
     expect(container.firstChild).toBeTruthy();
   });
 
   it('MiniCartPanel renders', () => {
     const { container } = wrap(
-      <MiniCartPanel items={[{ id: 'item-1', name: 'Item 1', price: 10 }]} />,
+      <MiniCartPanel
+        items={[{ id: 'item-1', title: 'Item 1', price: 10, qty: 1, image: '' }]}
+      />,
     );
     expect(container.firstChild).toBeTruthy();
   });
@@ -42,7 +51,7 @@ describe('Ecommerce components', () => {
       <OrderSummary
         orderId="ORD-1"
         total={99.99}
-        lines={[{ id: 'line-1', title: 'Product 1', price: 89.99, quantity: 1 }]}
+        lines={[{ id: 'line-1', title: 'Product 1', price: 89.99, qty: 1 }]}
         subtotal={89.99}
       />,
     );

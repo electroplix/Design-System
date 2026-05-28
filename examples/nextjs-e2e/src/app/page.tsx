@@ -29,7 +29,7 @@ export default function SSRValidationPage() {
         <h1>SSR Validation — All Categories</h1>
 
         {/* Navigation */}
-        <PrimaryNav logo="TEST" />
+        <PrimaryNav logoText="TEST" />
 
         {/* Hero */}
         <StaticHero title="SSR Test" subtitle="Validates server rendering" />
@@ -44,25 +44,50 @@ export default function SSRValidationPage() {
         <Badge label="SSR" />
 
         {/* Ecommerce */}
-        <ProductCard name="Test Product" price={9.99} image="" />
+        <ProductCard
+          product={{
+            id: '1',
+            title: 'Test Product',
+            price: 9.99,
+            image: 'https://via.placeholder.com/150',
+          }}
+        />
 
         {/* Lists */}
-        <GenericList items={[{ id: '1', title: 'Item 1' }]} />
+        <GenericList items={[{ id: '1', label: 'Item 1' }]} />
 
         {/* Marketing */}
-        <PricingTable plans={[{ name: 'Free', price: '$0', features: ['Basic'] }]} />
+        <PricingTable
+          plans={[
+            {
+              id: '1',
+              name: 'Free',
+              price: '$0',
+              features: [{ label: 'Basic', included: true }],
+            },
+          ]}
+        />
 
         {/* Search */}
         <SiteSearchBar />
 
         {/* Site Identity */}
-        <LogoDisplay name="Electroplix" />
+        <LogoDisplay src="https://via.placeholder.com/150" alt="Electroplix" />
 
         {/* Social */}
         <SocialShareBar url="https://example.com" title="Test" />
 
         {/* Blog */}
-        <BlogCard title="Test Post" excerpt="SSR test" slug="/test" date="2026-01-01" />
+        <BlogCard
+          post={{
+            id: '1',
+            title: 'Test Post',
+            excerpt: 'SSR test',
+            slug: '/test',
+            date: '2026-01-01',
+            coverImage: 'https://via.placeholder.com/150',
+          }}
+        />
 
         <p>✅ All components rendered successfully via SSR</p>
       </main>

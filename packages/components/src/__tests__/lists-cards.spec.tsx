@@ -67,7 +67,7 @@ describe('Lists-Cards components', () => {
 
   it('SortableTable renders', () => {
     const { container } = wrap(
-      <SortableTable columns={[{ key: 'name', header: 'Name' }]} rows={[{ name: 'Alice' }]} />,
+      <SortableTable columns={[{ key: 'name', label: 'Name' }]} rows={[{ name: 'Alice' }]} />,
     );
     expect(container.firstChild).toBeTruthy();
   });

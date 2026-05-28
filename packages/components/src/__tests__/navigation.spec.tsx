@@ -40,7 +40,10 @@ describe('Navigation components', () => {
 
   it('MegaMenu renders', () => {
     const { container } = wrap(
-      <MegaMenu groups={[{ label: 'Group', items: [{ label: 'Item', href: '#' }] }]} />,
+      <MegaMenu
+        label="Solutions"
+        sections={[{ title: 'Group', links: [{ label: 'Item', href: '#' }] }]}
+      />,
     );
     expect(container.firstChild).toBeTruthy();
   });
