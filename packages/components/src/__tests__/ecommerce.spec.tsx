@@ -30,18 +30,14 @@ const sampleProduct = {
 describe('Ecommerce components', () => {
   it('CartDrawer renders', () => {
     const { container } = wrap(
-      <CartDrawer
-        items={[{ id: 'item-1', title: 'Item 1', price: 10, qty: 1, image: '' }]}
-      />,
+      <CartDrawer items={[{ id: 'item-1', title: 'Item 1', price: 10, qty: 1, image: '' }]} />,
     );
     expect(container.firstChild).toBeTruthy();
   });
 
   it('MiniCartPanel renders', () => {
     const { container } = wrap(
-      <MiniCartPanel
-        items={[{ id: 'item-1', title: 'Item 1', price: 10, qty: 1, image: '' }]}
-      />,
+      <MiniCartPanel items={[{ id: 'item-1', title: 'Item 1', price: 10, qty: 1, image: '' }]} />,
     );
     expect(container.firstChild).toBeTruthy();
   });
