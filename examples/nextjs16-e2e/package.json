@@ -1,7 +1,8 @@
 {
-  "name": "@electroplix-ds/nextjs-e2e",
+  "name": "@electroplix-ds/nextjs16-e2e",
   "private": true,
   "version": "0.0.0",
+  "description": "SSR validation harness on Next.js 16 (current latest stable).",
   "scripts": {
     "dev": "next dev -p 3099",
     "build": "next build",
@@ -10,12 +11,14 @@
   },
   "dependencies": {
     "@electroplix/components": "workspace:*",
-    "next": "^15.3.0",
+    "next": "^16.2.6",
     "react": "19.2.5",
     "react-dom": "19.2.5"
   },
   "devDependencies": {
+    "@types/node": "22.13.1",
     "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
     "typescript": "~5.7.3"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "@electroplix-ds/nextjs15-e2e",
+  "private": true,
+  "version": "0.0.0",
+  "description": "SSR validation harness pinned to Next.js 15.3.8 (LTS-track).",
+  "scripts": {
+    "dev": "next dev -p 3098",
+    "build": "next build",
+    "start": "next start -p 3098",
+    "test:ssr": "node --test src/ssr-validation.mjs"
+  },
+  "dependencies": {
+    "@electroplix/components": "workspace:*",
+    "next": "15.3.8",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.1",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
+    "typescript": "~5.7.3"
+  }
+}

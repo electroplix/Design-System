@@ -1,15 +1,16 @@
-import assert from 'node:assert';
 /**
- * SSR Validation Script
+ * SSR Validation Script — Next.js 15.3.8 example.
  *
- * Validates that @electroplix/components can be imported in a Node.js
- * environment without crashing (no browser globals accessed at import time).
+ * Validates that `@electroplix/components` and `@electroplix/components/config`
+ * import cleanly in a pure Node.js (no DOM) context. This catches accidental
+ * top-level access to `window`, `document`, or other browser globals.
  *
- * Run: node --test src/ssr-validation.mjs
+ * Run via:  pnpm --filter @electroplix-ds/nextjs15-e2e test:ssr
  */
+import assert from 'node:assert';
 import { test } from 'node:test';
 
-test('components package imports without error', async () => {
+test('main entry imports without error in Node', async () => {
   const mod = await import('@electroplix/components');
   assert.ok(mod.ElectroplixProvider, 'ElectroplixProvider should be exported');
   assert.ok(mod.Button, 'Button should be exported');
@@ -17,6 +18,9 @@ test('components package imports without error', async () => {
   assert.ok(mod.PrimaryNav, 'PrimaryNav should be exported');
   assert.ok(mod.ContactForm, 'ContactForm should be exported');
   assert.ok(mod.Badge, 'Badge should be exported');
+  assert.ok(mod.BlogCard, 'BlogCard should be exported');
+  assert.ok(mod.PricingTable, 'PricingTable should be exported');
+  assert.ok(mod.SiteSearchBar, 'SiteSearchBar should be exported');
 });
 
 test('config subpath imports without error (server-safe)', async () => {
@@ -27,8 +31,14 @@ test('config subpath imports without error (server-safe)', async () => {
   assert.strictEqual(typeof config.defaultConfig.buttons.bgColor, 'string');
 });
 
-test('defineConfig returns valid config', async () => {
-  const { defineConfig } = await import('@electroplix/components/config');
+test('defineConfig + mergeTheme produce a valid result', async () => {
+  const { defineConfig, defaultConfig, mergeTheme } = await import(
+    '@electroplix/components/config'
+  );
   const cfg = defineConfig({ buttons: { bgColor: '#000' } });
   assert.strictEqual(cfg.buttons.bgColor, '#000');
+
+  const merged = mergeTheme(defaultConfig.buttons, cfg.buttons);
+  assert.strictEqual(merged.bgColor, '#000');
+  assert.ok(typeof merged.radius === 'number');
 });

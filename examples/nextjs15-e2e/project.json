@@ -1,0 +1,41 @@
+{
+  "name": "nextjs15-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "examples/nextjs15-e2e/src",
+  "tags": ["scope:e2e", "type:app", "framework:next15"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "next build",
+        "cwd": "examples/nextjs15-e2e"
+      },
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/.next"]
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "next dev -p 3098",
+        "cwd": "examples/nextjs15-e2e"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "next start -p 3098",
+        "cwd": "examples/nextjs15-e2e"
+      },
+      "dependsOn": ["build"]
+    },
+    "test:ssr": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --test src/ssr-validation.mjs",
+        "cwd": "examples/nextjs15-e2e"
+      },
+      "dependsOn": ["^build"]
+    }
+  }
+}
