@@ -10,8 +10,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  # Pinned to match @playwright/test in package.json. Bump together.
+  PLAYWRIGHT_VERSION: 1.60.0
+
 jobs:
+  # ─────────────────────────────────────────────
+  # Lint — fail fast on style/correctness errors
+  # ─────────────────────────────────────────────
   lint:
+    name: Lint (biome ci)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,9 +33,14 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
 
+  # ─────────────────────────────────────────────
+  # Unit tests on Node 22 + 24
+  # ─────────────────────────────────────────────
   test:
+    name: Unit tests (Node ${{ matrix.node-version }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         node-version: [22, 24]
     steps:
@@ -42,8 +55,13 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
 
+  # ─────────────────────────────────────────────
+  # Library build + dist verification
+  # ─────────────────────────────────────────────
   build:
+    name: Build @electroplix/components
     runs-on: ubuntu-latest
+    needs: [lint, test]
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -66,7 +84,40 @@ jobs:
         working-directory: packages/components
         run: npm pack --dry-run
 
+  # ─────────────────────────────────────────────
+  # Next.js SSR validation matrix (15.3.8 + 16.x)
+  # ─────────────────────────────────────────────
+  nextjs-ssr:
+    name: Next.js SSR (${{ matrix.app }})
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [nextjs15-e2e, nextjs16-e2e]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build library (cached by nx)
+        run: pnpm build
+      - name: Build Next.js app
+        run: npx nx build ${{ matrix.app }}
+      - name: SSR validation tests
+        run: npx nx test:ssr ${{ matrix.app }}
+
+  # ─────────────────────────────────────────────
+  # Playwright e2e against Vite showcase
+  # Browsers cached at ~/.cache/ms-playwright keyed by Playwright version.
+  # ─────────────────────────────────────────────
   e2e:
+    name: Playwright e2e (firefox)
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -79,6 +130,33 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: npx playwright install --with-deps firefox
-      - run: pnpm build
-      - run: npx nx e2e components-e2e --project=firefox
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ env.PLAYWRIGHT_VERSION }}-firefox
+
+      - name: Install Playwright Firefox + system deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps firefox
+
+      - name: Install Playwright system deps only (cached browsers)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps firefox
+
+      - name: Build library
+        run: pnpm build
+
+      - name: Run Playwright e2e
+        run: npx nx e2e components-e2e --project=firefox
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: dist/.playwright/e2e/components-e2e/playwright-report
+          retention-days: 14
+          if-no-files-found: ignore
