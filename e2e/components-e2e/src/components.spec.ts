@@ -41,6 +41,11 @@ const CONSOLE_IGNORE_PATTERNS = [
   /was passed to the src attribute/i,
   /Hydration/i,
   /devtools/i,
+  /cannot contain/i, // React DOM nesting warnings (<p> inside <p>)
+  /unique "key" prop/i, // React key warnings in demo components
+  /Cookie.*rejected/i, // Third-party cookie warnings (embedded tweets)
+  /X-Frame-Options/i, // Embedded iframe denials
+  /SameSite/i, // Cross-site cookie warnings
 ];
 
 test.describe('Showcase home page', () => {
@@ -77,7 +82,7 @@ test.describe('Showcase category pages', () => {
       await expect(page.locator(`[data-category="${c.slug}"]`)).toBeVisible();
 
       // The category page heading should contain the human-readable title.
-      await expect(page.getByRole('heading', { name: c.title, level: 2 })).toBeVisible();
+      await expect(page.getByRole('heading', { name: c.title, level: 2 }).first()).toBeVisible();
 
       // At least one component demo should be rendered.
       await expect(

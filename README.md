@@ -1,168 +1,256 @@
-# Electroplix Design System
+<p align="center">
+  <img src="repo-assets/icon-96x96.png" alt="Electroplix Design System" width="96" height="96" />
+</p>
 
-Electroplix Design System is a modular, production-grade collection of UI components, design tokens, utilities, and tooling to accelerate consistent frontend development across Electroplix applications. Built for reliability, accessibility, theming, and performance, this repository packages reusable components and libraries for consumption in NX monorepos and downstream applications.
+<h1 align="center">Electroplix Design System</h1>
 
-<!-- Badges: replace placeholders with your CI/status badges -->
+<p align="center">
+  <strong>158 production-grade React 19 components · 18 categories · AI-builder ready</strong>
+</p>
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()
-[![License](https://img.shields.io/badge/license-MIT-blue)]()
-[![Latest Release](https://img.shields.io/badge/release-0.5.0--alpha.0-blue)]()
-[![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)]()
+<p align="center">
+  <a href="https://github.com/electroplix/Design-System/actions"><img src="https://img.shields.io/github/actions/workflow/status/electroplix/Design-System/ci.yml?branch=main&style=flat-square&label=CI" alt="CI"></a>
+  <a href="https://www.npmjs.com/package/@electroplix/components"><img src="https://img.shields.io/npm/v/@electroplix/components?style=flat-square&color=blue" alt="npm"></a>
+  <a href="https://github.com/electroplix/Design-System/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License"></a>
+  <img src="https://img.shields.io/badge/react-19-blue?style=flat-square" alt="React 19">
+  <img src="https://img.shields.io/badge/next.js-15%20%7C%2016-black?style=flat-square" alt="Next.js">
+  <img src="https://img.shields.io/badge/node-%E2%89%A524-brightgreen?style=flat-square" alt="Node">
+</p>
+
+---
 
 ## Overview
 
-- Purpose: Provide a single, audited source of truth for UI components, design tokens, and frontend utilities used across Electroplix products.
-
-### Goals
-- Consistency: Shared visual language and API patterns.
-- Accessibility: WCAG-compliant components and accessible patterns.
-- Performance: Lightweight builds and tree-shaking-friendly packages.
-- Security: Dependency hygiene and security-first development.
-- Reusability: Multi-package Nx-friendly structure for apps and micro-frontends.
-
-## Contents
-- `/packages/components` — UI components (React 19, 158 components across 18 categories)
-- `/examples/vite-showcase` — Component gallery covering every component
-- `/examples/nextjs15-e2e` — Next.js 15.3.8 SSR validation harness
-- `/examples/nextjs16-e2e` — Next.js 16.x SSR validation harness
-- `/e2e/components-e2e` — Playwright end-to-end tests for the showcase
-- `/docs` — Architecture notes (showcase, Next.js strategy)
-- `/scripts` — Build, release, and audit helpers
-
-## Quick Start
-
-1. Install
+Electroplix Design System is a modular, open-source collection of **parametric UI components**, design tokens, and tooling built for modern React applications. Every component is config-driven, tree-shakeable, and validated against **Next.js 15.3.8** and **Next.js 16.x** for full SSR/RSC compatibility.
 
 ```bash
+pnpm add @electroplix/components
+```
+
+---
+
+## ✨ Highlights
+
+| Feature | Details |
+|:--------|:--------|
+| **158 Components** | Across 18 categories — navigation, hero, buttons, forms, content, data-display, ecommerce, lists-cards, marketing, media, miscellaneous, modals, onboarding, search, site-identity, social, user-accounts, blog |
+| **React 19** | Built on the latest React with full concurrent features support |
+| **Next.js 15 & 16** | SSR-validated with dedicated harness apps for both major versions |
+| **AI-Builder Metadata** | Rich JSON definitions with placement hints, pairing suggestions, and page-type mappings — designed for LLM agents and vibe-coding tools to understand and assemble UIs |
+| **Zero Runtime Dependencies** | Lightweight ESM bundle (~173 kB packed) with full tree-shaking |
+| **TypeScript** | Complete type definitions emitted with every build |
+| **Biome** | Ultra-fast linting & formatting — no ESLint/Prettier overhead |
+| **Nx Monorepo** | Cached builds, affected-only testing, and dependency graph visualization |
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Prerequisites: Node ≥24, pnpm ≥9
+
+# 1. Clone & install
+git clone https://github.com/electroplix/Design-System.git
+cd Design-System
 pnpm install
-```
 
-2. Build All
+# 2. Build everything
+pnpm build
 
-```bash
-pnpm run build
-```
-
-3. Run Showcase
-
-```bash
+# 3. Launch the interactive showcase
 pnpm nx dev vite-showcase
+# → http://localhost:5173
+
+# 4. Run tests
+pnpm test
 ```
 
-4. Run Storybook
+---
 
-```bash
-pnpm nx storybook components
+## 📂 Repository Structure
+
+```
+├── packages/components/        # @electroplix/components — the core library
+│   ├── src/components/         # 158 components across 18 category folders
+│   ├── metadata/               # AI-ready JSON definitions per category
+│   ├── dist/                   # Built ESM + type declarations
+│   └── scripts/                # Metadata sync & post-build helpers
+├── examples/
+│   ├── vite-showcase/          # Full interactive gallery (all 158 components)
+│   ├── nextjs15-e2e/           # Next.js 15.3.8 SSR validation app
+│   └── nextjs16-e2e/           # Next.js 16.x SSR validation app
+├── e2e/components-e2e/         # Playwright end-to-end tests (18 routes)
+├── docs/                       # Architecture decision records
+├── .github/workflows/          # CI + Release automation
+├── biome.json                  # Linter & formatter config
+└── nx.json                     # Monorepo orchestration
 ```
 
-## Core Principles
-- API Stability: Semantic versioning and clear deprecation policy.
-- Accessibility: Keyboard interactions, focus management, and ARIA where required.
-- Theming & Tokens: All visual values come from tokens; runtime theme overrides supported.
-- Small Surface Area: Components are composable and unopinionated where appropriate.
-- Test Coverage: Unit tests, visual regression tests, and accessibility audits.
+---
 
-## Usage & Conventions
-- Folder layout: each package follows `src`, `__tests__`, `stories`/`examples`, `package.json`.
-- Export policy: small default bundle + named exports for tree-shaking.
-- Linting & Formatting: **Biome** at workspace root.
-- Types: Fully typed with TypeScript; builds emit declaration files.
+## 🖼 Showcases
 
-## Security & Auditing
-- Regular dependency scans via Dependabot and automated security checks in CI.
-- Releases follow the **Nx Release** workflow with conventional commits.
-- Maintain `CHANGELOG.md` for historical traceability.
+| App | Stack | Command | Port |
+|:----|:------|:--------|:-----|
+| **Gallery** | Vite + React 19 | `pnpm nx dev vite-showcase` | 5173 |
+| **Next.js 15** | Next.js 15.3.8 | `pnpm nx dev nextjs15-e2e` | 3098 |
+| **Next.js 16** | Next.js 16.x | `pnpm nx dev nextjs16-e2e` | 3099 |
+| **Storybook** | Storybook 8 | `pnpm nx storybook components` | 6006 |
 
-## Accessibility
-- Each component documents keyboard behaviors, focus management, and limitations.
-- Automated a11y checks in CI.
+---
 
-## Contributing
-- PR process: Fork → feature branch → PR with tests and Storybook demo.
-- All PRs require: unit tests, Storybook story, Green CI.
+## 🛠 Commands
 
-Developer setup
+| Command | Description |
+|:--------|:------------|
+| `pnpm build` | Build all packages (Nx cached) |
+| `pnpm test` | Unit tests (Jest, 172 specs) |
+| `pnpm test:e2e` | Playwright E2E against showcase |
+| `pnpm lint` | Biome lint check |
+| `pnpm lint:fix` | Auto-fix lint issues |
+| `pnpm format` | Format codebase |
+| `pnpm ci:check` | Strict CI validation (lint + format) |
+| `pnpm release:dry` | Preview next version & changelog |
+| `pnpm publish:dry` | Full publish dry-run with safeguards |
+| `pnpm graph` | Visualize dependency graph |
 
-```bash
-pnpm install
-pnpm nx run-many -t test
-pnpm nx dev vite-showcase
-```
+---
 
-Test & release
-
-- Tests: `pnpm nx test`
-- Lint: `pnpm nx lint`
-- Build: `pnpm nx build`
-- Release: `pnpm run release` (recommended tools: `changesets` or `standard-version`)
 ## 🚀 Publishing & Releases
 
-The release process is automated via **Nx Release** and **GitHub Actions**, ensuring consistent versioning and high-quality artifacts.
+Automated via **Nx Release** + **GitHub Actions**. On every push to `main` that touches `packages/components`:
 
-### 1. Automated Workflow (CI/CD)
-The `@electroplix/components` package is published automatically when changes are pushed to the `main` branch, provided the CI checks pass.
+1. **Validate** — lint, test, build
+2. **Version** — conventional commits determine semver bump
+3. **Changelog** — auto-generated from commit history
+4. **Tag & Release** — GitHub Release with full notes
+5. **Publish** — `npm publish --provenance --access public`
 
-- **Trigger:** A push to `main` involving files in `packages/components`.
-- **Process:**
-  1. **Validation:** Runs `lint`, `test`, and `build`.
-  2. **Versioning:** `nx release` calculates the next version based on **Conventional Commits** (e.g., `feat:`, `fix:`, `perf:`).
-  3. **Artifacts:** Generates `CHANGELOG.md`, updates `package.json`, and creates a Git Tag/GitHub Release.
-  4. **Publish:** Uploads the build to the **npmjs.com** registry.
+### Setup Requirements
 
-### 2. Authentication (Tokens)
-To enable automated publishing, the following secrets must be configured in the GitHub Repository (`Settings -> Secrets and variables -> Actions`):
+| Secret | Purpose |
+|:-------|:--------|
+| `NPM_TOKEN` | Classic Automation token from [npmjs.com](https://www.npmjs.com/) |
+| `GITHUB_TOKEN` | Auto-provided by GitHub Actions |
 
-- **`NPM_TOKEN`**: A **Classic "Automation"** or **"Publish"** token from [npmjs.com](https://www.npmjs.com/). This is used to authenticate the `npm publish` command.
-- **`GITHUB_TOKEN`**: Automatically provided by GitHub Actions to manage releases and tags.
+### Conventional Commits
 
-### 3. NPM vs. GitHub Packages
-| Registry | Use Case | Installation |
-| :--- | :--- | :--- |
-| **NPM (Public)** | Default. Best for public libraries. | `pnpm add @electroplix/components` |
-| **GitHub (Private)** | Best for internal/private team tools. | Requires `.npmrc` configuration. |
+| Prefix | Release |
+|:-------|:--------|
+| `fix:` | Patch (0.0.x) |
+| `feat:` | Minor (0.x.0) |
+| `feat!:` / `BREAKING CHANGE:` | Major (x.0.0) |
 
-### 4. Manual Verification
-Before pushing to `main`, you can preview the release impact:
-- `pnpm release:dry`: Preview the version bump and changelog without making changes.
-- `pnpm publish:dry`: Runs all safeguards (lint, test, build, audit) and simulates an npm publish.
+### Manual Verification
 
-### 5. Conventional Commits
-We strictly follow [Conventional Commits](https://www.conventionalcommits.org/). This allows Nx to automate our versioning:
-- `fix: ...` -> Triggers a **patch** release (0.0.x).
-- `feat: ...` -> Triggers a **minor** release (0.x.0).
-- `feat/fix!:` or `BREAKING CHANGE:` -> Triggers a **major** release (x.0.0).
+```bash
+pnpm release:dry    # Preview version bump
+pnpm publish:dry    # Full safeguard dry-run
+```
 
 ---
 
 ## 🍱 Component Categories
-... (rest of the file)
 
-- License: MIT (adjust if necessary).
-- Maintainers: list core team and escalation path in `MAINTAINERS.md`.
-- Security policy: include `SECURITY.md` with responsible disclosure process.
-
-## Roadmap
-- **v1**: Core components, tokens, CI security pipeline.
-- **v2**: Runtime design tokens, multi-theme support, component composition utilities.
-- **v3**: Cross-framework adapters (Vue, Svelte) and enhanced visual regression testing.
-
-## Examples & Recipes
-Point to `/examples` for concrete pages showcasing:
-- Theming and token overrides
-- Form patterns and validation
-- Modal & focus-trap best practices
-- Performance tips and bundle analysis
-
-## FAQ
-- How to upgrade: See migration guides and deprecation timeline in `docs/`.
-- How to report vulnerabilities: See `SECURITY.md` for disclosure steps.
-- Support: open an issue or discussion, or contact maintainers listed in `MAINTAINERS.md`.
-
-## Contact & Support
-- Maintainers: github.com/adnan-the-coder
-- Contribution welcome — link to Issues, Discussions, and PR templates.
-
-## License
-- SPDX: MIT.
+| # | Category | Count | Examples |
+|:--|:---------|:------|:---------|
+| 1 | Navigation | 11 | PrimaryNav, SideDrawerNav, Breadcrumbs |
+| 2 | Hero | 7 | StaticHero, AnimatedHero, VideoHero |
+| 3 | Buttons | 11 | PrimaryButton, GhostButton, IconButton |
+| 4 | Forms | 14 | TextInput, SelectDropdown, FormShell |
+| 5 | Content | 7 | HeadingSection, FAQ, ArticleLayout |
+| 6 | Data Display | 11 | StatsCard, DataTable, BadgeGroup |
+| 7 | Ecommerce | 10 | ProductCard, CartDrawer, CheckoutForm |
+| 8 | Lists & Cards | 8 | CardGrid, FeatureList, ProfileCard |
+| 9 | Marketing | 10 | PricingTable, CTA, FeatureComparison |
+| 10 | Media | 12 | ImageGallery, VideoPlayer, Carousel |
+| 11 | Miscellaneous | 8 | Divider, Banner, Placeholder |
+| 12 | Modals | 9 | GenericModal, SlideOver, ConfirmDialog |
+| 13 | Onboarding | 6 | Stepper, ProductTour, WelcomeFlow |
+| 14 | Search | 6 | CommandPalette, FilterBar, SearchInput |
+| 15 | Site Identity | 6 | Logo, Footer, CopyrightNotice |
+| 16 | Social | 7 | ShareButtons, SocialFeed, ProfileWidget |
+| 17 | User Accounts | 7 | AuthForm, ProfileSettings, RoleBadge |
+| 18 | Blog | 9 | PostPreview, AuthorCard, ReadingProgress |
 
 ---
+
+## 🤖 AI Builder Integration
+
+Electroplix components ship with a **complete metadata layer** (`packages/components/metadata/`) specifically designed for **LLM agents and vibe-coding tools**. When developers use AI assistants (Cursor, Copilot, Kiro, v0, Bolt, etc.) to build UIs with `@electroplix/components`, the metadata gives the model full context about every component — props, placement logic, page-type affinity, and pairing suggestions — enabling accurate, context-aware code generation without hallucination.
+
+```json
+{
+  "name": "PrimaryButton",
+  "description": "Main call-to-action button with theme-aware styling",
+  "props": {
+    "label": { "type": "string", "required": true },
+    "variant": { "type": "enum", "values": ["solid", "outline", "ghost"] }
+  },
+  "aiHints": {
+    "placement": "body",
+    "priority": 9,
+    "pageTypes": ["SaaS", "Ecommerce", "Landing"],
+    "pairsWellWith": ["hero.StaticHero", "content.HeadingSection"]
+  }
+}
+```
+
+> **For AI agents:** Import the metadata JSON files to get a structured overview of all 158 components, their props, and how they compose together. This is the recommended way to understand the library programmatically.
+
+---
+
+## 🎨 Theming
+
+Components consume a `BaseTheme` via `ElectroplixProvider`. Two entry points:
+
+- `@electroplix/components` — Client components (`"use client"`)
+- `@electroplix/components/config` — Server-safe theme utilities
+
+---
+
+## 🛡 Quality & Security
+
+- **Linter:** Biome (ultra-fast, replaces ESLint + Prettier)
+- **Tests:** 172 unit specs (Jest + React Testing Library)
+- **E2E:** Playwright with Chromium (CI-cached browsers)
+- **SSR:** Continuously validated against Next.js 15 & 16
+- **Deps:** `pnpm audit --audit-level=high` in CI
+- **Provenance:** npm publish with `--provenance` for supply-chain integrity
+
+---
+
+## 🗺 Roadmap
+
+| Version | Focus |
+|:--------|:------|
+| **v0.5** (current) | Core components, Nx monorepo, CI/CD, SSR validation |
+| **v1.0** | Stable API, design tokens, full Storybook docs |
+| **v2.0** | Runtime theme switching, composition utilities |
+| **v3.0** | Cross-framework adapters (Vue, Svelte), visual regression |
+
+---
+
+## 🤝 Contributing
+
+1. Fork → feature branch → PR with tests
+2. All PRs require: unit tests, green CI, conventional commit message
+3. See [Docs.md](./Docs.md) for architecture details
+
+```bash
+pnpm install
+pnpm test
+pnpm nx dev vite-showcase
+```
+
+---
+
+## 📄 License
+
+[MIT](./LICENSE) © [Adnan](https://github.com/adnan-the-coder)
+
+---
+
+<p align="center">
+  <sub>Built with ❤️ by the Electroplix team</sub>
+</p>
