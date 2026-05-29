@@ -14,7 +14,7 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    if: "!contains(github.event.head_commit.message, 'skip ci') && !contains(github.event.head_commit.message, 'chore(release)')"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,10 +47,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Version & Changelog
-        run: npx nx release --skip-publish
+      - name: Version, Changelog & Tag
+        run: npx nx release --skip-publish --first-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
 
       - name: Publish to npm
         working-directory: packages/components
