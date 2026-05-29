@@ -1,7 +1,9 @@
 'use client';
 /* ------------------------------------------------------------------ */
 /*  @electroplix/components – public API                              */
+
 /*  Version: 0.5.0-alpha                                              */
+
 /*  This is the MAIN entry point ("use client").                      */
 /*  All components, provider, hooks, icons, and utilities live here.  */
 /*                                                                    */
