@@ -96,7 +96,7 @@ Electroplix Design System is a **production-grade component library** delivering
 │       ├── metadata/              # 18 JSON files (AI builder definitions)
 │       ├── scripts/               # sync-metadata.mjs, postbuild.mjs
 │       ├── dist/                  # Build output (ESM + .d.ts)
-│       └── package.json           # v0.5.0-alpha.0
+│       └── package.json           # v0.5.0-alpha.1
 ├── examples/
 │   ├── vite-showcase/             # Interactive gallery (all 158 components)
 │   │   ├── src/App.tsx            # 18 routes + custom nav header
@@ -111,7 +111,7 @@ Electroplix Design System is a **production-grade component library** delivering
 ├── e2e/
 │   └── components-e2e/            # Playwright E2E tests
 │       ├── src/components.spec.ts # Tests all 18 routes
-│       └── playwright.config.ts   # Chromium, 127.0.0.1, 120s timeout
+│       └── playwright.config.ts   # Firefox, 127.0.0.1, 120s timeout
 ├── docs/
 │   ├── nextjs-strategy.md         # Why both Next 15 & 16
 │   └── showcase-architecture.md   # Gallery design decisions
@@ -133,7 +133,7 @@ Electroplix Design System is a **production-grade component library** delivering
 ```json
 {
   "name": "@electroplix/components",
-  "version": "0.5.0-alpha.0",
+  "version": "0.5.0-alpha.1",
   "type": "module",
   "license": "MIT",
   "main": "./dist/index.esm.js",
@@ -308,7 +308,7 @@ Each app:
 
 - Tests all 18 showcase routes
 - Uses stable `data-category` and `data-component` selectors
-- Chromium only (CI-cached browsers)
+- Firefox only (CI-cached browsers)
 - Config: `skipInstall: true` (browsers cached in CI)
 - Run: `pnpm test:e2e`
 
@@ -338,7 +338,7 @@ Each app:
 └────┬────┘
      │
 ┌────▼─────────┐
-│  E2E         │  Playwright (Chromium, cached)
+│  E2E         │  Playwright (Firefox, cached)
 └────┬─────────┘
      │
 ┌────▼─────────┐
@@ -362,7 +362,104 @@ Triggers on push to `main` when `packages/components` changes:
 
 - **Independent versioning** — only `@electroplix/components` is published
 - **Conventional commits** drive version bumps automatically
-- **First release** will be `0.5.0-alpha.1` (next after current `0.5.0-alpha.0`)
+- **Current published version:** `0.5.0-alpha.1` on [npmjs.com](https://www.npmjs.com/package/@electroplix/components)
+
+### How a Release Happens (End-to-End)
+
+```
+Developer pushes to main (touching packages/components/src/** or package.json)
+     │
+     ▼
+┌─────────────────────────────────────────────────────────┐
+│  release.yml triggers (skips if commit msg has           │
+│  "skip ci" or "chore(release)")                          │
+└────┬────────────────────────────────────────────────────┘
+     │
+     ▼
+┌─────────────────────────────────────────────────────────┐
+│  1. Checkout (full history, fetch-depth: 0)              │
+│  2. pnpm install --frozen-lockfile                       │
+│  3. pnpm build (all 4 projects)                          │
+│  4. pnpm test (172 unit specs)                           │
+│  5. pnpm lint (biome ci, 197 files)                      │
+└────┬────────────────────────────────────────────────────┘
+     │  All pass? ✅
+     ▼
+┌─────────────────────────────────────────────────────────┐
+│  6. Auto-detect: first release or subsequent?            │
+│     → Checks if any @electroplix/components@* tags exist │
+│     → First release: uses --first-release flag           │
+│     → Subsequent: uses standard nx release               │
+└────┬────────────────────────────────────────────────────┘
+     │
+     ▼
+┌─────────────────────────────────────────────────────────┐
+│  7. nx release --skip-publish                            │
+│     → Reads conventional commits since last tag          │
+│     → Determines bump: fix→patch, feat→minor, !→major   │
+│     → Updates package.json version                       │
+│     → Generates CHANGELOG.md entry                       │
+│     → Commits: "chore(release): publish"                 │
+│     → Creates git tag: @electroplix/components@x.y.z     │
+│     → Pushes commit + tag to origin/main                 │
+│     → Creates GitHub Release with changelog notes        │
+└────┬────────────────────────────────────────────────────┘
+     │
+     ▼
+┌─────────────────────────────────────────────────────────┐
+│  8. npm publish --provenance --access public             │
+│     → Publishes from packages/components/                │
+│     → Uses NPM_TOKEN (Automation type, 2FA bypass)       │
+│     → Attaches SLSA provenance attestation               │
+│     → Package live on npmjs.com                          │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Version Bump Rules (Conventional Commits)
+
+| Commit Prefix | Example | Bump |
+|:--------------|:--------|:-----|
+| `fix(components):` | `fix(components): correct Button hover state` | Patch (0.0.x) |
+| `feat(components):` | `feat(components): add DatePicker component` | Minor (0.x.0) |
+| `feat(components)!:` | `feat(components)!: redesign theme API` | Major (x.0.0) |
+| `BREAKING CHANGE:` in body | Any commit with this footer | Major (x.0.0) |
+
+### What Gets Published
+
+The npm tarball contains only:
+```
+dist/              # ESM bundle + TypeScript declarations
+metadata/          # 18 AI-ready JSON files
+cli.cjs            # CLI helper
+README.md          # Package readme
+CHANGELOG.md       # Auto-generated changelog
+LICENSE            # MIT
+SECURITY.md        # Security policy
+```
+
+Source code, tests, examples, and config files are **excluded**.
+
+### Nx Release Configuration (`nx.json`)
+
+```json
+{
+  "release": {
+    "projects": ["packages/*"],
+    "projectsRelationship": "independent",
+    "version": {
+      "preVersionCommand": "npx nx run-many -t build && npx nx run @electroplix/components:postbuild",
+      "conventionalCommits": true,
+      "fallbackCurrentVersionResolver": "disk"
+    },
+    "changelog": {
+      "automaticFromRef": true,
+      "projectChangelogs": {
+        "createRelease": "github"
+      }
+    }
+  }
+}
+```
 
 ### Pre-Push Checklist
 
@@ -453,5 +550,5 @@ chore(biome): adjust lint rules
 ---
 
 <p align="center">
-  <sub>Last updated: 2026-05-29 · v0.5.0-alpha.0</sub>
+  <sub>Last updated: 2026-05-29 · v0.5.0-alpha.1</sub>
 </p>
