@@ -95,13 +95,48 @@ Test & release
 - Lint: `pnpm nx lint`
 - Build: `pnpm nx build`
 - Release: `pnpm run release` (recommended tools: `changesets` or `standard-version`)
+## 🚀 Publishing & Releases
 
-## Versioning & Release
-- Semantic Versioning (MAJOR.MINOR.PATCH).
-- Automated changelog generation with `changesets` or `standard-version`.
-- Releases signed and published to npm under `@electroplix/*`.
+The release process is automated via **Nx Release** and **GitHub Actions**, ensuring consistent versioning and high-quality artifacts.
 
-## Governance & Licensing
+### 1. Automated Workflow (CI/CD)
+The `@electroplix/components` package is published automatically when changes are pushed to the `main` branch, provided the CI checks pass.
+
+- **Trigger:** A push to `main` involving files in `packages/components`.
+- **Process:**
+  1. **Validation:** Runs `lint`, `test`, and `build`.
+  2. **Versioning:** `nx release` calculates the next version based on **Conventional Commits** (e.g., `feat:`, `fix:`, `perf:`).
+  3. **Artifacts:** Generates `CHANGELOG.md`, updates `package.json`, and creates a Git Tag/GitHub Release.
+  4. **Publish:** Uploads the build to the **npmjs.com** registry.
+
+### 2. Authentication (Tokens)
+To enable automated publishing, the following secrets must be configured in the GitHub Repository (`Settings -> Secrets and variables -> Actions`):
+
+- **`NPM_TOKEN`**: A **Classic "Automation"** or **"Publish"** token from [npmjs.com](https://www.npmjs.com/). This is used to authenticate the `npm publish` command.
+- **`GITHUB_TOKEN`**: Automatically provided by GitHub Actions to manage releases and tags.
+
+### 3. NPM vs. GitHub Packages
+| Registry | Use Case | Installation |
+| :--- | :--- | :--- |
+| **NPM (Public)** | Default. Best for public libraries. | `pnpm add @electroplix/components` |
+| **GitHub (Private)** | Best for internal/private team tools. | Requires `.npmrc` configuration. |
+
+### 4. Manual Verification
+Before pushing to `main`, you can preview the release impact:
+- `pnpm release:dry`: Preview the version bump and changelog without making changes.
+- `pnpm publish:dry`: Runs all safeguards (lint, test, build, audit) and simulates an npm publish.
+
+### 5. Conventional Commits
+We strictly follow [Conventional Commits](https://www.conventionalcommits.org/). This allows Nx to automate our versioning:
+- `fix: ...` -> Triggers a **patch** release (0.0.x).
+- `feat: ...` -> Triggers a **minor** release (0.x.0).
+- `feat/fix!:` or `BREAKING CHANGE:` -> Triggers a **major** release (x.0.0).
+
+---
+
+## 🍱 Component Categories
+... (rest of the file)
+
 - License: MIT (adjust if necessary).
 - Maintainers: list core team and escalation path in `MAINTAINERS.md`.
 - Security policy: include `SECURITY.md` with responsible disclosure process.
