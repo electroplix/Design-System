@@ -47,11 +47,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Check if first release
+        id: check-tags
+        run: |
+          if git tag -l "@electroplix/components@*" | grep -q .; then
+            echo "first_release=false" >> $GITHUB_OUTPUT
+          else
+            echo "first_release=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Version, Changelog & Tag
-        run: npx nx release --skip-publish --first-release
+        id: version
+        run: |
+          if [ "${{ steps.check-tags.outputs.first_release }}" = "true" ]; then
+            npx nx release --skip-publish --first-release
+          else
+            npx nx release --skip-publish
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
 
       - name: Publish to npm
         working-directory: packages/components

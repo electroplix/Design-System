@@ -76,15 +76,13 @@
     "version": {
       "preVersionCommand": "npx nx run-many -t build && npx nx run @electroplix/components:postbuild",
       "conventionalCommits": true,
-      "fallbackCurrentVersionResolver": "disk",
-      "generatorOptions": {}
+      "fallbackCurrentVersionResolver": "disk"
     },
     "changelog": {
       "automaticFromRef": true,
       "projectChangelogs": {
         "createRelease": "github"
-      },
-      "workspaceChangelog": true
+      }
     }
   },
   "analytics": false
