@@ -136,6 +136,7 @@ test.describe('Showcase has no real console errors across categories', () => {
     const realErrors = errors.filter((e) => !CONSOLE_IGNORE_PATTERNS.some((rx) => rx.test(e)));
 
     if (realErrors.length > 0) {
+      // biome-ignore lint/suspicious/noConsoleLog: intentional test diagnostics
       console.log('Unexpected console errors:\n', realErrors.join('\n - '));
     }
     expect(realErrors).toHaveLength(0);
