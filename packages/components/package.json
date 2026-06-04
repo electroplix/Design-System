@@ -32,9 +32,7 @@
   },
   "typesVersions": {
     "*": {
-      "config": [
-        "./dist/config.d.ts"
-      ]
+      "config": ["./dist/config.d.ts"]
     }
   },
   "files": [
@@ -53,8 +51,8 @@
   },
   "author": "Electroplix",
   "peerDependencies": {
-    "react": ">=19.2.5 <20",
-    "react-dom": ">=19.2.5 <20"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
