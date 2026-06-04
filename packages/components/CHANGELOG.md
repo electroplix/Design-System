@@ -1,3 +1,13 @@
+## 0.5.0-alpha.3 (2026-06-04)
+
+### 🩹 Fixes
+
+- **peer-deps:** support Next.js 16 default React versions ([ab01def](https://github.com/electroplix/Design-System/commit/ab01def))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.2 (2026-05-29)
 
 ### 🚀 Features
