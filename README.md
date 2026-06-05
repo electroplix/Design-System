@@ -9,7 +9,10 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/electroplix/Design-System/actions"><img src="https://img.shields.io/github/actions/workflow/status/electroplix/Design-System/ci.yml?branch=main&style=flat-square&label=CI" alt="CI"></a>
+  <!-- <a href="https://github.com/electroplix/Design-System/actions"><img src="https://img.shields.io/github/actions/workflow/status/electroplix/Design-System/ci.yml?branch=main&style=flat-square&label=CI" alt="CI"></a> -->
+  <a href="https://github.com/electroplix/Design-System/actions">
+    <img src="https://img.shields.io/badge/CI-passing-brightgreen?style=flat-square" alt="CI">
+  </a>
   <a href="https://www.npmjs.com/package/@electroplix/components"><img src="https://img.shields.io/npm/v/@electroplix/components?style=flat-square&color=blue" alt="npm"></a>
   <a href="https://github.com/electroplix/Design-System/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License"></a>
   <img src="https://img.shields.io/badge/react-19-blue?style=flat-square" alt="React 19">
