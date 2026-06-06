@@ -3,8 +3,7 @@ import type React from 'react';
 import { useState } from 'react';
 import { useFormsTheme } from '../../core/provider';
 
-export interface ToggleSwitchProps
-  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
+export interface ToggleSwitchProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   as?: React.ElementType;
   label?: string;
   description?: string;

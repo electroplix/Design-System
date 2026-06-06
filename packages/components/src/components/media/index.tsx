@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Icon } from '../../core/icons';
 import { useMediaTheme } from '../../core/provider';
 
@@ -444,7 +444,8 @@ export function ImageGallery({
 
 /* ── LightboxGallery ────────────────────────────────────── */
 
-export interface LightboxGalleryProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onSelect'> {
+export interface LightboxGalleryProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onSelect'> {
   items: GalleryItem[];
   columns?: number | string;
 }
@@ -459,10 +460,13 @@ export function LightboxGallery({
   const md = useMD();
   const [sel, setSel] = useState<number | null>(null);
 
-  const go = (dir: -1 | 1) => {
-    if (sel === null) return;
-    setSel((sel + dir + items.length) % items.length);
-  };
+  const go = useCallback(
+    (dir: -1 | 1) => {
+      if (sel === null) return;
+      setSel((prev) => (prev === null ? null : (prev + dir + items.length) % items.length));
+    },
+    [sel, items.length],
+  );
 
   useEffect(() => {
     if (sel === null) return;
@@ -475,7 +479,7 @@ export function LightboxGallery({
 
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
-  }, [sel]);
+  }, [sel, go]);
 
   return (
     <>

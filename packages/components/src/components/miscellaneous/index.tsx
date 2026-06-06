@@ -1,5 +1,6 @@
 'use client';
 
+import type React from 'react';
 import { useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useMiscTheme } from '../../core/provider';

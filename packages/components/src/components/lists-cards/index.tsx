@@ -112,7 +112,13 @@ export interface AccordionProps extends React.ComponentPropsWithoutRef<'div'> {
   allowMultiple?: boolean;
 }
 
-export function Accordion({ items = [], allowMultiple = false, className, style, ...rest }: AccordionProps) {
+export function Accordion({
+  items = [],
+  allowMultiple = false,
+  className,
+  style,
+  ...rest
+}: AccordionProps) {
   const lc = useLC();
 
   const [open, setOpen] = useState<Set<string>>(new Set());

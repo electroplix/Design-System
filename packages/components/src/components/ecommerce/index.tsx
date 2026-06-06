@@ -1,4 +1,5 @@
 'use client';
+import type React from 'react';
 import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useEcommerceTheme } from '../../core/provider';
@@ -91,9 +92,7 @@ function useEcom() {
 
 /* ── CartDrawer ─────────────────────────────────────────── */
 
-export interface CartDrawerProps
-  extends CartCommonProps,
-    React.ComponentPropsWithoutRef<'aside'> {
+export interface CartDrawerProps extends CartCommonProps, React.ComponentPropsWithoutRef<'aside'> {
   open?: boolean;
   width?: number;
 }
@@ -387,7 +386,9 @@ export function CartDrawer({
 
 /* ── MiniCartPanel ──────────────────────────────────────── */
 
-export interface MiniCartPanelProps extends CartCommonProps, React.ComponentPropsWithoutRef<'div'> {}
+export interface MiniCartPanelProps
+  extends CartCommonProps,
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export function MiniCartPanel({
   items = [],
@@ -862,7 +863,13 @@ export function ProductGrid({
     return (
       <div
         className={className}
-        style={{ padding: e.sp * 2, textAlign: 'center', color: ui.muted, fontFamily: e.ff, ...style }}
+        style={{
+          padding: e.sp * 2,
+          textAlign: 'center',
+          color: ui.muted,
+          fontFamily: e.ff,
+          ...style,
+        }}
         {...rest}
       >
         No products found
@@ -1066,7 +1073,11 @@ export function VariantSelector({
 }: VariantSelectorProps) {
   const e = useEcom();
   return (
-    <div className={className} style={{ display: 'grid', gap: 12, fontFamily: e.ff, ...style }} {...rest}>
+    <div
+      className={className}
+      style={{ display: 'grid', gap: 12, fontFamily: e.ff, ...style }}
+      {...rest}
+    >
       {groups.map((g) => (
         <div key={g.name}>
           <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: ui.black }}>
@@ -1223,7 +1234,11 @@ export function PaymentButtons({
 }: PaymentButtonsProps) {
   const e = useEcom();
   return (
-    <div className={className} style={{ display: 'grid', gap: 8, fontFamily: e.ff, ...style }} {...rest}>
+    <div
+      className={className}
+      style={{ display: 'grid', gap: 8, fontFamily: e.ff, ...style }}
+      {...rest}
+    >
       {methods.map((m) => {
         const primary = m === 'card';
         return (

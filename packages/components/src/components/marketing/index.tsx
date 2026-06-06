@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Icon } from '../../core/icons';
 import { useMarketingTheme } from '../../core/provider';
 
@@ -230,7 +230,7 @@ export function CountdownTimer({
   const mk = useMK();
   const acc = accentColor ?? mk.accent;
 
-  const calc = () => {
+  const calc = useCallback(() => {
     const d = new Date(targetDate).getTime() - Date.now();
 
     if (d <= 0) return { d: 0, h: 0, m: 0, s: 0, done: true };
@@ -242,7 +242,7 @@ export function CountdownTimer({
       s: Math.floor((d % 60000) / 1000),
       done: false,
     };
-  };
+  }, [targetDate]);
 
   const [time, setTime] = useState(calc);
 
@@ -259,7 +259,7 @@ export function CountdownTimer({
     }, 1000);
 
     return () => clearInterval(id);
-  }, [targetDate]);
+  }, [calc, onExpire]);
 
   const Seg = ({ val, lbl }: { val: number; lbl: string }) => (
     <div style={{ textAlign: 'center' }}>
@@ -984,7 +984,11 @@ export function TrustBadges({ badges = [], title, className, style, ...rest }: T
   const mk = useMK();
 
   return (
-    <div className={className} style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }} {...rest}>
+    <div
+      className={className}
+      style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }}
+      {...rest}
+    >
       {title && <div style={{ fontWeight: 700, fontSize: mk.hs, marginBottom: 16 }}>{title}</div>}
 
       <div
@@ -1050,7 +1054,11 @@ export function StatsCounter({
   const mk = useMK();
 
   return (
-    <div className={className} style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }} {...rest}>
+    <div
+      className={className}
+      style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }}
+      {...rest}
+    >
       {title && (
         <div
           style={{
@@ -1159,7 +1167,11 @@ export function HowItWorks({
   const isHoriz = layout === 'horizontal';
 
   return (
-    <div className={className} style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }} {...rest}>
+    <div
+      className={className}
+      style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }}
+      {...rest}
+    >
       {title && (
         <div
           style={{

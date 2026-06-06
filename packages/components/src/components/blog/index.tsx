@@ -57,7 +57,14 @@ export interface BlogCardProps extends Omit<React.ComponentPropsWithoutRef<'arti
   variant?: 'vertical' | 'horizontal';
 }
 
-export function BlogCard({ post, onClick, variant = 'vertical', className, style, ...rest }: BlogCardProps) {
+export function BlogCard({
+  post,
+  onClick,
+  variant = 'vertical',
+  className,
+  style,
+  ...rest
+}: BlogCardProps) {
   const bg = useBG();
   const isH = variant === 'horizontal';
 
@@ -481,7 +488,13 @@ export interface ArchiveListProps extends React.ComponentPropsWithoutRef<'div'> 
   onPostClick?: (post: BlogPost) => void;
 }
 
-export function ArchiveList({ groups = [], onPostClick, className, style, ...rest }: ArchiveListProps) {
+export function ArchiveList({
+  groups = [],
+  onPostClick,
+  className,
+  style,
+  ...rest
+}: ArchiveListProps) {
   const bg = useBG();
 
   return (

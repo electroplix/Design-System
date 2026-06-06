@@ -1,4 +1,5 @@
 'use client';
+import type React from 'react';
 import { useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useDataDisplayTheme } from '../../core/provider';
@@ -58,7 +59,11 @@ export function ProgressBar({
   const trendColor = trend > 0 ? ui.success : trend < 0 ? ui.danger : ui.muted;
 
   return (
-    <div style={{ width: '100%', fontFamily: t.fontFamily }}>
+    <div
+      className={className}
+      style={{ width: '100%', fontFamily: t.fontFamily, ...style }}
+      {...rest}
+    >
       {(showLabel || label) && (
         <div
           style={{

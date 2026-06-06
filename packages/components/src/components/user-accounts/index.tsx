@@ -224,7 +224,8 @@ export function AuthForm({
 
 /* ── PasswordReset ──────────────────────────────────────── */
 
-export interface PasswordResetProps extends Omit<React.ComponentPropsWithoutRef<'section'>, 'onSubmit'> {
+export interface PasswordResetProps
+  extends Omit<React.ComponentPropsWithoutRef<'section'>, 'onSubmit'> {
   onSubmit?: (email: string) => void;
   loading?: boolean;
   success?: boolean;
