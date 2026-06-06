@@ -477,7 +477,6 @@ function list() {
       const _namePrefix = isLastName ? B.last : B.branch;
     }
 
-    if (!isLastCat) 
   }
 }
 
