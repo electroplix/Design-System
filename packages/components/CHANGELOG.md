@@ -1,3 +1,13 @@
+## 0.5.0-alpha.6 (2026-06-06)
+
+### 🩹 Fixes
+
+- add React.ComponentPropsWithoutRef extends to 13 components + extend e2e coverage ([110e217](https://github.com/electroplix/Design-System/commit/110e217))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.5 (2026-06-06)
 
 ### 🩹 Fixes
