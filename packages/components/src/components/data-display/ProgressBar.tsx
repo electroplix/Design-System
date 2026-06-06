@@ -5,7 +5,7 @@ import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── ProgressBar ────────────────────────────────────────── */
 
-export interface ProgressBarProps {
+export interface ProgressBarProps extends React.ComponentPropsWithoutRef<'div'> {
   value: number;
   showLabel?: boolean;
   height?: number;
@@ -35,6 +35,9 @@ export function ProgressBar({
   label,
   showTrend = false,
   previousValue,
+  className,
+  style,
+  ...rest
 }: ProgressBarProps) {
   const t = useDataDisplayTheme();
 

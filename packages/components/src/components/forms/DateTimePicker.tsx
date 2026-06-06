@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
-export interface DateTimePickerProps {
+export interface DateTimePickerProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   as?: React.ElementType;
   label?: string;
   name: string;
@@ -26,8 +27,6 @@ export interface DateTimePickerProps {
   gap?: number;
   labelSize?: number;
   inputSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const ui = {
@@ -67,6 +66,7 @@ export function DateTimePicker(props: DateTimePickerProps) {
     inputSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -91,6 +91,7 @@ export function DateTimePicker(props: DateTimePickerProps) {
         padding: `${py}px ${px}px`,
         ...style,
       }}
+      {...rest}
     >
       <div
         style={{

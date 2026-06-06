@@ -5,7 +5,7 @@ import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── PieChart (donut) ───────────────────────────────────── */
 
-export interface PieChartProps {
+export interface PieChartProps extends React.ComponentPropsWithoutRef<'figure'> {
   data: number[];
   labels?: string[];
   width?: number;
@@ -41,6 +41,9 @@ export function PieChart({
   width = 280,
   height = 280,
   title,
+  className,
+  style,
+  ...rest
 }: PieChartProps) {
   const t = useDataDisplayTheme();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -60,6 +63,7 @@ export function PieChart({
   if (safeData.length === 0) {
     return (
       <figure
+        className={className}
         style={{
           border: `1px solid ${border}`,
           borderRadius: radius,
@@ -71,7 +75,9 @@ export function PieChart({
           textAlign: 'center',
           margin: 0,
           boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+          ...style,
         }}
+        {...rest}
       >
         <div
           style={{
@@ -121,6 +127,7 @@ export function PieChart({
 
   return (
     <figure
+      className={className}
       style={{
         border: `1px solid ${border}`,
         borderRadius: radius,
@@ -131,7 +138,9 @@ export function PieChart({
         width: 'fit-content',
         margin: 0,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {title && (
         <figcaption

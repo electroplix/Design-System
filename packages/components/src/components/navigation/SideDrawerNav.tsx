@@ -9,7 +9,7 @@ export type DrawerLink = {
   icon?: ReactNode;
 };
 
-export interface SideDrawerNavProps {
+export interface SideDrawerNavProps extends React.ComponentPropsWithoutRef<'div'> {
   links: DrawerLink[];
   width?: number;
   padding?: number;
@@ -24,23 +24,30 @@ export interface SideDrawerNavProps {
   fontFamily?: string;
 }
 
-export function SideDrawerNav(props: SideDrawerNavProps) {
+export function SideDrawerNav({
+  links,
+  width = 300,
+  padding = 24,
+  gap = 8,
+  overlayColor = 'rgba(9, 9, 11, 0.45)',
+  position = 'left',
+  logoText = 'Menu',
+  bgColor: bgColorProp,
+  textColor: textColorProp,
+  accentColor: accentColorProp,
+  borderColor: borderColorProp,
+  fontFamily: fontFamilyProp,
+  className,
+  style,
+  ...rest
+}: SideDrawerNavProps) {
   const t = useNavTheme();
 
-  const {
-    links,
-    width = 300,
-    padding = 24,
-    gap = 8,
-    overlayColor = 'rgba(9, 9, 11, 0.45)',
-    position = 'left',
-    logoText = 'Menu',
-    bgColor = t.bgColor ?? '#ffffff',
-    textColor = t.textColor ?? '#09090b',
-    accentColor = t.accentColor ?? '#18181b',
-    borderColor = t.borderColor ?? '#e4e4e7',
-    fontFamily = t.fontFamily,
-  } = props;
+  const bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
+  const textColor = textColorProp ?? t.textColor ?? '#09090b';
+  const accentColor = accentColorProp ?? t.accentColor ?? '#18181b';
+  const borderColor = borderColorProp ?? t.borderColor ?? '#e4e4e7';
+  const fontFamily = fontFamilyProp ?? t.fontFamily;
 
   const mutedColor = '#71717a';
   const surfaceColor = '#fafafa';
@@ -48,7 +55,7 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <div className={className} style={style} {...rest}>
       <button
         onClick={() => setOpen(true)}
         style={{
@@ -65,6 +72,7 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
           fontSize: 14,
           fontFamily,
           boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
+          width: 'fit-content',
         }}
       >
         <Icon name="menu" size={18} color={textColor} />
@@ -190,6 +198,6 @@ export function SideDrawerNav(props: SideDrawerNavProps) {
           </aside>
         </div>
       )}
-    </>
+    </div>
   );
 }

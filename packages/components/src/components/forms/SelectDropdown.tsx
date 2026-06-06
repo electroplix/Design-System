@@ -5,7 +5,8 @@ import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
 export type SelectOption = { label: string; value: string; disabled?: boolean };
-export interface SelectDropdownProps {
+export interface SelectDropdownProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   as?: React.ElementType;
   name: string;
   options: SelectOption[];
@@ -27,8 +28,6 @@ export interface SelectDropdownProps {
   gap?: number;
   labelSize?: number;
   selectSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 export function SelectDropdown(props: SelectDropdownProps) {
@@ -57,6 +56,7 @@ export function SelectDropdown(props: SelectDropdownProps) {
     selectSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
   const [local, setLocal] = useState(defaultValue ?? '');
   const [isOpen, setIsOpen] = useState(false);
@@ -75,6 +75,7 @@ export function SelectDropdown(props: SelectDropdownProps) {
         padding: `${py}px ${px}px`,
         ...style,
       }}
+      {...rest}
     >
       <div style={{ maxWidth: maxW, display: 'flex', flexDirection: 'column' as const, gap }}>
         {label && (

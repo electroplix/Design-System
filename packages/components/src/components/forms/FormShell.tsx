@@ -2,7 +2,7 @@
 import type React from 'react';
 import { useFormsTheme } from '../../core/provider';
 
-export interface FormShellProps {
+export interface FormShellProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -12,9 +12,6 @@ export interface FormShellProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
-  children?: React.ReactNode;
 }
 
 export function FormShell(props: FormShellProps) {
@@ -32,10 +29,12 @@ export function FormShell(props: FormShellProps) {
     style = {},
     className = '',
     children,
+    ...rest
   } = props;
   return (
     <Tag
       className={className}
+      {...rest}
       style={{
         background: bgColor,
         color: textColor,

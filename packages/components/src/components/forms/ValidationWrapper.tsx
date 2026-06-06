@@ -3,7 +3,7 @@ import type React from 'react';
 import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
-export interface ValidationWrapperProps {
+export interface ValidationWrapperProps extends React.ComponentPropsWithoutRef<'div'> {
   as?: React.ElementType;
   errors?: string[];
   title?: string;
@@ -21,8 +21,6 @@ export interface ValidationWrapperProps {
   radius?: number;
   gap?: number;
   titleSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 export function ValidationWrapper(props: ValidationWrapperProps) {
@@ -47,6 +45,7 @@ export function ValidationWrapper(props: ValidationWrapperProps) {
     titleSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
   const safeErrors = Array.isArray(errors) ? errors : [];
   const hasErrors = safeErrors.length > 0;
@@ -64,6 +63,7 @@ export function ValidationWrapper(props: ValidationWrapperProps) {
         border: `1px solid ${borderColor}`,
         ...style,
       }}
+      {...rest}
     >
       <div
         style={{

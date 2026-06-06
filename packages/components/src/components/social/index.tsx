@@ -49,7 +49,7 @@ const SHARE_COLORS: Record<ShareNetwork, string> = {
   copy: '#18181b',
 };
 
-export interface SocialShareBarProps {
+export interface SocialShareBarProps extends React.ComponentPropsWithoutRef<'div'> {
   url: string;
   title?: string;
   networks?: ShareNetwork[];
@@ -61,6 +61,9 @@ export function SocialShareBar({
   title = '',
   networks = ['twitter', 'facebook', 'linkedin', 'email', 'copy'],
   compact = false,
+  style = {},
+  className = '',
+  ...rest
 }: SocialShareBarProps) {
   const sc = useSC();
   const [copied, setCopied] = useState(false);
@@ -87,7 +90,11 @@ export function SocialShareBar({
   };
 
   return (
-    <div style={{ display: 'flex', gap: 8, fontFamily: sc.ff }}>
+    <div
+      style={{ display: 'flex', gap: 8, fontFamily: sc.ff, ...style }}
+      className={className}
+      {...rest}
+    >
       {networks.map((n) => (
         <button
           key={n}
@@ -131,7 +138,7 @@ const PROVIDER_META: Record<SocialProvider, { label: string; icon: string; color
   discord: { label: 'Discord', icon: 'message-circle', color: '#18181b' },
 };
 
-export interface SocialLoginButtonsProps {
+export interface SocialLoginButtonsProps extends React.ComponentPropsWithoutRef<'div'> {
   providers: SocialProvider[];
   onLogin?: (provider: SocialProvider) => void;
   layout?: 'horizontal' | 'vertical';
@@ -141,6 +148,9 @@ export function SocialLoginButtons({
   providers = [],
   onLogin,
   layout = 'vertical',
+  style = {},
+  className = '',
+  ...rest
 }: SocialLoginButtonsProps) {
   const sc = useSC();
 
@@ -151,7 +161,10 @@ export function SocialLoginButtons({
         flexDirection: layout === 'vertical' ? 'column' : 'row',
         gap: 10,
         fontFamily: sc.ff,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       {providers.map((p) => {
         const m = PROVIDER_META[p];
@@ -190,7 +203,7 @@ export function SocialLoginButtons({
 
 export type EmbedType = 'youtube' | 'twitter' | 'instagram' | 'spotify' | 'custom';
 
-export interface SocialEmbedProps {
+export interface SocialEmbedProps extends React.ComponentPropsWithoutRef<'div'> {
   type: EmbedType;
   url: string;
   width?: string;
@@ -198,7 +211,16 @@ export interface SocialEmbedProps {
   title?: string;
 }
 
-export function SocialEmbed({ type, url, width = '100%', height = 400, title }: SocialEmbedProps) {
+export function SocialEmbed({
+  type,
+  url,
+  width = '100%',
+  height = 400,
+  title,
+  style = {},
+  className = '',
+  ...rest
+}: SocialEmbedProps) {
   const sc = useSC();
   let embedUrl = url;
 
@@ -215,7 +237,10 @@ export function SocialEmbed({ type, url, width = '100%', height = 400, title }: 
         border: `1px solid ${sc.border}`,
         background: '#000000',
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <iframe
         src={embedUrl}
@@ -232,7 +257,7 @@ export function SocialEmbed({ type, url, width = '100%', height = 400, title }: 
 
 /* ── FollowLike ─────────────────────────────────────────── */
 
-export interface FollowLikeProps {
+export interface FollowLikeProps extends React.ComponentPropsWithoutRef<'div'> {
   isFollowed?: boolean;
   followerCount?: number;
   onFollow?: () => void;
@@ -250,11 +275,18 @@ export function FollowLike({
   isLiked = false,
   likeCount,
   onLike,
+  style = {},
+  className = '',
+  ...rest
 }: FollowLikeProps) {
   const sc = useSC();
 
   return (
-    <div style={{ display: 'flex', gap: 10, fontFamily: sc.ff }}>
+    <div
+      style={{ display: 'flex', gap: 10, fontFamily: sc.ff, ...style }}
+      className={className}
+      {...rest}
+    >
       <button
         onClick={isFollowed ? onUnfollow : onFollow}
         style={{

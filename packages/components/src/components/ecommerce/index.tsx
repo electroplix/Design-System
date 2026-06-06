@@ -91,7 +91,9 @@ function useEcom() {
 
 /* ── CartDrawer ─────────────────────────────────────────── */
 
-export interface CartDrawerProps extends CartCommonProps {
+export interface CartDrawerProps
+  extends CartCommonProps,
+    React.ComponentPropsWithoutRef<'aside'> {
   open?: boolean;
   width?: number;
 }
@@ -104,6 +106,9 @@ export function CartDrawer({
   onCheckout,
   open = true,
   width = 380,
+  className,
+  style,
+  ...rest
 }: CartDrawerProps) {
   const e = useEcom();
   const safeItems = Array.isArray(items) ? items : [];
@@ -113,6 +118,7 @@ export function CartDrawer({
 
   return (
     <aside
+      className={className}
       style={{
         position: 'fixed',
         top: 0,
@@ -128,7 +134,9 @@ export function CartDrawer({
         zIndex: 50,
         boxShadow: open ? '-8px 0 24px rgba(9, 9, 11, 0.08)' : 'none',
         fontFamily: e.ff,
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{
@@ -379,7 +387,16 @@ export function CartDrawer({
 
 /* ── MiniCartPanel ──────────────────────────────────────── */
 
-export function MiniCartPanel({ items = [], currency = 'USD', onCheckout }: CartCommonProps) {
+export interface MiniCartPanelProps extends CartCommonProps, React.ComponentPropsWithoutRef<'div'> {}
+
+export function MiniCartPanel({
+  items = [],
+  currency = 'USD',
+  onCheckout,
+  className,
+  style,
+  ...rest
+}: MiniCartPanelProps) {
   const e = useEcom();
   const safeItems = Array.isArray(items) ? items : [];
   const total = safeItems.reduce((s, it) => s + it.price * it.qty, 0);
@@ -387,6 +404,7 @@ export function MiniCartPanel({ items = [], currency = 'USD', onCheckout }: Cart
 
   return (
     <div
+      className={className}
       style={{
         padding: e.sp,
         border: `1px solid ${e.border}`,
@@ -398,7 +416,9 @@ export function MiniCartPanel({ items = [], currency = 'USD', onCheckout }: Cart
         gap: 12,
         fontFamily: e.ff,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <div
@@ -481,7 +501,7 @@ export function MiniCartPanel({ items = [], currency = 'USD', onCheckout }: Cart
 
 /* ── OrderSummary ───────────────────────────────────────── */
 
-export interface OrderSummaryProps {
+export interface OrderSummaryProps extends React.ComponentPropsWithoutRef<'section'> {
   orderId?: string;
   status?: 'processing' | 'shipped' | 'delivered' | 'cancelled';
   lines: OrderLine[];
@@ -505,6 +525,9 @@ export function OrderSummary({
   currency = 'USD',
   shippingAddress,
   estimatedDelivery,
+  className,
+  style,
+  ...rest
 }: OrderSummaryProps) {
   const e = useEcom();
   const statusColor: Record<string, string> = {
@@ -517,6 +540,7 @@ export function OrderSummary({
 
   return (
     <section
+      className={className}
       style={{
         border: `1px solid ${e.border}`,
         borderRadius: e.r,
@@ -527,7 +551,9 @@ export function OrderSummary({
         display: 'grid',
         gap: 16,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -656,7 +682,7 @@ export function OrderSummary({
 
 /* ── ProductCard ─────────────────────────────────────────── */
 
-export interface ProductCardProps {
+export interface ProductCardProps extends React.ComponentPropsWithoutRef<'article'> {
   product: Product;
   currency?: Currency;
   onAddToCart?: (id: string) => void;
@@ -668,6 +694,9 @@ export function ProductCard({
   currency = 'USD',
   onAddToCart,
   onWishlist,
+  className,
+  style,
+  ...rest
 }: ProductCardProps) {
   const e = useEcom();
   const [hovered, setHovered] = useState(false);
@@ -677,6 +706,7 @@ export function ProductCard({
 
   return (
     <article
+      className={className}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -689,7 +719,9 @@ export function ProductCard({
         transition: 'all 0.18s ease',
         transform: hovered ? 'translateY(-2px)' : 'none',
         boxShadow: hovered ? '0 4px 12px rgba(9, 9, 11, 0.08)' : '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{ position: 'relative', height: 200, overflow: 'hidden', background: ui.surface }}
@@ -806,7 +838,7 @@ export function ProductCard({
 
 /* ── ProductGrid ────────────────────────────────────────── */
 
-export interface ProductGridProps {
+export interface ProductGridProps extends React.ComponentPropsWithoutRef<'div'> {
   products: Product[];
   currency?: Currency;
   columns?: number | string;
@@ -820,17 +852,28 @@ export function ProductGrid({
   columns = 3,
   onAddToCart,
   onWishlist,
+  className,
+  style,
+  ...rest
 }: ProductGridProps) {
   const e = useEcom();
   const safe = Array.isArray(products) ? products : [];
   if (safe.length === 0)
     return (
-      <div style={{ padding: e.sp * 2, textAlign: 'center', color: ui.muted, fontFamily: e.ff }}>
+      <div
+        className={className}
+        style={{ padding: e.sp * 2, textAlign: 'center', color: ui.muted, fontFamily: e.ff, ...style }}
+        {...rest}
+      >
         No products found
       </div>
     );
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1fr)`, gap: 16 }}>
+    <div
+      className={className}
+      style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1fr)`, gap: 16, ...style }}
+      {...rest}
+    >
       {safe.map((p) => (
         <ProductCard
           key={p.id}
@@ -846,7 +889,7 @@ export function ProductGrid({
 
 /* ── ProductDetail ──────────────────────────────────────── */
 
-export interface ProductDetailProps {
+export interface ProductDetailProps extends React.ComponentPropsWithoutRef<'section'> {
   product: Product;
   description?: string;
   images?: string[];
@@ -862,6 +905,9 @@ export function ProductDetail({
   variants,
   currency = 'USD',
   onAddToCart,
+  className,
+  style,
+  ...rest
 }: ProductDetailProps) {
   const e = useEcom();
   const [mainImg, setMainImg] = useState(0);
@@ -869,13 +915,16 @@ export function ProductDetail({
 
   return (
     <section
+      className={className}
       style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gap: 32,
         fontFamily: e.ff,
         color: e.fg,
+        ...style,
       }}
+      {...rest}
     >
       <div style={{ display: 'grid', gap: 12 }}>
         <div
@@ -1000,16 +1049,24 @@ export function ProductDetail({
 
 /* ── VariantSelector ────────────────────────────────────── */
 
-export interface VariantSelectorProps {
+export interface VariantSelectorProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   groups: VariantGroup[];
   selected?: Record<string, string>;
   onChange?: (groupName: string, value: string) => void;
 }
 
-export function VariantSelector({ groups = [], selected = {}, onChange }: VariantSelectorProps) {
+export function VariantSelector({
+  groups = [],
+  selected = {},
+  onChange,
+  className,
+  style,
+  ...rest
+}: VariantSelectorProps) {
   const e = useEcom();
   return (
-    <div style={{ display: 'grid', gap: 12, fontFamily: e.ff }}>
+    <div className={className} style={{ display: 'grid', gap: 12, fontFamily: e.ff, ...style }} {...rest}>
       {groups.map((g) => (
         <div key={g.name}>
           <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: ui.black }}>
@@ -1047,7 +1104,7 @@ export function VariantSelector({ groups = [], selected = {}, onChange }: Varian
 
 /* ── QuickAddButton ─────────────────────────────────────── */
 
-export interface QuickAddButtonProps {
+export interface QuickAddButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   productId: string;
   label?: string;
   onAdd?: (id: string) => void;
@@ -1059,6 +1116,9 @@ export function QuickAddButton({
   label = 'Quick Add',
   onAdd,
   disabled = false,
+  className,
+  style,
+  ...rest
 }: QuickAddButtonProps) {
   const e = useEcom();
   const [added, setAdded] = useState(false);
@@ -1070,6 +1130,7 @@ export function QuickAddButton({
   };
   return (
     <button
+      className={className}
       onClick={handleClick}
       disabled={disabled}
       style={{
@@ -1088,7 +1149,9 @@ export function QuickAddButton({
         opacity: disabled ? 0.5 : 1,
         fontFamily: e.ff,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
+        ...style,
       }}
+      {...rest}
     >
       <Icon name={added ? 'check' : 'plus'} size={16} color={added ? ui.success : ui.text} />
       {added ? 'Added!' : label}
@@ -1098,13 +1161,21 @@ export function QuickAddButton({
 
 /* ── WishlistButton ─────────────────────────────────────── */
 
-export interface WishlistButtonProps {
+export interface WishlistButtonProps
+  extends Omit<React.ComponentPropsWithoutRef<'button'>, 'onToggle'> {
   productId: string;
   wishlisted?: boolean;
   onToggle?: (id: string) => void;
 }
 
-export function WishlistButton({ productId, wishlisted = false, onToggle }: WishlistButtonProps) {
+export function WishlistButton({
+  productId,
+  wishlisted = false,
+  onToggle,
+  className,
+  style,
+  ...rest
+}: WishlistButtonProps) {
   const e = useEcom();
   const [active, setActive] = useState(wishlisted);
   const toggle = () => {
@@ -1113,6 +1184,7 @@ export function WishlistButton({ productId, wishlisted = false, onToggle }: Wish
   };
   return (
     <button
+      className={className}
       onClick={toggle}
       style={{
         width: 40,
@@ -1126,7 +1198,9 @@ export function WishlistButton({ productId, wishlisted = false, onToggle }: Wish
         justifyContent: 'center',
         transition: 'all 0.2s',
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
+        ...style,
       }}
+      {...rest}
     >
       <Icon name="heart" size={20} color={active ? ui.danger : ui.text} />
     </button>
@@ -1135,7 +1209,7 @@ export function WishlistButton({ productId, wishlisted = false, onToggle }: Wish
 
 /* ── PaymentButtons ─────────────────────────────────────── */
 
-export interface PaymentButtonsProps {
+export interface PaymentButtonsProps extends React.ComponentPropsWithoutRef<'div'> {
   onPay?: (method: string) => void;
   methods?: string[];
 }
@@ -1143,10 +1217,13 @@ export interface PaymentButtonsProps {
 export function PaymentButtons({
   onPay,
   methods = ['card', 'paypal', 'apple-pay'],
+  className,
+  style,
+  ...rest
 }: PaymentButtonsProps) {
   const e = useEcom();
   return (
-    <div style={{ display: 'grid', gap: 8, fontFamily: e.ff }}>
+    <div className={className} style={{ display: 'grid', gap: 8, fontFamily: e.ff, ...style }} {...rest}>
       {methods.map((m) => {
         const primary = m === 'card';
         return (

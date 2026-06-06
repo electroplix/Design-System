@@ -8,7 +8,7 @@ export type TabDef = {
   content: ReactNode;
 };
 
-export interface TabsProps {
+export interface TabsProps extends React.ComponentPropsWithoutRef<'div'> {
   tabs: TabDef[];
   defaultTab?: number;
   orientation?: 'horizontal' | 'vertical';
@@ -23,23 +23,31 @@ export interface TabsProps {
   fontFamily?: string;
 }
 
-export function Tabs(props: TabsProps) {
+export function Tabs({
+  tabs,
+  defaultTab = 0,
+  orientation = 'horizontal',
+  showUnderline = false,
+  radius: radiusProp,
+  padding = 12,
+  gap = 8,
+  bgColor: bgColorProp,
+  textColor: textColorProp,
+  accentColor: accentColorProp,
+  borderColor: borderColorProp,
+  fontFamily: fontFamilyProp,
+  className,
+  style,
+  ...rest
+}: TabsProps) {
   const t = useNavTheme();
 
-  const {
-    tabs,
-    defaultTab = 0,
-    orientation = 'horizontal',
-    showUnderline = false,
-    radius = t.radius ?? 14,
-    padding = 12,
-    gap = 8,
-    bgColor = t.bgColor ?? '#ffffff',
-    textColor = t.textColor ?? '#09090b',
-    accentColor = t.accentColor ?? '#18181b',
-    borderColor = t.borderColor ?? '#e4e4e7',
-    fontFamily = t.fontFamily,
-  } = props;
+  const radius = radiusProp ?? t.radius ?? 14;
+  const bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
+  const textColor = textColorProp ?? t.textColor ?? '#09090b';
+  const accentColor = accentColorProp ?? t.accentColor ?? '#18181b';
+  const borderColor = borderColorProp ?? t.borderColor ?? '#e4e4e7';
+  const fontFamily = fontFamilyProp ?? t.fontFamily;
 
   const mutedColor = '#71717a';
   const surfaceColor = '#fafafa';
@@ -48,6 +56,7 @@ export function Tabs(props: TabsProps) {
 
   return (
     <div
+      className={className}
       style={{
         width: '100%',
         fontFamily,
@@ -56,7 +65,9 @@ export function Tabs(props: TabsProps) {
         border: `1px solid ${borderColor}`,
         overflow: 'hidden',
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{

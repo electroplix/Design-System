@@ -8,7 +8,7 @@ import { useContentTheme } from '../../core/provider';
 
 export type CalloutVariant = 'info' | 'success' | 'warning' | 'danger';
 
-export interface CalloutBoxProps {
+export interface CalloutBoxProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -18,8 +18,6 @@ export interface CalloutBoxProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
   variant?: CalloutVariant;
   title?: string;
   message?: string;
@@ -29,7 +27,6 @@ export interface CalloutBoxProps {
   border?: boolean;
   dismissible?: boolean;
   onDismiss?: () => void;
-  children?: React.ReactNode;
 }
 
 const ui = {
@@ -98,6 +95,7 @@ export function CalloutBox({
   dismissible = false,
   onDismiss,
   children,
+  ...rest
 }: CalloutBoxProps) {
   const t = useContentTheme();
   const ff = fontFamily ?? t.fontFamily;
@@ -130,6 +128,7 @@ export function CalloutBox({
         placeItems: 'start',
         ...style,
       }}
+      {...rest}
     >
       <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         <div

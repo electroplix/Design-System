@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useHeroTheme } from '../../core/provider';
 
-export interface CTAOverlayHeroProps {
+export interface CTAOverlayHeroProps
+  extends Omit<React.ComponentPropsWithoutRef<'section'>, 'onSubmit'> {
   as?: React.ElementType;
   title?: string;
   subtitle?: string;
@@ -28,8 +29,6 @@ export interface CTAOverlayHeroProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const ui = {
@@ -72,6 +71,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
     gap = t.gap ?? 24,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -103,6 +103,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div
         aria-hidden

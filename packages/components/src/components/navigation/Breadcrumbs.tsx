@@ -5,7 +5,7 @@ import { useNavTheme } from '../../core/provider';
 
 export type BreadcrumbItem = { label: string; href?: string };
 
-export interface BreadcrumbsProps {
+export interface BreadcrumbsProps extends React.ComponentPropsWithoutRef<'nav'> {
   as?: React.ElementType;
   items: BreadcrumbItem[];
   showHomeIcon?: boolean;
@@ -20,32 +20,35 @@ export interface BreadcrumbsProps {
   accentColor?: string;
   borderColor?: string;
   fontFamily?: string;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
-export function Breadcrumbs(props: BreadcrumbsProps) {
+export function Breadcrumbs({
+  as: Tag = 'nav',
+  items,
+  showHomeIcon = true,
+  maxW = 1100,
+  px = 20,
+  py = 12,
+  radius = 12,
+  gap = 8,
+  bgColor: bgColorProp,
+  textColor: textColorProp,
+  accentColor: accentColorProp,
+  borderColor: borderColorProp,
+  fontFamily: fontFamilyProp,
+  style = {},
+  className = '',
+  ...rest
+}: BreadcrumbsProps) {
   const t = useNavTheme();
 
-  const {
-    as: Tag = 'nav',
-    items,
-    showHomeIcon = true,
-    maxW = 1100,
-    px = 20,
-    py = 12,
-    radius = 12,
-    gap = 8,
-    bgColor = t.bgColor ?? '#ffffff',
-    textColor = t.textColor ?? '#09090b',
-    accentColor = t.accentColor ?? '#18181b',
-    borderColor = t.borderColor ?? '#e4e4e7',
-    fontFamily = t.fontFamily,
-    style = {},
-    className = '',
-  } = props;
+  const bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
+  const textColor = textColorProp ?? t.textColor ?? '#09090b';
+  const accentColor = accentColorProp ?? t.accentColor ?? '#18181b';
+  const borderColor = borderColorProp ?? t.borderColor ?? '#e4e4e7';
+  const fontFamily = fontFamilyProp ?? t.fontFamily;
 
-  const sepColor = props.separatorColor ?? '#a1a1aa';
+  const sepColor = rest.separatorColor ?? '#a1a1aa';
   const mutedColor = '#71717a';
 
   return (
@@ -63,6 +66,7 @@ export function Breadcrumbs(props: BreadcrumbsProps) {
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div style={{ marginInline: 'auto', maxWidth: maxW }}>
         <ol

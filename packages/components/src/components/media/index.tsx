@@ -36,14 +36,12 @@ const ui = {
 
 /* ── MediaShell ─────────────────────────────────────────── */
 
-export interface MediaShellProps {
+export interface MediaShellProps extends React.ComponentPropsWithoutRef<'section'> {
   bgColor?: string;
   maxW?: number;
   px?: number;
   py?: number;
   radius?: number;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
 }
 
 export function MediaShell({
@@ -54,11 +52,13 @@ export function MediaShell({
   radius,
   style = {},
   children,
+  ...rest
 }: MediaShellProps) {
   const md = useMD();
 
   return (
     <section
+      {...rest}
       style={{
         background: bgColor ?? md.bg,
         paddingInline: px,
@@ -78,7 +78,7 @@ export function MediaShell({
 
 /* ── ResponsiveVideo ────────────────────────────────────── */
 
-export interface ResponsiveVideoProps {
+export interface ResponsiveVideoProps extends React.ComponentPropsWithoutRef<'div'> {
   src: string;
   poster?: string;
   aspectRatio?: string;
@@ -96,6 +96,8 @@ export function ResponsiveVideo({
   muted = true,
   loop = false,
   controls = true,
+  style = {},
+  ...rest
 }: ResponsiveVideoProps) {
   const md = useMD();
 
@@ -109,7 +111,9 @@ export function ResponsiveVideo({
         background: ui.black,
         border: `1px solid ${md.border}`,
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <video
         src={src}
@@ -132,13 +136,19 @@ export function ResponsiveVideo({
 
 /* ── AudioEmbed ─────────────────────────────────────────── */
 
-export interface AudioEmbedProps {
+export interface AudioEmbedProps extends React.ComponentPropsWithoutRef<'div'> {
   src: string;
   title?: string;
   showWaveform?: boolean;
 }
 
-export function AudioEmbed({ src, title, showWaveform: _showWaveform }: AudioEmbedProps) {
+export function AudioEmbed({
+  src,
+  title,
+  showWaveform: _showWaveform,
+  style = {},
+  ...rest
+}: AudioEmbedProps) {
   const md = useMD();
 
   return (
@@ -154,7 +164,9 @@ export function AudioEmbed({ src, title, showWaveform: _showWaveform }: AudioEmb
         gap: 12,
         background: ui.white,
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{
@@ -194,7 +206,7 @@ export function AudioEmbed({ src, title, showWaveform: _showWaveform }: AudioEmb
 
 /* ── AvatarProfile ──────────────────────────────────────── */
 
-export interface AvatarProfileProps {
+export interface AvatarProfileProps extends React.ComponentPropsWithoutRef<'div'> {
   src?: string;
   name: string;
   initials?: string;
@@ -210,6 +222,8 @@ export function AvatarProfile({
   size = 48,
   badge,
   borderColor,
+  style = {},
+  ...rest
 }: AvatarProfileProps) {
   const md = useMD();
 
@@ -223,7 +237,15 @@ export function AvatarProfile({
       .toUpperCase();
 
   return (
-    <div style={{ position: 'relative', display: 'inline-flex', flexShrink: 0 }}>
+    <div
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        flexShrink: 0,
+        ...style,
+      }}
+      {...rest}
+    >
       {src ? (
         <img
           src={src}
@@ -288,13 +310,19 @@ export interface IconGridItem {
   label?: string;
 }
 
-export interface IconGridProps {
+export interface IconGridProps extends React.ComponentPropsWithoutRef<'div'> {
   icons: IconGridItem[];
   columns?: number | string;
   iconSize?: number;
 }
 
-export function IconGrid({ icons = [], columns = 6, iconSize = 24 }: IconGridProps) {
+export function IconGrid({
+  icons = [],
+  columns = 6,
+  iconSize = 24,
+  style = {},
+  ...rest
+}: IconGridProps) {
   const md = useMD();
 
   return (
@@ -305,7 +333,9 @@ export function IconGrid({ icons = [], columns = 6, iconSize = 24 }: IconGridPro
         gap: 12,
         fontFamily: md.ff,
         color: md.fg,
+        ...style,
       }}
+      {...rest}
     >
       {icons.map((ic) => (
         <div
@@ -347,18 +377,33 @@ export interface GalleryItem {
 
 /* ── ImageGallery ───────────────────────────────────────── */
 
-export interface ImageGalleryProps {
+export interface ImageGalleryProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onSelect'> {
   items: GalleryItem[];
   columns?: number | string;
   gap?: number;
   onSelect?: (item: GalleryItem) => void;
 }
 
-export function ImageGallery({ items = [], columns = 3, gap = 8, onSelect }: ImageGalleryProps) {
+export function ImageGallery({
+  items = [],
+  columns = 3,
+  gap = 8,
+  onSelect,
+  style = {},
+  ...rest
+}: ImageGalleryProps) {
   const md = useMD();
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1fr)`, gap }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gap,
+        ...style,
+      }}
+      {...rest}
+    >
       {items.map((it) => (
         <div
           key={it.id}
@@ -399,12 +444,18 @@ export function ImageGallery({ items = [], columns = 3, gap = 8, onSelect }: Ima
 
 /* ── LightboxGallery ────────────────────────────────────── */
 
-export interface LightboxGalleryProps {
+export interface LightboxGalleryProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onSelect'> {
   items: GalleryItem[];
   columns?: number | string;
 }
 
-export function LightboxGallery({ items = [], columns = 3 }: LightboxGalleryProps) {
+export function LightboxGallery({
+  items = [],
+  columns = 3,
+  style = {},
+  className = '',
+  ...rest
+}: LightboxGalleryProps) {
   const md = useMD();
   const [sel, setSel] = useState<number | null>(null);
 
@@ -432,6 +483,9 @@ export function LightboxGallery({ items = [], columns = 3 }: LightboxGalleryProp
         items={items}
         columns={columns}
         onSelect={(it) => setSel(items.findIndex((i) => i.id === it.id))}
+        style={style}
+        className={className}
+        {...rest}
       />
 
       {sel !== null && (

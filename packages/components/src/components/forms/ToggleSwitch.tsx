@@ -3,7 +3,8 @@ import type React from 'react';
 import { useState } from 'react';
 import { useFormsTheme } from '../../core/provider';
 
-export interface ToggleSwitchProps {
+export interface ToggleSwitchProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   as?: React.ElementType;
   label?: string;
   description?: string;
@@ -22,8 +23,6 @@ export interface ToggleSwitchProps {
   radius?: number;
   gap?: number;
   labelSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 export function ToggleSwitch(props: ToggleSwitchProps) {
@@ -49,6 +48,7 @@ export function ToggleSwitch(props: ToggleSwitchProps) {
     labelSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
   const [state, setState] = useState(!!defaultChecked);
   const isOn = checked ?? state;
@@ -68,6 +68,7 @@ export function ToggleSwitch(props: ToggleSwitchProps) {
         padding: `${py}px ${px}px`,
         ...style,
       }}
+      {...rest}
     >
       <div style={{ maxWidth: maxW, display: 'flex', flexDirection: 'column' as const, gap }}>
         <div

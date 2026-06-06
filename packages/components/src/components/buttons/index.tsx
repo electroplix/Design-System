@@ -9,9 +9,8 @@ import { Icon } from '../../core/icons';
 import type { IconName } from '../../core/icons';
 import { useButtonTheme } from '../../core/provider';
 
-export type ButtonBaseProps = {
+export type ButtonBaseProps = Omit<React.ComponentPropsWithoutRef<'button'>, 'onClick'> & {
   label?: string;
-  children?: React.ReactNode;
   onClick?: () => void;
   bgColor?: string;
   textColor?: string;
@@ -35,8 +34,6 @@ export type ButtonBaseProps = {
   opacity?: number;
   shadow?: string;
   transitionDuration?: number;
-  className?: string;
-  style?: React.CSSProperties;
   ariaLabel?: string;
 };
 
@@ -83,7 +80,7 @@ export const baseBtn = (p: ButtonBaseProps): React.CSSProperties => ({
   position: 'relative',
 });
 
-export function PrimaryButton(p: ButtonBaseProps) {
+export function PrimaryButton({ className, style, children, ...p }: ButtonBaseProps) {
   const t = useButtonTheme();
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -94,7 +91,7 @@ export function PrimaryButton(p: ButtonBaseProps) {
     <button
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
-      className={p.className}
+      className={className}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => {
         setHovered(false);
@@ -114,8 +111,9 @@ export function PrimaryButton(p: ButtonBaseProps) {
         border: `1px solid ${bgColor}`,
         transform: pressed ? 'scale(0.97)' : hovered ? 'translateY(-1px)' : 'translateY(0)',
         boxShadow: hovered ? '0 4px 12px rgba(0,0,0,0.12)' : '0 1px 2px rgba(0,0,0,0.05)',
-        ...p.style,
+        ...style,
       }}
+      {...p}
     >
       {p.isLoading ? (
         <Icon name="loader-2" size={18} style={{ animation: 'spin 1s linear infinite' } as any} />
@@ -124,7 +122,7 @@ export function PrimaryButton(p: ButtonBaseProps) {
       ) : (
         (p.iconNode ?? null)
       )}
-      <span data-testid="primary-btn">{p.children ?? p.label ?? 'Primary'}</span>
+      <span data-testid="primary-btn">{children ?? p.label ?? 'Primary'}</span>
       <style>
         {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
       </style>
@@ -132,7 +130,7 @@ export function PrimaryButton(p: ButtonBaseProps) {
   );
 }
 
-export function SecondaryButton(p: ButtonBaseProps) {
+export function SecondaryButton({ className, style, children, ...p }: ButtonBaseProps) {
   const t = useButtonTheme();
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -143,7 +141,7 @@ export function SecondaryButton(p: ButtonBaseProps) {
     <button
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
-      className={p.className}
+      className={className}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => {
         setHovered(false);
@@ -162,8 +160,9 @@ export function SecondaryButton(p: ButtonBaseProps) {
         }),
         border: `1px solid ${borderColor}`,
         transform: pressed ? 'scale(0.97)' : hovered ? 'translateY(-1px)' : 'translateY(0)',
-        ...p.style,
+        ...style,
       }}
+      {...p}
     >
       {p.isLoading ? (
         <Icon name="loader-2" size={18} style={{ animation: 'spin 1s linear infinite' } as any} />
@@ -172,7 +171,7 @@ export function SecondaryButton(p: ButtonBaseProps) {
       ) : (
         (p.iconNode ?? null)
       )}
-      <span data-testid="secondary-btn">{p.children ?? p.label ?? 'Secondary'}</span>
+      <span data-testid="secondary-btn">{children ?? p.label ?? 'Secondary'}</span>
       <style>
         {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
       </style>
@@ -180,7 +179,7 @@ export function SecondaryButton(p: ButtonBaseProps) {
   );
 }
 
-export function TertiaryButton(p: ButtonBaseProps) {
+export function TertiaryButton({ className, style, children, ...p }: ButtonBaseProps) {
   const t = useButtonTheme();
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -189,7 +188,7 @@ export function TertiaryButton(p: ButtonBaseProps) {
     <button
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
-      className={p.className}
+      className={className}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => {
         setHovered(false);
@@ -207,8 +206,9 @@ export function TertiaryButton(p: ButtonBaseProps) {
           radius: p.radius ?? t.radius,
         }),
         transform: pressed ? 'scale(0.97)' : 'scale(1)',
-        ...p.style,
+        ...style,
       }}
+      {...p}
     >
       {p.isLoading ? (
         <Icon name="loader-2" size={18} style={{ animation: 'spin 1s linear infinite' } as any} />
@@ -217,7 +217,7 @@ export function TertiaryButton(p: ButtonBaseProps) {
       ) : (
         (p.iconNode ?? null)
       )}
-      <span>{p.children ?? p.label ?? 'Button'}</span>
+      <span>{children ?? p.label ?? 'Button'}</span>
       <style>
         {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
       </style>
@@ -227,7 +227,7 @@ export function TertiaryButton(p: ButtonBaseProps) {
 
 export type IconButtonProps = ButtonBaseProps & { size?: number };
 
-export function IconButton(p: IconButtonProps) {
+export function IconButton({ className, style, ...p }: IconButtonProps) {
   const t = useButtonTheme();
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -238,7 +238,7 @@ export function IconButton(p: IconButtonProps) {
     <button
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
-      className={p.className}
+      className={className}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => {
         setHovered(false);
@@ -259,8 +259,9 @@ export function IconButton(p: IconButtonProps) {
         borderRadius: '50%',
         padding: 0,
         transform: pressed ? 'scale(0.94)' : hovered ? 'scale(1.03)' : 'scale(1)',
-        ...p.style,
+        ...style,
       }}
+      {...p}
     >
       {p.isLoading ? (
         <Icon name="loader-2" size={18} style={{ animation: 'spin 1s linear infinite' } as any} />
@@ -299,13 +300,15 @@ export { PrimaryButton as ButtonAlias }; // Keeping alias if needed, but the mai
 // Logic untouched
 // Only visuals simplified into shadcn-like minimal theme
 
-export function FloatingActionButton(
-  p: ButtonBaseProps & {
-    position?: 'bottom-right' | 'bottom-left';
-    offset?: number;
-    fixed?: boolean;
-  },
-) {
+export function FloatingActionButton({
+  className,
+  style,
+  ...p
+}: ButtonBaseProps & {
+  position?: 'bottom-right' | 'bottom-left';
+  offset?: number;
+  fixed?: boolean;
+}) {
   const t = useButtonTheme();
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -330,7 +333,7 @@ export function FloatingActionButton(
     <button
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
-      className={p.className}
+      className={className}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => {
         setHovered(false);
@@ -352,8 +355,9 @@ export function FloatingActionButton(
         padding: 0,
         boxShadow: hovered ? '0 12px 32px rgba(0,0,0,0.2)' : shadow,
         transform: pressed ? 'scale(0.94)' : hovered ? 'scale(1.05) translateY(-2px)' : 'scale(1)',
-        ...p.style,
+        ...style,
       }}
+      {...p}
     >
       {p.isLoading ? (
         <Icon name="loader-2" size={24} style={{ animation: 'spin 1s linear infinite' } as any} />
@@ -371,7 +375,7 @@ export function FloatingActionButton(
 
 export type GroupButtonItem = ButtonBaseProps & { active?: boolean; id?: string | number };
 
-export function ButtonGroup(p: {
+export interface ButtonGroupProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   buttons: GroupButtonItem[];
   toggle?: boolean;
   onChange?: (index: number) => void;
@@ -380,35 +384,48 @@ export function ButtonGroup(p: {
   accentColor?: string;
   borderColor?: string;
   gap?: number;
-  className?: string;
-  style?: React.CSSProperties;
-}) {
+}
+
+export function ButtonGroup({
+  buttons,
+  toggle,
+  onChange,
+  bgColor,
+  radius,
+  accentColor,
+  borderColor,
+  gap,
+  className,
+  style,
+  ...rest
+}: ButtonGroupProps) {
   const t = useButtonTheme();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleButtonClick = (index: number, originalOnClick?: () => void) => {
-    if (p.toggle) {
+    if (toggle) {
       setActiveIndex(index);
     }
-    if (p.onChange) p.onChange(index);
+    if (onChange) onChange(index);
     if (originalOnClick) originalOnClick();
   };
 
   return (
     <div
-      className={p.className}
+      className={className}
       style={{
         display: 'inline-flex',
-        background: p.bgColor ?? ui.surface,
-        borderRadius: p.radius ?? t.radius ?? 8,
-        border: `1px solid ${p.borderColor ?? ui.border}`,
+        background: bgColor ?? ui.surface,
+        borderRadius: radius ?? t.radius ?? 8,
+        border: `1px solid ${borderColor ?? ui.border}`,
         padding: 4,
-        gap: p.gap ?? 4,
-        ...p.style,
+        gap: gap ?? 4,
+        ...style,
       }}
+      {...rest}
     >
-      {p.buttons.map((btn, i) => {
-        const isActive = p.toggle ? activeIndex === i : btn.active;
+      {buttons.map((btn, i) => {
+        const isActive = toggle ? activeIndex === i : btn.active;
         return (
           <button
             key={btn.id ?? i}
@@ -417,9 +434,9 @@ export function ButtonGroup(p: {
             style={{
               ...baseBtn({
                 ...btn,
-                bgColor: isActive ? (p.accentColor ?? ui.white) : 'transparent',
+                bgColor: isActive ? (accentColor ?? ui.white) : 'transparent',
                 textColor: isActive ? ui.text : ui.muted,
-                radius: (p.radius ?? t.radius ?? 8) - 2,
+                radius: (radius ?? t.radius ?? 8) - 2,
                 shadow: isActive ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
                 paddingX: 12,
                 paddingY: 6,
@@ -427,6 +444,7 @@ export function ButtonGroup(p: {
               border: isActive ? `1px solid ${ui.border}` : '1px solid transparent',
               flex: 1,
             }}
+            {...btn}
           >
             {btn.icon && <Icon name={btn.icon} size={16} />}
             <span>{btn.label}</span>

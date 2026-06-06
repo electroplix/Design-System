@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
-export interface FileUploaderProps {
+export interface FileUploaderProps extends React.ComponentPropsWithoutRef<'div'> {
   as?: React.ElementType;
   multiple?: boolean;
   accept?: string;
@@ -22,8 +22,6 @@ export interface FileUploaderProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 export function FileUploader(props: FileUploaderProps) {
@@ -48,6 +46,7 @@ export function FileUploader(props: FileUploaderProps) {
     gap = t.gap ?? 12,
     style = {},
     className = '',
+    ...rest
   } = props;
   const [files, setFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
@@ -75,6 +74,7 @@ export function FileUploader(props: FileUploaderProps) {
         padding: `${py}px ${px}px`,
         ...style,
       }}
+      {...rest}
     >
       <div style={{ maxWidth: maxW, display: 'flex', flexDirection: 'column' as const, gap }}>
         <div style={{ fontWeight: 600, fontSize: 16 }}>

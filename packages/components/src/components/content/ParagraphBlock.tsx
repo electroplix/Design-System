@@ -5,7 +5,7 @@ import { useContentTheme } from '../../core/provider';
 
 /* ── ParagraphBlock ─────────────────────────────────────── */
 
-export interface ParagraphBlockProps {
+export interface ParagraphBlockProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -15,10 +15,7 @@ export interface ParagraphBlockProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
   paragraphs?: string[];
-  children?: React.ReactNode;
   size?: number;
   leading?: number;
   align?: 'left' | 'center' | 'right' | 'justify';
@@ -60,6 +57,7 @@ export function ParagraphBlock({
   showDropCap = false,
   title,
   children,
+  ...rest
 }: ParagraphBlockProps) {
   const t = useContentTheme();
 
@@ -91,6 +89,7 @@ export function ParagraphBlock({
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         {/* Optional title */}

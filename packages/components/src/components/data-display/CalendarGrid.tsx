@@ -12,7 +12,7 @@ export interface CalendarMark {
   tone?: 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 }
 
-export interface CalendarGridProps {
+export interface CalendarGridProps extends React.ComponentPropsWithoutRef<'section'> {
   year: number;
   month: number;
   startOn?: 0 | 1;
@@ -39,6 +39,9 @@ export function CalendarGrid({
   marks = [],
   title,
   onDateClick,
+  className,
+  style,
+  ...rest
 }: CalendarGridProps) {
   const t = useDataDisplayTheme();
 
@@ -80,6 +83,7 @@ export function CalendarGrid({
 
   return (
     <section
+      className={className}
       style={{
         border: `1px solid ${border}`,
         borderRadius: r,
@@ -88,7 +92,9 @@ export function CalendarGrid({
         color: fg,
         fontFamily: t.fontFamily,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{

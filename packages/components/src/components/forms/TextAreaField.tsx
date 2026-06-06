@@ -4,7 +4,8 @@ import { useMemo, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
-export interface TextAreaFieldProps {
+export interface TextAreaFieldProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   as?: React.ElementType;
   label?: string;
   name: string;
@@ -28,8 +29,6 @@ export interface TextAreaFieldProps {
   gap?: number;
   labelSize?: number;
   inputSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 export function TextAreaField(props: TextAreaFieldProps) {
@@ -60,6 +59,7 @@ export function TextAreaField(props: TextAreaFieldProps) {
     inputSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
   const [local, setLocal] = useState(defaultValue ?? '');
   const [isFocused, setIsFocused] = useState(false);
@@ -90,6 +90,7 @@ export function TextAreaField(props: TextAreaFieldProps) {
         padding: `${py}px ${px}px`,
         ...style,
       }}
+      {...rest}
     >
       <div style={{ maxWidth: maxW, display: 'flex', flexDirection: 'column' as const, gap }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>

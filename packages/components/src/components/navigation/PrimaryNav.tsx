@@ -7,7 +7,7 @@ export type NavLink = {
   href: string;
 };
 
-export interface PrimaryNavProps {
+export interface PrimaryNavProps extends React.ComponentPropsWithoutRef<'header'> {
   logoText?: string;
   links?: NavLink[];
   showSearch?: boolean;
@@ -24,31 +24,44 @@ export interface PrimaryNavProps {
   fontFamily?: string;
 }
 
-export function PrimaryNav(props: PrimaryNavProps) {
+export function PrimaryNav({
+  logoText = 'MyBrand',
+  links = [],
+  showSearch: showSearchProp,
+  showCTA: showCTAProp,
+  ctaText = 'Get Started',
+  ctaHref = '#',
+  sticky: stickyProp,
+  height: heightProp,
+  padding: paddingProp,
+  bgColor: bgColorProp,
+  textColor: textColorProp,
+  accentColor: accentColorProp,
+  borderColor: borderColorProp,
+  fontFamily: fontFamilyProp,
+  className,
+  style,
+  ...rest
+}: PrimaryNavProps) {
   const t = useNavTheme();
 
-  const {
-    logoText = 'MyBrand',
-    links = [],
-    showSearch = t.showSearch ?? false,
-    showCTA = t.showCTA ?? false,
-    ctaText = 'Get Started',
-    ctaHref = '#',
-    sticky = t.sticky ?? false,
-    height = t.height ?? 72,
-    padding = t.padding ?? 24,
-    bgColor = t.bgColor ?? '#ffffff',
-    textColor = t.textColor ?? '#09090b',
-    accentColor = t.accentColor ?? '#18181b',
-    borderColor = t.borderColor ?? '#e4e4e7',
-    fontFamily = t.fontFamily,
-  } = props;
+  const showSearch = showSearchProp ?? t.showSearch ?? false;
+  const showCTA = showCTAProp ?? t.showCTA ?? false;
+  const sticky = stickyProp ?? t.sticky ?? false;
+  const height = heightProp ?? t.height ?? 72;
+  const padding = paddingProp ?? t.padding ?? 24;
+  const bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
+  const textColor = textColorProp ?? t.textColor ?? '#09090b';
+  const accentColor = accentColorProp ?? t.accentColor ?? '#18181b';
+  const borderColor = borderColorProp ?? t.borderColor ?? '#e4e4e7';
+  const fontFamily = fontFamilyProp ?? t.fontFamily;
 
   const mutedColor = '#71717a';
   const surfaceColor = '#fafafa';
 
   return (
     <header
+      className={className}
       style={{
         background: bgColor,
         backdropFilter: 'blur(12px)',
@@ -65,7 +78,9 @@ export function PrimaryNav(props: PrimaryNavProps) {
         zIndex: sticky ? 40 : 'auto',
         borderBottom: `1px solid ${borderColor}`,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
+        ...style,
       }}
+      {...rest}
     >
       <a
         href="#"

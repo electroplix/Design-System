@@ -38,7 +38,7 @@ function usePattern(kind: PatternKind, accent: string, intensity: number) {
   }, [kind, accent, intensity]);
 }
 
-export interface PatternedHeroProps {
+export interface PatternedHeroProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   title?: string;
   subtitle?: string;
@@ -61,8 +61,6 @@ export interface PatternedHeroProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const defaultStats = [
@@ -109,6 +107,7 @@ export function PatternedHero(props: PatternedHeroProps) {
     gap: _gap = t.gap ?? 24,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -140,6 +139,7 @@ export function PatternedHero(props: PatternedHeroProps) {
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
+      {...rest}
     >
       {/* pattern layer */}
       <div

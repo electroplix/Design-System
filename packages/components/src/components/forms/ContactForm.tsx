@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
-export interface ContactFormProps {
+export interface ContactFormProps
+  extends Omit<React.ComponentPropsWithoutRef<'section'>, 'onSubmit'> {
   as?: React.ElementType;
   title?: string;
   onSubmit?: (data: {
@@ -27,8 +28,6 @@ export interface ContactFormProps {
   titleSize?: number;
   labelSize?: number;
   inputSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const ui = {
@@ -67,6 +66,7 @@ export function ContactForm(props: ContactFormProps) {
     inputSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -127,6 +127,7 @@ export function ContactForm(props: ContactFormProps) {
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div
         style={{

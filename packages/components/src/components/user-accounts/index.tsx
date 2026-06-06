@@ -59,7 +59,7 @@ function btnPrimary(ua: ReturnType<typeof useUA>): React.CSSProperties {
 
 /* ── AuthForm ───────────────────────────────────────────── */
 
-export interface AuthFormProps {
+export interface AuthFormProps extends Omit<React.ComponentPropsWithoutRef<'form'>, 'onSubmit'> {
   mode: 'login' | 'register';
   onSubmit?: (data: { email: string; password: string; name?: string }) => void;
   onToggleMode?: () => void;
@@ -75,6 +75,9 @@ export function AuthForm({
   onForgotPassword,
   loading,
   error,
+  style = {},
+  className = '',
+  ...rest
 }: AuthFormProps) {
   const ua = useUA();
   const [email, setEmail] = useState('');
@@ -99,7 +102,10 @@ export function AuthForm({
         fontFamily: ua.ff,
         color: ua.fg,
         maxWidth: 400,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         style={{
@@ -218,135 +224,153 @@ export function AuthForm({
 
 /* ── PasswordReset ──────────────────────────────────────── */
 
-export interface PasswordResetProps {
+export interface PasswordResetProps extends Omit<React.ComponentPropsWithoutRef<'section'>, 'onSubmit'> {
   onSubmit?: (email: string) => void;
   loading?: boolean;
   success?: boolean;
 }
 
-export function PasswordReset({ onSubmit, loading, success }: PasswordResetProps) {
+export function PasswordReset({
+  onSubmit,
+  loading,
+  success,
+  style = {},
+  className = '',
+  ...rest
+}: PasswordResetProps) {
   const ua = useUA();
   const [email, setEmail] = useState('');
-
-  if (success)
-    return (
-      <div
-        style={{
-          textAlign: 'center',
-          padding: 32,
-          fontFamily: ua.ff,
-          color: ua.fg,
-        }}
-      >
-        <div
-          style={{
-            width: 56,
-            height: 56,
-            borderRadius: '50%',
-            background: '#f0fdf4',
-            border: '1px solid #bbf7d0',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 12px',
-            boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
-          }}
-        >
-          <Icon name="check-circle" size={28} color={ua.success} />
-        </div>
-
-        <div
-          style={{
-            fontWeight: 700,
-            fontSize: 18,
-            letterSpacing: '-0.025em',
-            color: ua.fg,
-          }}
-        >
-          Check your email
-        </div>
-
-        <div
-          style={{
-            fontSize: 14,
-            color: ua.muted,
-            marginTop: 6,
-            lineHeight: 1.6,
-          }}
-        >
-          We've sent password reset instructions to {email}.
-        </div>
-      </div>
-    );
-
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit?.(email);
-      }}
+    <section
       style={{
-        display: 'grid',
-        gap: 14,
         fontFamily: ua.ff,
         color: ua.fg,
-        maxWidth: 400,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
-      <div
-        style={{
-          fontWeight: 700,
-          fontSize: 22,
-          letterSpacing: '-0.035em',
-          color: ua.fg,
-        }}
-      >
-        Reset Password
-      </div>
+      {success ? (
+        <div
+          style={{
+            textAlign: 'center',
+            padding: 32,
+          }}
+        >
+          <div
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: '50%',
+              background: '#f0fdf4',
+              border: '1px solid #bbf7d0',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 12px',
+              boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
+            }}
+          >
+            <Icon name="check-circle" size={28} color={ua.success} />
+          </div>
 
-      <div
-        style={{
-          fontSize: 14,
-          color: ua.muted,
-          lineHeight: 1.6,
-        }}
-      >
-        Enter the email associated with your account.
-      </div>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: 18,
+              letterSpacing: '-0.025em',
+              color: ua.fg,
+            }}
+          >
+            Check your email
+          </div>
 
-      <input
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        type="email"
-        required
-        style={fieldStyle(ua)}
-      />
+          <div
+            style={{
+              fontSize: 14,
+              color: ua.muted,
+              marginTop: 6,
+              lineHeight: 1.6,
+            }}
+          >
+            We've sent password reset instructions to {email}.
+          </div>
+        </div>
+      ) : (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onSubmit?.(email);
+          }}
+          style={{
+            display: 'grid',
+            gap: 14,
+            maxWidth: 400,
+          }}
+        >
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: 22,
+              letterSpacing: '-0.035em',
+              color: ua.fg,
+            }}
+          >
+            Reset Password
+          </div>
 
-      <button
-        type="submit"
-        disabled={loading}
-        style={{
-          ...btnPrimary(ua),
-          opacity: loading ? 0.6 : 1,
-          cursor: loading ? 'not-allowed' : 'pointer',
-        }}
-      >
-        {loading ? 'Sending...' : 'Send Reset Link'}
-      </button>
-    </form>
+          <div
+            style={{
+              fontSize: 14,
+              color: ua.muted,
+              lineHeight: 1.6,
+            }}
+          >
+            Enter the email associated with your account.
+          </div>
+
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            type="email"
+            required
+            style={fieldStyle(ua)}
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            style={{
+              ...btnPrimary(ua),
+              opacity: loading ? 0.6 : 1,
+              cursor: loading ? 'not-allowed' : 'pointer',
+            }}
+          >
+            {loading ? 'Sending...' : 'Send Reset Link'}
+          </button>
+        </form>
+      )}
+    </section>
   );
 }
 
 /* ── MultiFactorAuthInput ───────────────────────────────── */
 
-export interface MultiFactorAuthInputProps {
+export interface MultiFactorAuthInputProps extends React.ComponentPropsWithoutRef<'div'> {
   length?: number;
   onComplete?: (code: string) => void;
   error?: string;
 }
 
-export function MultiFactorAuthInput({ length = 6, onComplete, error }: MultiFactorAuthInputProps) {
+export function MultiFactorAuthInput({
+  length = 6,
+  onComplete,
+  error,
+  style = {},
+  className = '',
+  ...rest
+}: MultiFactorAuthInputProps) {
   const ua = useUA();
   const [vals, setVals] = useState<string[]>(Array(length).fill(''));
   const refs = Array.from({ length }, () => React.createRef<HTMLInputElement>());
@@ -369,7 +393,7 @@ export function MultiFactorAuthInput({ length = 6, onComplete, error }: MultiFac
   };
 
   return (
-    <div style={{ fontFamily: ua.ff, color: ua.fg }}>
+    <div style={{ fontFamily: ua.ff, color: ua.fg, ...style }} className={className} {...rest}>
       <div
         style={{
           fontWeight: 700,
@@ -428,7 +452,7 @@ export function MultiFactorAuthInput({ length = 6, onComplete, error }: MultiFac
 
 /* ── ProfileOverview ────────────────────────────────────── */
 
-export interface ProfileOverviewProps {
+export interface ProfileOverviewProps extends React.ComponentPropsWithoutRef<'div'> {
   name: string;
   email?: string;
   avatar?: string;
@@ -444,6 +468,9 @@ export function ProfileOverview({
   role,
   joinDate,
   stats,
+  style = {},
+  className = '',
+  ...rest
 }: ProfileOverviewProps) {
   const ua = useUA();
 
@@ -466,7 +493,10 @@ export function ProfileOverview({
         borderRadius: ua.r,
         background: ua.bg,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       {avatar ? (
         <img
@@ -563,7 +593,7 @@ export function ProfileOverview({
 
 /* ── ProfileSettings ────────────────────────────────────── */
 
-export interface ProfileSettingsProps {
+export interface ProfileSettingsProps extends React.ComponentPropsWithoutRef<'form'> {
   name?: string;
   email?: string;
   avatar?: string;
@@ -577,6 +607,9 @@ export function ProfileSettings({
   avatar,
   onSave,
   onAvatarChange,
+  style = {},
+  className = '',
+  ...rest
 }: ProfileSettingsProps) {
   const ua = useUA();
   const [n, setN] = useState(initName);
@@ -597,7 +630,10 @@ export function ProfileSettings({
         fontFamily: ua.ff,
         color: ua.fg,
         maxWidth: 480,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         style={{
@@ -706,7 +742,7 @@ export interface SettingsSection {
   action?: React.ReactNode;
 }
 
-export interface AccountSettingsProps {
+export interface AccountSettingsProps extends React.ComponentPropsWithoutRef<'div'> {
   sections: SettingsSection[];
   title?: string;
 }
@@ -714,11 +750,14 @@ export interface AccountSettingsProps {
 export function AccountSettings({
   sections = [],
   title = 'Account Settings',
+  style = {},
+  className = '',
+  ...rest
 }: AccountSettingsProps) {
   const ua = useUA();
 
   return (
-    <div style={{ fontFamily: ua.ff, color: ua.fg }}>
+    <div style={{ fontFamily: ua.ff, color: ua.fg, ...style }} className={className} {...rest}>
       <div
         style={{
           fontWeight: 700,
@@ -791,7 +830,7 @@ export function AccountSettings({
 
 /* ── RoleBadge ──────────────────────────────────────────── */
 
-export interface RoleBadgeProps {
+export interface RoleBadgeProps extends React.ComponentPropsWithoutRef<'span'> {
   role: string;
   variant?: 'admin' | 'moderator' | 'editor' | 'viewer' | 'custom';
   color?: string;
@@ -804,7 +843,14 @@ const ROLE_COLORS: Record<string, string> = {
   viewer: '#71717a',
 };
 
-export function RoleBadge({ role, variant = 'custom', color }: RoleBadgeProps) {
+export function RoleBadge({
+  role,
+  variant = 'custom',
+  color,
+  style = {},
+  className = '',
+  ...rest
+}: RoleBadgeProps) {
   const ua = useUA();
   const c = color ?? ROLE_COLORS[variant] ?? ua.accent;
 
@@ -824,7 +870,10 @@ export function RoleBadge({ role, variant = 'custom', color }: RoleBadgeProps) {
         fontFamily: ua.ff,
         textTransform: 'capitalize',
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.03)',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <Icon name="shield" size={13} color={c} />
       {role}

@@ -5,7 +5,7 @@ import { useContentTheme } from '../../core/provider';
 
 /* ── HeadingSection ─────────────────────────────────────── */
 
-export interface HeadingSectionProps {
+export interface HeadingSectionProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -15,8 +15,6 @@ export interface HeadingSectionProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
   eyebrow?: string;
   title?: string;
   subtitle?: string;
@@ -61,6 +59,7 @@ export function HeadingSection({
   spacing = 12,
   accentColor,
   showDecoration = true,
+  ...rest
 }: HeadingSectionProps) {
   const t = useContentTheme();
 
@@ -89,6 +88,7 @@ export function HeadingSection({
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         <div

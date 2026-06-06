@@ -27,7 +27,7 @@ function useSR() {
 
 /* ── SiteSearchBar ──────────────────────────────────────── */
 
-export interface SiteSearchBarProps {
+export interface SiteSearchBarProps extends React.ComponentPropsWithoutRef<'form'> {
   placeholder?: string;
   onSearch?: (q: string) => void;
   defaultValue?: string;
@@ -39,6 +39,9 @@ export function SiteSearchBar({
   onSearch,
   defaultValue = '',
   autoFocus = false,
+  style = {},
+  className = '',
+  ...rest
 }: SiteSearchBarProps) {
   const sr = useSR();
   const [q, setQ] = useState(defaultValue);
@@ -54,7 +57,12 @@ export function SiteSearchBar({
   };
 
   return (
-    <form onSubmit={handle} style={{ display: 'flex', gap: 8, fontFamily: sr.ff }}>
+    <form
+      onSubmit={handle}
+      style={{ display: 'flex', gap: 8, fontFamily: sr.ff, ...style }}
+      className={className}
+      {...rest}
+    >
       <div
         style={{
           flex: 1,
@@ -134,7 +142,7 @@ export function SiteSearchBar({
 
 /* ── AutoSuggest ────────────────────────────────────────── */
 
-export interface AutoSuggestProps {
+export interface AutoSuggestProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onSelect'> {
   suggestions: string[];
   onSelect?: (val: string) => void;
   placeholder?: string;
@@ -146,6 +154,9 @@ export function AutoSuggest({
   onSelect,
   placeholder = 'Type to search...',
   onQueryChange,
+  style = {},
+  className = '',
+  ...rest
 }: AutoSuggestProps) {
   const sr = useSR();
   const [q, setQ] = useState('');
@@ -189,7 +200,11 @@ export function AutoSuggest({
   };
 
   return (
-    <div style={{ position: 'relative', fontFamily: sr.ff }}>
+    <div
+      style={{ position: 'relative', fontFamily: sr.ff, ...style }}
+      className={className}
+      {...rest}
+    >
       <div
         style={{
           display: 'flex',
@@ -274,17 +289,28 @@ export interface Facet {
   options: FacetOption[];
 }
 
-export interface FacetFiltersProps {
+export interface FacetFiltersProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   facets: Facet[];
   selected?: Record<string, Set<string>>;
   onChange?: (facetId: string, optionId: string, checked: boolean) => void;
 }
 
-export function FacetFilters({ facets = [], selected = {}, onChange }: FacetFiltersProps) {
+export function FacetFilters({
+  facets = [],
+  selected = {},
+  onChange,
+  style = {},
+  className = '',
+  ...rest
+}: FacetFiltersProps) {
   const sr = useSR();
 
   return (
-    <div style={{ display: 'grid', gap: 16, fontFamily: sr.ff, color: sr.fg }}>
+    <div
+      style={{ display: 'grid', gap: 16, fontFamily: sr.ff, color: sr.fg, ...style }}
+      className={className}
+      {...rest}
+    >
       {facets.map((f) => (
         <div key={f.id}>
           <div

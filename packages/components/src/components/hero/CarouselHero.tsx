@@ -11,7 +11,7 @@ export type Slide = {
   subtitle?: string;
 };
 
-export interface CarouselHeroProps {
+export interface CarouselHeroProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   slides?: Slide[];
   autoplay?: boolean;
@@ -29,8 +29,6 @@ export interface CarouselHeroProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const ui = {
@@ -67,6 +65,7 @@ export function CarouselHero(props: CarouselHeroProps) {
     gap = t.gap ?? 24,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -135,6 +134,7 @@ export function CarouselHero(props: CarouselHeroProps) {
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div
         style={{

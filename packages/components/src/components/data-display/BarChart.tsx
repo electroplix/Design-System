@@ -5,7 +5,7 @@ import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── BarChart ───────────────────────────────────────────── */
 
-export interface BarChartProps {
+export interface BarChartProps extends React.ComponentPropsWithoutRef<'figure'> {
   data: number[];
   labels?: string[];
   width?: number;
@@ -36,6 +36,9 @@ export function BarChart({
   showGrid = true,
   padding = 32,
   barRadius = 6,
+  className,
+  style,
+  ...rest
 }: BarChartProps) {
   const t = useDataDisplayTheme();
   const uid = useId();
@@ -58,6 +61,7 @@ export function BarChart({
   if (safeData.length === 0) {
     return (
       <figure
+        className={className}
         style={{
           border: `1px solid ${border}`,
           borderRadius: r,
@@ -68,7 +72,9 @@ export function BarChart({
           textAlign: 'center',
           margin: 0,
           boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+          ...style,
         }}
+        {...rest}
       >
         <div
           style={{
@@ -93,6 +99,7 @@ export function BarChart({
 
   return (
     <figure
+      className={className}
       style={{
         border: `1px solid ${border}`,
         borderRadius: r,
@@ -102,7 +109,9 @@ export function BarChart({
         fontFamily: t.fontFamily,
         margin: 0,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {title && (
         <figcaption

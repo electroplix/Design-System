@@ -51,7 +51,8 @@ export interface ComparisonFeature {
   values: Record<string, boolean | string>;
 }
 
-export interface ComparisonTableProps {
+export interface ComparisonTableProps
+  extends Omit<React.ComponentPropsWithoutRef<'section'>, 'onSelect'> {
   plans: ComparisonPlan[];
   features: ComparisonFeature[];
   title?: string;
@@ -63,11 +64,15 @@ export function ComparisonTable({
   features = [],
   title,
   onSelect,
+  className,
+  style,
+  ...rest
 }: ComparisonTableProps) {
   const mk = useMK();
 
   return (
     <section
+      className={className}
       style={{
         border: `1px solid ${mk.border}`,
         borderRadius: mk.r,
@@ -76,7 +81,9 @@ export function ComparisonTable({
         color: mk.fg,
         fontFamily: mk.ff,
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {title && (
         <div
@@ -204,14 +211,22 @@ export function ComparisonTable({
 
 /* ── CountdownTimer ─────────────────────────────────────── */
 
-export interface CountdownTimerProps {
+export interface CountdownTimerProps extends React.ComponentPropsWithoutRef<'div'> {
   targetDate: string | Date;
   label?: string;
   onExpire?: () => void;
   accentColor?: string;
 }
 
-export function CountdownTimer({ targetDate, label, onExpire, accentColor }: CountdownTimerProps) {
+export function CountdownTimer({
+  targetDate,
+  label,
+  onExpire,
+  accentColor,
+  className,
+  style,
+  ...rest
+}: CountdownTimerProps) {
   const mk = useMK();
   const acc = accentColor ?? mk.accent;
 
@@ -284,7 +299,11 @@ export function CountdownTimer({ targetDate, label, onExpire, accentColor }: Cou
   );
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg }}>
+    <div
+      className={className}
+      style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }}
+      {...rest}
+    >
       {label && <div style={{ fontWeight: 700, fontSize: mk.hs, marginBottom: 16 }}>{label}</div>}
 
       <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
@@ -306,17 +325,24 @@ export interface USP {
   description?: string;
 }
 
-export interface FeatureHighlightsProps {
+export interface FeatureHighlightsProps extends React.ComponentPropsWithoutRef<'div'> {
   items: USP[];
   columns?: number | string;
   title?: string;
 }
 
-export function FeatureHighlights({ items = [], columns = 3, title }: FeatureHighlightsProps) {
+export function FeatureHighlights({
+  items = [],
+  columns = 3,
+  title,
+  className,
+  style,
+  ...rest
+}: FeatureHighlightsProps) {
   const mk = useMK();
 
   return (
-    <div style={{ fontFamily: mk.ff, color: mk.fg }}>
+    <div className={className} style={{ fontFamily: mk.ff, color: mk.fg, ...style }} {...rest}>
       {title && (
         <div
           style={{
@@ -380,7 +406,8 @@ export function FeatureHighlights({ items = [], columns = 3, title }: FeatureHig
 
 /* ── LeadMagnetGate ─────────────────────────────────────── */
 
-export interface LeadMagnetGateProps {
+export interface LeadMagnetGateProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onSubmit'> {
   title: string;
   description?: string;
   inputPlaceholder?: string;
@@ -396,6 +423,9 @@ export function LeadMagnetGate({
   ctaLabel = 'Get Access',
   onSubmit,
   children,
+  className,
+  style,
+  ...rest
 }: LeadMagnetGateProps) {
   const mk = useMK();
   const [email, setEmail] = useState('');
@@ -414,6 +444,7 @@ export function LeadMagnetGate({
 
   return (
     <div
+      className={className}
       style={{
         border: `1px solid ${mk.border}`,
         borderRadius: mk.r,
@@ -425,7 +456,9 @@ export function LeadMagnetGate({
         maxWidth: 480,
         margin: '0 auto',
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{
@@ -499,7 +532,7 @@ export function LeadMagnetGate({
 
 /* ── MarketingHeroBlock ─────────────────────────────────── */
 
-export interface MarketingHeroBlockProps {
+export interface MarketingHeroBlockProps extends React.ComponentPropsWithoutRef<'section'> {
   eyebrow?: string;
   headline: string;
   subheadline?: string;
@@ -519,11 +552,15 @@ export function MarketingHeroBlock({
   secondaryLabel,
   onSecondaryClick,
   bgImage,
+  className,
+  style,
+  ...rest
 }: MarketingHeroBlockProps) {
   const mk = useMK();
 
   return (
     <section
+      className={className}
       style={{
         padding: '80px 32px',
         textAlign: 'center',
@@ -538,7 +575,9 @@ export function MarketingHeroBlock({
         border: `1px solid ${mk.border}`,
         overflow: 'hidden',
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {bgImage && (
         <div
@@ -640,7 +679,7 @@ export function MarketingHeroBlock({
 
 /* ── PromoPopup ─────────────────────────────────────────── */
 
-export interface PromoPopupProps {
+export interface PromoPopupProps extends React.ComponentPropsWithoutRef<'div'> {
   title: string;
   message?: string;
   ctaLabel?: string;
@@ -658,6 +697,9 @@ export function PromoPopup({
   onDismiss,
   isOpen = true,
   image,
+  className,
+  style,
+  ...rest
 }: PromoPopupProps) {
   const mk = useMK();
 
@@ -665,6 +707,7 @@ export function PromoPopup({
 
   return (
     <div
+      className={className}
       style={{
         position: 'fixed',
         inset: 0,
@@ -672,7 +715,9 @@ export function PromoPopup({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        ...style,
       }}
+      {...rest}
     >
       <div
         onClick={onDismiss}
@@ -780,7 +825,7 @@ export interface Testimonial {
   rating?: number;
 }
 
-export interface TestimonialsCarouselProps {
+export interface TestimonialsCarouselProps extends React.ComponentPropsWithoutRef<'div'> {
   testimonials: Testimonial[];
   autoPlay?: boolean;
   interval?: number;
@@ -790,6 +835,9 @@ export function TestimonialsCarousel({
   testimonials = [],
   autoPlay = true,
   interval = 5000,
+  className,
+  style,
+  ...rest
 }: TestimonialsCarouselProps) {
   const mk = useMK();
   const [idx, setIdx] = useState(0);
@@ -808,13 +856,16 @@ export function TestimonialsCarousel({
 
   return (
     <div
+      className={className}
       style={{
         textAlign: 'center',
         fontFamily: mk.ff,
         color: mk.fg,
         maxWidth: 600,
         margin: '0 auto',
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{
@@ -924,16 +975,16 @@ export interface TrustBadge {
   image?: string;
 }
 
-export interface TrustBadgesProps {
+export interface TrustBadgesProps extends React.ComponentPropsWithoutRef<'div'> {
   badges: TrustBadge[];
   title?: string;
 }
 
-export function TrustBadges({ badges = [], title }: TrustBadgesProps) {
+export function TrustBadges({ badges = [], title, className, style, ...rest }: TrustBadgesProps) {
   const mk = useMK();
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg }}>
+    <div className={className} style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }} {...rest}>
       {title && <div style={{ fontWeight: 700, fontSize: mk.hs, marginBottom: 16 }}>{title}</div>}
 
       <div
@@ -982,17 +1033,24 @@ export interface StatItem {
   icon?: string;
 }
 
-export interface StatsCounterProps {
+export interface StatsCounterProps extends React.ComponentPropsWithoutRef<'div'> {
   stats: StatItem[];
   title?: string;
   columns?: number | string;
 }
 
-export function StatsCounter({ stats = [], title, columns = 4 }: StatsCounterProps) {
+export function StatsCounter({
+  stats = [],
+  title,
+  columns = 4,
+  className,
+  style,
+  ...rest
+}: StatsCounterProps) {
   const mk = useMK();
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg }}>
+    <div className={className} style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }} {...rest}>
       {title && (
         <div
           style={{
@@ -1081,7 +1139,7 @@ export interface HowItWorksStep {
   icon?: string;
 }
 
-export interface HowItWorksProps {
+export interface HowItWorksProps extends React.ComponentPropsWithoutRef<'div'> {
   steps: HowItWorksStep[];
   title?: string;
   subtitle?: string;
@@ -1093,12 +1151,15 @@ export function HowItWorks({
   title,
   subtitle,
   layout = 'horizontal',
+  className,
+  style,
+  ...rest
 }: HowItWorksProps) {
   const mk = useMK();
   const isHoriz = layout === 'horizontal';
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg }}>
+    <div className={className} style={{ textAlign: 'center', fontFamily: mk.ff, color: mk.fg, ...style }} {...rest}>
       {title && (
         <div
           style={{

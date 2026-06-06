@@ -4,7 +4,7 @@ import type React from 'react';
 import { Icon } from '../../core/icons';
 import { useHeroTheme } from '../../core/provider';
 
-export interface StaticHeroProps {
+export interface StaticHeroProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   title?: string;
   subtitle?: string;
@@ -24,8 +24,6 @@ export interface StaticHeroProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const ui = {
@@ -62,6 +60,7 @@ export function StaticHero(props: StaticHeroProps) {
     gap = t.gap ?? 24,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -87,6 +86,7 @@ export function StaticHero(props: StaticHeroProps) {
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div
         aria-hidden

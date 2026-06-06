@@ -32,7 +32,7 @@ const ui = {
 
 /* ── CookieConsent ──────────────────────────────────────── */
 
-export interface CookieConsentProps {
+export interface CookieConsentProps extends React.ComponentPropsWithoutRef<'div'> {
   message?: string;
   ctaLabel?: string;
   declineLabel?: string;
@@ -48,6 +48,8 @@ export function CookieConsent({
   onAccept,
   onDecline,
   position = 'bottom',
+  style = {},
+  ...rest
 }: CookieConsentProps) {
   const ms = useMS();
   const [show, setShow] = useState(true);
@@ -74,7 +76,9 @@ export function CookieConsent({
         fontFamily: ms.ff,
         color: ms.fg,
         boxShadow: '0 12px 40px rgba(9,9,11,0.12)',
+        ...style,
       }}
+      {...rest}
     >
       <Icon name="shield" size={20} color={ms.accent} />
 
@@ -125,13 +129,19 @@ export function CookieConsent({
 
 /* ── ScrollProgressBar ──────────────────────────────────── */
 
-export interface ScrollProgressBarProps {
+export interface ScrollProgressBarProps extends React.ComponentPropsWithoutRef<'div'> {
   color?: string;
   height?: number;
   zIndex?: number;
 }
 
-export function ScrollProgressBar({ color, height = 3, zIndex = 9997 }: ScrollProgressBarProps) {
+export function ScrollProgressBar({
+  color,
+  height = 3,
+  zIndex = 9997,
+  style = {},
+  ...rest
+}: ScrollProgressBarProps) {
   const ms = useMS();
   const [pct, setPct] = useState(0);
 
@@ -159,20 +169,29 @@ export function ScrollProgressBar({ color, height = 3, zIndex = 9997 }: ScrollPr
         background: color ?? ms.accent,
         zIndex,
         transition: 'width 0.1s',
+        ...style,
       }}
+      {...rest}
     />
   );
 }
 
 /* ── ThemeToggle ────────────────────────────────────────── */
 
-export interface ThemeToggleProps {
+export interface ThemeToggleProps
+  extends Omit<React.ComponentPropsWithoutRef<'button'>, 'onToggle'> {
   isDark?: boolean;
   onToggle?: (dark: boolean) => void;
   size?: number;
 }
 
-export function ThemeToggle({ isDark = true, onToggle, size = 40 }: ThemeToggleProps) {
+export function ThemeToggle({
+  isDark = true,
+  onToggle,
+  size = 40,
+  style = {},
+  ...rest
+}: ThemeToggleProps) {
   const ms = useMS();
   const [dark, setDark] = useState(isDark);
 
@@ -200,7 +219,9 @@ export function ThemeToggle({ isDark = true, onToggle, size = 40 }: ThemeToggleP
         cursor: 'pointer',
         transition: 'all 0.2s ease',
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <Icon name={dark ? 'sun' : 'moon'} size={size * 0.5} color={ms.accent} />
     </button>
@@ -209,7 +230,7 @@ export function ThemeToggle({ isDark = true, onToggle, size = 40 }: ThemeToggleP
 
 /* ── EmptyState ─────────────────────────────────────────── */
 
-export interface MiscEmptyStateProps {
+export interface MiscEmptyStateProps extends React.ComponentPropsWithoutRef<'div'> {
   icon?: string;
   title?: string;
   description?: string;
@@ -223,6 +244,8 @@ export function EmptyState({
   description,
   ctaLabel,
   onCta,
+  style = {},
+  ...rest
 }: MiscEmptyStateProps) {
   const ms = useMS();
 
@@ -233,7 +256,9 @@ export function EmptyState({
         padding: 48,
         fontFamily: ms.ff,
         color: ms.fg,
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{
@@ -291,7 +316,7 @@ export function EmptyState({
 
 /* ── AppInstallBanner ───────────────────────────────────── */
 
-export interface AppInstallBannerProps {
+export interface AppInstallBannerProps extends React.ComponentPropsWithoutRef<'div'> {
   title?: string;
   description?: string;
   iosUrl?: string;
@@ -307,6 +332,8 @@ export function AppInstallBanner({
   androidUrl,
   icon = 'smartphone',
   onDismiss,
+  style = {},
+  ...rest
 }: AppInstallBannerProps) {
   const ms = useMS();
   const [show, setShow] = useState(true);
@@ -326,7 +353,9 @@ export function AppInstallBanner({
         fontFamily: ms.ff,
         color: ms.fg,
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{

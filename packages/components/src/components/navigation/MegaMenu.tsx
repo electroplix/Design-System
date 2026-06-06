@@ -15,7 +15,7 @@ export type MegaMenuSection = {
   links: MenuLink[];
 };
 
-export interface MegaMenuProps {
+export interface MegaMenuProps extends React.ComponentPropsWithoutRef<'nav'> {
   as?: React.ElementType;
   label: string;
   sections: MegaMenuSection[];
@@ -28,29 +28,32 @@ export interface MegaMenuProps {
   accentColor?: string;
   borderColor?: string;
   fontFamily?: string;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
-export function MegaMenu(props: MegaMenuProps) {
+export function MegaMenu({
+  as: Tag = 'div',
+  label,
+  sections,
+  maxW = 800,
+  px = 24,
+  py = 24,
+  radius = 16,
+  bgColor: bgColorProp,
+  textColor: textColorProp,
+  accentColor: accentColorProp,
+  borderColor: borderColorProp,
+  fontFamily: fontFamilyProp,
+  style = {},
+  className = '',
+  ...rest
+}: MegaMenuProps) {
   const t = useNavTheme();
 
-  const {
-    as: Tag = 'div',
-    label,
-    sections,
-    maxW = 800,
-    px = 24,
-    py = 24,
-    radius = 16,
-    bgColor: _bgColor = t.bgColor ?? '#ffffff',
-    textColor = t.textColor ?? '#09090b',
-    accentColor = t.accentColor ?? '#18181b',
-    borderColor = t.borderColor ?? '#e4e4e7',
-    fontFamily = t.fontFamily,
-    style = {},
-    className = '',
-  } = props;
+  const _bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
+  const textColor = textColorProp ?? t.textColor ?? '#09090b';
+  const accentColor = accentColorProp ?? t.accentColor ?? '#18181b';
+  const borderColor = borderColorProp ?? t.borderColor ?? '#e4e4e7';
+  const fontFamily = fontFamilyProp ?? t.fontFamily;
 
   const mutedColor = '#71717a';
   const surfaceColor = '#fafafa';
@@ -68,6 +71,7 @@ export function MegaMenu(props: MegaMenuProps) {
       }}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      {...rest}
     >
       <button
         style={{

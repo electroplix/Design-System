@@ -15,7 +15,7 @@ export type SidebarItem = {
   children?: SidebarChild[];
 };
 
-export interface SidebarMenuProps {
+export interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'nav'> {
   items: SidebarItem[];
   width?: number;
   padding?: number;
@@ -28,21 +28,28 @@ export interface SidebarMenuProps {
   fontFamily?: string;
 }
 
-export function SidebarMenu(props: SidebarMenuProps) {
+export function SidebarMenu({
+  items,
+  width = 260,
+  padding = 16,
+  gap = 4,
+  radius = 16,
+  bgColor: bgColorProp,
+  textColor: textColorProp,
+  accentColor: accentColorProp,
+  borderColor: borderColorProp,
+  fontFamily: fontFamilyProp,
+  className,
+  style,
+  ...rest
+}: SidebarMenuProps) {
   const t = useNavTheme();
 
-  const {
-    items,
-    width = 260,
-    padding = 16,
-    gap = 4,
-    radius = 16,
-    bgColor = t.bgColor ?? '#ffffff',
-    textColor = t.textColor ?? '#09090b',
-    accentColor = t.accentColor ?? '#18181b',
-    borderColor = t.borderColor ?? '#e4e4e7',
-    fontFamily = t.fontFamily,
-  } = props;
+  const bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
+  const textColor = textColorProp ?? t.textColor ?? '#09090b';
+  const accentColor = accentColorProp ?? t.accentColor ?? '#18181b';
+  const borderColor = borderColorProp ?? t.borderColor ?? '#e4e4e7';
+  const fontFamily = fontFamilyProp ?? t.fontFamily;
 
   const mutedColor = '#71717a';
   const surfaceColor = '#fafafa';
@@ -57,7 +64,8 @@ export function SidebarMenu(props: SidebarMenuProps) {
     }));
 
   return (
-    <aside
+    <nav
+      className={className}
       style={{
         width,
         background: bgColor,
@@ -66,7 +74,9 @@ export function SidebarMenu(props: SidebarMenuProps) {
         border: `1px solid ${borderColor}`,
         fontFamily,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       <ul
         style={{
@@ -190,6 +200,6 @@ export function SidebarMenu(props: SidebarMenuProps) {
           );
         })}
       </ul>
-    </aside>
+    </nav>
   );
 }

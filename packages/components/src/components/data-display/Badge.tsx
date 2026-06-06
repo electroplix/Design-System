@@ -7,7 +7,7 @@ import { useDataDisplayTheme } from '../../core/provider';
 
 export type BadgeTone = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 
-export interface BadgeProps {
+export interface BadgeProps extends React.ComponentPropsWithoutRef<'span'> {
   children?: React.ReactNode;
   label?: string;
   tone?: BadgeTone;
@@ -47,13 +47,22 @@ const toneStyles: Record<BadgeTone, { bg: string; text: string; border: string; 
   },
 };
 
-export function Badge({ children, label, tone = 'neutral', pill = true }: BadgeProps) {
+export function Badge({
+  children,
+  label,
+  tone = 'neutral',
+  pill = true,
+  className,
+  style,
+  ...rest
+}: BadgeProps) {
   const t = useDataDisplayTheme();
   const [hovered, setHovered] = useState(false);
   const s = toneStyles[tone];
 
   return (
     <span
+      className={className}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -74,7 +83,9 @@ export function Badge({ children, label, tone = 'neutral', pill = true }: BadgeP
         transform: hovered ? 'translateY(-1px)' : 'translateY(0)',
         boxShadow: hovered ? '0 1px 3px rgba(9, 9, 11, 0.08)' : 'none',
         cursor: 'default',
+        ...style,
       }}
+      {...rest}
     >
       <span
         style={{

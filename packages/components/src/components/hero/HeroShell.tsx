@@ -3,7 +3,7 @@
 import type React from 'react';
 import { useHeroTheme } from '../../core/provider';
 
-export interface HeroShellProps {
+export interface HeroShellProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -14,9 +14,6 @@ export interface HeroShellProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
-  children?: React.ReactNode;
 }
 
 const ui = {
@@ -45,6 +42,7 @@ export function HeroShell(props: HeroShellProps) {
     style = {},
     className = '',
     children,
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -53,6 +51,7 @@ export function HeroShell(props: HeroShellProps) {
   return (
     <Tag
       className={className}
+      {...rest}
       style={{
         display: 'grid',
         placeItems: 'center',

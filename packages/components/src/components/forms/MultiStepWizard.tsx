@@ -12,7 +12,7 @@ export type WizardStep = {
   validate?: () => string[];
 };
 
-export interface MultiStepWizardProps {
+export interface MultiStepWizardProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   steps: WizardStep[];
   onFinish?: () => void;
@@ -29,8 +29,6 @@ export interface MultiStepWizardProps {
   titleSize?: number;
   descSize?: number;
   navBtnSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const ui = {
@@ -68,6 +66,7 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
     navBtnSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -112,6 +111,7 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div
         style={{

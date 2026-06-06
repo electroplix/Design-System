@@ -16,7 +16,7 @@ export interface DataTableColumn<T> {
   sortable?: boolean;
 }
 
-export interface DataTableProps<T> {
+export interface DataTableProps<T> extends React.ComponentPropsWithoutRef<'section'> {
   columns: DataTableColumn<T>[];
   rows: T[];
   pageSize?: number;
@@ -47,6 +47,9 @@ export function DataTable<T extends Record<string, any>>({
   caption,
   initialSort,
   searchable = false,
+  className,
+  style,
+  ...rest
 }: DataTableProps<T>) {
   const t = useDataDisplayTheme();
 
@@ -107,6 +110,7 @@ export function DataTable<T extends Record<string, any>>({
   if (safeColumns.length === 0) {
     return (
       <div
+        className={className}
         style={{
           padding: sp * 2,
           background: bg,
@@ -116,7 +120,9 @@ export function DataTable<T extends Record<string, any>>({
           fontFamily: t.fontFamily,
           textAlign: 'center',
           boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+          ...style,
         }}
+        {...rest}
       >
         <div
           style={{
@@ -143,6 +149,7 @@ export function DataTable<T extends Record<string, any>>({
 
   return (
     <section
+      className={className}
       style={{
         border: `1px solid ${border}`,
         borderRadius: r,
@@ -151,7 +158,9 @@ export function DataTable<T extends Record<string, any>>({
         color: fg,
         fontFamily: t.fontFamily,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {(caption || searchable) && (
         <div

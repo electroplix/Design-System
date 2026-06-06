@@ -26,7 +26,7 @@ function useSI() {
 
 /* ── LogoDisplay ────────────────────────────────────────── */
 
-export interface LogoDisplayProps {
+export interface LogoDisplayProps extends React.ComponentPropsWithoutRef<'div'> {
   src: string;
   alt?: string;
   width?: number;
@@ -34,7 +34,16 @@ export interface LogoDisplayProps {
   href?: string;
 }
 
-export function LogoDisplay({ src, alt = 'Logo', width = 140, height, href }: LogoDisplayProps) {
+export function LogoDisplay({
+  src,
+  alt = 'Logo',
+  width = 140,
+  height,
+  href,
+  style = {},
+  className = '',
+  ...rest
+}: LogoDisplayProps) {
   const img = (
     <img
       src={src}
@@ -48,26 +57,28 @@ export function LogoDisplay({ src, alt = 'Logo', width = 140, height, href }: Lo
     />
   );
 
-  if (href) {
-    return (
-      <a
-        href={href}
-        style={{
-          display: 'inline-flex',
-          textDecoration: 'none',
-        }}
-      >
-        {img}
-      </a>
-    );
-  }
-
-  return img;
+  return (
+    <div className={className} style={{ display: 'inline-block', ...style }} {...rest}>
+      {href ? (
+        <a
+          href={href}
+          style={{
+            display: 'inline-flex',
+            textDecoration: 'none',
+          }}
+        >
+          {img}
+        </a>
+      ) : (
+        img
+      )}
+    </div>
+  );
 }
 
 /* ── AnimatedBrandMark ──────────────────────────────────── */
 
-export interface AnimatedBrandMarkProps {
+export interface AnimatedBrandMarkProps extends React.ComponentPropsWithoutRef<'span'> {
   text: string;
   fontSize?: number;
   accentColor?: string;
@@ -79,12 +90,16 @@ export function AnimatedBrandMark({
   fontSize = 32,
   accentColor,
   fontFamily,
+  style = {},
+  className = '',
+  ...rest
 }: AnimatedBrandMarkProps) {
   const si = useSI();
   const col = accentColor ?? si.accent;
 
   return (
     <span
+      className={className}
       style={{
         fontSize,
         fontWeight: 800,
@@ -93,7 +108,9 @@ export function AnimatedBrandMark({
         letterSpacing: '-0.045em',
         lineHeight: 1,
         display: 'inline-flex',
+        ...style,
       }}
+      {...rest}
     >
       {text}
     </span>
@@ -102,13 +119,20 @@ export function AnimatedBrandMark({
 
 /* ── Taglines ───────────────────────────────────────────── */
 
-export interface TaglinesProps {
+export interface TaglinesProps extends React.ComponentPropsWithoutRef<'div'> {
   lines: string[];
   rotate?: boolean;
   interval?: number;
 }
 
-export function Taglines({ lines = [], rotate = false, interval = 3000 }: TaglinesProps) {
+export function Taglines({
+  lines = [],
+  rotate = false,
+  interval = 3000,
+  style = {},
+  className = '',
+  ...rest
+}: TaglinesProps) {
   const si = useSI();
   const [idx, setIdx] = useState(0);
 
@@ -123,12 +147,15 @@ export function Taglines({ lines = [], rotate = false, interval = 3000 }: Taglin
 
   return (
     <div
+      className={className}
       style={{
         fontFamily: si.ff,
         color: si.muted,
         fontSize: si.bs,
         lineHeight: 1.6,
+        ...style,
       }}
+      {...rest}
     >
       {rotate ? (
         <span style={{ transition: 'opacity 0.3s' }}>{lines[idx]}</span>
@@ -141,11 +168,10 @@ export function Taglines({ lines = [], rotate = false, interval = 3000 }: Taglin
 
 /* ── BrandingShell ──────────────────────────────────────── */
 
-export interface BrandingShellProps {
+export interface BrandingShellProps extends React.ComponentPropsWithoutRef<'section'> {
   logoSrc?: string;
   brandName?: string;
   tagline?: string;
-  children?: React.ReactNode;
   maxW?: number;
 }
 
@@ -155,16 +181,22 @@ export function BrandingShell({
   tagline,
   children,
   maxW = 900,
+  style = {},
+  className = '',
+  ...rest
 }: BrandingShellProps) {
   const si = useSI();
 
   return (
     <section
+      className={className}
       style={{
         fontFamily: si.ff,
         color: si.fg,
         maxWidth: maxW,
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{
@@ -206,24 +238,34 @@ export interface BrandIcon {
   href?: string;
 }
 
-export interface BrandIconGridProps {
+export interface BrandIconGridProps extends React.ComponentPropsWithoutRef<'div'> {
   icons: BrandIcon[];
   columns?: number | string;
   iconSize?: number;
 }
 
-export function BrandIconGrid({ icons = [], columns = 6, iconSize = 48 }: BrandIconGridProps) {
+export function BrandIconGrid({
+  icons = [],
+  columns = 6,
+  iconSize = 48,
+  style = {},
+  className = '',
+  ...rest
+}: BrandIconGridProps) {
   const si = useSI();
 
   return (
     <div
+      className={className}
       style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap: 16,
         fontFamily: si.ff,
         color: si.fg,
+        ...style,
       }}
+      {...rest}
     >
       {icons.map((ic) => {
         const inner = (

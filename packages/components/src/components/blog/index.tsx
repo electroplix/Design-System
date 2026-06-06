@@ -51,19 +51,20 @@ export interface BlogPost {
 
 /* ── BlogCard ───────────────────────────────────────────── */
 
-export interface BlogCardProps {
+export interface BlogCardProps extends Omit<React.ComponentPropsWithoutRef<'article'>, 'onClick'> {
   post: BlogPost;
   onClick?: (post: BlogPost) => void;
   variant?: 'vertical' | 'horizontal';
 }
 
-export function BlogCard({ post, onClick, variant = 'vertical' }: BlogCardProps) {
+export function BlogCard({ post, onClick, variant = 'vertical', className, style, ...rest }: BlogCardProps) {
   const bg = useBG();
   const isH = variant === 'horizontal';
 
   return (
     <article
       onClick={() => onClick?.(post)}
+      className={className}
       style={{
         display: 'flex',
         flexDirection: isH ? 'row' : 'column',
@@ -76,7 +77,9 @@ export function BlogCard({ post, onClick, variant = 'vertical' }: BlogCardProps)
         color: ui.text,
         transition: 'border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease',
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {post.coverImage && (
         <img
@@ -157,7 +160,7 @@ export function BlogCard({ post, onClick, variant = 'vertical' }: BlogCardProps)
 
 /* ── AuthorByline ───────────────────────────────────────── */
 
-export interface AuthorBylineProps {
+export interface AuthorBylineProps extends React.ComponentPropsWithoutRef<'div'> {
   name: string;
   avatar?: string;
   bio?: string;
@@ -165,7 +168,16 @@ export interface AuthorBylineProps {
   readTime?: string;
 }
 
-export function AuthorByline({ name, avatar, bio, date, readTime }: AuthorBylineProps) {
+export function AuthorByline({
+  name,
+  avatar,
+  bio,
+  date,
+  readTime,
+  className,
+  style,
+  ...rest
+}: AuthorBylineProps) {
   const bg = useBG();
   const initials = name
     .split(' ')
@@ -175,7 +187,11 @@ export function AuthorByline({ name, avatar, bio, date, readTime }: AuthorByline
     .toUpperCase();
 
   return (
-    <div style={{ display: 'flex', gap: 14, fontFamily: bg.ff, color: ui.text }}>
+    <div
+      className={className}
+      style={{ display: 'flex', gap: 14, fontFamily: bg.ff, color: ui.text, ...style }}
+      {...rest}
+    >
       {avatar ? (
         <img
           src={avatar}
@@ -223,17 +239,28 @@ export function AuthorByline({ name, avatar, bio, date, readTime }: AuthorByline
 
 /* ── TagList ────────────────────────────────────────────── */
 
-export interface TagListProps {
+export interface TagListProps extends React.ComponentPropsWithoutRef<'div'> {
   tags: string[];
   onTagClick?: (tag: string) => void;
   activeTag?: string;
 }
 
-export function TagList({ tags = [], onTagClick, activeTag }: TagListProps) {
+export function TagList({
+  tags = [],
+  onTagClick,
+  activeTag,
+  className,
+  style,
+  ...rest
+}: TagListProps) {
   const bg = useBG();
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, fontFamily: bg.ff }}>
+    <div
+      className={className}
+      style={{ display: 'flex', flexWrap: 'wrap', gap: 6, fontFamily: bg.ff, ...style }}
+      {...rest}
+    >
       {tags.map((t) => (
         <button
           key={t}
@@ -261,17 +288,18 @@ export function TagList({ tags = [], onTagClick, activeTag }: TagListProps) {
 
 /* ── BlogBadge ──────────────────────────────────────────── */
 
-export interface BlogBadgeProps {
+export interface BlogBadgeProps extends React.ComponentPropsWithoutRef<'span'> {
   label: string;
   color?: string;
 }
 
-export function BlogBadge({ label, color }: BlogBadgeProps) {
+export function BlogBadge({ label, color, className, style, ...rest }: BlogBadgeProps) {
   const bg = useBG();
   const c = color ?? ui.black;
 
   return (
     <span
+      className={className}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -284,7 +312,9 @@ export function BlogBadge({ label, color }: BlogBadgeProps) {
         fontSize: 12,
         fontWeight: 700,
         fontFamily: bg.ff,
+        ...style,
       }}
+      {...rest}
     >
       {label}
     </span>
@@ -293,13 +323,20 @@ export function BlogBadge({ label, color }: BlogBadgeProps) {
 
 /* ── ReadingBar ─────────────────────────────────────────── */
 
-export interface ReadingBarProps {
+export interface ReadingBarProps extends React.ComponentPropsWithoutRef<'div'> {
   color?: string;
   height?: number;
   containerRef?: React.RefObject<HTMLElement | null>;
 }
 
-export function ReadingBar({ color, height = 3, containerRef }: ReadingBarProps) {
+export function ReadingBar({
+  color,
+  height = 3,
+  containerRef,
+  className,
+  style,
+  ...rest
+}: ReadingBarProps) {
   const bg = useBG();
   const [pct, setPct] = useState(0);
 
@@ -323,6 +360,7 @@ export function ReadingBar({ color, height = 3, containerRef }: ReadingBarProps)
 
   return (
     <div
+      className={className}
       style={{
         position: 'fixed',
         top: 0,
@@ -333,14 +371,16 @@ export function ReadingBar({ color, height = 3, containerRef }: ReadingBarProps)
         zIndex: 9997,
         transition: 'width 0.1s ease',
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.12)',
+        ...style,
       }}
+      {...rest}
     />
   );
 }
 
 /* ── ArticleRenderer ────────────────────────────────────── */
 
-export interface ArticleRendererProps {
+export interface ArticleRendererProps extends React.ComponentPropsWithoutRef<'article'> {
   /** Pre-rendered HTML string. ⚠️ Caller is responsible for sanitization (e.g. DOMPurify). */
   html: string;
   maxW?: number;
@@ -351,12 +391,19 @@ export interface ArticleRendererProps {
  * via `dangerouslySetInnerHTML`. Always sanitize untrusted content before
  * passing it (e.g. with DOMPurify).
  */
-export function ArticleRenderer({ html, maxW = 720 }: ArticleRendererProps) {
+export function ArticleRenderer({
+  html,
+  maxW = 720,
+  className,
+  style,
+  ...rest
+}: ArticleRendererProps) {
   const bg = useBG();
   const safeHtml = html.replace(/<script[\s\S]*?<\/script>/gi, '');
 
   return (
     <article
+      className={className}
       dangerouslySetInnerHTML={{ __html: safeHtml }}
       style={{
         fontFamily: bg.ff,
@@ -366,14 +413,16 @@ export function ArticleRenderer({ html, maxW = 720 }: ArticleRendererProps) {
         maxWidth: maxW,
         overflowWrap: 'break-word',
         wordBreak: 'break-word',
+        ...style,
       }}
+      {...rest}
     />
   );
 }
 
 /* ── RelatedPosts ───────────────────────────────────────── */
 
-export interface RelatedPostsProps {
+export interface RelatedPostsProps extends React.ComponentPropsWithoutRef<'section'> {
   posts: BlogPost[];
   title?: string;
   onPostClick?: (post: BlogPost) => void;
@@ -383,11 +432,18 @@ export function RelatedPosts({
   posts = [],
   title = 'Related Posts',
   onPostClick,
+  className,
+  style,
+  ...rest
 }: RelatedPostsProps) {
   const bg = useBG();
 
   return (
-    <section style={{ fontFamily: bg.ff, color: ui.text }}>
+    <section
+      className={className}
+      style={{ fontFamily: bg.ff, color: ui.text, ...style }}
+      {...rest}
+    >
       <div
         style={{
           fontWeight: 700,
@@ -420,16 +476,16 @@ export interface ArchiveGroup {
   label: string;
   posts: BlogPost[];
 }
-export interface ArchiveListProps {
+export interface ArchiveListProps extends React.ComponentPropsWithoutRef<'div'> {
   groups: ArchiveGroup[];
   onPostClick?: (post: BlogPost) => void;
 }
 
-export function ArchiveList({ groups = [], onPostClick }: ArchiveListProps) {
+export function ArchiveList({ groups = [], onPostClick, className, style, ...rest }: ArchiveListProps) {
   const bg = useBG();
 
   return (
-    <div style={{ fontFamily: bg.ff, color: ui.text }}>
+    <div className={className} style={{ fontFamily: bg.ff, color: ui.text, ...style }} {...rest}>
       {groups.map((g) => (
         <div key={g.label} style={{ marginBottom: 24 }}>
           <div
@@ -495,7 +551,8 @@ export interface BlogComment {
   date?: string;
   replies?: BlogComment[];
 }
-export interface CommentsSectionProps {
+export interface CommentsSectionProps
+  extends Omit<React.ComponentPropsWithoutRef<'section'>, 'onSubmit'> {
   comments?: BlogComment[];
   onSubmit?: (text: string, parentId?: string) => void;
   title?: string;
@@ -505,6 +562,9 @@ export function CommentsSection({
   comments = [],
   onSubmit,
   title = 'Comments',
+  className,
+  style,
+  ...rest
 }: CommentsSectionProps) {
   const bg = useBG();
   const [text, setText] = useState('');
@@ -594,7 +654,11 @@ export function CommentsSection({
   );
 
   return (
-    <section style={{ fontFamily: bg.ff, color: ui.text }}>
+    <section
+      className={className}
+      style={{ fontFamily: bg.ff, color: ui.text, ...style }}
+      {...rest}
+    >
       <div
         style={{
           fontWeight: 700,

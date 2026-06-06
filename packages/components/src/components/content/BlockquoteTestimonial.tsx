@@ -5,7 +5,7 @@ import { useContentTheme } from '../../core/provider';
 
 /* ── BlockquoteTestimonial ─────────────────────────────── */
 
-export interface BlockquoteTestimonialProps {
+export interface BlockquoteTestimonialProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -15,8 +15,6 @@ export interface BlockquoteTestimonialProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
   quote?: string;
   author?: string;
   role?: string;
@@ -58,6 +56,7 @@ export function BlockquoteTestimonial({
   quoteSize = 18,
   authorSize = 14,
   accentColor,
+  ...rest
 }: BlockquoteTestimonialProps) {
   const t = useContentTheme();
 
@@ -84,6 +83,7 @@ export function BlockquoteTestimonial({
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         {/* Quote icon */}

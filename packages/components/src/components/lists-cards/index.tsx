@@ -38,7 +38,7 @@ const ui = {
 
 /* ── BlockShell ─────────────────────────────────────────── */
 
-export interface BlockShellProps {
+export interface BlockShellProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -48,9 +48,6 @@ export interface BlockShellProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
-  children?: React.ReactNode;
 }
 
 export function BlockShell({
@@ -66,12 +63,14 @@ export function BlockShell({
   style = {},
   className = '',
   children,
+  ...rest
 }: BlockShellProps) {
   const lc = useLC();
 
   return (
     <Tag
       className={className}
+      {...rest}
       style={{
         background: bgColor ?? lc.bg,
         color: textColor ?? lc.fg,
@@ -108,12 +107,12 @@ export interface AccordionItem {
   content: React.ReactNode;
 }
 
-export interface AccordionProps {
+export interface AccordionProps extends React.ComponentPropsWithoutRef<'div'> {
   items: AccordionItem[];
   allowMultiple?: boolean;
 }
 
-export function Accordion({ items = [], allowMultiple = false }: AccordionProps) {
+export function Accordion({ items = [], allowMultiple = false, className, style, ...rest }: AccordionProps) {
   const lc = useLC();
 
   const [open, setOpen] = useState<Set<string>>(new Set());
@@ -130,11 +129,14 @@ export function Accordion({ items = [], allowMultiple = false }: AccordionProps)
 
   return (
     <div
+      className={className}
       style={{
         display: 'grid',
         gap: 10,
         fontFamily: lc.ff,
+        ...style,
       }}
+      {...rest}
     >
       {items.map((it) => {
         const isOpen = open.has(it.id);
@@ -194,7 +196,7 @@ export function Accordion({ items = [], allowMultiple = false }: AccordionProps)
 
 /* ── GenericList ─────────────────────────────────────────── */
 
-export interface GenericListProps {
+export interface GenericListProps extends React.ComponentPropsWithoutRef<'div'> {
   items: {
     id: string;
     label: string;
@@ -204,11 +206,12 @@ export interface GenericListProps {
   title?: string;
 }
 
-export function GenericList({ items = [], title }: GenericListProps) {
+export function GenericList({ items = [], title, className, style, ...rest }: GenericListProps) {
   const lc = useLC();
 
   return (
     <div
+      className={className}
       style={{
         border: `1px solid ${lc.border}`,
         borderRadius: lc.r,
@@ -217,7 +220,9 @@ export function GenericList({ items = [], title }: GenericListProps) {
         color: lc.fg,
         fontFamily: lc.ff,
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {title && (
         <div
@@ -306,21 +311,31 @@ export interface FeatureItem {
   description?: string;
 }
 
-export interface FeatureGridProps {
+export interface FeatureGridProps extends React.ComponentPropsWithoutRef<'div'> {
   items: FeatureItem[];
   columns?: number | string;
   title?: string;
 }
 
-export function FeatureGrid({ items = [], columns = 3, title }: FeatureGridProps) {
+export function FeatureGrid({
+  items = [],
+  columns = 3,
+  title,
+  className,
+  style,
+  ...rest
+}: FeatureGridProps) {
   const lc = useLC();
 
   return (
     <div
+      className={className}
       style={{
         fontFamily: lc.ff,
         color: lc.fg,
+        ...style,
       }}
+      {...rest}
     >
       {title && (
         <div
@@ -408,22 +423,32 @@ export interface ItemCardData {
   badge?: string;
 }
 
-export interface ItemCardGridProps {
+export interface ItemCardGridProps extends React.ComponentPropsWithoutRef<'div'> {
   items: ItemCardData[];
   columns?: number | string;
   onItemClick?: (id: string) => void;
 }
 
-export function ItemCardGrid({ items = [], columns = 3, onItemClick }: ItemCardGridProps) {
+export function ItemCardGrid({
+  items = [],
+  columns = 3,
+  onItemClick,
+  className,
+  style,
+  ...rest
+}: ItemCardGridProps) {
   const lc = useLC();
 
   return (
     <div
+      className={className}
       style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap: 16,
+        ...style,
       }}
+      {...rest}
     >
       {items.map((it) => (
         <div
@@ -516,23 +541,32 @@ export interface Plan {
   cta?: string;
 }
 
-export interface PricingTableProps {
+export interface PricingTableProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onSelect'> {
   plans: Plan[];
   onSelect?: (planId: string) => void;
 }
 
-export function PricingTable({ plans = [], onSelect }: PricingTableProps) {
+export function PricingTable({
+  plans = [],
+  onSelect,
+  className,
+  style,
+  ...rest
+}: PricingTableProps) {
   const lc = useLC();
 
   return (
     <div
+      className={className}
       style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${Math.min(plans.length, 4)}, 1fr)`,
         gap: 16,
         fontFamily: lc.ff,
         color: lc.fg,
+        ...style,
       }}
+      {...rest}
     >
       {plans.map((p) => (
         <div
@@ -672,7 +706,7 @@ export interface TableColumn<T> {
   render?: (row: T) => React.ReactNode;
 }
 
-export interface SortableTableProps<T> {
+export interface SortableTableProps<T> extends React.ComponentPropsWithoutRef<'section'> {
   columns: TableColumn<T>[];
   rows: T[];
   caption?: string;
@@ -682,6 +716,9 @@ export function SortableTable<T extends Record<string, unknown>>({
   columns = [],
   rows = [],
   caption,
+  className,
+  style,
+  ...rest
 }: SortableTableProps<T>) {
   const lc = useLC();
 
@@ -717,6 +754,7 @@ export function SortableTable<T extends Record<string, unknown>>({
 
   return (
     <section
+      className={className}
       style={{
         border: `1px solid ${lc.border}`,
         borderRadius: lc.r,
@@ -725,7 +763,9 @@ export function SortableTable<T extends Record<string, unknown>>({
         color: lc.fg,
         fontFamily: lc.ff,
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {caption && (
         <div
@@ -830,21 +870,24 @@ export interface LCTimelineItem {
   icon?: string;
 }
 
-export interface LCTimelineProps {
+export interface LCTimelineProps extends React.ComponentPropsWithoutRef<'div'> {
   items: LCTimelineItem[];
 }
 
-export function LCTimeline({ items = [] }: LCTimelineProps) {
+export function LCTimeline({ items = [], className, style, ...rest }: LCTimelineProps) {
   const lc = useLC();
 
   return (
     <div
+      className={className}
       style={{
         position: 'relative',
         paddingLeft: 36,
         fontFamily: lc.ff,
         color: lc.fg,
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{

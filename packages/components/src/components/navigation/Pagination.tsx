@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { Icon } from '../../core/icons';
 import { useNavTheme } from '../../core/provider';
 
-export interface PaginationProps {
+export interface PaginationProps extends React.ComponentPropsWithoutRef<'nav'> {
   currentPage: number;
   totalPages: number;
   onPageChange: (n: number) => void;
@@ -21,25 +21,32 @@ export interface PaginationProps {
   gap?: number;
 }
 
-export function Pagination(props: PaginationProps) {
+export function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  maxVisible = 5,
+  showFirstLast = true,
+  showPrevNext = true,
+  bgColor: bgColorProp,
+  textColor: textColorProp,
+  accentColor: accentColorProp,
+  borderColor: borderColorProp,
+  fontFamily: fontFamilyProp,
+  fontSize = 14,
+  radius = 10,
+  gap = 8,
+  className,
+  style,
+  ...rest
+}: PaginationProps) {
   const t = useNavTheme();
 
-  const {
-    currentPage,
-    totalPages,
-    onPageChange,
-    maxVisible = 5,
-    showFirstLast = true,
-    showPrevNext = true,
-    bgColor = t.bgColor ?? '#ffffff',
-    textColor = t.textColor ?? '#09090b',
-    accentColor = t.accentColor ?? '#18181b',
-    borderColor = t.borderColor ?? '#e4e4e7',
-    fontFamily = t.fontFamily,
-    fontSize = 14,
-    radius = 10,
-    gap = 8,
-  } = props;
+  const bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
+  const textColor = textColorProp ?? t.textColor ?? '#09090b';
+  const accentColor = accentColorProp ?? t.accentColor ?? '#18181b';
+  const borderColor = borderColorProp ?? t.borderColor ?? '#e4e4e7';
+  const fontFamily = fontFamilyProp ?? t.fontFamily;
 
   const mutedColor = '#71717a';
   const _surfaceColor = '#fafafa';
@@ -117,7 +124,8 @@ export function Pagination(props: PaginationProps) {
   );
 
   return (
-    <div
+    <nav
+      className={className}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -128,7 +136,9 @@ export function Pagination(props: PaginationProps) {
         background: bgColor,
         border: `1px solid ${borderColor}`,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {showFirstLast && (
         <Btn page={1} disabled={currentPage === 1} icon>
@@ -181,6 +191,6 @@ export function Pagination(props: PaginationProps) {
           />
         </Btn>
       )}
-    </div>
+    </nav>
   );
 }

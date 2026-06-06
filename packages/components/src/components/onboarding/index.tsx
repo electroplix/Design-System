@@ -34,7 +34,7 @@ export interface FAQItem {
   answer: string | React.ReactNode;
 }
 
-export interface FAQAccordionProps {
+export interface FAQAccordionProps extends React.ComponentPropsWithoutRef<'div'> {
   items: FAQItem[];
   title?: string;
   allowMultiple?: boolean;
@@ -44,6 +44,9 @@ export function FAQAccordion({
   items = [],
   title = 'Frequently Asked Questions',
   allowMultiple = false,
+  style = {},
+  className = '',
+  ...rest
 }: FAQAccordionProps) {
   const ob = useOB();
   const [open, setOpen] = useState<Set<string>>(new Set());
@@ -56,7 +59,16 @@ export function FAQAccordion({
     });
 
   return (
-    <div style={{ fontFamily: ob.ff, color: ob.fg, maxWidth: 700 }}>
+    <div
+      style={{
+        fontFamily: ob.ff,
+        color: ob.fg,
+        maxWidth: 700,
+        ...style,
+      }}
+      className={className}
+      {...rest}
+    >
       {title && (
         <h2
           style={{
@@ -141,7 +153,7 @@ export interface OnboardingWizardStep {
   content?: React.ReactNode;
 }
 
-export interface OnboardingWizardProps {
+export interface OnboardingWizardProps extends React.ComponentPropsWithoutRef<'div'> {
   steps: OnboardingWizardStep[];
   onComplete?: () => void;
   completeLabel?: string;
@@ -151,6 +163,9 @@ export function OnboardingWizard({
   steps = [],
   onComplete,
   completeLabel = 'Finish',
+  style = {},
+  className = '',
+  ...rest
 }: OnboardingWizardProps) {
   const ob = useOB();
   const [idx, setIdx] = useState(0);
@@ -167,7 +182,10 @@ export function OnboardingWizard({
         color: ob.fg,
         maxWidth: 560,
         margin: '0 auto',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         style={{
@@ -315,14 +333,22 @@ export interface TourStep {
   targetSelector?: string;
 }
 
-export interface ProductTourProps {
+export interface ProductTourProps extends React.ComponentPropsWithoutRef<'div'> {
   steps: TourStep[];
   isOpen: boolean;
   onClose?: () => void;
   onComplete?: () => void;
 }
 
-export function ProductTour({ steps = [], isOpen, onClose, onComplete }: ProductTourProps) {
+export function ProductTour({
+  steps = [],
+  isOpen,
+  onClose,
+  onComplete,
+  style = {},
+  className = '',
+  ...rest
+}: ProductTourProps) {
   const ob = useOB();
   const [idx, setIdx] = useState(0);
 
@@ -332,7 +358,16 @@ export function ProductTour({ steps = [], isOpen, onClose, onComplete }: Product
   const isLast = idx === steps.length - 1;
 
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 10000 }}>
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 10000,
+        ...style,
+      }}
+      className={className}
+      {...rest}
+    >
       <div
         onClick={onClose}
         style={{
@@ -450,13 +485,20 @@ export function ProductTour({ steps = [], isOpen, onClose, onComplete }: Product
 
 /* ── TooltipHelp ────────────────────────────────────────── */
 
-export interface TooltipHelpProps {
+export interface TooltipHelpProps extends React.ComponentPropsWithoutRef<'span'> {
   text: string;
   position?: 'top' | 'bottom' | 'left' | 'right';
   iconSize?: number;
 }
 
-export function TooltipHelp({ text, position = 'top', iconSize = 16 }: TooltipHelpProps) {
+export function TooltipHelp({
+  text,
+  position = 'top',
+  iconSize = 16,
+  style = {},
+  className = '',
+  ...rest
+}: TooltipHelpProps) {
   const ob = useOB();
   const [show, setShow] = useState(false);
 
@@ -475,9 +517,18 @@ export function TooltipHelp({ text, position = 'top', iconSize = 16 }: TooltipHe
         position: 'relative',
         display: 'inline-flex',
         cursor: 'help',
+        ...style,
       }}
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
+      className={className}
+      onMouseEnter={(e) => {
+        setShow(true);
+        rest.onMouseEnter?.(e);
+      }}
+      onMouseLeave={(e) => {
+        setShow(false);
+        rest.onMouseLeave?.(e);
+      }}
+      {...rest}
     >
       <Icon name="help-circle" size={iconSize} color={ob.muted} />
 

@@ -3,7 +3,7 @@
 import type React from 'react';
 import { useHeroTheme } from '../../core/provider';
 
-export interface VideoHeaderHeroProps {
+export interface VideoHeaderHeroProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   videoSrc?: string;
   poster?: string;
@@ -26,8 +26,6 @@ export interface VideoHeaderHeroProps {
   px?: number;
   py?: number;
   radius?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const ui = {
@@ -66,6 +64,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
     radius = t.cardRadius ?? 20,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.black;
@@ -92,8 +91,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
         overflow: 'hidden',
         boxShadow: '0 1px 2px rgba(0,0,0,0.24)',
         ...style,
-      }}
-    >
+      }}      {...rest}    >
       {/* video */}
       {videoSrc && (
         <video

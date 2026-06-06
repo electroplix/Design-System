@@ -5,7 +5,7 @@ import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
 export type RadioOption = { label: string; value: string; helpText?: string };
-export interface RadioGroupProps {
+export interface RadioGroupProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   as?: React.ElementType;
   name: string;
   options: RadioOption[];
@@ -25,8 +25,6 @@ export interface RadioGroupProps {
   gap?: number;
   labelSize?: number;
   itemSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 export function RadioGroup(props: RadioGroupProps) {
@@ -53,6 +51,7 @@ export function RadioGroup(props: RadioGroupProps) {
     itemSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
   const [local, setLocal] = useState(defaultValue ?? '');
   const current = value ?? local;
@@ -68,6 +67,7 @@ export function RadioGroup(props: RadioGroupProps) {
         padding: `${py}px ${px}px`,
         ...style,
       }}
+      {...rest}
     >
       <div style={{ maxWidth: maxW, display: 'flex', flexDirection: 'column' as const, gap }}>
         {label && <div style={{ fontSize: labelSize, fontWeight: 600 }}>{label}</div>}

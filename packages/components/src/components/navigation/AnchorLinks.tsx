@@ -6,7 +6,7 @@ import { useNavTheme } from '../../core/provider';
 
 export type AnchorItem = { label: string; targetId: string };
 
-export interface AnchorLinksProps {
+export interface AnchorLinksProps extends React.ComponentPropsWithoutRef<'nav'> {
   as?: React.ElementType;
   items: AnchorItem[];
   orientation?: 'horizontal' | 'vertical';
@@ -21,31 +21,35 @@ export interface AnchorLinksProps {
   accentColor?: string;
   borderColor?: string;
   fontFamily?: string;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
-export function AnchorLinks(props: AnchorLinksProps) {
+export function AnchorLinks({
+  as: Tag = 'nav',
+  items,
+  orientation = 'horizontal',
+  offset = 80,
+  maxW = 1100,
+  px = 20,
+  py = 12,
+  radius: radiusProp,
+  gap = 8,
+  bgColor: bgColorProp,
+  textColor: textColorProp,
+  accentColor: accentColorProp,
+  borderColor: borderColorProp,
+  fontFamily: fontFamilyProp,
+  style = {},
+  className = '',
+  ...rest
+}: AnchorLinksProps) {
   const t = useNavTheme();
 
-  const {
-    as: Tag = 'nav',
-    items,
-    orientation = 'horizontal',
-    offset = 80,
-    maxW = 1100,
-    px = 20,
-    py = 12,
-    radius = t.radius ?? 16,
-    gap = 8,
-    bgColor = t.bgColor ?? '#ffffff',
-    textColor = t.textColor ?? '#09090b',
-    accentColor = t.accentColor ?? '#18181b',
-    borderColor = t.borderColor ?? '#e4e4e7',
-    fontFamily = t.fontFamily,
-    style = {},
-    className = '',
-  } = props;
+  const radius = radiusProp ?? t.radius ?? 16;
+  const bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
+  const textColor = textColorProp ?? t.textColor ?? '#09090b';
+  const accentColor = accentColorProp ?? t.accentColor ?? '#18181b';
+  const borderColor = borderColorProp ?? t.borderColor ?? '#e4e4e7';
+  const fontFamily = fontFamilyProp ?? t.fontFamily;
 
   const mutedColor = '#71717a';
   const surfaceColor = '#fafafa';
@@ -88,6 +92,7 @@ export function AnchorLinks(props: AnchorLinksProps) {
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div style={{ marginInline: 'auto', maxWidth: maxW }}>
         <div

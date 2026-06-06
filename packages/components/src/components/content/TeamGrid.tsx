@@ -13,7 +13,7 @@ export interface TeamMember {
   socials?: { icon: string; href: string }[];
 }
 
-export interface TeamGridProps {
+export interface TeamGridProps extends React.ComponentPropsWithoutRef<'section'> {
   members: TeamMember[];
   columns?: number | string;
   title?: string;
@@ -45,6 +45,9 @@ export function TeamGrid({
   accentColor,
   borderColor,
   fontFamily,
+  className,
+  style,
+  ...rest
 }: TeamGridProps) {
   const t = useContentTheme();
 
@@ -56,7 +59,7 @@ export function TeamGrid({
   const r = t.radius ?? 14;
 
   return (
-    <section style={{ fontFamily: ff, color: fg }}>
+    <section className={className} style={{ fontFamily: ff, color: fg, ...style }} {...rest}>
       {(title || subtitle) && (
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           {title && (

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
-export interface InputFieldProps {
+export interface InputFieldProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   as?: React.ElementType;
   label?: string;
   name: string;
@@ -30,8 +30,6 @@ export interface InputFieldProps {
   gap?: number;
   labelSize?: number;
   inputSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 export function InputField(props: InputFieldProps) {
@@ -64,6 +62,7 @@ export function InputField(props: InputFieldProps) {
     inputSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
   const [isFocused, setIsFocused] = useState(false);
   const [localValue, setLocalValue] = useState(defaultValue || '');
@@ -81,6 +80,7 @@ export function InputField(props: InputFieldProps) {
         padding: `${py}px ${px}px`,
         ...style,
       }}
+      {...rest}
     >
       <div style={{ maxWidth: maxW, display: 'flex', flexDirection: 'column' as const, gap }}>
         {label && (

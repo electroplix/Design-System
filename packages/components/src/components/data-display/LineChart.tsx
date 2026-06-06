@@ -5,7 +5,7 @@ import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── LineChart ──────────────────────────────────────────── */
 
-export interface LineChartProps {
+export interface LineChartProps extends React.ComponentPropsWithoutRef<'figure'> {
   data: number[];
   labels?: string[];
   width?: number;
@@ -35,6 +35,9 @@ export function LineChart({
   title,
   showGrid = true,
   padding = 32,
+  className,
+  style,
+  ...rest
 }: LineChartProps) {
   const t = useDataDisplayTheme();
   const uid = useId();
@@ -57,6 +60,7 @@ export function LineChart({
   if (safeData.length === 0) {
     return (
       <figure
+        className={className}
         style={{
           border: `1px solid ${border}`,
           borderRadius: r,
@@ -67,7 +71,9 @@ export function LineChart({
           textAlign: 'center',
           margin: 0,
           boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+          ...style,
         }}
+        {...rest}
       >
         <div
           style={{
@@ -101,6 +107,7 @@ export function LineChart({
 
   return (
     <figure
+      className={className}
       style={{
         border: `1px solid ${border}`,
         borderRadius: r,
@@ -110,7 +117,9 @@ export function LineChart({
         fontFamily: t.fontFamily,
         margin: 0,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      {...rest}
     >
       {title && (
         <figcaption

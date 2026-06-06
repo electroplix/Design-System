@@ -90,7 +90,7 @@ function miniMarkdownToHtml(md: string, accent: string): string {
 
 /* ── RichMarkdown ───────────────────────────────────────── */
 
-export interface RichMarkdownProps {
+export interface RichMarkdownProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -100,8 +100,6 @@ export interface RichMarkdownProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
   markdown?: string;
   content?: string;
   baseSize?: number;
@@ -135,6 +133,7 @@ export function RichMarkdown({
   baseSize = 16,
   accentColor,
   title,
+  ...rest
 }: RichMarkdownProps) {
   const t = useContentTheme();
 
@@ -171,6 +170,7 @@ export function RichMarkdown({
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         {title && (

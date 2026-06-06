@@ -21,7 +21,7 @@ export interface FooterSocialLink {
   label?: string;
 }
 
-export interface FooterProps {
+export interface FooterProps extends React.ComponentPropsWithoutRef<'footer'> {
   columns?: FooterColumn[];
   copyright?: string;
   socialLinks?: FooterSocialLink[];
@@ -33,7 +33,6 @@ export interface FooterProps {
   accentColor?: string;
   borderColor?: string;
   fontFamily?: string;
-  children?: React.ReactNode;
 }
 
 export function Footer({
@@ -49,6 +48,9 @@ export function Footer({
   borderColor,
   fontFamily,
   children,
+  className,
+  style,
+  ...rest
 }: FooterProps) {
   const t = useNavTheme();
 
@@ -64,13 +66,16 @@ export function Footer({
 
   return (
     <footer
+      className={className}
       style={{
         background: bg,
         color: fg,
         fontFamily: ff,
         borderTop: `1px solid ${border}`,
         padding: '56px 24px 32px',
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{

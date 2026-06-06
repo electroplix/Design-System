@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
-export interface CaptchaProps {
+export interface CaptchaProps extends React.ComponentPropsWithoutRef<'div'> {
   as?: React.ElementType;
   mode?: 'checkbox' | 'math';
   label?: string;
@@ -21,8 +21,6 @@ export interface CaptchaProps {
   radius?: number;
   gap?: number;
   labelSize?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 const ui = {
@@ -60,6 +58,7 @@ export function Captcha(props: CaptchaProps) {
     labelSize = 14,
     style = {},
     className = '',
+    ...rest
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
@@ -97,6 +96,7 @@ export function Captcha(props: CaptchaProps) {
         padding: `${py}px ${px}px`,
         ...style,
       }}
+      {...rest}
     >
       <div
         style={{

@@ -29,10 +29,9 @@ function useML() {
 
 /* ── OverlayBase ────────────────────────────────────────── */
 
-export interface OverlayBaseProps {
+export interface OverlayBaseProps extends React.ComponentPropsWithoutRef<'div'> {
   isOpen: boolean;
   onClose?: () => void;
-  children?: React.ReactNode;
   maxW?: number;
   showClose?: boolean;
   position?: 'center' | 'top' | 'bottom';
@@ -45,6 +44,9 @@ export function OverlayBase({
   maxW = 480,
   showClose = true,
   position = 'center',
+  style = {},
+  className = '',
+  ...rest
 }: OverlayBaseProps) {
   const ml = useML();
 
@@ -86,6 +88,8 @@ export function OverlayBase({
       />
 
       <div
+        className={className}
+        {...rest}
         style={{
           position: 'relative',
           background: ml.bg,
@@ -97,6 +101,7 @@ export function OverlayBase({
           color: ml.fg,
           overflow: 'hidden',
           boxShadow: '0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)',
+          ...style,
         }}
       >
         {showClose && (
@@ -133,12 +138,8 @@ export function OverlayBase({
 
 /* ── GenericModal ────────────────────────────────────────── */
 
-export interface GenericModalProps {
-  isOpen: boolean;
+export interface GenericModalProps extends OverlayBaseProps {
   title?: string;
-  onClose?: () => void;
-  maxW?: number;
-  children?: React.ReactNode;
   footer?: React.ReactNode;
 }
 
@@ -149,11 +150,12 @@ export function GenericModal({
   maxW,
   children,
   footer,
+  ...rest
 }: GenericModalProps) {
   const ml = useML();
 
   return (
-    <OverlayBase isOpen={isOpen} onClose={onClose} maxW={maxW}>
+    <OverlayBase isOpen={isOpen} onClose={onClose} maxW={maxW} {...rest}>
       {title && (
         <div
           style={{
@@ -192,8 +194,7 @@ export function GenericModal({
 
 /* ── ConfirmDialog ──────────────────────────────────────── */
 
-export interface ConfirmDialogProps {
-  isOpen: boolean;
+export interface ConfirmDialogProps extends Omit<OverlayBaseProps, 'children'> {
   title?: string;
   message?: string;
   confirmLabel?: string;
@@ -212,12 +213,13 @@ export function ConfirmDialog({
   danger = false,
   onConfirm,
   onCancel,
+  ...rest
 }: ConfirmDialogProps) {
   const ml = useML();
   const col = danger ? ml.danger : ml.accent;
 
   return (
-    <OverlayBase isOpen={isOpen} onClose={onCancel} maxW={400}>
+    <OverlayBase isOpen={isOpen} onClose={onCancel} maxW={400} {...rest}>
       <div style={{ padding: 24, textAlign: 'center' }}>
         <div
           style={{
@@ -308,14 +310,10 @@ export function ConfirmDialog({
 }
 
 /* ── FormDialog ─────────────────────────────────────────── */
-
-export interface FormDialogProps {
-  isOpen: boolean;
+export interface FormDialogProps extends Omit<OverlayBaseProps, 'onSubmit'> {
   title?: string;
-  onClose?: () => void;
   onSubmit?: (data: FormData) => void;
   submitLabel?: string;
-  children?: React.ReactNode;
 }
 
 export function FormDialog({
@@ -325,6 +323,7 @@ export function FormDialog({
   onSubmit,
   submitLabel = 'Submit',
   children,
+  ...rest
 }: FormDialogProps) {
   const ml = useML();
   const ref = useRef<HTMLFormElement>(null);
@@ -335,7 +334,7 @@ export function FormDialog({
   };
 
   return (
-    <OverlayBase isOpen={isOpen} onClose={onClose} maxW={480}>
+    <OverlayBase isOpen={isOpen} onClose={onClose} maxW={480} {...rest}>
       <div
         style={{
           padding: '18px 20px',
@@ -405,18 +404,26 @@ export function FormDialog({
 
 /* ── LoadingOverlay ─────────────────────────────────────── */
 
-export interface LoadingOverlayProps {
+export interface LoadingOverlayProps extends React.ComponentPropsWithoutRef<'div'> {
   isOpen: boolean;
   message?: string;
 }
 
-export function LoadingOverlay({ isOpen, message = 'Loading...' }: LoadingOverlayProps) {
+export function LoadingOverlay({
+  isOpen,
+  message = 'Loading...',
+  style = {},
+  className = '',
+  ...rest
+}: LoadingOverlayProps) {
   const ml = useML();
 
   if (!isOpen) return null;
 
   return (
     <div
+      className={className}
+      {...rest}
       style={{
         position: 'fixed',
         inset: 0,
@@ -429,6 +436,7 @@ export function LoadingOverlay({ isOpen, message = 'Loading...' }: LoadingOverla
         backdropFilter: 'blur(6px)',
         fontFamily: ml.ff,
         color: ml.fg,
+        ...style,
       }}
     >
       <div
@@ -460,13 +468,20 @@ export function LoadingOverlay({ isOpen, message = 'Loading...' }: LoadingOverla
 
 /* ── Tooltip ────────────────────────────────────────────── */
 
-export interface TooltipProps {
+export interface TooltipProps extends React.ComponentPropsWithoutRef<'span'> {
   text: string;
   position?: 'top' | 'bottom' | 'left' | 'right';
   children: React.ReactNode;
 }
 
-export function Tooltip({ text, position = 'top', children }: TooltipProps) {
+export function Tooltip({
+  text,
+  position = 'top',
+  children,
+  style = {},
+  className = '',
+  ...rest
+}: TooltipProps) {
   const ml = useML();
   const [show, setShow] = useState(false);
 
@@ -481,12 +496,21 @@ export function Tooltip({ text, position = 'top', children }: TooltipProps) {
 
   return (
     <span
+      className={className}
+      {...rest}
       style={{
         position: 'relative',
         display: 'inline-flex',
+        ...style,
       }}
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
+      onMouseEnter={(e) => {
+        setShow(true);
+        rest.onMouseEnter?.(e);
+      }}
+      onMouseLeave={(e) => {
+        setShow(false);
+        rest.onMouseLeave?.(e);
+      }}
     >
       {children}
 
@@ -527,7 +551,7 @@ export interface Toast {
   duration?: number;
 }
 
-export interface ToastBannersProps {
+export interface ToastBannersProps extends React.ComponentPropsWithoutRef<'div'> {
   toasts: Toast[];
   onDismiss?: (id: string) => void;
   position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
@@ -560,6 +584,9 @@ export function ToastBanners({
   toasts = [],
   onDismiss,
   position = 'top-right',
+  style = {},
+  className = '',
+  ...rest
 }: ToastBannersProps) {
   const ml = useML();
 
@@ -569,6 +596,7 @@ export function ToastBanners({
 
   return (
     <div
+      className={className}
       style={{
         position: 'fixed',
         zIndex: 9990,
@@ -576,7 +604,9 @@ export function ToastBanners({
         gap: 8,
         width: 340,
         ...posStyle,
+        ...style,
       }}
+      {...rest}
     >
       {toasts.map((t) => {
         const v = TOAST_COLORS[t.variant ?? 'info'];
@@ -644,7 +674,7 @@ export function ToastBanners({
 
 /* ── CookieNotice ───────────────────────────────────────── */
 
-export interface CookieNoticeProps {
+export interface CookieNoticeProps extends React.ComponentPropsWithoutRef<'div'> {
   isOpen: boolean;
   title?: string;
   message?: string;
@@ -660,6 +690,9 @@ export function CookieNotice({
   onAccept,
   onDecline,
   onSettings,
+  style = {},
+  className = '',
+  ...rest
 }: CookieNoticeProps) {
   const ml = useML();
 
@@ -667,6 +700,8 @@ export function CookieNotice({
 
   return (
     <div
+      className={className}
+      {...rest}
       style={{
         position: 'fixed',
         bottom: 16,
@@ -680,6 +715,7 @@ export function CookieNotice({
         fontFamily: ml.ff,
         color: ml.fg,
         boxShadow: '0 20px 45px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.06)',
+        ...style,
       }}
     >
       <div
@@ -775,13 +811,11 @@ export function CookieNotice({
 
 /* ── WelcomePopup ───────────────────────────────────────── */
 
-export interface WelcomePopupProps {
-  isOpen: boolean;
+export interface WelcomePopupProps extends OverlayBaseProps {
   title?: string;
   message?: string;
   ctaLabel?: string;
   onCta?: () => void;
-  onClose?: () => void;
   image?: string;
 }
 
@@ -793,11 +827,12 @@ export function WelcomePopup({
   onCta,
   onClose,
   image,
+  ...rest
 }: WelcomePopupProps) {
   const ml = useML();
 
   return (
-    <OverlayBase isOpen={isOpen} onClose={onClose} maxW={420}>
+    <OverlayBase isOpen={isOpen} onClose={onClose} maxW={420} {...rest}>
       <div
         style={{
           textAlign: 'center',
