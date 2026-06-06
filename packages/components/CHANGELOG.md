@@ -1,3 +1,13 @@
+## 0.5.0-alpha.5 (2026-06-06)
+
+### 🩹 Fixes
+
+- update CLI entry point configuration in Design System package ([0fd2db3](https://github.com/electroplix/Design-System/commit/0fd2db3))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.4 (2026-06-06)
 
 ### 🩹 Fixes
