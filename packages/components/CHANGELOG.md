@@ -1,3 +1,7 @@
+## 0.5.0-alpha.7 (2026-06-06)
+
+This was a version bump only for @electroplix/components to align it with other projects, there were no code changes.
+
 ## 0.5.0-alpha.6 (2026-06-06)
 
 ### 🩹 Fixes
