@@ -1,3 +1,14 @@
+## 0.5.0-alpha.4 (2026-06-06)
+
+### 🩹 Fixes
+
+- lint errors and exhaustive dependencies ([bf8194d](https://github.com/electroplix/Design-System/commit/bf8194d))
+- support standard HTML attributes in all components ([0083ee2](https://github.com/electroplix/Design-System/commit/0083ee2))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.3 (2026-06-04)
 
 ### 🩹 Fixes
