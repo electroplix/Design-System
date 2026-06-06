@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import ClientLayout from './ClientLayout';
 
 export const metadata: Metadata = {
   title: 'Electroplix SSR Validation — Next.js 16',
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
         }}
       >
-        {children}
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

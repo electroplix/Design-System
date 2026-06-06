@@ -1,4 +1,5 @@
 'use client';
+import type React from 'react';
 import { useId, useState } from 'react';
 import { useDataDisplayTheme } from '../../core/provider';
 
@@ -85,7 +86,7 @@ function Star({
 
 /* ── RatingStars ────────────────────────────────────────── */
 
-export interface RatingStarsProps {
+export interface RatingStarsProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
   value: number;
   outOf?: number;
   size?: number;
@@ -101,6 +102,9 @@ export function RatingStars({
   showValue = true,
   interactive = false,
   onChange,
+  style = {},
+  className = '',
+  ...rest
 }: RatingStarsProps) {
   const t = useDataDisplayTheme();
   const fg = t.textColor ?? ui.text;
@@ -125,7 +129,10 @@ export function RatingStars({
         alignItems: 'center',
         gap: 8,
         fontFamily: t.fontFamily,
+        ...style,
       }}
+      className={className}
+      {...rest}
       onMouseLeave={() => setHoverValue(null)}
     >
       <div style={{ display: 'flex', gap: 4 }}>

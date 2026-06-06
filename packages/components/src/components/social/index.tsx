@@ -350,12 +350,18 @@ export interface Reaction {
   active?: boolean;
 }
 
-export interface ReactionsBarProps {
+export interface ReactionsBarProps extends React.ComponentPropsWithoutRef<'div'> {
   reactions: Reaction[];
   onReact?: (label: string) => void;
 }
 
-export function ReactionsBar({ reactions = [], onReact }: ReactionsBarProps) {
+export function ReactionsBar({
+  reactions = [],
+  onReact,
+  style = {},
+  className = '',
+  ...rest
+}: ReactionsBarProps) {
   const sc = useSC();
 
   return (
@@ -365,7 +371,10 @@ export function ReactionsBar({ reactions = [], onReact }: ReactionsBarProps) {
         gap: 6,
         flexWrap: 'wrap',
         fontFamily: sc.ff,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       {reactions.map((r) => (
         <button
@@ -405,13 +414,20 @@ export interface SocialComment {
   likes?: number;
 }
 
-export interface CommentsBoxProps {
+export interface CommentsBoxProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onSubmit'> {
   comments: SocialComment[];
   onSubmit?: (text: string) => void;
   title?: string;
 }
 
-export function CommentsBox({ comments = [], onSubmit, title = 'Comments' }: CommentsBoxProps) {
+export function CommentsBox({
+  comments = [],
+  onSubmit,
+  title = 'Comments',
+  style = {},
+  className = '',
+  ...rest
+}: CommentsBoxProps) {
   const sc = useSC();
   const [text, setText] = useState('');
 
@@ -425,7 +441,7 @@ export function CommentsBox({ comments = [], onSubmit, title = 'Comments' }: Com
   };
 
   return (
-    <div style={{ fontFamily: sc.ff, color: sc.fg }}>
+    <div style={{ fontFamily: sc.ff, color: sc.fg, ...style }} className={className} {...rest}>
       <div
         style={{
           fontWeight: 700,
@@ -580,11 +596,11 @@ export function CommentsBox({ comments = [], onSubmit, title = 'Comments' }: Com
 
 /* ── ReviewsForm ────────────────────────────────────────── */
 
-export interface ReviewsFormProps {
+export interface ReviewsFormProps extends Omit<React.ComponentPropsWithoutRef<'form'>, 'onSubmit'> {
   onSubmit?: (data: { rating: number; name: string; review: string }) => void;
 }
 
-export function ReviewsForm({ onSubmit }: ReviewsFormProps) {
+export function ReviewsForm({ onSubmit, style = {}, className = '', ...rest }: ReviewsFormProps) {
   const sc = useSC();
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
@@ -612,7 +628,10 @@ export function ReviewsForm({ onSubmit }: ReviewsFormProps) {
         fontFamily: sc.ff,
         color: sc.fg,
         maxWidth: 480,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         style={{

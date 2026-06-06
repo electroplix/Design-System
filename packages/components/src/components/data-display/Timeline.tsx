@@ -1,4 +1,5 @@
 'use client';
+import type React from 'react';
 import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useDataDisplayTheme } from '../../core/provider';
@@ -13,7 +14,7 @@ export interface TimelineItem {
   status?: 'done' | 'in_progress' | 'blocked' | 'todo';
 }
 
-export interface TimelineProps {
+export interface TimelineProps extends React.ComponentPropsWithoutRef<'div'> {
   items: TimelineItem[];
 }
 
@@ -175,7 +176,7 @@ function TimelineEntry({ item, isLast }: { item: TimelineItem; isLast: boolean }
   );
 }
 
-export function Timeline({ items = [] }: TimelineProps) {
+export function Timeline({ items = [], style = {}, className = '', ...rest }: TimelineProps) {
   const t = useDataDisplayTheme();
   const accent = t.accentColor ?? ui.black;
   const fg = t.textColor ?? ui.text;
@@ -194,7 +195,10 @@ export function Timeline({ items = [] }: TimelineProps) {
           fontFamily: t.fontFamily,
           textAlign: 'center',
           boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+          ...style,
         }}
+        className={className}
+        {...rest}
       >
         <div
           style={{
@@ -218,7 +222,17 @@ export function Timeline({ items = [] }: TimelineProps) {
   }
 
   return (
-    <div style={{ position: 'relative', paddingLeft: 32, color: fg, fontFamily: t.fontFamily }}>
+    <div
+      style={{
+        position: 'relative',
+        paddingLeft: 32,
+        color: fg,
+        fontFamily: t.fontFamily,
+        ...style,
+      }}
+      className={className}
+      {...rest}
+    >
       <div
         style={{
           position: 'absolute',

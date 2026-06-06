@@ -6,7 +6,7 @@ import { useContentTheme } from '../../core/provider';
 
 /* ── InlineCodeText ─────────────────────────────────────── */
 
-export interface InlineCodeProps {
+export interface InlineCodeProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
   bgColor?: string;
   textColor?: string;
@@ -16,8 +16,6 @@ export interface InlineCodeProps {
   py?: number;
   radius?: number;
   gap?: number;
-  style?: React.CSSProperties;
-  className?: string;
   text?: string;
   children?: React.ReactNode;
   codeBg?: string;
@@ -60,6 +58,7 @@ export function InlineCodeText({
   accentColor,
   copyable = true,
   children,
+  ...rest
 }: InlineCodeProps) {
   const t = useContentTheme();
 
@@ -111,6 +110,7 @@ export function InlineCodeText({
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
         ...style,
       }}
+      {...rest}
     >
       <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         <style>{`

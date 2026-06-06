@@ -567,7 +567,7 @@ export interface Message {
   time?: string;
 }
 
-export interface SupportChatProps {
+export interface SupportChatProps extends React.ComponentPropsWithoutRef<'div'> {
   messages?: Message[];
   onSend?: (text: string) => void;
   title?: string;
@@ -581,6 +581,9 @@ export function SupportChat({
   title = 'Support Chat',
   isOpen = false,
   onToggle,
+  style = {},
+  className = '',
+  ...rest
 }: SupportChatProps) {
   const ob = useOB();
   const [text, setText] = useState('');
@@ -602,7 +605,7 @@ export function SupportChat({
   };
 
   return (
-    <>
+    <div style={{ ...style }} className={className} {...rest}>
       <button
         onClick={onToggle}
         style={{
@@ -756,13 +759,13 @@ export function SupportChat({
           </form>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
 /* ── ContactSupportBlock ────────────────────────────────── */
 
-export interface ContactSupportBlockProps {
+export interface ContactSupportBlockProps extends React.ComponentPropsWithoutRef<'div'> {
   email?: string;
   phone?: string;
   title?: string;
@@ -774,6 +777,9 @@ export function ContactSupportBlock({
   phone,
   title = 'Need Help?',
   description = 'Our team is here to help.',
+  style = {},
+  className = '',
+  ...rest
 }: ContactSupportBlockProps) {
   const ob = useOB();
 
@@ -790,7 +796,10 @@ export function ContactSupportBlock({
         maxWidth: 420,
         margin: '0 auto',
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         style={{

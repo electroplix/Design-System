@@ -386,12 +386,19 @@ export interface SearchItem {
   meta?: string;
 }
 
-export interface SearchResultCardProps {
+export interface SearchResultCardProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onClick'> {
   item: SearchItem;
   onClick?: (item: SearchItem) => void;
 }
 
-export function SearchResultCard({ item, onClick }: SearchResultCardProps) {
+export function SearchResultCard({
+  item,
+  onClick,
+  style = {},
+  className = '',
+  ...rest
+}: SearchResultCardProps) {
   const sr = useSR();
 
   return (
@@ -409,7 +416,10 @@ export function SearchResultCard({ item, onClick }: SearchResultCardProps) {
         color: sr.fg,
         transition: 'border-color 0.2s, box-shadow 0.2s',
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       {item.image && (
         <img
@@ -491,14 +501,22 @@ export function SearchResultCard({ item, onClick }: SearchResultCardProps) {
 
 /* ── SearchResults ──────────────────────────────────────── */
 
-export interface SearchResultsProps {
+export interface SearchResultsProps extends React.ComponentPropsWithoutRef<'div'> {
   items: SearchItem[];
   query?: string;
   onItemClick?: (item: SearchItem) => void;
   loading?: boolean;
 }
 
-export function SearchResults({ items = [], query, onItemClick, loading }: SearchResultsProps) {
+export function SearchResults({
+  items = [],
+  query,
+  onItemClick,
+  loading,
+  style = {},
+  className = '',
+  ...rest
+}: SearchResultsProps) {
   const sr = useSR();
 
   if (loading)
@@ -530,7 +548,7 @@ export function SearchResults({ items = [], query, onItemClick, loading }: Searc
   if (!items.length) return <SearchEmptyState query={query} />;
 
   return (
-    <div style={{ display: 'grid', gap: 8 }}>
+    <div style={{ display: 'grid', gap: 8, ...style }} className={className} {...rest}>
       {query && (
         <div
           style={{
@@ -553,13 +571,20 @@ export function SearchResults({ items = [], query, onItemClick, loading }: Searc
 
 /* ── SearchEmptyState ───────────────────────────────────── */
 
-export interface SearchEmptyStateProps {
+export interface SearchEmptyStateProps extends React.ComponentPropsWithoutRef<'div'> {
   query?: string;
   title?: string;
   description?: string;
 }
 
-export function SearchEmptyState({ query, title, description }: SearchEmptyStateProps) {
+export function SearchEmptyState({
+  query,
+  title,
+  description,
+  style = {},
+  className = '',
+  ...rest
+}: SearchEmptyStateProps) {
   const sr = useSR();
 
   return (
@@ -569,7 +594,10 @@ export function SearchEmptyState({ query, title, description }: SearchEmptyState
         padding: 48,
         fontFamily: sr.ff,
         color: sr.fg,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         style={{

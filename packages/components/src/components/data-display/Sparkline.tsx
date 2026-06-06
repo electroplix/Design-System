@@ -1,11 +1,12 @@
 'use client';
+import type React from 'react';
 import { useId } from 'react';
 import { Icon } from '../../core/icons';
 import { useDataDisplayTheme } from '../../core/provider';
 
 /* ── Sparkline ──────────────────────────────────────────── */
 
-export interface SparklineProps {
+export interface SparklineProps extends React.ComponentPropsWithoutRef<'div'> {
   data: number[];
   width?: number;
   height?: number;
@@ -22,7 +23,14 @@ const ui = {
   danger: '#dc2626',
 };
 
-export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProps) {
+export function Sparkline({
+  data = [],
+  width = 160,
+  height = 48,
+  style = {},
+  className = '',
+  ...rest
+}: SparklineProps) {
   const t = useDataDisplayTheme();
   const uid = useId();
   const fg = t.textColor ?? ui.text;
@@ -42,7 +50,10 @@ export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProp
           background: ui.surface,
           border: `1px solid ${ui.border}`,
           borderRadius: 10,
+          ...style,
         }}
+        className={className}
+        {...rest}
       >
         <Icon name="activity" size={18} color={ui.muted} />
       </div>
@@ -70,7 +81,11 @@ export function Sparkline({ data = [], width = 160, height = 48 }: SparklineProp
   const trendColor = trendUp ? ui.success : ui.danger;
 
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
+    <div
+      style={{ position: 'relative', display: 'inline-block', ...style }}
+      className={className}
+      {...rest}
+    >
       <svg width={width} height={height} style={{ display: 'block' }}>
         <defs>
           <linearGradient id={`epx-sparkG-${uid}`} x1="0" y1="0" x2="0" y2="1">

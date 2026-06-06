@@ -332,12 +332,18 @@ export function BrandIconGrid({
 
 /* ── FaviconUploader ────────────────────────────────────── */
 
-export interface FaviconUploaderProps {
+export interface FaviconUploaderProps extends React.ComponentPropsWithoutRef<'div'> {
   onUpload?: (file: File) => void;
   currentSrc?: string;
 }
 
-export function FaviconUploader({ onUpload, currentSrc }: FaviconUploaderProps) {
+export function FaviconUploader({
+  onUpload,
+  currentSrc,
+  style = {},
+  className = '',
+  ...rest
+}: FaviconUploaderProps) {
   const si = useSI();
   const ref = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(currentSrc ?? null);
@@ -366,7 +372,10 @@ export function FaviconUploader({ onUpload, currentSrc }: FaviconUploaderProps) 
         gap: 16,
         fontFamily: si.ff,
         color: si.fg,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         onClick={() => ref.current?.click()}

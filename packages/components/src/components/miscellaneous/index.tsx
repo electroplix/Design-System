@@ -445,14 +445,22 @@ export function AppInstallBanner({
 
 /* ── DownloadBlock ───────────────────────────────────────── */
 
-export interface DownloadBlockProps {
+export interface DownloadBlockProps extends React.ComponentPropsWithoutRef<'a'> {
   fileName: string;
   fileSize?: string;
   href: string;
   icon?: string;
 }
 
-export function DownloadBlock({ fileName, fileSize, href, icon = 'download' }: DownloadBlockProps) {
+export function DownloadBlock({
+  fileName,
+  fileSize,
+  href,
+  icon = 'download',
+  style = {},
+  className = '',
+  ...rest
+}: DownloadBlockProps) {
   const ms = useMS();
 
   return (
@@ -472,7 +480,10 @@ export function DownloadBlock({ fileName, fileSize, href, icon = 'download' }: D
         fontFamily: ms.ff,
         transition: 'all 0.2s ease',
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         style={{
@@ -503,12 +514,18 @@ export function DownloadBlock({ fileName, fileSize, href, icon = 'download' }: D
 
 /* ── InlineCode ─────────────────────────────────────────── */
 
-export interface MiscInlineCodeProps {
+export interface MiscInlineCodeProps extends React.ComponentPropsWithoutRef<'span'> {
   children: string;
   copyable?: boolean;
 }
 
-export function InlineCode({ children, copyable = true }: MiscInlineCodeProps) {
+export function InlineCode({
+  children,
+  copyable = true,
+  style = {},
+  className = '',
+  ...rest
+}: MiscInlineCodeProps) {
   const ms = useMS();
   const [copied, setCopied] = useState(false);
 
@@ -533,7 +550,10 @@ export function InlineCode({ children, copyable = true }: MiscInlineCodeProps) {
           'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
         fontSize: 13,
         color: ms.fg,
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <code>{children}</code>
 
@@ -566,12 +586,18 @@ export interface RSSItem {
   summary?: string;
 }
 
-export interface RSSFeedProps {
+export interface RSSFeedProps extends React.ComponentPropsWithoutRef<'div'> {
   items: RSSItem[];
   title?: string;
 }
 
-export function RSSFeed({ items = [], title = 'Latest Updates' }: RSSFeedProps) {
+export function RSSFeed({
+  items = [],
+  title = 'Latest Updates',
+  style = {},
+  className = '',
+  ...rest
+}: RSSFeedProps) {
   const ms = useMS();
 
   return (
@@ -584,7 +610,10 @@ export function RSSFeed({ items = [], title = 'Latest Updates' }: RSSFeedProps) 
         color: ms.fg,
         background: ui.white,
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <div
         style={{

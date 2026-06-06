@@ -615,13 +615,20 @@ export function LightboxGallery({
 
 /* ── MasonryGrid ────────────────────────────────────────── */
 
-export interface MasonryGridProps {
+export interface MasonryGridProps extends React.ComponentPropsWithoutRef<'div'> {
   items: GalleryItem[];
   columns?: number | string;
   gap?: number;
 }
 
-export function MasonryGrid({ items = [], columns = 3, gap = 8 }: MasonryGridProps) {
+export function MasonryGrid({
+  items = [],
+  columns = 3,
+  gap = 8,
+  style = {},
+  className = '',
+  ...rest
+}: MasonryGridProps) {
   const md = useMD();
   const numColumns = typeof columns === 'string' ? Number.parseInt(columns, 10) || 1 : columns;
   const cols = Array.from<GalleryItem[]>({ length: numColumns }).map(() => []) as GalleryItem[][];
@@ -629,7 +636,7 @@ export function MasonryGrid({ items = [], columns = 3, gap = 8 }: MasonryGridPro
   items.forEach((it, i) => cols[i % numColumns].push(it));
 
   return (
-    <div style={{ display: 'flex', gap }}>
+    <div style={{ display: 'flex', gap, ...style }} className={className} {...rest}>
       {cols.map((col, ci) => (
         <div key={ci} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap }}>
           {col.map((it) => (
@@ -654,14 +661,22 @@ export function MasonryGrid({ items = [], columns = 3, gap = 8 }: MasonryGridPro
 
 /* ── PolaroidImage ──────────────────────────────────────── */
 
-export interface PolaroidImageProps {
+export interface PolaroidImageProps extends React.ComponentPropsWithoutRef<'div'> {
   src: string;
   caption?: string;
   rotation?: number;
   width?: number;
 }
 
-export function PolaroidImage({ src, caption, rotation = 0, width = 260 }: PolaroidImageProps) {
+export function PolaroidImage({
+  src,
+  caption,
+  rotation = 0,
+  width = 260,
+  style = {},
+  className = '',
+  ...rest
+}: PolaroidImageProps) {
   const md = useMD();
 
   return (
@@ -677,7 +692,10 @@ export function PolaroidImage({ src, caption, rotation = 0, width = 260 }: Polar
         boxShadow: '0 8px 28px rgba(9,9,11,0.12)',
         transform: `rotate(${rotation}deg)`,
         transition: 'transform 0.3s',
+        ...style,
       }}
+      className={className}
+      {...rest}
     >
       <img
         src={src}
@@ -704,7 +722,7 @@ export function PolaroidImage({ src, caption, rotation = 0, width = 260 }: Polar
 
 /* ── LottieOrSVG ────────────────────────────────────────── */
 
-export interface LottieOrSVGProps {
+export interface LottieOrSVGProps extends React.ComponentPropsWithoutRef<'img'> {
   type: 'svg' | 'lottie';
   src: string;
   width?: number;
@@ -712,10 +730,27 @@ export interface LottieOrSVGProps {
   alt?: string;
 }
 
-export function LottieOrSVG({ type, src, width = 200, height = 200, alt }: LottieOrSVGProps) {
+export function LottieOrSVG({
+  type,
+  src,
+  width = 200,
+  height = 200,
+  alt,
+  style,
+  className,
+  ...rest
+}: LottieOrSVGProps) {
   if (type === 'svg') {
     return (
-      <img src={src} alt={alt ?? ''} width={width} height={height} style={{ display: 'block' }} />
+      <img
+        src={src}
+        alt={alt ?? ''}
+        width={width}
+        height={height}
+        style={{ display: 'block', ...style }}
+        className={className}
+        {...rest}
+      />
     );
   }
 
@@ -725,14 +760,15 @@ export function LottieOrSVG({ type, src, width = 200, height = 200, alt }: Lotti
       width={width}
       height={height}
       title={alt ?? 'animation'}
-      style={{ border: 'none', overflow: 'hidden' }}
+      style={{ border: 'none', overflow: 'hidden', ...style }}
+      className={className}
     />
   );
 }
 
 /* ── ImageCropperUploader ───────────────────────────────── */
 
-export interface ImageCropperUploaderProps {
+export interface ImageCropperUploaderProps extends React.ComponentPropsWithoutRef<'div'> {
   onUpload?: (file: File) => void;
   accept?: string;
   maxSizeMB?: number;
@@ -744,6 +780,9 @@ export function ImageCropperUploader({
   accept = 'image/*',
   maxSizeMB = 5,
   label = 'Upload Image',
+  style = {},
+  className = '',
+  ...rest
 }: ImageCropperUploaderProps) {
   const md = useMD();
   const ref = useRef<HTMLInputElement>(null);
@@ -786,7 +825,10 @@ export function ImageCropperUploader({
         background: ui.surface,
         transition: 'all 0.2s ease',
         boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
+        ...style,
       }}
+      className={className}
+      {...rest}
       onClick={() => ref.current?.click()}
     >
       <input ref={ref} type="file" accept={accept} onChange={handle} style={{ display: 'none' }} />
@@ -821,7 +863,7 @@ export function ImageCropperUploader({
 
 /* ── MapEmbed ───────────────────────────────────────────── */
 
-export interface MapEmbedProps {
+export interface MapEmbedProps extends React.ComponentPropsWithoutRef<'div'> {
   address?: string;
   lat?: number;
   lng?: number;
@@ -841,6 +883,9 @@ export function MapEmbed({
   provider = 'openstreetmap',
   title,
   borderRadius,
+  style = {},
+  className = '',
+  ...rest
 }: MapEmbedProps) {
   const md = useMD();
   const r = borderRadius ?? md.r;
@@ -862,7 +907,7 @@ export function MapEmbed({
   }
 
   return (
-    <div style={{ fontFamily: md.ff, color: md.fg }}>
+    <div style={{ fontFamily: md.ff, color: md.fg, ...style }} className={className} {...rest}>
       {title && <div style={{ fontWeight: 700, fontSize: md.hs, marginBottom: 12 }}>{title}</div>}
 
       <div
