@@ -314,7 +314,6 @@ Automated via **Nx Release** + **GitHub Actions**. On every push to `main` that 
 4. **Tag & Release** — GitHub Release with full notes
 5. **Publish** — `npm publish --provenance --access public`
 
-
 ### Conventional Commits
 
 | Prefix | Release |
@@ -457,6 +456,14 @@ pnpm install
 pnpm test
 pnpm nx dev vite-showcase
 ```
+
+### Additional Documentation
+
+| Document | Description |
+|:---------|:------------|
+| [docs/nextjs16-guide.md](./docs/nextjs16-guide.md) | Step-by-step integration guide for Next.js 16 |
+| [docs/nextjs-strategy.md](./docs/nextjs-strategy.md) | Next.js SSR/RSC compatibility strategy |
+| [docs/showcase-architecture.md](./docs/showcase-architecture.md) | Vite showcase architecture |
 
 ---
 

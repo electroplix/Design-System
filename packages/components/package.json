@@ -52,6 +52,9 @@
     "node": ">=18.0.0"
   },
   "author": "Electroplix",
+  "bugs": {
+    "url": "https://github.com/electroplix/Design-System/issues"
+  },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
