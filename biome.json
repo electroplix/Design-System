@@ -152,10 +152,10 @@
         "noAccumulatingSpread": "warn"
       },
       "a11y": {
-        "recommended": false
+        "recommended": true
       },
       "security": {
-        "recommended": false
+        "recommended": true
       }
     }
   }
