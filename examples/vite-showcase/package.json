@@ -6,7 +6,8 @@
   "dependencies": {
     "@electroplix/components": "workspace:*",
     "react": "19.2.5",
-    "react-dom": "19.2.5"
+    "react-dom": "19.2.5",
+    "react-router-dom": "^7.15.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",

@@ -83,6 +83,7 @@ export function SiteSearchBar({
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={placeholder}
+          aria-label={placeholder}
           style={{
             flex: 1,
             background: 'none',
@@ -226,6 +227,10 @@ export function AutoSuggest({
           onBlur={() => setTimeout(() => setShow(false), 150)}
           onKeyDown={keyDown}
           placeholder={placeholder}
+          aria-label={placeholder}
+          role="combobox"
+          aria-expanded={show && filtered.length > 0}
+          aria-autocomplete="list"
           style={{
             flex: 1,
             background: 'none',
@@ -537,11 +542,9 @@ export function SearchResults({
             borderTopColor: sr.accent,
             borderRadius: '50%',
             margin: '0 auto',
-            animation: 'eplxSpin 0.8s linear infinite',
+            animation: 'eplx-spin 0.8s linear infinite',
           }}
         />
-
-        <style>{'@keyframes eplxSpin { to { transform: rotate(360deg) } }'}</style>
       </div>
     );
 

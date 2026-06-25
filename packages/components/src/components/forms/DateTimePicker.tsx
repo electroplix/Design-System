@@ -2,7 +2,7 @@
 
 import type React from 'react';
 import { useState } from 'react';
-import { Icon } from '../../core/icons';
+import { Icon, type IconName } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
 export interface DateTimePickerProps
@@ -129,7 +129,7 @@ export function DateTimePicker(props: DateTimePickerProps) {
               zIndex: 2,
             }}
           >
-            <Icon name={iconName as any} size={18} />
+            <Icon name={iconName as IconName} size={18} />
           </div>
 
           <input

@@ -3,7 +3,7 @@ import type React from 'react';
 import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useDataDisplayTheme } from '../../core/provider';
-import { Badge } from './Badge';
+import { Badge, type BadgeTone } from './Badge';
 
 /* ── CalendarGrid ───────────────────────────────────────── */
 
@@ -191,7 +191,7 @@ export function CalendarGrid({
                 {c.day ?? ''}
               </div>
               {c.mark?.label && (
-                <Badge tone={(c.mark.tone as any) || 'info'} pill={false}>
+                <Badge tone={(c.mark.tone ?? 'info') as BadgeTone} pill={false}>
                   {c.mark.label}
                 </Badge>
               )}

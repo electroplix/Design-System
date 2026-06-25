@@ -158,7 +158,11 @@ export function ContactForm(props: ContactFormProps) {
               boxShadow: '0 1px 2px rgba(9,9,11,0.08)',
             }}
           >
-            <Icon name="message-square" size={20} style={{ color: ui.white } as any} />
+            <Icon
+              name="message-square"
+              size={20}
+              style={{ color: ui.white } as React.CSSProperties}
+            />
           </div>
 
           <div>
@@ -211,7 +215,7 @@ export function ContactForm(props: ContactFormProps) {
                 placeItems: 'center',
               }}
             >
-              <Icon name="check" size={24} style={{ color: ui.white } as any} />
+              <Icon name="check" size={24} style={{ color: ui.white } as React.CSSProperties} />
             </div>
 
             <div

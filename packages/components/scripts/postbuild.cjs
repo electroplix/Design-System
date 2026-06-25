@@ -167,7 +167,7 @@ export const defaultMarketingTheme = {
   shadow: "0 10px 25px rgba(0,0,0,0.35)",
 };
 
-export const defaultMediaTheme = { ...base };
+export const defaultMediaTheme = { ...base, cardBg: "rgba(128,128,128,0.1)", cardRadius: 10, cardBorder: "rgba(255,255,255,0.12)" };
 
 export const defaultMiscTheme = {
   ...base,

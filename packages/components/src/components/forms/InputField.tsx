@@ -1,7 +1,7 @@
 'use client';
 import type React from 'react';
 import { useState } from 'react';
-import { Icon } from '../../core/icons';
+import { Icon, type IconName } from '../../core/icons';
 import { useFormsTheme } from '../../core/provider';
 
 export interface InputFieldProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
@@ -110,7 +110,7 @@ export function InputField(props: InputFieldProps) {
                 transition: 'color 0.2s ease',
               }}
             >
-              <Icon name={icon as any} size={18} />
+              <Icon name={icon as IconName} size={18} />
             </div>
           )}
           <input

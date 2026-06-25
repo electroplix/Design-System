@@ -98,6 +98,7 @@ export function Pagination({
   }) => (
     <button
       disabled={disabled}
+      aria-current={active ? 'page' : undefined}
       onClick={() => page && onPageChange(page)}
       style={{
         width: icon ? 40 : 'auto',
@@ -125,6 +126,7 @@ export function Pagination({
 
   return (
     <nav
+      aria-label="Pagination"
       className={className}
       style={{
         display: 'inline-flex',

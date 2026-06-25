@@ -11,7 +11,7 @@ import { useButtonTheme } from '../../core/provider';
 
 export type ButtonBaseProps = Omit<React.ComponentPropsWithoutRef<'button'>, 'onClick'> & {
   label?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   bgColor?: string;
   textColor?: string;
   accentColor?: string;
@@ -34,7 +34,6 @@ export type ButtonBaseProps = Omit<React.ComponentPropsWithoutRef<'button'>, 'on
   opacity?: number;
   shadow?: string;
   transitionDuration?: number;
-  ariaLabel?: string;
 };
 
 const ui = {
@@ -116,16 +115,17 @@ export function PrimaryButton({ className, style, children, ...p }: ButtonBasePr
       {...p}
     >
       {p.isLoading ? (
-        <Icon name="loader-2" size={18} style={{ animation: 'spin 1s linear infinite' } as any} />
+        <Icon
+          name="loader-2"
+          size={18}
+          style={{ animation: 'eplx-spin 1s linear infinite' } as React.CSSProperties}
+        />
       ) : p.icon ? (
         <Icon name={p.icon} size={18} />
       ) : (
         (p.iconNode ?? null)
       )}
       <span data-testid="primary-btn">{children ?? p.label ?? 'Primary'}</span>
-      <style>
-        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
-      </style>
     </button>
   );
 }
@@ -165,16 +165,17 @@ export function SecondaryButton({ className, style, children, ...p }: ButtonBase
       {...p}
     >
       {p.isLoading ? (
-        <Icon name="loader-2" size={18} style={{ animation: 'spin 1s linear infinite' } as any} />
+        <Icon
+          name="loader-2"
+          size={18}
+          style={{ animation: 'eplx-spin 1s linear infinite' } as React.CSSProperties}
+        />
       ) : p.icon ? (
         <Icon name={p.icon} size={18} />
       ) : (
         (p.iconNode ?? null)
       )}
       <span data-testid="secondary-btn">{children ?? p.label ?? 'Secondary'}</span>
-      <style>
-        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
-      </style>
     </button>
   );
 }
@@ -211,16 +212,17 @@ export function TertiaryButton({ className, style, children, ...p }: ButtonBaseP
       {...p}
     >
       {p.isLoading ? (
-        <Icon name="loader-2" size={18} style={{ animation: 'spin 1s linear infinite' } as any} />
+        <Icon
+          name="loader-2"
+          size={18}
+          style={{ animation: 'eplx-spin 1s linear infinite' } as React.CSSProperties}
+        />
       ) : p.icon ? (
         <Icon name={p.icon} size={18} />
       ) : (
         (p.iconNode ?? null)
       )}
       <span>{children ?? p.label ?? 'Button'}</span>
-      <style>
-        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
-      </style>
     </button>
   );
 }
@@ -264,15 +266,16 @@ export function IconButton({ className, style, ...p }: IconButtonProps) {
       {...p}
     >
       {p.isLoading ? (
-        <Icon name="loader-2" size={18} style={{ animation: 'spin 1s linear infinite' } as any} />
+        <Icon
+          name="loader-2"
+          size={18}
+          style={{ animation: 'eplx-spin 1s linear infinite' } as React.CSSProperties}
+        />
       ) : p.icon ? (
         <Icon name={p.icon} size={18} />
       ) : (
         p.iconNode
       )}
-      <style>
-        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
-      </style>
     </button>
   );
 }
@@ -360,15 +363,16 @@ export function FloatingActionButton({
       {...p}
     >
       {p.isLoading ? (
-        <Icon name="loader-2" size={24} style={{ animation: 'spin 1s linear infinite' } as any} />
+        <Icon
+          name="loader-2"
+          size={24}
+          style={{ animation: 'eplx-spin 1s linear infinite' } as React.CSSProperties}
+        />
       ) : p.icon ? (
         <Icon name={p.icon} size={24} />
       ) : (
         p.iconNode
       )}
-      <style>
-        {'@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }'}
-      </style>
     </button>
   );
 }
@@ -402,12 +406,16 @@ export function ButtonGroup({
   const t = useButtonTheme();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const handleButtonClick = (index: number, originalOnClick?: () => void) => {
+  const handleButtonClick = (
+    index: number,
+    e: React.MouseEvent<HTMLButtonElement>,
+    originalOnClick?: (e: React.MouseEvent<HTMLButtonElement>) => void,
+  ) => {
     if (toggle) {
       setActiveIndex(index);
     }
     if (onChange) onChange(index);
-    if (originalOnClick) originalOnClick();
+    if (originalOnClick) originalOnClick(e);
   };
 
   return (
@@ -429,7 +437,7 @@ export function ButtonGroup({
         return (
           <button
             key={btn.id ?? i}
-            onClick={() => handleButtonClick(i, btn.onClick)}
+            onClick={(e) => handleButtonClick(i, e, btn.onClick)}
             disabled={btn.disabled}
             style={{
               ...baseBtn({
@@ -460,9 +468,9 @@ export function LoadingButton(p: ButtonBaseProps) {
 }
 
 export function ShareButton(p: ButtonBaseProps & { url?: string }) {
-  const handleShare = () => {
+  const handleShare = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (p.onClick) {
-      p.onClick();
+      p.onClick(e);
       return;
     }
     const url = p.url ?? (typeof window !== 'undefined' ? window.location.href : '');
@@ -486,9 +494,9 @@ export function ShareButton(p: ButtonBaseProps & { url?: string }) {
 }
 
 export function DownloadButton(p: ButtonBaseProps & { fileUrl?: string }) {
-  const handleDownload = () => {
+  const handleDownload = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (p.onClick) {
-      p.onClick();
+      p.onClick(e);
     }
     if (p.fileUrl) {
       const link = document.createElement('a');
@@ -508,9 +516,9 @@ export function DownloadButton(p: ButtonBaseProps & { fileUrl?: string }) {
 }
 
 export function PrintButton(p: ButtonBaseProps) {
-  const handlePrint = () => {
+  const handlePrint = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (p.onClick) {
-      p.onClick();
+      p.onClick(e);
     } else if (typeof window !== 'undefined') {
       window.print();
     }

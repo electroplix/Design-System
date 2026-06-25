@@ -218,7 +218,11 @@ export function AddressAutocomplete(props: AddressAutocompleteProps) {
                     transition: 'all 0.15s ease',
                   }}
                 >
-                  <Icon name="map-pin" size={16} style={{ color: ui.muted } as any} />
+                  <Icon
+                    name="map-pin"
+                    size={16}
+                    style={{ color: ui.muted } as React.CSSProperties}
+                  />
 
                   <span
                     style={{
@@ -249,7 +253,7 @@ export function AddressAutocomplete(props: AddressAutocompleteProps) {
               boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
-            <Icon name="check" size={16} style={{ color: accent } as any} />
+            <Icon name="check" size={16} style={{ color: accent } as React.CSSProperties} />
 
             <span
               style={{

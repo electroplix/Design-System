@@ -142,7 +142,9 @@ export function Captcha(props: CaptchaProps) {
                 boxShadow: 'inset 0 1px 1px rgba(9,9,11,0.04)',
               }}
             >
-              {ok && <Icon name="check" size={14} style={{ color: ui.white } as any} />}
+              {ok && (
+                <Icon name="check" size={14} style={{ color: ui.white } as React.CSSProperties} />
+              )}
             </div>
 
             <span

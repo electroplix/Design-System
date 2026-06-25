@@ -5,7 +5,7 @@
 <h1 align="center">Electroplix Design System</h1>
 
 <p align="center">
-  <strong>158 production-grade React 19 components · 18 categories · AI-builder ready</strong>
+  <strong>159 production-grade React 19 components · 18 categories · AI-builder ready</strong>
 </p>
 
 <p align="center">
@@ -165,8 +165,8 @@ pnpm publish:dry    # Full safeguard dry-run
 | 6 | Data Display | 11 | StatsCard, DataTable, BadgeGroup |
 | 7 | Ecommerce | 10 | ProductCard, CartDrawer, CheckoutForm |
 | 8 | Lists & Cards | 8 | CardGrid, FeatureList, ProfileCard |
-| 9 | Marketing | 10 | PricingTable, CTA, FeatureComparison |
-| 10 | Media | 12 | ImageGallery, VideoPlayer, Carousel |
+| 9 | Marketing | 10 | ComparisonTable, StatsCounter, HowItWorks |
+| 10 | Media | 12 | ImageGallery, MapEmbed, MasonryGrid |
 | 11 | Miscellaneous | 8 | Divider, Banner, Placeholder |
 | 12 | Modals | 9 | GenericModal, SlideOver, ConfirmDialog |
 | 13 | Onboarding | 6 | Stepper, ProductTour, WelcomeFlow |
@@ -216,7 +216,7 @@ Components consume a `BaseTheme` via `ElectroplixProvider`. Two entry points:
 
 - **Linter:** Biome (ultra-fast, replaces ESLint + Prettier)
 - **Tests:** 172 unit specs (Jest + React Testing Library)
-- **E2E:** Playwright with Chromium (CI-cached browsers)
+- **E2E:** Playwright with Firefox (CI-cached browsers)
 - **SSR:** Continuously validated against Next.js 15 & 16
 - **Deps:** `pnpm audit --audit-level=high` in CI
 - **Provenance:** npm publish with `--provenance` for supply-chain integrity

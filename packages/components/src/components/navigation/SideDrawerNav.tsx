@@ -1,6 +1,6 @@
 'use client';
 import type React from 'react';
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useNavTheme } from '../../core/provider';
 
@@ -55,10 +55,21 @@ export function SideDrawerNav({
 
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [open]);
+
   return (
     <div className={className} style={style} {...rest}>
       <button
         onClick={() => setOpen(true)}
+        aria-expanded={open}
+        aria-controls="side-drawer-nav"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -82,6 +93,9 @@ export function SideDrawerNav({
 
       {open && (
         <div
+          id="side-drawer-nav"
+          role="dialog"
+          aria-modal="true"
           style={{
             position: 'fixed',
             inset: 0,

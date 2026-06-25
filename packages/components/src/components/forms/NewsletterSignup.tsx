@@ -128,7 +128,7 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
               boxShadow: '0 1px 2px rgba(9,9,11,0.12)',
             }}
           >
-            <Icon name="mail" size={22} style={{ color: ui.white } as any} />
+            <Icon name="mail" size={22} style={{ color: ui.white } as React.CSSProperties} />
           </div>
 
           <div>
@@ -182,7 +182,7 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
                 placeItems: 'center',
               }}
             >
-              <Icon name="check" size={26} style={{ color: ui.white } as any} />
+              <Icon name="check" size={26} style={{ color: ui.white } as React.CSSProperties} />
             </div>
 
             <div
@@ -306,7 +306,11 @@ export function NewsletterSignup(props: NewsletterSignupProps) {
                   fontWeight: 500,
                 }}
               >
-                <Icon name="sparkles" size={12} style={{ color: ui.muted } as any} />
+                <Icon
+                  name="sparkles"
+                  size={12}
+                  style={{ color: ui.muted } as React.CSSProperties}
+                />
                 {t}
               </div>
             ))}
