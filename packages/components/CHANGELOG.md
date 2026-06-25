@@ -1,3 +1,14 @@
+## 0.5.0-alpha.8 (2026-06-25)
+
+### 🩹 Fixes
+
+- remove custom ariaLabel prop from ButtonBaseProps ([8134752](https://github.com/electroplix/Design-System/commit/8134752))
+- critical bugs, type safety, accessibility, and docs improvements ([86881c5](https://github.com/electroplix/Design-System/commit/86881c5))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.7 (2026-06-06)
 
 This was a version bump only for @electroplix/components to align it with other projects, there were no code changes.
