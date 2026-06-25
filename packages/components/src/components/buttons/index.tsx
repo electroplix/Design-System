@@ -34,7 +34,6 @@ export type ButtonBaseProps = Omit<React.ComponentPropsWithoutRef<'button'>, 'on
   opacity?: number;
   shadow?: string;
   transitionDuration?: number;
-  ariaLabel?: string;
 };
 
 const ui = {
@@ -239,7 +238,6 @@ export function IconButton({ className, style, ...p }: IconButtonProps) {
 
   return (
     <button
-      aria-label={p.ariaLabel}
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
       className={className}
@@ -336,7 +334,6 @@ export function FloatingActionButton({
 
   return (
     <button
-      aria-label={p.ariaLabel}
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
       className={className}
