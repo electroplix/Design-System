@@ -77,7 +77,7 @@ function boxLine(l, content, r, w) {
 
 function printBanner() {
   const W = 58;
-  const _lines = [
+  const lines = [
     '',
     `  ${B.tl}${hr(W)}${B.tr}`,
     boxLine(
@@ -90,6 +90,9 @@ function printBanner() {
     `  ${B.bl}${hr(W)}${B.br}`,
     '',
   ];
+  for (const line of lines) {
+    console.log(line);
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════ */
@@ -100,6 +103,7 @@ const CATEGORIES = {
   navigation: [
     'AnchorLinks',
     'Breadcrumbs',
+    'Footer',
     'LanguageSelector',
     'MegaMenu',
     'Pagination',
@@ -119,6 +123,7 @@ const CATEGORIES = {
     'VideoHeaderHero',
   ],
   buttons: [
+    'Button',
     'PrimaryButton',
     'SecondaryButton',
     'TertiaryButton',
@@ -153,6 +158,7 @@ const CATEGORIES = {
     'InlineCodeText',
     'ParagraphBlock',
     'RichMarkdown',
+    'TeamGrid',
   ],
   'data-display': [
     'Badge',
@@ -193,24 +199,27 @@ const CATEGORIES = {
     'ComparisonTable',
     'CountdownTimer',
     'FeatureHighlights',
+    'HowItWorks',
     'LeadMagnetGate',
     'MarketingHeroBlock',
     'PromoPopup',
+    'StatsCounter',
     'TestimonialsCarousel',
     'TrustBadges',
   ],
   media: [
-    'MediaShell',
-    'ResponsiveVideo',
     'AudioEmbed',
     'AvatarProfile',
     'IconGrid',
+    'ImageCropperUploader',
     'ImageGallery',
     'LightboxGallery',
-    'MasonryGrid',
-    'PolaroidImage',
     'LottieOrSVG',
-    'ImageCropperUploader',
+    'MasonryGrid',
+    'MapEmbed',
+    'MediaShell',
+    'PolaroidImage',
+    'ResponsiveVideo',
   ],
   miscellaneous: [
     'CookieConsent',
@@ -403,11 +412,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   /* ── output ──────────────────────────────────────────── */
   if (created.length) {
-    for (const _f of created) {
+    for (const f of created) {
+      console.log(`  ${s.green(B.check)} Created ${s.bold(f)}`);
     }
   }
   if (skipped.length) {
-    for (const _f of skipped) {
+    for (const f of skipped) {
+      console.log(`  ${s.yellow(B.diamond)} Skipped ${s.bold(f)} ${s.gray('(already exists)')}`);
     }
   }
 
@@ -429,6 +440,8 @@ function add(name) {
   printBanner();
 
   if (!name) {
+    console.log(`  ${s.red('Error:')} Please provide a component or category name.\n`);
+    console.log(`  ${s.gray('Usage:')} npx @electroplix/components add <component|category>\n`);
     process.exit(1);
   }
 
@@ -438,23 +451,32 @@ function add(name) {
   const catMatch = CATEGORY_ALIASES.get(key);
   if (catMatch) {
     const comps = CATEGORIES[catMatch];
-    for (let i = 0; i < comps.length; i++) {
-      const _comma = i < comps.length - 1 ? ',' : '';
-    }
+    console.log(`  ${s.bold(s.purple(catMatch))} ${s.gray(`(${comps.length} components)`)}\n`);
+
     for (let i = 0; i < comps.length; i++) {
       const isLast = i === comps.length - 1;
-      const _prefix = isLast ? B.last : B.branch;
+      const prefix = isLast ? B.last : B.branch;
+      console.log(`  ${s.gray(prefix)} ${comps[i]}`);
     }
+
+    console.log(`\n  ${s.gray('Import all from category:')}`);
+    console.log(`  ${s.cyan(`import { ${comps.join(', ')} } from '@electroplix/components';`)}\n`);
     return;
   }
 
   /* ── try individual component match ────────────────── */
   const entry = ALL_COMPONENTS.get(key);
   if (!entry) {
+    console.log(`  ${s.red('Error:')} Component "${name}" not found.\n`);
+    console.log(`  ${s.gray('Run')} npx @electroplix/components list ${s.gray('to see all available components.')}\n`);
     process.exit(1);
   }
 
-  const _W = 52;
+  console.log(`  ${s.bold(s.green(entry.name))} ${s.gray(`(${entry.category})`)}\n`);
+  console.log(`  ${s.gray('Import:')}`);
+  console.log(`  ${s.cyan(`import { ${entry.name} } from '@electroplix/components';`)}\n`);
+  console.log(`  ${s.gray('Install:')}`);
+  console.log(`  ${s.cyan('npm install @electroplix/components')}\n`);
 }
 
 /* ══════════════════════════════════════════════════════════════════ */
@@ -465,19 +487,28 @@ function list() {
   printBanner();
 
   const catEntries = Object.entries(CATEGORIES);
+  const totalCount = Object.values(CATEGORIES).reduce((sum, a) => sum + a.length, 0);
+
+  console.log(`  ${s.bold(s.cyan(`${totalCount} components`))} across ${s.bold(`${catEntries.length} categories`)}\n`);
 
   for (let ci = 0; ci < catEntries.length; ci++) {
-    const [_cat, names] = catEntries[ci];
+    const [cat, names] = catEntries[ci];
     const isLastCat = ci === catEntries.length - 1;
-    const _catPrefix = isLastCat ? B.end : B.tee;
-    const _childPipe = isLastCat ? '   ' : B.pipe;
+    const catPrefix = isLastCat ? B.end : B.tee;
+    const childPipe = isLastCat ? '   ' : B.pipe;
+
+    console.log(`  ${s.bold(`${catPrefix}${B.h}${B.h} ${s.purple(cat)}`)} ${s.gray(`(${names.length})`)}`);
 
     for (let ni = 0; ni < names.length; ni++) {
       const isLastName = ni === names.length - 1;
-      const _namePrefix = isLastName ? B.last : B.branch;
+      const namePrefix = isLastName ? B.last : B.branch;
+      console.log(`  ${childPipe}${namePrefix}${B.h}${B.h} ${names[ni]}`);
     }
 
+    if (!isLastCat) console.log('');
   }
+
+  console.log('');
 }
 
 /* ══════════════════════════════════════════════════════════════════ */
@@ -486,6 +517,10 @@ function list() {
 
 function help() {
   printBanner();
+  console.log(`  ${s.bold('Usage:')}\n`);
+  console.log(`  ${s.cyan('npx @electroplix/components init')}       ${s.gray('Scaffold config + provider setup')}`);
+  console.log(`  ${s.cyan('npx @electroplix/components add')} <name> ${s.gray('Show install/import instructions')}`);
+  console.log(`  ${s.cyan('npx @electroplix/components list')}       ${s.gray('List all available components')}\n`);
 }
 
 /* ══════════════════════════════════════════════════════════════════ */

@@ -109,7 +109,11 @@ export function ValidationWrapper(props: ValidationWrapperProps) {
                 flexShrink: 0,
               }}
             >
-              <Icon name="check-circle" size={18} style={{ color: '#fff' } as any} />
+              <Icon
+                name="check-circle"
+                size={18}
+                style={{ color: '#fff' } as React.CSSProperties}
+              />
             </div>
             <span style={{ fontWeight: 500, color: '#22C55E' }}>{successMessage}</span>
           </div>
@@ -124,7 +128,11 @@ export function ValidationWrapper(props: ValidationWrapperProps) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-              <Icon name="alert-circle" size={18} style={{ color: '#EF4444' } as any} />
+              <Icon
+                name="alert-circle"
+                size={18}
+                style={{ color: '#EF4444' } as React.CSSProperties}
+              />
               <strong style={{ fontSize: titleSize, color: '#EF4444' }}>{title}</strong>
             </div>
             <ul style={{ margin: 0, paddingInlineStart: 0, listStyle: 'none' }}>

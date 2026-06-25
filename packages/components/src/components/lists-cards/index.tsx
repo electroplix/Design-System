@@ -161,6 +161,7 @@ export function Accordion({
           >
             <button
               onClick={() => toggle(it.id)}
+              aria-expanded={isOpen}
               style={{
                 width: '100%',
                 padding: '16px 18px',
@@ -183,6 +184,7 @@ export function Accordion({
 
             {isOpen && (
               <div
+                role="region"
                 style={{
                   padding: '0 18px 18px',
                   fontSize: lc.bs,
@@ -740,8 +742,8 @@ export function SortableTable<T extends Record<string, unknown>>({
     if (!sort) return rows;
 
     return [...rows].sort((a, b) => {
-      const av = a[sort.key] as any;
-      const bv = b[sort.key] as any;
+      const av = a[sort.key] as string | number | boolean;
+      const bv = b[sort.key] as string | number | boolean;
 
       if (av === bv) return 0;
 
@@ -840,7 +842,7 @@ export function SortableTable<T extends Record<string, unknown>>({
           <tbody>
             {sorted.map((row, i) => (
               <tr
-                key={(row as any).id || i}
+                key={i}
                 style={{
                   borderBottom: `1px solid ${lc.border}`,
                 }}

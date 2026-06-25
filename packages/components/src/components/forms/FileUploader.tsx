@@ -119,7 +119,7 @@ export function FileUploader(props: FileUploaderProps) {
               placeItems: 'center',
             }}
           >
-            <Icon name="upload" size={24} style={{ color: accentColor } as any} />
+            <Icon name="upload" size={24} style={{ color: accentColor } as React.CSSProperties} />
           </div>
           <div>
             <div style={{ fontWeight: 600, fontSize: 14 }}>
@@ -166,7 +166,7 @@ export function FileUploader(props: FileUploaderProps) {
                   <Icon
                     name={f.type.startsWith('image/') ? 'image' : 'file'}
                     size={20}
-                    style={{ color: accentColor } as any}
+                    style={{ color: accentColor } as React.CSSProperties}
                   />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>

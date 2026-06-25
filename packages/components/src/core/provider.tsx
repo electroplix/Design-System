@@ -6,6 +6,7 @@
 import type React from 'react';
 import { createContext, useContext, useMemo } from 'react';
 import { defaultConfig, mergeTheme } from './config';
+import { ElectroplixStyles } from './styles';
 import type { BaseTheme, ElectroplixConfig } from './types';
 
 const Ctx = createContext<ElectroplixConfig>(defaultConfig);
@@ -95,7 +96,12 @@ export function ElectroplixProvider({
     return out as unknown as ElectroplixConfig;
   }, [config]);
 
-  return <Ctx.Provider value={merged}>{children}</Ctx.Provider>;
+  return (
+    <Ctx.Provider value={merged}>
+      <ElectroplixStyles />
+      {children}
+    </Ctx.Provider>
+  );
 }
 
 /**

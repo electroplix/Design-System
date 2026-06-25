@@ -88,6 +88,8 @@ export function OverlayBase({
       />
 
       <div
+        role="dialog"
+        aria-modal="true"
         className={className}
         {...rest}
         style={{
@@ -446,7 +448,7 @@ export function LoadingOverlay({
           border: `2px solid ${ml.border}`,
           borderTopColor: ml.accent,
           borderRadius: '50%',
-          animation: 'eplxSpin 0.8s linear infinite',
+          animation: 'eplx-spin 0.8s linear infinite',
         }}
       />
 
@@ -460,8 +462,6 @@ export function LoadingOverlay({
       >
         {message}
       </div>
-
-      <style>{'@keyframes eplxSpin { to { transform: rotate(360deg) } }'}</style>
     </div>
   );
 }
@@ -624,7 +624,7 @@ export function ToastBanners({
               border: `1px solid ${v.border}`,
               fontFamily: ml.ff,
               color: ml.fg,
-              animation: 'eplxSlideIn 0.25s ease-out',
+              animation: 'eplx-slide-in 0.25s ease-out',
               boxShadow: '0 10px 25px rgba(9, 9, 11, 0.06)',
             }}
           >
@@ -662,12 +662,6 @@ export function ToastBanners({
           </div>
         );
       })}
-
-      <style>
-        {
-          '@keyframes eplxSlideIn { from { opacity: 0; transform: translateX(20px) } to { opacity: 1; transform: none } }'
-        }
-      </style>
     </div>
   );
 }

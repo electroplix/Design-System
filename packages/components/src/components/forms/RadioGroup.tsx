@@ -115,7 +115,9 @@ export function RadioGroup(props: RadioGroupProps) {
                     transition: 'all 0.2s ease',
                   }}
                 >
-                  {sel && <Icon name="check" size={12} style={{ color: '#fff' } as any} />}
+                  {sel && (
+                    <Icon name="check" size={12} style={{ color: '#fff' } as React.CSSProperties} />
+                  )}
                 </div>
                 <div style={{ flex: 1 }}>
                   <span style={{ fontSize: itemSize, fontWeight: 500 }}>{opt.label}</span>

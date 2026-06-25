@@ -250,7 +250,11 @@ export function MultiStepWizard(props: MultiStepWizardProps) {
                 marginBottom: 8,
               }}
             >
-              <Icon name="alert-circle" size={16} style={{ color: ui.danger } as any} />
+              <Icon
+                name="alert-circle"
+                size={16}
+                style={{ color: ui.danger } as React.CSSProperties}
+              />
 
               <strong
                 style={{

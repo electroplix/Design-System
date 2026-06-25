@@ -141,7 +141,7 @@ export function SplitHero(props: SplitHeroProps) {
             direction: reverse ? 'rtl' : 'ltr',
             position: 'relative',
             zIndex: 1,
-          } as any
+          } as React.CSSProperties
         }
       >
         {/* Content */}
@@ -232,7 +232,7 @@ export function SplitHero(props: SplitHeroProps) {
                       flexShrink: 0,
                     }}
                   >
-                    <Icon name="check" size={12} style={{ color: fg } as any} />
+                    <Icon name="check" size={12} style={{ color: fg } as React.CSSProperties} />
                   </div>
 
                   {f}
@@ -307,7 +307,7 @@ export function SplitHero(props: SplitHeroProps) {
                   color: ui.muted,
                 }}
               >
-                <Icon name="image" size={52} style={{ opacity: 0.5 } as any} />
+                <Icon name="image" size={52} style={{ opacity: 0.5 } as React.CSSProperties} />
 
                 <span
                   style={{

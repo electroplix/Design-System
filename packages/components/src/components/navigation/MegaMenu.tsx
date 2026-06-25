@@ -1,6 +1,6 @@
 'use client';
 import type React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useNavTheme } from '../../core/provider';
 
@@ -60,6 +60,15 @@ export function MegaMenu({
 
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [open]);
+
   return (
     <Tag
       className={className}
@@ -74,6 +83,8 @@ export function MegaMenu({
       {...rest}
     >
       <button
+        aria-expanded={open}
+        aria-haspopup="true"
         style={{
           display: 'flex',
           alignItems: 'center',

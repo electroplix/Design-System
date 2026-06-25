@@ -228,7 +228,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
                     position: 'absolute',
                     left: 16,
                     color: bgImage ? 'rgba(255,255,255,0.7)' : ui.muted,
-                  } as any
+                  } as React.CSSProperties
                 }
               />
 

@@ -138,7 +138,7 @@ export function ProgressBar({
               bottom: 0,
               background:
                 'linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent)',
-              animation: 'epx-shimmer 2s infinite',
+              animation: 'eplx-shimmer 2s infinite',
             }}
           />
         </div>
@@ -157,11 +157,6 @@ export function ProgressBar({
           />
         ))}
       </div>
-      <style>
-        {
-          '@keyframes epx-shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }'
-        }
-      </style>
     </div>
   );
 }

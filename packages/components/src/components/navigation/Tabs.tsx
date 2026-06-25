@@ -1,6 +1,6 @@
 'use client';
 import type React from 'react';
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, useCallback, useState } from 'react';
 import { useNavTheme } from '../../core/provider';
 
 export type TabDef = {
@@ -55,6 +55,36 @@ export function Tabs({
 
   const [active, setActive] = useState(defaultTab);
 
+  const isHorizontal = orientation === 'horizontal';
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      const len = tabs.length;
+      if (len === 0) return;
+
+      let next = active;
+
+      if (e.key === 'ArrowRight' || (isHorizontal && e.key === 'ArrowDown')) {
+        e.preventDefault();
+        next = (active + 1) % len;
+      } else if (e.key === 'ArrowLeft' || (isHorizontal && e.key === 'ArrowUp')) {
+        e.preventDefault();
+        next = (active - 1 + len) % len;
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        next = 0;
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        next = len - 1;
+      } else {
+        return;
+      }
+
+      setActive(next);
+    },
+    [active, tabs.length, isHorizontal],
+  );
+
   return (
     <div
       className={className}
@@ -73,20 +103,23 @@ export function Tabs({
       <div
         style={{
           display: 'flex',
-          flexDirection: orientation === 'vertical' ? 'column' : 'row',
+          flexDirection: isHorizontal ? 'row' : 'column',
           gap,
         }}
       >
         <div
+          role="tablist"
+          aria-orientation={orientation}
+          onKeyDown={handleKeyDown}
           style={{
             display: 'flex',
-            flexDirection: orientation === 'vertical' ? 'column' : 'row',
+            flexDirection: isHorizontal ? 'row' : 'column',
             gap: 4,
             padding,
             background: surfaceColor,
-            borderBottom: orientation === 'horizontal' ? `1px solid ${borderColor}` : 'none',
-            borderRight: orientation === 'vertical' ? `1px solid ${borderColor}` : 'none',
-            minWidth: orientation === 'vertical' ? 200 : 'auto',
+            borderBottom: isHorizontal ? `1px solid ${borderColor}` : 'none',
+            borderRight: !isHorizontal ? `1px solid ${borderColor}` : 'none',
+            minWidth: !isHorizontal ? 200 : 'auto',
           }}
         >
           {tabs.map((tab, i) => {
@@ -95,6 +128,10 @@ export function Tabs({
             return (
               <button
                 key={tab.label}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`tabpanel-${i}`}
+                tabIndex={isActive ? 0 : -1}
                 onClick={() => setActive(i)}
                 style={{
                   display: 'flex',
@@ -118,7 +155,7 @@ export function Tabs({
 
                 {tab.label}
 
-                {showUnderline && isActive && orientation === 'horizontal' && (
+                {showUnderline && isActive && isHorizontal && (
                   <div
                     style={{
                       position: 'absolute',
@@ -137,6 +174,9 @@ export function Tabs({
         </div>
 
         <div
+          role="tabpanel"
+          id={`tabpanel-${active}`}
+          aria-labelledby={`tab-${active}`}
           style={{
             flex: 1,
             padding: 20,

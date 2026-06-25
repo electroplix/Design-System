@@ -174,7 +174,11 @@ export function SelectDropdown(props: SelectDropdownProps) {
                 >
                   <span>{opt.label}</span>
                   {current === opt.value && (
-                    <Icon name="check" size={16} style={{ color: accentColor } as any} />
+                    <Icon
+                      name="check"
+                      size={16}
+                      style={{ color: accentColor } as React.CSSProperties}
+                    />
                   )}
                 </button>
               ))}
