@@ -86,7 +86,7 @@ export function Sparkline({
       className={className}
       {...rest}
     >
-      <svg width={width} height={height} style={{ display: 'block' }}>
+      <svg aria-hidden="true" width={width} height={height} style={{ display: 'block' }}>
         <defs>
           <linearGradient id={`epx-sparkG-${uid}`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={trendColor} stopOpacity={0.14} />

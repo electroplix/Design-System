@@ -19,6 +19,7 @@ export default function ContentPage() {
       componentCount={7}
     >
       <ComponentDemo name="BlockquoteTestimonial">
+        {/* biome-ignore lint/a11y/useValidAriaRole: role is a component prop */}
         <BlockquoteTestimonial
           quote="A design system that respects accessibility by default."
           author="Jordan Kim"

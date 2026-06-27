@@ -30,6 +30,7 @@ export default function UserAccountsPage() {
         <MultiFactorAuthInput length={6} onComplete={noop} />
       </ComponentDemo>
       <ComponentDemo name="ProfileOverview">
+        {/* biome-ignore lint/a11y/useValidAriaRole: role is a component prop */}
         <ProfileOverview
           name="Alice Chen"
           email="alice@electroplix.com"
@@ -44,6 +45,7 @@ export default function UserAccountsPage() {
         <AccountSettings sections={sampleSettingsSections} />
       </ComponentDemo>
       <ComponentDemo name="RoleBadge">
+        {/* biome-ignore lint/a11y/useValidAriaRole: role is a component prop */}
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <RoleBadge role="Admin" variant="admin" />
           <RoleBadge role="Editor" variant="editor" />

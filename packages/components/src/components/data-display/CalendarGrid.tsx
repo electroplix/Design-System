@@ -166,9 +166,17 @@ export function CalendarGrid({
           return (
             <div
               key={i}
+              role="button"
+              tabIndex={c.day != null ? 0 : -1}
               onMouseEnter={() => c.day != null && setHoveredDay(c.day)}
               onMouseLeave={() => setHoveredDay(null)}
               onClick={() => c.day != null && onDateClick?.(c.day)}
+              onKeyDown={(e) => {
+                if ((e.key === 'Enter' || e.key === ' ') && c.day != null) {
+                  e.preventDefault();
+                  onDateClick?.(c.day);
+                }
+              }}
               style={{
                 minHeight: 64,
                 border: `1px solid ${isToday ? accent : isH ? ui.border : 'transparent'}`,

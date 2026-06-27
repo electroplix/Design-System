@@ -249,6 +249,7 @@ export function ContactForm(props: ContactFormProps) {
             {/* Name */}
             <div>
               <label
+                htmlFor="contact-name"
                 style={{
                   display: 'block',
                   fontSize: labelSize,
@@ -277,6 +278,7 @@ export function ContactForm(props: ContactFormProps) {
                 </div>
 
                 <input
+                  id="contact-name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   onFocus={() => setFocused('name')}
@@ -291,6 +293,7 @@ export function ContactForm(props: ContactFormProps) {
             {/* Email */}
             <div>
               <label
+                htmlFor="contact-email"
                 style={{
                   display: 'block',
                   fontSize: labelSize,
@@ -319,6 +322,7 @@ export function ContactForm(props: ContactFormProps) {
                 </div>
 
                 <input
+                  id="contact-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -334,6 +338,7 @@ export function ContactForm(props: ContactFormProps) {
             {/* Message */}
             <div>
               <label
+                htmlFor="contact-message"
                 style={{
                   display: 'block',
                   fontSize: labelSize,
@@ -346,6 +351,7 @@ export function ContactForm(props: ContactFormProps) {
               </label>
 
               <textarea
+                id="contact-message"
                 rows={5}
                 value={message}
                 onChange={(e) => setMsg(e.target.value)}

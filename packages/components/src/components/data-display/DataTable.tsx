@@ -373,6 +373,7 @@ export function DataTable<T extends Record<string, any>>({
 
         <div style={{ display: 'flex', gap: 6 }}>
           <button
+            type="button"
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
             style={{
@@ -403,6 +404,7 @@ export function DataTable<T extends Record<string, any>>({
               else pn = page - 2 + i;
               return (
                 <button
+                  type="button"
                   key={pn}
                   onClick={() => setPage(pn)}
                   style={{
@@ -426,6 +428,7 @@ export function DataTable<T extends Record<string, any>>({
           </div>
 
           <button
+            type="button"
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
             style={{

@@ -104,6 +104,7 @@ export function ProgressBar({
 
       <div
         role="progressbar"
+        tabIndex={0}
         aria-valuenow={safeValue}
         aria-valuemin={0}
         aria-valuemax={100}

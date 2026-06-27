@@ -270,6 +270,7 @@ export function TagList({
     >
       {tags.map((t) => (
         <button
+          type="button"
           key={t}
           onClick={() => onTagClick?.(t)}
           style={{
@@ -519,7 +520,15 @@ export function ArchiveList({
             {g.posts.map((p) => (
               <div
                 key={p.id}
+                role="button"
+                tabIndex={0}
                 onClick={() => onPostClick?.(p)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onPostClick?.(p);
+                  }
+                }}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -646,6 +655,7 @@ export function CommentsSection({
             {c.text}
           </div>
           <button
+            type="button"
             onClick={() => setReplyTo(c.id)}
             style={{
               background: 'none',
@@ -721,6 +731,7 @@ export function CommentsSection({
           </button>
         )}
         <button
+          type="button"
           type="submit"
           disabled={!text.trim()}
           style={{

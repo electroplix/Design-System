@@ -193,7 +193,7 @@ export function StaticHero(props: StaticHeroProps) {
             }}
           >
             {ctaLabel && (
-              <button
+              <button type="button"
                 onClick={onCta}
                 style={{
                   padding: '16px 28px',
@@ -216,7 +216,7 @@ export function StaticHero(props: StaticHeroProps) {
               </button>
             )}
 
-            <button
+            <button type="button"
               style={{
                 padding: '16px 28px',
                 borderRadius: 12,

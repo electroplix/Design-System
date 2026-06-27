@@ -649,7 +649,15 @@ export function ProfileSettings({
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
         <div
+          role="button"
+          tabIndex={0}
           onClick={() => ref.current?.click()}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              ref.current?.click();
+            }
+          }}
           style={{
             width: 64,
             height: 64,
@@ -695,6 +703,7 @@ export function ProfileSettings({
 
       <div style={{ display: 'grid', gap: 6 }}>
         <label
+          htmlFor="profile-name"
           style={{
             fontSize: 13,
             fontWeight: 600,
@@ -704,11 +713,17 @@ export function ProfileSettings({
           Name
         </label>
 
-        <input value={n} onChange={(ev) => setN(ev.target.value)} style={fieldStyle(ua)} />
+        <input
+          id="profile-name"
+          value={n}
+          onChange={(ev) => setN(ev.target.value)}
+          style={fieldStyle(ua)}
+        />
       </div>
 
       <div style={{ display: 'grid', gap: 6 }}>
         <label
+          htmlFor="profile-email"
           style={{
             fontSize: 13,
             fontWeight: 600,
@@ -719,6 +734,7 @@ export function ProfileSettings({
         </label>
 
         <input
+          id="profile-email"
           value={e}
           onChange={(ev) => setE(ev.target.value)}
           type="email"

@@ -19,6 +19,7 @@ export default function UserAccountsTest() {
       <ProfileOverview id="po-1" name="Alice" email="alice@example.com" />
       <ProfileSettings id="ps-1" />
       <AccountSettings id="as-1" sections={[]} />
+      {/* biome-ignore lint/a11y/useValidAriaRole: role is a component prop */}
       <RoleBadge id="rb-1" role="Admin" />
     </div>
   );

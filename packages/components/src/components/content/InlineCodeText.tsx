@@ -1,6 +1,6 @@
 'use client';
 import type React from 'react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useContentTheme } from '../../core/provider';
 
@@ -82,8 +82,32 @@ export function InlineCodeText({
 
   const rendered = useMemo(() => {
     const safe = effectiveText.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return safe.replace(/`([^`]+?)`/g, (_, m) => `<code class="__inline_code">${m}</code>`);
+    return safe.replace(/`([^`]+?)`/g, (_, m) => `<code data-eplx-inline-code>${m}</code>`);
   }, [effectiveText]);
+
+  const codeInlineStyle: React.CSSProperties = {
+    background: effectiveCodeBg,
+    color: effectiveCodeColor,
+    padding: codePx,
+    borderRadius: codeRadius,
+    fontFamily:
+      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+    fontSize: '0.9em',
+    fontWeight: 600,
+    border: `1px solid ${ui.border}`,
+    boxShadow: 'inset 0 -1px 0 rgba(9, 9, 11, 0.04)',
+    transition: 'all 150ms ease',
+  };
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const codes = containerRef.current.querySelectorAll<HTMLElement>('[data-eplx-inline-code]');
+    codes.forEach((el) => {
+      Object.assign(el.style, codeInlineStyle);
+    });
+  });
 
   const handleCopy = async () => {
     if (codeSnippets.length > 0) {
@@ -112,26 +136,7 @@ export function InlineCodeText({
       }}
       {...rest}
     >
-      <div style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
-        <style>{`
-          .__inline_code {
-            background: ${effectiveCodeBg};
-            color: ${effectiveCodeColor};
-            padding: ${codePx};
-            border-radius: ${codeRadius}px;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 0.9em;
-            font-weight: 600;
-            border: 1px solid ${ui.border};
-            box-shadow: inset 0 -1px 0 rgba(9, 9, 11, 0.04);
-            transition: all 150ms ease;
-          }
-          .__inline_code:hover {
-            background: ${ui.surfaceHover};
-            border-color: ${ui.border};
-          }
-        `}</style>
-
+      <div ref={containerRef} style={{ width: '100%', maxWidth: maxW, display: 'grid', gap }}>
         <div style={{ position: 'relative', width: '100%' }}>
           <p
             style={{
@@ -147,6 +152,7 @@ export function InlineCodeText({
           {/* Copy button */}
           {copyable && codeSnippets.length > 0 && (
             <button
+              type="button"
               onClick={handleCopy}
               style={{
                 position: 'absolute',

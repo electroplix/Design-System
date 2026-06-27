@@ -251,7 +251,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               />
             </div>
 
-            <button
+            <button type="button"
               type="submit"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
@@ -288,7 +288,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               flexWrap: 'wrap',
             }}
           >
-            <button
+            <button type="button"
               style={{
                 padding: '16px 32px',
                 borderRadius: 12,
@@ -308,7 +308,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               <Icon name="arrow-right" size={18} />
             </button>
 
-            <button
+            <button type="button"
               style={{
                 padding: '16px 32px',
                 borderRadius: 12,
