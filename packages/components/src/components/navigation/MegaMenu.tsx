@@ -3,6 +3,7 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useNavTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 export type MenuLink = {
   label: string;
@@ -48,6 +49,7 @@ export function MegaMenu({
   ...rest
 }: MegaMenuProps) {
   const t = useNavTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const _bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
   const textColor = textColorProp ?? t.textColor ?? '#09090b';
@@ -130,7 +132,7 @@ export function MegaMenu({
             zIndex: 50,
             boxShadow: '0 24px 64px rgba(9, 9, 11, 0.12), 0 4px 12px rgba(9, 9, 11, 0.05)',
             display: 'grid',
-            gridTemplateColumns: `repeat(${sections.length}, 1fr)`,
+            gridTemplateColumns: isMobile ? '1fr' : `repeat(${sections.length}, 1fr)`,
             gap: 32,
           }}
         >
