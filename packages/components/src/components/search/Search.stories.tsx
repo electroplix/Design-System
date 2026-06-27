@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import {
-  AddressAutocomplete,
   AutoSuggest,
   FacetFilters,
   SearchEmptyState,
@@ -54,8 +53,4 @@ export const FacetFiltersStory: StoryObj = {
 
 export const SearchEmptyStateStory: StoryObj = {
   render: () => <SearchEmptyState query="xyzabc" />,
-};
-
-export const AddressAutocompleteStory: StoryObj = {
-  render: () => <AddressAutocomplete onSelect={() => {}} placeholder="Enter address..." />,
 };

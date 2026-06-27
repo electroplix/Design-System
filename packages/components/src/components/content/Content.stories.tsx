@@ -2,13 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { InlineCodeText } from './InlineCodeText';
 import { RichMarkdown } from './RichMarkdown';
 import { TeamGrid } from './TeamGrid';
-import {
-  Accordion,
-  BlockquoteTestimonial,
-  CalloutBox,
-  HeadingSection,
-  ParagraphBlock,
-} from './index';
+import { BlockquoteTestimonial, CalloutBox, HeadingSection, ParagraphBlock } from './index';
 
 const meta: Meta = {
   title: 'Components/Content',
@@ -34,17 +28,6 @@ export const BlockquoteTestimonialStory: Story = {
 export const CalloutBoxStory: Story = {
   render: () => (
     <CalloutBox variant="info" title="Note" message="This is an informational callout." />
-  ),
-};
-
-export const AccordionStory: Story = {
-  render: () => (
-    <Accordion
-      items={[
-        { title: 'Question 1', content: 'Answer 1' },
-        { title: 'Question 2', content: 'Answer 2' },
-      ]}
-    />
   ),
 };
 

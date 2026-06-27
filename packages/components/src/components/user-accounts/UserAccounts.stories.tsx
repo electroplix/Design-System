@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import {
   AccountSettings,
   AuthForm,
-  AvatarProfile,
   MultiFactorAuthInput,
   PasswordReset,
   ProfileOverview,
@@ -40,10 +39,6 @@ export const PasswordResetStory: StoryObj = {
 
 export const MultiFactorAuthInputStory: StoryObj = {
   render: () => <MultiFactorAuthInput length={6} onComplete={() => {}} />,
-};
-
-export const AvatarProfileStory: StoryObj = {
-  render: () => <AvatarProfile src="https://via.placeholder.com/80" name="Jane Doe" />,
 };
 
 export const RoleBadgeStory: StoryObj = {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ConfirmDialog, CookieNotice, FormDialog, GenericModal, PromoPopup } from './index';
+import { ConfirmDialog, CookieNotice, FormDialog, GenericModal } from './index';
 
 const meta: Meta = {
   title: 'Components/Modals',
@@ -32,12 +32,6 @@ export const FormDialogStory: StoryObj = {
     <FormDialog open title="Edit Profile" onClose={() => {}} onSubmit={() => {}}>
       <input placeholder="Name" />
     </FormDialog>
-  ),
-};
-
-export const PromoPopupStory: StoryObj = {
-  render: () => (
-    <PromoPopup open title="50% Off!" description="Limited time offer." onClose={() => {}} />
   ),
 };
 

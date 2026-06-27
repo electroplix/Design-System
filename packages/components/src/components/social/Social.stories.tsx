@@ -19,12 +19,12 @@ export const SocialShareBarStory: StoryObj = {
 };
 
 export const SocialEmbedStory: StoryObj = {
-  render: () => <SocialEmbed platform="twitter" postUrl="https://twitter.com/example/status/123" />,
+  render: () => <SocialEmbed type="twitter" url="https://twitter.com/example/status/123" />,
 };
 
 export const FollowLikeStory: StoryObj = {
   render: () => (
-    <FollowLike onFollow={() => {}} onLike={() => {}} liked={false} following={false} />
+    <FollowLike onFollow={() => {}} onLike={() => {}} isLiked={false} isFollowed={false} />
   ),
 };
 
