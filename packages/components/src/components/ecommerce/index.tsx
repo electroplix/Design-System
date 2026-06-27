@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useEcommerceTheme } from '../../core/provider';
 import type { Currency } from '../../core/types';
+import { useMediaQuery } from '../../core/utils';
 import { money } from '../../core/utils';
 
 /* ── Shared types ───────────────────────────────────────── */
@@ -924,6 +925,7 @@ export function ProductDetail({
   ...rest
 }: ProductDetailProps) {
   const e = useEcom();
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const [mainImg, setMainImg] = useState(0);
   const allImages = images?.length ? images : [product.image];
 
@@ -932,7 +934,7 @@ export function ProductDetail({
       className={className}
       style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
         gap: 32,
         fontFamily: e.ff,
         color: e.fg,
