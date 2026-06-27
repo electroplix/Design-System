@@ -23,9 +23,9 @@ type Story = StoryObj;
 
 const sampleProduct = {
   id: '1',
-  name: 'Widget Pro',
+  title: 'Widget Pro',
   price: 29.99,
-  imageSrc: 'https://placehold.co/300x300',
+  image: 'https://placehold.co/300x300',
 };
 
 export const ProductCardStory: Story = {
@@ -37,7 +37,7 @@ export const ProductGridStory: Story = {
     <ProductGrid
       products={[
         sampleProduct,
-        { id: '2', name: 'Gadget X', price: 49.99, imageSrc: 'https://placehold.co/300x300' },
+        { id: '2', title: 'Gadget X', price: 49.99, image: 'https://placehold.co/300x300' },
       ]}
     />
   ),
@@ -54,16 +54,21 @@ export const ProductDetailStory: Story = {
 export const CartDrawerStory: Story = {
   render: () => (
     <CartDrawer
-      isOpen={true}
+      open={true}
       onClose={() => {}}
-      items={[{ id: '1', name: 'Widget Pro', price: 29.99, quantity: 2 }]}
+      items={[
+        { id: '1', title: 'Widget Pro', image: 'https://placehold.co/100', price: 29.99, qty: 2 },
+      ]}
     />
   ),
 };
 
 export const OrderSummaryStory: Story = {
   render: () => (
-    <OrderSummary items={[{ name: 'Widget Pro', price: 29.99, quantity: 2 }]} total={59.98} />
+    <OrderSummary
+      items={[{ title: 'Widget Pro', image: 'https://placehold.co/100', price: 29.99, qty: 2 }]}
+      total={59.98}
+    />
   ),
 };
 
@@ -80,7 +85,7 @@ export const QuickAddButtonStory: Story = {
 };
 
 export const WishlistButtonStory: Story = {
-  render: () => <WishlistButton productId="1" isWishlisted={false} onToggle={() => {}} />,
+  render: () => <WishlistButton productId="1" wishlisted={false} onToggle={() => {}} />,
 };
 
 export const VariantSelectorStory: Story = {

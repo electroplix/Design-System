@@ -4,7 +4,7 @@ import {
   ArticleRenderer,
   AuthorByline,
   BlogCard,
-  CommentsBox,
+  CommentsSection,
   ReadingBar,
   RelatedPosts,
   TagList,
@@ -19,21 +19,24 @@ export default meta;
 export const BlogCardStory: StoryObj = {
   render: () => (
     <BlogCard
-      title="Getting Started with Electroplix"
-      excerpt="Learn how to set up your first project."
-      date="2024-03-15"
-      slug="/blog/getting-started"
+      post={{
+        id: '1',
+        title: 'Getting Started with Electroplix',
+        excerpt: 'Learn how to set up your first project.',
+        date: '2024-03-15',
+        slug: '/blog/getting-started',
+      }}
     />
   ),
 };
 
 export const ArticleRendererStory: StoryObj = {
-  render: () => <ArticleRenderer content="<h1>Hello World</h1><p>This is a sample article.</p>" />,
+  render: () => <ArticleRenderer html="<h1>Hello World</h1><p>This is a sample article.</p>" />,
 };
 
-export const CommentsBoxStory: StoryObj = {
+export const CommentsSectionStory: StoryObj = {
   render: () => (
-    <CommentsBox
+    <CommentsSection
       comments={[
         { id: '1', author: 'Alice', text: 'Great article!' },
         { id: '2', author: 'Bob', text: 'Very helpful.' },
@@ -61,9 +64,18 @@ export const ReadingBarStory: StoryObj = {
 export const ArchiveListStory: StoryObj = {
   render: () => (
     <ArchiveList
-      items={[
-        { id: '1', title: 'January 2024', count: 5, url: '/archive/2024-01' },
-        { id: '2', title: 'February 2024', count: 3, url: '/archive/2024-02' },
+      groups={[
+        {
+          label: 'January 2024',
+          posts: [
+            { id: '1', title: 'Post 1', slug: '/blog/post-1' },
+            { id: '2', title: 'Post 2', slug: '/blog/post-2' },
+          ],
+        },
+        {
+          label: 'February 2024',
+          posts: [{ id: '3', title: 'Post 3', slug: '/blog/post-3' }],
+        },
       ]}
     />
   ),

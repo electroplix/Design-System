@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   ComparisonTable,
-  FeatureGrid,
   FeatureHighlights,
   HowItWorks,
-  PricingTable,
   StatsCounter,
   TestimonialsCarousel,
   TrustBadges,
@@ -15,28 +13,6 @@ const meta: Meta = {
   tags: ['autodocs'],
 };
 export default meta;
-
-export const PricingTableStory: StoryObj = {
-  render: () => (
-    <PricingTable
-      plans={[
-        { id: '1', name: 'Basic', price: '$9/mo', features: ['Feature A'] },
-        { id: '2', name: 'Pro', price: '$29/mo', features: ['Feature A', 'Feature B'] },
-      ]}
-    />
-  ),
-};
-
-export const FeatureGridStory: StoryObj = {
-  render: () => (
-    <FeatureGrid
-      features={[
-        { id: '1', title: 'Fast', description: 'Lightning speed' },
-        { id: '2', title: 'Secure', description: 'Enterprise security' },
-      ]}
-    />
-  ),
-};
 
 export const TestimonialsCarouselStory: StoryObj = {
   render: () => (
