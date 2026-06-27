@@ -1,3 +1,13 @@
+## 0.5.0-alpha.11 (2026-06-27)
+
+### 🚀 Features
+
+- add ImageHero component with responsive design ([3f42f5b](https://github.com/electroplix/Design-System/commit/3f42f5b))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.10 (2026-06-27)
 
 ### 🩹 Fixes
