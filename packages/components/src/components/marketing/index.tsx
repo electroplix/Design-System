@@ -184,6 +184,7 @@ export function ComparisonTable({
               {plans.map((p) => (
                 <td key={p.id} style={{ padding: '16px 20px', textAlign: 'center' }}>
                   <button
+                    type="button"
                     onClick={() => onSelect?.(p.id)}
                     style={{
                       padding: '10px 20px',
@@ -639,6 +640,7 @@ export function MarketingHeroBlock({
           }}
         >
           <button
+            type="button"
             onClick={onCtaClick}
             style={{
               padding: '14px 28px',
@@ -656,6 +658,7 @@ export function MarketingHeroBlock({
 
           {secondaryLabel && (
             <button
+              type="button"
               onClick={onSecondaryClick}
               style={{
                 padding: '14px 28px',
@@ -745,6 +748,7 @@ export function PromoPopup({
         }}
       >
         <button
+          type="button"
           onClick={onDismiss}
           aria-label="Close"
           style={{
@@ -794,6 +798,7 @@ export function PromoPopup({
         )}
 
         <button
+          type="button"
           onClick={onCta}
           style={{
             marginTop: 20,
@@ -947,6 +952,7 @@ export function TestimonialsCarousel({
         >
           {testimonials.map((_, i) => (
             <button
+              type="button"
               key={i}
               onClick={() => setIdx(i)}
               style={{

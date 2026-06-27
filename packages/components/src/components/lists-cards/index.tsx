@@ -160,6 +160,7 @@ export function Accordion({
             }}
           >
             <button
+              type="button"
               onClick={() => toggle(it.id)}
               aria-expanded={isOpen}
               style={{
@@ -183,8 +184,7 @@ export function Accordion({
             </button>
 
             {isOpen && (
-              <div
-                role="region"
+              <section
                 style={{
                   padding: '0 18px 18px',
                   fontSize: lc.bs,
@@ -193,7 +193,7 @@ export function Accordion({
                 }}
               >
                 {it.content}
-              </div>
+              </section>
             )}
           </div>
         );
@@ -461,7 +461,15 @@ export function ItemCardGrid({
       {items.map((it) => (
         <div
           key={it.id}
+          role="button"
+          tabIndex={0}
           onClick={() => onItemClick?.(it.id)}
+          onKeyDown={(e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && onItemClick) {
+              e.preventDefault();
+              onItemClick(it.id);
+            }
+          }}
           style={{
             border: `1px solid ${lc.border}`,
             borderRadius: lc.r,
@@ -682,6 +690,7 @@ export function PricingTable({
           </div>
 
           <button
+            type="button"
             onClick={() => onSelect?.(p.id)}
             style={{
               padding: '13px 16px',

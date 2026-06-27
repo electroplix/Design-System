@@ -288,7 +288,8 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               flexWrap: 'wrap',
             }}
           >
-            <button type="button"
+            <button
+              type="button"
               style={{
                 padding: '16px 32px',
                 borderRadius: 12,
@@ -308,7 +309,8 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               <Icon name="arrow-right" size={18} />
             </button>
 
-            <button type="button"
+            <button
+              type="button"
               style={{
                 padding: '16px 32px',
                 borderRadius: 12,

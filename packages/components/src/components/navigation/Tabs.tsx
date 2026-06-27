@@ -127,6 +127,7 @@ export function Tabs({
 
             return (
               <button
+                type="button"
                 key={tab.label}
                 role="tab"
                 aria-selected={isActive}

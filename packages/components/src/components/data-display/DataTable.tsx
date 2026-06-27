@@ -261,7 +261,15 @@ export function DataTable<T extends Record<string, any>>({
               {safeColumns.map((c) => (
                 <th
                   key={String(c.key)}
+                  role="button"
+                  tabIndex={0}
                   onClick={() => handleSort(c)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleSort(c);
+                    }
+                  }}
                   style={{
                     padding: pad,
                     fontWeight: 700,

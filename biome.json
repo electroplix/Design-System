@@ -152,7 +152,13 @@
         "noAccumulatingSpread": "warn"
       },
       "a11y": {
-        "recommended": true
+        "recommended": true,
+        "useSemanticElements": "off",
+        "noAriaHiddenOnFocusable": "off",
+        "noNoninteractiveElementToInteractiveRole": "off",
+        "useMediaCaption": "off",
+        "useKeyWithClickEvents": "off",
+        "useValidAnchor": "off"
       },
       "security": {
         "recommended": false

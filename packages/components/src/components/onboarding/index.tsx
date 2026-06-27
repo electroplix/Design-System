@@ -102,6 +102,7 @@ export function FAQAccordion({
               }}
             >
               <button
+                type="button"
                 onClick={() => toggle(it.id)}
                 style={{
                   width: '100%',
@@ -285,6 +286,7 @@ export function OnboardingWizard({
         }}
       >
         <button
+          type="button"
           onClick={() => setIdx(Math.max(0, idx - 1))}
           disabled={idx === 0}
           style={{
@@ -304,6 +306,7 @@ export function OnboardingWizard({
         </button>
 
         <button
+          type="button"
           onClick={() => (isLast ? onComplete?.() : setIdx(idx + 1))}
           style={{
             padding: '10px 18px',
@@ -438,6 +441,7 @@ export function ProductTour({
           }}
         >
           <button
+            type="button"
             onClick={onClose}
             style={{
               padding: '8px 14px',
@@ -455,6 +459,7 @@ export function ProductTour({
           </button>
 
           <button
+            type="button"
             onClick={() => {
               if (isLast) {
                 onComplete?.();
@@ -607,6 +612,7 @@ export function SupportChat({
   return (
     <div style={{ ...style }} className={className} {...rest}>
       <button
+        type="button"
         onClick={onToggle}
         style={{
           position: 'fixed',

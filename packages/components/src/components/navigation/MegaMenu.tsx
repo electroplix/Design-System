@@ -83,6 +83,7 @@ export function MegaMenu({
       {...rest}
     >
       <button
+        type="button"
         aria-expanded={open}
         aria-haspopup="true"
         style={{

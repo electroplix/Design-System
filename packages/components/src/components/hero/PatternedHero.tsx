@@ -250,7 +250,8 @@ export function PatternedHero(props: PatternedHeroProps) {
             justifyContent: 'center',
           }}
         >
-          <button type="button"
+          <button
+            type="button"
             onClick={onCta}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}

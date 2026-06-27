@@ -97,6 +97,7 @@ export function Pagination({
     icon?: boolean;
   }) => (
     <button
+      type="button"
       disabled={disabled}
       aria-current={active ? 'page' : undefined}
       onClick={() => page && onPageChange(page)}

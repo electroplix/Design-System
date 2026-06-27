@@ -45,10 +45,12 @@ export default function UserAccountsPage() {
         <AccountSettings sections={sampleSettingsSections} />
       </ComponentDemo>
       <ComponentDemo name="RoleBadge">
-        {/* biome-ignore lint/a11y/useValidAriaRole: role is a component prop */}
         <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {/* biome-ignore lint/a11y/useValidAriaRole: role is a component prop */}
           <RoleBadge role="Admin" variant="admin" />
+          {/* biome-ignore lint/a11y/useValidAriaRole: role is a component prop */}
           <RoleBadge role="Editor" variant="editor" />
+          {/* biome-ignore lint/a11y/useValidAriaRole: role is a component prop */}
           <RoleBadge role="Viewer" variant="viewer" />
         </div>
       </ComponentDemo>

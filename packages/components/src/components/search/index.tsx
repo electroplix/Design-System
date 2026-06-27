@@ -231,6 +231,7 @@ export function AutoSuggest({
           role="combobox"
           aria-expanded={show && filtered.length > 0}
           aria-autocomplete="list"
+          aria-controls="autosearch-listbox"
           style={{
             flex: 1,
             background: 'none',
@@ -245,6 +246,9 @@ export function AutoSuggest({
 
       {show && filtered.length > 0 && (
         <div
+          id="autosearch-listbox"
+          role="listbox"
+          tabIndex={-1}
           style={{
             position: 'absolute',
             top: 'calc(100% + 4px)',

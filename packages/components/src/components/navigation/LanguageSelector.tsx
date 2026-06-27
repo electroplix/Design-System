@@ -70,6 +70,7 @@ export function LanguageSelector({
       {...rest}
     >
       <button
+        type="button"
         onClick={() => setOpen((o) => !o)}
         style={{
           display: 'flex',
@@ -126,6 +127,7 @@ export function LanguageSelector({
 
             return (
               <button
+                type="button"
                 key={lang.code}
                 onClick={() => {
                   onChange?.(lang.code);

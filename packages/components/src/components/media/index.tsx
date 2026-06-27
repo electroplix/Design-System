@@ -544,6 +544,7 @@ export function LightboxGallery({
           </div>
 
           <button
+            type="button"
             onClick={() => go(-1)}
             style={{
               position: 'absolute',
@@ -566,6 +567,7 @@ export function LightboxGallery({
           </button>
 
           <button
+            type="button"
             onClick={() => go(1)}
             style={{
               position: 'absolute',
@@ -588,6 +590,7 @@ export function LightboxGallery({
           </button>
 
           <button
+            type="button"
             onClick={() => setSel(null)}
             style={{
               position: 'absolute',
@@ -650,7 +653,11 @@ export function MasonryGrid({
                 boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
               }}
             >
-              <img src={it.src} alt={it.alt ?? ''} style={{ width: '100%', display: 'block' }} />
+              <img
+                src={it.src}
+                alt={it.alt || 'Gallery image'}
+                style={{ width: '100%', display: 'block' }}
+              />
             </div>
           ))}
         </div>
@@ -744,12 +751,12 @@ export function LottieOrSVG({
     return (
       <img
         src={src}
-        alt={alt ?? ''}
         width={width}
         height={height}
         style={{ display: 'block', ...style }}
         className={className}
         {...rest}
+        alt={alt || 'Decorative image'}
       />
     );
   }

@@ -71,7 +71,15 @@ export function ToggleSwitch(props: ToggleSwitchProps) {
     >
       <div style={{ maxWidth: maxW, display: 'flex', flexDirection: 'column' as const, gap }}>
         <div
+          role="button"
+          tabIndex={0}
           onClick={toggle}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggle();
+            }
+          }}
           style={{
             display: 'flex',
             alignItems: 'center',
