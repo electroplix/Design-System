@@ -1,6 +1,6 @@
 {
   "name": "@electroplix/components",
-  "version": "0.5.0-alpha.11",
+  "version": "0.5.0-alpha.12",
   "description": "Parametric, config-driven UI components by Electroplix. 159 components across 18 categories — navigation, hero, buttons, forms, content, data display, ecommerce, lists/cards, marketing, media, miscellaneous, modals, onboarding, search, site-identity, social, user-accounts, and blog. AI-builder-ready metadata included.",
   "type": "module",
   "license": "MIT",
@@ -32,7 +32,9 @@
   },
   "typesVersions": {
     "*": {
-      "config": ["./dist/config.d.ts"]
+      "config": [
+        "./dist/config.d.ts"
+      ]
     }
   },
   "files": [

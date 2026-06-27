@@ -1,3 +1,13 @@
+## 0.5.0-alpha.12 (2026-06-27)
+
+### 🚀 Features
+
+- make all 7 hero components fully responsive ([f74e926](https://github.com/electroplix/Design-System/commit/f74e926))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.11 (2026-06-27)
 
 ### 🚀 Features
