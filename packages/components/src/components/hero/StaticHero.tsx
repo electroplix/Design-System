@@ -3,6 +3,7 @@
 import type React from 'react';
 import { Icon } from '../../core/icons';
 import { useHeroTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 export interface StaticHeroProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
@@ -32,11 +33,11 @@ const ui = {
   text: '#18181b',
   muted: '#71717a',
   border: '#e4e4e7',
-  surface: '#fafafa',
 };
 
 export function StaticHero(props: StaticHeroProps) {
   const t = useHeroTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const {
     as: Tag = 'section',
@@ -67,6 +68,10 @@ export function StaticHero(props: StaticHeroProps) {
   const fg = textColor ?? t.textColor ?? ui.text;
   const accent = accentColor ?? t.accentColor ?? ui.black;
   const border = borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
+  const rPx = isMobile ? 16 : px;
+  const pyPx = isMobile ? 32 : py;
+  const titlePx = isMobile ? Math.max(28, Math.floor(titleSize * 0.6)) : titleSize;
+  const subPx = isMobile ? Math.max(14, Math.floor(subtitleSize * 0.85)) : subtitleSize;
 
   return (
     <Tag
@@ -78,7 +83,7 @@ export function StaticHero(props: StaticHeroProps) {
         color: fg,
         fontFamily,
         minHeight: typeof minH === 'number' ? `${minH}px` : minH,
-        padding: `${py}px ${px}px`,
+        padding: `${pyPx}px ${rPx}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
         position: 'relative',
@@ -98,21 +103,23 @@ export function StaticHero(props: StaticHeroProps) {
         }}
       />
 
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: '-18%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 560,
-          height: 560,
-          borderRadius: '999px',
-          background: 'rgba(9,9,11,0.035)',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-        }}
-      />
+      {!isMobile && (
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            top: '-18%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 560,
+            height: 560,
+            borderRadius: '999px',
+            background: 'rgba(9,9,11,0.035)',
+            filter: 'blur(80px)',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
 
       <div
         style={{
@@ -134,27 +141,18 @@ export function StaticHero(props: StaticHeroProps) {
               borderRadius: 999,
               background: ui.white,
               border: `1px solid ${border}`,
-              marginBottom: 24,
+              marginBottom: isMobile ? 16 : 24,
               boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
             <Icon name="sparkles" size={16} color={accent} />
-
-            <span
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                color: fg,
-              }}
-            >
-              New Release Available
-            </span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: fg }}>New Release Available</span>
           </div>
 
           {title && (
             <h1
               style={{
-                fontSize: titleSize,
+                fontSize: titlePx,
                 lineHeight: 1.05,
                 margin: 0,
                 fontWeight: 800,
@@ -169,10 +167,10 @@ export function StaticHero(props: StaticHeroProps) {
           {subtitle && (
             <p
               style={{
-                fontSize: subtitleSize,
+                fontSize: subPx,
                 color: ui.muted,
-                marginTop: 20,
-                marginBottom: 32,
+                marginTop: isMobile ? 12 : 20,
+                marginBottom: isMobile ? 24 : 32,
                 maxWidth: 600,
                 marginInline: align === 'center' ? 'auto' : undefined,
                 marginLeft: align === 'right' ? 'auto' : undefined,
@@ -186,25 +184,26 @@ export function StaticHero(props: StaticHeroProps) {
           <div
             style={{
               display: 'flex',
-              gap: 16,
+              flexWrap: 'wrap',
+              gap: isMobile ? 12 : 16,
               justifyContent:
                 align === 'center' ? 'center' : align === 'right' ? 'flex-end' : 'flex-start',
-              flexWrap: 'wrap',
             }}
           >
             {ctaLabel && (
               <button
                 type="button"
                 onClick={onCta}
+                aria-label={ctaLabel}
                 style={{
-                  padding: '16px 28px',
+                  padding: `${isMobile ? 12 : 16}px ${isMobile ? 20 : 28}px`,
                   borderRadius: 12,
                   border: `1px solid ${accent}`,
                   background: accent,
                   color: ui.white,
                   cursor: 'pointer',
                   fontWeight: 700,
-                  fontSize: 16,
+                  fontSize: isMobile ? 14 : 16,
                   display: 'flex',
                   alignItems: 'center',
                   gap: 8,
@@ -219,15 +218,16 @@ export function StaticHero(props: StaticHeroProps) {
 
             <button
               type="button"
+              aria-label="Learn more"
               style={{
-                padding: '16px 28px',
+                padding: `${isMobile ? 12 : 16}px ${isMobile ? 20 : 28}px`,
                 borderRadius: 12,
                 border: `1px solid ${border}`,
                 background: ui.white,
                 color: fg,
                 cursor: 'pointer',
                 fontWeight: 600,
-                fontSize: 16,
+                fontSize: isMobile ? 14 : 16,
                 boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
                 transition: 'all 0.2s ease',
               }}

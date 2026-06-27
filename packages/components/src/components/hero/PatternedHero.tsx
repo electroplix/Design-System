@@ -4,6 +4,7 @@ import type React from 'react';
 import { useMemo, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useHeroTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 type PatternKind = 'dots' | 'grid' | 'diagonal';
 
@@ -14,7 +15,6 @@ function usePattern(kind: PatternKind, accent: string, intensity: number) {
         .toString(16)
         .padStart(2, '0')} 1px, transparent 1px)`;
     }
-
     if (kind === 'grid') {
       return `linear-gradient(${accent}${Math.round(intensity * 16)
         .toString(16)
@@ -23,18 +23,13 @@ function usePattern(kind: PatternKind, accent: string, intensity: number) {
         .toString(16)
         .padStart(2, '0')} 1px, transparent 1px)`;
     }
-
-    return `repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      ${accent}${Math.round(intensity * 14)
-        .toString(16)
-        .padStart(2, '0')} 10px,
-      ${accent}${Math.round(intensity * 14)
-        .toString(16)
-        .padStart(2, '0')} 11px
-    )`;
+    return `repeating-linear-gradient(45deg, transparent, transparent 10px, ${accent}${Math.round(
+      intensity * 14,
+    )
+      .toString(16)
+      .padStart(2, '0')} 10px, ${accent}${Math.round(intensity * 14)
+      .toString(16)
+      .padStart(2, '0')} 11px)`;
   }, [kind, accent, intensity]);
 }
 
@@ -71,16 +66,14 @@ const defaultStats = [
 
 const ui = {
   white: '#ffffff',
-  black: '#09090b',
   text: '#18181b',
   muted: '#71717a',
   border: '#e4e4e7',
-  surface: '#fafafa',
-  ring: 'rgba(9,9,11,0.08)',
 };
 
 export function PatternedHero(props: PatternedHeroProps) {
   const t = useHeroTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const {
     as: Tag = 'section',
@@ -110,16 +103,17 @@ export function PatternedHero(props: PatternedHeroProps) {
     ...rest
   } = props;
 
-  const bg = bgColor ?? t.bgColor ?? ui.white;
+  const bg = bgColor ?? t.bgColor ?? '#ffffff';
   const fg = textColor ?? t.textColor ?? ui.text;
-  const accent = accentColor ?? t.accentColor ?? ui.black;
+  const accent = accentColor ?? t.accentColor ?? '#09090b';
   const border = borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
-
-  const patternBg = usePattern(pattern, accent, intensity);
-
+  const patternBg = usePattern(pattern, accent, isMobile ? intensity * 0.6 : intensity);
   const sz = pattern === 'dots' ? '20px 20px' : pattern === 'grid' ? '32px 32px' : undefined;
-
   const [hover, setHover] = useState(false);
+  const rPx = isMobile ? 16 : px;
+  const pyPx = isMobile ? 32 : py;
+  const titlePx = isMobile ? Math.max(28, Math.floor(titleSize * 0.6)) : titleSize;
+  const subPx = isMobile ? Math.max(14, Math.floor(subtitleSize * 0.85)) : subtitleSize;
 
   return (
     <Tag
@@ -131,7 +125,7 @@ export function PatternedHero(props: PatternedHeroProps) {
         color: fg,
         fontFamily,
         minHeight: typeof minH === 'number' ? `${minH}px` : minH,
-        padding: `${py}px ${px}px`,
+        padding: `${pyPx}px ${rPx}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
         position: 'relative',
@@ -141,7 +135,6 @@ export function PatternedHero(props: PatternedHeroProps) {
       }}
       {...rest}
     >
-      {/* pattern layer */}
       <div
         aria-hidden
         style={{
@@ -150,11 +143,10 @@ export function PatternedHero(props: PatternedHeroProps) {
           backgroundImage: patternBg,
           backgroundSize: sz,
           zIndex: 0,
-          opacity: 0.8,
+          opacity: isMobile ? 0.4 : 0.8,
         }}
       />
 
-      {/* subtle top gradient */}
       <div
         aria-hidden
         style={{
@@ -165,21 +157,22 @@ export function PatternedHero(props: PatternedHeroProps) {
         }}
       />
 
-      {/* glow blur */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: '12%',
-          left: '15%',
-          width: 260,
-          height: 260,
-          borderRadius: '999px',
-          background: 'rgba(9,9,11,0.03)',
-          filter: 'blur(70px)',
-          pointerEvents: 'none',
-        }}
-      />
+      {!isMobile && (
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            top: '12%',
+            left: '15%',
+            width: 260,
+            height: 260,
+            borderRadius: '999px',
+            background: 'rgba(9,9,11,0.03)',
+            filter: 'blur(70px)',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
 
       <div
         style={{
@@ -203,7 +196,7 @@ export function PatternedHero(props: PatternedHeroProps) {
               color: fg,
               fontSize: 13,
               fontWeight: 600,
-              marginBottom: 24,
+              marginBottom: isMobile ? 16 : 24,
               boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
             }}
           >
@@ -215,7 +208,7 @@ export function PatternedHero(props: PatternedHeroProps) {
         {title && (
           <h2
             style={{
-              fontSize: titleSize,
+              fontSize: titlePx,
               margin: 0,
               fontWeight: 800,
               lineHeight: 1.05,
@@ -230,9 +223,9 @@ export function PatternedHero(props: PatternedHeroProps) {
         {subtitle && (
           <p
             style={{
-              fontSize: subtitleSize,
+              fontSize: subPx,
               color: ui.muted,
-              marginTop: 20,
+              marginTop: isMobile ? 12 : 20,
               marginBottom: 0,
               maxWidth: 640,
               marginInline: 'auto',
@@ -243,27 +236,22 @@ export function PatternedHero(props: PatternedHeroProps) {
           </p>
         )}
 
-        <div
-          style={{
-            marginTop: 32,
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
+        <div style={{ marginTop: isMobile ? 24 : 32, display: 'flex', justifyContent: 'center' }}>
           <button
             type="button"
             onClick={onCta}
+            aria-label={ctaLabel}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             style={{
-              padding: '16px 32px',
+              padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
               borderRadius: 12,
               border: `1px solid ${accent}`,
               background: accent,
               color: ui.white,
               cursor: 'pointer',
               fontWeight: 700,
-              fontSize: 16,
+              fontSize: isMobile ? 14 : 16,
               display: 'flex',
               alignItems: 'center',
               gap: 8,
@@ -280,23 +268,18 @@ export function PatternedHero(props: PatternedHeroProps) {
         {stats.length > 0 && (
           <div
             style={{
-              marginTop: 52,
+              marginTop: isMobile ? 32 : 52,
               display: 'flex',
               justifyContent: 'center',
-              gap: 48,
+              gap: isMobile ? 24 : 48,
               flexWrap: 'wrap',
             }}
           >
             {stats.map((s, i) => (
-              <div
-                key={i}
-                style={{
-                  textAlign: 'center',
-                }}
-              >
+              <div key={i} style={{ textAlign: 'center' }}>
                 <div
                   style={{
-                    fontSize: 32,
+                    fontSize: isMobile ? 24 : 32,
                     fontWeight: 800,
                     color: fg,
                     letterSpacing: '-0.03em',
@@ -304,10 +287,9 @@ export function PatternedHero(props: PatternedHeroProps) {
                 >
                   {s.value}
                 </div>
-
                 <div
                   style={{
-                    fontSize: 13,
+                    fontSize: isMobile ? 12 : 13,
                     color: ui.muted,
                     marginTop: 6,
                     fontWeight: 500,
