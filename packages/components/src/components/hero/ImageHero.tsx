@@ -7,8 +7,6 @@ import { useMediaQuery } from '../../core/utils';
 
 export interface ImageHeroProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
-
-  // Content
   eyebrow?: string;
   title?: string;
   titleAccent?: string;
@@ -18,27 +16,16 @@ export interface ImageHeroProps extends React.ComponentPropsWithoutRef<'section'
   ctaHref?: string;
   ctaSecondaryLabel?: string;
   ctaSecondaryHref?: string;
-
-  // Background image
   imageSrc?: string;
   imageAlt?: string;
-
-  // Stats
   stats?: Array<{ value: string; label: string }>;
-
-  // Layout
   layout?: 'split' | 'centered' | 'minimal';
   align?: 'left' | 'center' | 'right';
-
-  // Typography
   titleSize?: number;
   subtitleSize?: number;
-
-  // Theme overrides
   bgColor?: string;
   textColor?: string;
   accentColor?: string;
-  borderColor?: string;
   fontFamily?: string;
   minH?: string | number;
   maxW?: number;
@@ -51,11 +38,209 @@ export interface ImageHeroProps extends React.ComponentPropsWithoutRef<'section'
 const ui = {
   white: '#ffffff',
   black: '#09090b',
-  text: '#18181b',
   muted: '#71717a',
-  border: '#e4e4e7',
-  surface: '#fafafa',
 };
+
+/* ── Shared sub-components ──────────────────────────────────────── */
+
+function HeroEyebrow({
+  text,
+  accent,
+  fontFamily = 'sans-serif',
+  center,
+  isMobile,
+}: {
+  text: string;
+  accent: string;
+  fontFamily?: string;
+  center?: boolean;
+  isMobile: boolean;
+}) {
+  if (isMobile) {
+    return (
+      <span
+        style={{
+          color: accent,
+          fontFamily,
+          fontSize: 12,
+          fontWeight: 600,
+          letterSpacing: 6,
+          textTransform: 'uppercase',
+          display: 'block',
+          marginBottom: 24,
+        }}
+      >
+        {text}
+      </span>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 12,
+        marginBottom: 32,
+        justifyContent: center ? 'center' : 'flex-start',
+      }}
+    >
+      <div style={{ width: 48, height: 1, background: accent }} />
+      <span
+        style={{
+          color: accent,
+          fontFamily,
+          fontSize: 12,
+          fontWeight: 600,
+          letterSpacing: 4,
+        }}
+      >
+        {text}
+      </span>
+      <div style={{ width: 48, height: 1, background: accent }} />
+    </div>
+  );
+}
+
+function HeroCTAs({
+  ctaLabel,
+  ctaHref,
+  ctaSecondaryLabel,
+  ctaSecondaryHref,
+  accent,
+  fg,
+  fontFamily = 'sans-serif',
+  radius,
+  isMobile,
+  center,
+}: {
+  ctaLabel?: string;
+  ctaHref: string;
+  ctaSecondaryLabel?: string;
+  ctaSecondaryHref: string;
+  accent: string;
+  fg: string;
+  fontFamily?: string;
+  radius: number;
+  isMobile: boolean;
+  center?: boolean;
+}) {
+  if (!ctaLabel && !ctaSecondaryLabel) return null;
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 12,
+        justifyContent: center ? 'center' : 'flex-start',
+      }}
+    >
+      {ctaLabel && (
+        <a
+          href={ctaHref}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
+            background: accent,
+            color: ui.white,
+            fontFamily,
+            fontWeight: 700,
+            fontSize: isMobile ? 14 : 16,
+            letterSpacing: 1,
+            borderRadius: radius,
+            textDecoration: 'none',
+            transition: 'all 0.2s ease',
+          }}
+        >
+          {ctaLabel}
+          <Icon name="arrow-right" size={18} />
+        </a>
+      )}
+      {ctaSecondaryLabel && (
+        <a
+          href={ctaSecondaryHref}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
+            border: '1px solid rgba(255,255,255,0.4)',
+            color: fg,
+            fontFamily,
+            fontWeight: 600,
+            fontSize: isMobile ? 14 : 16,
+            letterSpacing: 1,
+            borderRadius: radius,
+            textDecoration: 'none',
+            transition: 'all 0.2s ease',
+          }}
+        >
+          {ctaSecondaryLabel}
+        </a>
+      )}
+    </div>
+  );
+}
+
+function HeroStats({
+  stats,
+  accent,
+  fontFamily = 'sans-serif',
+  isMobile,
+  center,
+}: {
+  stats?: Array<{ value: string; label: string }>;
+  accent: string;
+  fontFamily?: string;
+  isMobile: boolean;
+  center?: boolean;
+}) {
+  if (!stats || stats.length === 0) return null;
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: isMobile ? 24 : 32,
+        marginTop: isMobile ? 40 : 48,
+        justifyContent: center ? 'center' : 'flex-start',
+      }}
+    >
+      {stats.map((stat) => (
+        <div key={stat.label}>
+          <p
+            style={{
+              fontFamily,
+              color: accent,
+              fontSize: 24,
+              fontWeight: 700,
+              lineHeight: 1,
+            }}
+          >
+            {stat.value}
+          </p>
+          <p
+            style={{
+              color: 'rgba(255,255,255,0.5)',
+              fontFamily,
+              fontSize: 10,
+              letterSpacing: 1.5,
+              marginTop: 4,
+            }}
+          >
+            {stat.label.toUpperCase()}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ── Main component ────────────────────────────────────────────── */
 
 export function ImageHero(props: ImageHeroProps) {
   const t = useHeroTheme();
@@ -67,8 +252,8 @@ export function ImageHero(props: ImageHeroProps) {
     title = 'Build Something Amazing',
     titleAccent,
     titleSuffix,
-    subtitle = 'Create beautiful, responsive interfaces with our modern component library.',
-    ctaLabel = 'Get Started',
+    subtitle,
+    ctaLabel,
     ctaHref = '#',
     ctaSecondaryLabel,
     ctaSecondaryHref = '#',
@@ -76,13 +261,11 @@ export function ImageHero(props: ImageHeroProps) {
     imageAlt = 'Hero image',
     stats,
     layout = 'split',
-    align = 'left',
     titleSize = 48,
     subtitleSize = 18,
     bgColor,
     textColor,
     accentColor,
-    borderColor,
     fontFamily = t.fontFamily,
     minH = t.minH ?? '100vh',
     maxW = t.maxW ?? 1200,
@@ -97,29 +280,23 @@ export function ImageHero(props: ImageHeroProps) {
   } = props;
 
   const bg = bgColor ?? t.bgColor ?? ui.black;
-  const fg = textColor ?? t.textColor ?? ui.white;
+  const fg = textColor ?? t.textColor ?? '#ffffff';
   const accent = accentColor ?? t.accentColor ?? '#8B5CF6';
+  const rPx = isMobile ? 16 : px;
+  const pyPx = isMobile ? 80 : py;
+  const subSize = isMobile ? Math.max(14, Math.floor(subtitleSize * 0.85)) : subtitleSize;
+  const overlay = `linear-gradient(135deg, ${bg}f2 0%, ${bg}99 60%, ${accent}14 100%)`;
 
-  // Responsive values
-  const responsiveSubtitleSize = isMobile
-    ? Math.max(14, Math.floor(subtitleSize * 0.85))
-    : subtitleSize;
+  const shared = { accent, fontFamily, isMobile, radius };
 
-  const responsiveMinH = isMobile ? 'auto' : minH;
-  const responsivePx = isMobile ? 16 : px;
-  const responsivePy = isMobile ? 80 : py;
-
-  // Overlay gradient for background image
-  const overlayGradient = `linear-gradient(135deg, ${bg}f2 0%, ${bg}99 60%, ${accent}14 100%)`;
-
-  // ── Minimal layout ──
+  // ── Minimal ──
   if (layout === 'minimal') {
     return (
       <Tag
         className={className}
         style={{
           position: 'relative',
-          minHeight: responsiveMinH,
+          minHeight: isMobile ? 'auto' : minH,
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
@@ -128,7 +305,6 @@ export function ImageHero(props: ImageHeroProps) {
         }}
         {...rest}
       >
-        {/* Decorative geometric elements (hidden on mobile) */}
         {!isMobile && (
           <>
             <div
@@ -166,7 +342,6 @@ export function ImageHero(props: ImageHeroProps) {
             />
           </>
         )}
-
         <div
           style={{
             position: 'relative',
@@ -174,25 +349,11 @@ export function ImageHero(props: ImageHeroProps) {
             width: '100%',
             maxWidth: maxW,
             margin: '0 auto',
-            padding: `${responsivePy}px ${responsivePx}px`,
+            padding: `${pyPx}px ${rPx}px`,
           }}
         >
           <div style={{ maxWidth: 768 }}>
-            {/* Eyebrow */}
-            <span
-              style={{
-                color: accent,
-                fontFamily,
-                fontSize: 12,
-                fontWeight: 600,
-                letterSpacing: 6,
-                textTransform: 'uppercase',
-              }}
-            >
-              {eyebrow}
-            </span>
-
-            {/* Headline */}
+            <HeroEyebrow text={eyebrow} {...shared} />
             <h1
               style={{
                 fontFamily,
@@ -214,14 +375,12 @@ export function ImageHero(props: ImageHeroProps) {
                 </>
               )}
             </h1>
-
-            {/* Subtitle */}
             {subtitle && (
               <p
                 style={{
                   color: ui.muted,
                   fontFamily,
-                  fontSize: responsiveSubtitleSize,
+                  fontSize: subSize,
                   lineHeight: 1.8,
                   maxWidth: 400,
                   marginTop: isMobile ? 24 : 32,
@@ -231,85 +390,29 @@ export function ImageHero(props: ImageHeroProps) {
                 {subtitle}
               </p>
             )}
-
-            {/* CTA */}
-            {ctaLabel && (
-              <a
-                href={ctaHref}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
-                  background: accent,
-                  color: ui.white,
-                  fontFamily,
-                  fontWeight: 700,
-                  fontSize: isMobile ? 14 : 16,
-                  letterSpacing: 1,
-                  borderRadius: radius,
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                {ctaLabel}
-                <Icon name="arrow-right" size={18} />
-              </a>
-            )}
-
-            {/* Stats */}
-            {stats && stats.length > 0 && (
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: isMobile ? 24 : 48,
-                  marginTop: isMobile ? 40 : 64,
-                }}
-              >
-                {stats.map((stat) => (
-                  <div key={stat.label}>
-                    <p
-                      style={{
-                        fontFamily,
-                        color: accent,
-                        fontSize: 'clamp(22px, 5vw, 28px)',
-                        fontWeight: 400,
-                        lineHeight: 1,
-                      }}
-                    >
-                      {stat.value}
-                    </p>
-                    <p
-                      style={{
-                        color: ui.muted,
-                        fontFamily,
-                        fontSize: 10,
-                        letterSpacing: 2,
-                        textTransform: 'uppercase',
-                        marginTop: 4,
-                      }}
-                    >
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
+            <HeroCTAs
+              ctaLabel={ctaLabel}
+              ctaHref={ctaHref}
+              ctaSecondaryLabel={ctaSecondaryLabel}
+              ctaSecondaryHref={ctaSecondaryHref}
+              fg={fg}
+              {...shared}
+            />
+            <HeroStats stats={stats} {...shared} />
           </div>
         </div>
       </Tag>
     );
   }
 
-  // ── Centered layout ──
+  // ── Centered ──
   if (layout === 'centered') {
     return (
       <Tag
         className={className}
         style={{
           position: 'relative',
-          minHeight: responsiveMinH,
+          minHeight: isMobile ? 'auto' : minH,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -319,29 +422,16 @@ export function ImageHero(props: ImageHeroProps) {
         }}
         {...rest}
       >
-        {/* Background image */}
         {imageSrc && (
           <div style={{ position: 'absolute', inset: 0 }}>
             <img
               src={imageSrc}
               alt={imageAlt}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-              }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
-            <div
-              aria-hidden
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: overlayGradient,
-              }}
-            />
+            <div aria-hidden style={{ position: 'absolute', inset: 0, background: overlay }} />
           </div>
         )}
-
         <div
           style={{
             position: 'relative',
@@ -349,65 +439,36 @@ export function ImageHero(props: ImageHeroProps) {
             width: '100%',
             maxWidth: isMobile ? '100%' : 800,
             margin: '0 auto',
-            padding: `${responsivePy}px ${responsivePx}px`,
+            padding: `${pyPx}px ${rPx}px`,
             textAlign: 'center',
           }}
         >
-          {/* Eyebrow */}
-          <div
+          <HeroEyebrow text={eyebrow} {...shared} center />
+          <h1
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 12,
-              marginBottom: 32,
+              fontFamily,
+              color: fg,
+              fontSize: `clamp(${isMobile ? '2rem' : '2.5rem'}, 6vw, 5.5rem)`,
+              lineHeight: 1.05,
+              letterSpacing: -1,
+              margin: 0,
             }}
           >
-            <div style={{ width: 48, height: 1, background: accent }} />
-            <span
-              style={{
-                color: accent,
-                fontFamily,
-                fontSize: 12,
-                fontWeight: 600,
-                letterSpacing: 4,
-              }}
-            >
-              {eyebrow}
-            </span>
-            <div style={{ width: 48, height: 1, background: accent }} />
-          </div>
-
-          {/* Headline */}
-          {title && (
-            <h1
-              style={{
-                fontFamily,
-                color: fg,
-                fontSize: `clamp(${isMobile ? '2rem' : '2.5rem'}, 6vw, 5.5rem)`,
-                lineHeight: 1.05,
-                letterSpacing: -1,
-                margin: 0,
-              }}
-            >
-              {title}
-              {titleAccent && (
-                <>
-                  <br />
-                  <em style={{ color: accent, fontStyle: 'italic' }}>{titleAccent}</em>
-                </>
-              )}
-              {titleSuffix && ` ${titleSuffix}`}
-            </h1>
-          )}
-
-          {/* Subtitle */}
+            {title}
+            {titleAccent && (
+              <>
+                <br />
+                <em style={{ color: accent, fontStyle: 'italic' }}>{titleAccent}</em>
+              </>
+            )}
+            {titleSuffix && ` ${titleSuffix}`}
+          </h1>
           {subtitle && (
             <p
               style={{
                 fontFamily,
                 color: 'rgba(255,255,255,0.7)',
-                fontSize: responsiveSubtitleSize,
+                fontSize: subSize,
                 lineHeight: 1.7,
                 maxWidth: 520,
                 margin: '20px auto 32px',
@@ -416,114 +477,28 @@ export function ImageHero(props: ImageHeroProps) {
               {subtitle}
             </p>
           )}
-
-          {/* CTAs */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: 16,
-              justifyContent: 'center',
-            }}
-          >
-            {ctaLabel && (
-              <a
-                href={ctaHref}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
-                  background: accent,
-                  color: ui.white,
-                  fontFamily,
-                  fontWeight: 700,
-                  fontSize: isMobile ? 14 : 16,
-                  letterSpacing: 1,
-                  borderRadius: radius,
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                {ctaLabel}
-                <Icon name="arrow-right" size={18} />
-              </a>
-            )}
-            {ctaSecondaryLabel && (
-              <a
-                href={ctaSecondaryHref}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
-                  border: '1px solid rgba(255,255,255,0.4)',
-                  color: fg,
-                  fontFamily,
-                  fontWeight: 600,
-                  fontSize: isMobile ? 14 : 16,
-                  letterSpacing: 1,
-                  borderRadius: radius,
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                {ctaSecondaryLabel}
-              </a>
-            )}
-          </div>
-
-          {/* Stats */}
-          {stats && stats.length > 0 && (
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: isMobile ? 24 : 32,
-                justifyContent: 'center',
-                marginTop: isMobile ? 40 : 48,
-              }}
-            >
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p
-                    style={{
-                      fontFamily,
-                      color: accent,
-                      fontSize: 24,
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.value}
-                  </p>
-                  <p
-                    style={{
-                      color: 'rgba(255,255,255,0.5)',
-                      fontFamily,
-                      fontSize: 10,
-                      letterSpacing: 1.5,
-                      marginTop: 4,
-                    }}
-                  >
-                    {stat.label.toUpperCase()}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+          <HeroCTAs
+            ctaLabel={ctaLabel}
+            ctaHref={ctaHref}
+            ctaSecondaryLabel={ctaSecondaryLabel}
+            ctaSecondaryHref={ctaSecondaryHref}
+            fg={fg}
+            {...shared}
+            center
+          />
+          <HeroStats stats={stats} {...shared} center />
         </div>
       </Tag>
     );
   }
 
-  // ── Split layout (default) ──
+  // ── Split (default) ──
   return (
     <Tag
       className={className}
       style={{
         position: 'relative',
-        minHeight: responsiveMinH,
+        minHeight: isMobile ? 'auto' : minH,
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
@@ -532,30 +507,16 @@ export function ImageHero(props: ImageHeroProps) {
       }}
       {...rest}
     >
-      {/* Background image */}
       {imageSrc && (
         <div style={{ position: 'absolute', inset: 0 }}>
           <img
             src={imageSrc}
             alt={imageAlt}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
-          <div
-            aria-hidden
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: overlayGradient,
-            }}
-          />
+          <div aria-hidden style={{ position: 'absolute', inset: 0, background: overlay }} />
         </div>
       )}
-
-      {/* Decorative vertical lines (hidden on mobile) */}
       {!isMobile && (
         <>
           <div
@@ -582,7 +543,6 @@ export function ImageHero(props: ImageHeroProps) {
           />
         </>
       )}
-
       <div
         style={{
           position: 'relative',
@@ -590,69 +550,40 @@ export function ImageHero(props: ImageHeroProps) {
           width: '100%',
           maxWidth: maxW,
           margin: '0 auto',
-          padding: `${responsivePy}px ${responsivePx}px`,
+          padding: `${pyPx}px ${rPx}px`,
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
           gap: isMobile ? 32 : gap,
           alignItems: 'center',
         }}
       >
-        {/* Content */}
-        <div style={{ direction: 'ltr' }}>
-          {/* Eyebrow */}
-          <div
+        <div>
+          <HeroEyebrow text={eyebrow} {...shared} />
+          <h1
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-              marginBottom: isMobile ? 24 : 32,
+              fontFamily,
+              color: fg,
+              fontSize: `clamp(${isMobile ? '2rem' : '3rem'}, 6vw, 5.5rem)`,
+              lineHeight: 1.05,
+              letterSpacing: -1,
+              margin: 0,
             }}
           >
-            <div style={{ width: 48, height: 1, background: accent }} />
-            <span
-              style={{
-                color: accent,
-                fontFamily,
-                fontSize: 12,
-                fontWeight: 600,
-                letterSpacing: 4,
-              }}
-            >
-              {eyebrow}
-            </span>
-            <div style={{ width: 48, height: 1, background: accent }} />
-          </div>
-
-          {/* Headline */}
-          {title && (
-            <h1
-              style={{
-                fontFamily,
-                color: fg,
-                fontSize: `clamp(${isMobile ? '2rem' : '3rem'}, 6vw, 5.5rem)`,
-                lineHeight: 1.05,
-                letterSpacing: -1,
-                margin: 0,
-              }}
-            >
-              {title}
-              {titleAccent && (
-                <>
-                  <br />
-                  <em style={{ color: accent, fontStyle: 'italic' }}>{titleAccent}</em>
-                </>
-              )}
-              {titleSuffix && ` ${titleSuffix}`}
-            </h1>
-          )}
-
-          {/* Subtitle */}
+            {title}
+            {titleAccent && (
+              <>
+                <br />
+                <em style={{ color: accent, fontStyle: 'italic' }}>{titleAccent}</em>
+              </>
+            )}
+            {titleSuffix && ` ${titleSuffix}`}
+          </h1>
           {subtitle && (
             <p
               style={{
                 fontFamily,
                 color: 'rgba(255,255,255,0.7)',
-                fontSize: responsiveSubtitleSize,
+                fontSize: subSize,
                 lineHeight: 1.7,
                 maxWidth: 480,
                 marginTop: isMobile ? 20 : 24,
@@ -662,103 +593,16 @@ export function ImageHero(props: ImageHeroProps) {
               {subtitle}
             </p>
           )}
-
-          {/* CTAs */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: 12,
-            }}
-          >
-            {ctaLabel && (
-              <a
-                href={ctaHref}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
-                  background: accent,
-                  color: ui.white,
-                  fontFamily,
-                  fontWeight: 700,
-                  fontSize: isMobile ? 14 : 16,
-                  letterSpacing: 1,
-                  borderRadius: radius,
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                {ctaLabel}
-                <Icon name="arrow-right" size={18} />
-              </a>
-            )}
-            {ctaSecondaryLabel && (
-              <a
-                href={ctaSecondaryHref}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
-                  border: '1px solid rgba(255,255,255,0.4)',
-                  color: fg,
-                  fontFamily,
-                  fontWeight: 600,
-                  fontSize: isMobile ? 14 : 16,
-                  letterSpacing: 1,
-                  borderRadius: radius,
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                {ctaSecondaryLabel}
-              </a>
-            )}
-          </div>
-
-          {/* Stats */}
-          {stats && stats.length > 0 && (
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: isMobile ? 24 : 32,
-                marginTop: isMobile ? 40 : 48,
-              }}
-            >
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p
-                    style={{
-                      fontFamily,
-                      color: accent,
-                      fontSize: 24,
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.value}
-                  </p>
-                  <p
-                    style={{
-                      color: 'rgba(255,255,255,0.5)',
-                      fontFamily,
-                      fontSize: 10,
-                      letterSpacing: 1.5,
-                      marginTop: 4,
-                    }}
-                  >
-                    {stat.label.toUpperCase()}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+          <HeroCTAs
+            ctaLabel={ctaLabel}
+            ctaHref={ctaHref}
+            ctaSecondaryLabel={ctaSecondaryLabel}
+            ctaSecondaryHref={ctaSecondaryHref}
+            fg={fg}
+            {...shared}
+          />
+          <HeroStats stats={stats} {...shared} />
         </div>
-
-        {/* Image column (hidden on mobile) */}
         {!isMobile && imageSrc && (
           <div
             style={{
@@ -783,16 +627,11 @@ export function ImageHero(props: ImageHeroProps) {
               <img
                 src={imageSrc}
                 alt={imageAlt}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
           </div>
         )}
-
         {children}
       </div>
     </Tag>
