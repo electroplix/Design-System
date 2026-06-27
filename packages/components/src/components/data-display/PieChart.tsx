@@ -176,7 +176,7 @@ export function PieChart({
       )}
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-        <svg width={width} height={height} style={{ display: 'block' }}>
+        <svg aria-hidden="true" width={width} height={height} style={{ display: 'block' }}>
           {wedges.map((w, i) => {
             const isH = hoveredIndex === i;
             const tx = (isH ? 6 : 0) * Math.cos(w.midAngle);

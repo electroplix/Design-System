@@ -97,6 +97,7 @@ export function SocialShareBar({
     >
       {networks.map((n) => (
         <button
+          type="button"
           key={n}
           onClick={() => share(n)}
           aria-label={`Share on ${n}`}
@@ -171,6 +172,7 @@ export function SocialLoginButtons({
 
         return (
           <button
+            type="button"
             key={p}
             onClick={() => onLogin?.(p)}
             style={{
@@ -288,6 +290,7 @@ export function FollowLike({
       {...rest}
     >
       <button
+        type="button"
         onClick={isFollowed ? onUnfollow : onFollow}
         style={{
           display: 'flex',
@@ -317,6 +320,7 @@ export function FollowLike({
       </button>
 
       <button
+        type="button"
         onClick={onLike}
         style={{
           display: 'flex',
@@ -378,6 +382,7 @@ export function ReactionsBar({
     >
       {reactions.map((r) => (
         <button
+          type="button"
           key={r.label}
           onClick={() => onReact?.(r.label)}
           style={{
@@ -647,8 +652,8 @@ export function ReviewsForm({ onSubmit, style = {}, className = '', ...rest }: R
       <div style={{ display: 'flex', gap: 4 }}>
         {[1, 2, 3, 4, 5].map((s) => (
           <button
-            key={s}
             type="button"
+            key={s}
             onMouseEnter={() => setHover(s)}
             onMouseLeave={() => setHover(0)}
             onClick={() => setRating(s)}

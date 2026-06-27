@@ -27,7 +27,7 @@ export default function ModalsTest() {
       <FormDialog id="fd-1" isOpen={false} onClose={() => {}} onSubmit={() => {}} title="Form" />
       <LoadingOverlay id="lo-1" isOpen={false} />
       <Tooltip id="tt-1" text="Tooltip text">
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>
       <ToastBanners id="tb-1" toasts={[]} />
       <CookieNotice id="cn-1" isOpen={false} onAccept={() => {}} />

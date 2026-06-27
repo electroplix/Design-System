@@ -146,7 +146,7 @@ export function BarChart({
         </figcaption>
       )}
 
-      <svg width={width} height={height} style={{ display: 'block' }}>
+      <svg aria-hidden="true" width={width} height={height} style={{ display: 'block' }}>
         {showGrid &&
           [0, 0.25, 0.5, 0.75, 1].map((g) => (
             <g key={g}>

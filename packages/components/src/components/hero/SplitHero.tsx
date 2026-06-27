@@ -243,6 +243,7 @@ export function SplitHero(props: SplitHeroProps) {
 
           <div style={{ marginTop: 36 }}>
             <button
+              type="button"
               onClick={onCta}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}

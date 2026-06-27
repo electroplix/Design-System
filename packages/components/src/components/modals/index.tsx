@@ -108,6 +108,7 @@ export function OverlayBase({
       >
         {showClose && (
           <button
+            type="button"
             onClick={onClose}
             aria-label="Close"
             style={{
@@ -273,6 +274,7 @@ export function ConfirmDialog({
           }}
         >
           <button
+            type="button"
             onClick={onCancel}
             style={{
               padding: '10px 20px',
@@ -290,6 +292,7 @@ export function ConfirmDialog({
           </button>
 
           <button
+            type="button"
             onClick={onConfirm}
             style={{
               padding: '10px 20px',
@@ -642,6 +645,7 @@ export function ToastBanners({
             </span>
 
             <button
+              type="button"
               onClick={() => onDismiss?.(t.id)}
               style={{
                 background: ml.surface,
@@ -743,6 +747,7 @@ export function CookieNotice({
         }}
       >
         <button
+          type="button"
           onClick={onAccept}
           style={{
             flex: 1,
@@ -761,6 +766,7 @@ export function CookieNotice({
         </button>
 
         <button
+          type="button"
           onClick={onDecline}
           style={{
             flex: 1,
@@ -780,6 +786,7 @@ export function CookieNotice({
 
         {onSettings && (
           <button
+            type="button"
             onClick={onSettings}
             style={{
               padding: '8px 14px',
@@ -872,6 +879,7 @@ export function WelcomePopup({
         )}
 
         <button
+          type="button"
           onClick={onCta}
           style={{
             marginTop: 20,

@@ -378,7 +378,15 @@ export function FaviconUploader({
       {...rest}
     >
       <div
+        role="button"
+        tabIndex={0}
         onClick={() => ref.current?.click()}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            ref.current?.click();
+          }
+        }}
         style={{
           width: 64,
           height: 64,

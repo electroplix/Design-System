@@ -289,6 +289,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
             }}
           >
             <button
+              type="button"
               style={{
                 padding: '16px 32px',
                 borderRadius: 12,
@@ -309,6 +310,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
             </button>
 
             <button
+              type="button"
               style={{
                 padding: '16px 32px',
                 borderRadius: 12,

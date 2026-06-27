@@ -87,6 +87,7 @@ export function CookieConsent({
 
       <div style={{ display: 'flex', gap: 8 }}>
         <button
+          type="button"
           onClick={() => {
             setShow(false);
             onAccept?.();
@@ -106,6 +107,7 @@ export function CookieConsent({
         </button>
 
         <button
+          type="button"
           onClick={() => {
             setShow(false);
             onDecline?.();
@@ -205,6 +207,7 @@ export function ThemeToggle({
 
   return (
     <button
+      type="button"
       onClick={toggle}
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
       style={{
@@ -295,6 +298,7 @@ export function EmptyState({
 
       {ctaLabel && (
         <button
+          type="button"
           onClick={onCta}
           style={{
             marginTop: 16,
@@ -421,6 +425,7 @@ export function AppInstallBanner({
       </div>
 
       <button
+        type="button"
         onClick={() => {
           setShow(false);
           onDismiss?.();
@@ -559,6 +564,7 @@ export function InlineCode({
 
       {copyable && (
         <button
+          type="button"
           onClick={copy}
           style={{
             background: 'none',

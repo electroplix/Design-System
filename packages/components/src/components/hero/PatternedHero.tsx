@@ -251,6 +251,7 @@ export function PatternedHero(props: PatternedHeroProps) {
           }}
         >
           <button
+            type="button"
             onClick={onCta}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}

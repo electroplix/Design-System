@@ -42,6 +42,7 @@ export const MultiFactorAuthInputStory: StoryObj = {
 };
 
 export const RoleBadgeStory: StoryObj = {
+  // biome-ignore lint/a11y/useValidAriaRole: role is a component prop, not ARIA
   render: () => <RoleBadge role="admin" />,
 };
 

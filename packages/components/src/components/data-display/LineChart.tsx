@@ -154,7 +154,7 @@ export function LineChart({
         </figcaption>
       )}
 
-      <svg width={width} height={height} style={{ display: 'block' }}>
+      <svg aria-hidden="true" width={width} height={height} style={{ display: 'block' }}>
         <defs>
           <linearGradient id={`epx-lineG-${uid}`} x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor={accent} />

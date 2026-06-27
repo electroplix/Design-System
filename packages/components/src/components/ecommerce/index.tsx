@@ -261,6 +261,7 @@ export function CartDrawer({
                   )}
                 </div>
                 <button
+                  type="button"
                   onClick={() => onRemove?.(it.id)}
                   style={{
                     width: 24,
@@ -300,6 +301,7 @@ export function CartDrawer({
                   }}
                 >
                   <button
+                    type="button"
                     onClick={() => onQtyChange?.(it.id, Math.max(1, it.qty - 1))}
                     style={{
                       width: 28,
@@ -327,6 +329,7 @@ export function CartDrawer({
                     {it.qty}
                   </span>
                   <button
+                    type="button"
                     onClick={() => onQtyChange?.(it.id, it.qty + 1)}
                     style={{
                       width: 28,
@@ -360,6 +363,7 @@ export function CartDrawer({
           </span>
         </div>
         <button
+          type="button"
           onClick={onCheckout}
           style={{
             width: '100%',
@@ -476,6 +480,7 @@ export function MiniCartPanel({
         </div>
       </div>
       <button
+        type="button"
         onClick={onCheckout}
         style={{
           width: '100%',
@@ -758,6 +763,7 @@ export function ProductCard({
         )}
         {onWishlist && (
           <button
+            type="button"
             onClick={() => onWishlist(product.id)}
             style={{
               position: 'absolute',
@@ -807,6 +813,7 @@ export function ProductCard({
         </div>
         {onAddToCart && (
           <button
+            type="button"
             onClick={() => onAddToCart(product.id)}
             style={{
               width: '100%',
@@ -953,6 +960,7 @@ export function ProductDetail({
           <div style={{ display: 'flex', gap: 8 }}>
             {allImages.map((img, i) => (
               <button
+                type="button"
                 key={i}
                 onClick={() => setMainImg(i)}
                 style={{
@@ -1030,6 +1038,7 @@ export function ProductDetail({
         {variants && <VariantSelector groups={variants} />}
         {onAddToCart && (
           <button
+            type="button"
             onClick={onAddToCart}
             style={{
               padding: '16px 24px',
@@ -1088,6 +1097,7 @@ export function VariantSelector({
               const isSelected = selected[g.name] === o.value;
               return (
                 <button
+                  type="button"
                   key={o.value}
                   onClick={() => onChange?.(g.name, o.value)}
                   style={{
@@ -1141,6 +1151,7 @@ export function QuickAddButton({
   };
   return (
     <button
+      type="button"
       className={className}
       onClick={handleClick}
       disabled={disabled}
@@ -1195,6 +1206,7 @@ export function WishlistButton({
   };
   return (
     <button
+      type="button"
       className={className}
       onClick={toggle}
       style={{
@@ -1243,6 +1255,7 @@ export function PaymentButtons({
         const primary = m === 'card';
         return (
           <button
+            type="button"
             key={m}
             onClick={() => onPay?.(m)}
             style={{

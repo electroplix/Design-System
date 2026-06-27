@@ -45,6 +45,9 @@ function Star({
 
   return (
     <svg
+      aria-hidden="true"
+      role="button"
+      tabIndex={0}
       width={size}
       height={size}
       viewBox="0 0 24 24"
@@ -67,6 +70,12 @@ function Star({
       }}
       onClick={() => {
         if (interactive) onClick(index + 1);
+      }}
+      onKeyDown={(e) => {
+        if (interactive && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          onClick(index + 1);
+        }
       }}
     >
       {fill === 'half' ? (

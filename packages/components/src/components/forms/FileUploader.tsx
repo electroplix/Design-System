@@ -84,6 +84,8 @@ export function FileUploader(props: FileUploaderProps) {
           </div>
         </div>
         <div
+          role="button"
+          tabIndex={0}
           onDragOver={(e) => {
             e.preventDefault();
             setIsDragging(true);
@@ -95,6 +97,12 @@ export function FileUploader(props: FileUploaderProps) {
             handleFiles(Array.from(e.dataTransfer.files));
           }}
           onClick={() => inputRef.current?.click()}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              inputRef.current?.click();
+            }
+          }}
           style={{
             padding: 32,
             borderRadius: radius,

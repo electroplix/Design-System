@@ -98,6 +98,7 @@ export function SidebarMenu({
           return (
             <li key={it.label}>
               <button
+                type="button"
                 onClick={() => {
                   setActive(it.label);
 

@@ -188,6 +188,7 @@ export function PrimaryNav({
         )}
 
         <button
+          type="button"
           style={{
             display: 'none',
             width: 40,

@@ -67,6 +67,7 @@ export function SideDrawerNav({
   return (
     <div className={className} style={style} {...rest}>
       <button
+        type="button"
         onClick={() => setOpen(true)}
         aria-expanded={open}
         aria-controls="side-drawer-nav"
@@ -148,6 +149,7 @@ export function SideDrawerNav({
               </span>
 
               <button
+                type="button"
                 onClick={() => setOpen(false)}
                 style={{
                   width: 36,
