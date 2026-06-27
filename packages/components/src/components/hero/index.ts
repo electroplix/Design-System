@@ -11,6 +11,9 @@ export type { CarouselHeroProps } from './CarouselHero';
 export { CTAOverlayHero } from './CTAOverlayHero';
 export type { CTAOverlayHeroProps } from './CTAOverlayHero';
 
+export { ImageHero } from './ImageHero';
+export type { ImageHeroProps } from './ImageHero';
+
 export { PatternedHero } from './PatternedHero';
 export type { PatternedHeroProps } from './PatternedHero';
 
