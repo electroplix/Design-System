@@ -1,3 +1,15 @@
+## 0.5.0-alpha.10 (2026-06-27)
+
+### 🩹 Fixes
+
+- resolve all lint errors for CI pass ([9cbac48](https://github.com/electroplix/Design-System/commit/9cbac48))
+- remove duplicate type attributes in blog, social, and hero components ([cd5c4f6](https://github.com/electroplix/Design-System/commit/cd5c4f6))
+- enable a11y linting, fix InlineCodeText style tag, add missing type/aria attributes ([2b12e56](https://github.com/electroplix/Design-System/commit/2b12e56))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.9 (2026-06-27)
 
 ### 🩹 Fixes
