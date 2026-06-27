@@ -336,7 +336,7 @@ pnpm publish:dry    # Full safeguard dry-run (lint → test → build → audit 
 | # | Category | Count | Components |
 |:--|:---------|:-----:|:-----------|
 | 1 | Navigation | 11 | PrimaryNav, MegaMenu, SidebarMenu, Tabs, Breadcrumbs, Pagination, Stepper, AnchorLinks, SideDrawerNav, LanguageSelector, Footer |
-| 2 | Hero | 7 | HeroShell, StaticHero, SplitHero, VideoHeaderHero, CarouselHero, CTAOverlayHero, PatternedHero |
+| 2 | Hero | 8 | HeroShell, StaticHero, SplitHero, VideoHeaderHero, CarouselHero, CTAOverlayHero, PatternedHero, ImageHero |
 | 3 | Buttons | 11 | PrimaryButton, SecondaryButton, TertiaryButton, IconButton, Button, FloatingActionButton, ButtonGroup, LoadingButton, ShareButton, DownloadButton, PrintButton |
 | 4 | Forms | 14 | FormShell, InputField, TextAreaField, SelectDropdown, RadioGroup, ToggleSwitch, DateTimePicker, FileUploader, ContactForm, NewsletterSignup, MultiStepWizard, Captcha, AddressAutocomplete, ValidationWrapper |
 | 5 | Content | 7 | BlockquoteTestimonial, CalloutBox, HeadingSection, InlineCodeText, ParagraphBlock, RichMarkdown, TeamGrid |

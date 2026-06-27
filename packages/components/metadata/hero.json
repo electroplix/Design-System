@@ -1396,6 +1396,263 @@
         "maxPerPage": 1,
         "isContainer": false
       }
+    },
+    {
+      "id": "hero.ImageHero",
+      "name": "ImageHero",
+      "description": "Responsive hero with background image, overlay, eyebrow, headline, CTAs, and stats. Supports 3 layout variants: split, centered, and minimal.",
+      "whenToUse": "Use for hero sections that need a background image with text overlay, dual CTAs, and stats. Ideal for business landing pages. The most feature-rich hero with built-in responsive design.",
+      "isShell": false,
+      "props": [
+        {
+          "name": "as",
+          "type": "ElementType",
+          "required": false,
+          "default": "\"section\"",
+          "description": "HTML element or component to render as"
+        },
+        {
+          "name": "eyebrow",
+          "type": "string",
+          "required": false,
+          "default": "\"Welcome\"",
+          "description": "Eyebrow label above the headline"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": "\"Build Something Amazing\"",
+          "description": "Main headline text"
+        },
+        {
+          "name": "titleAccent",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Accent text within the headline"
+        },
+        {
+          "name": "titleSuffix",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Text appended after the headline"
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Subtitle text below the headline"
+        },
+        {
+          "name": "ctaLabel",
+          "type": "string",
+          "required": false,
+          "default": "\"Get Started\"",
+          "description": "Primary CTA button text"
+        },
+        {
+          "name": "ctaHref",
+          "type": "string",
+          "required": false,
+          "default": "\"#\"",
+          "description": "Primary CTA button link"
+        },
+        {
+          "name": "ctaSecondaryLabel",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Secondary CTA button text"
+        },
+        {
+          "name": "ctaSecondaryHref",
+          "type": "string",
+          "required": false,
+          "default": "\"#\"",
+          "description": "Secondary CTA button link"
+        },
+        {
+          "name": "imageSrc",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Background image URL"
+        },
+        {
+          "name": "imageAlt",
+          "type": "string",
+          "required": false,
+          "default": "\"Hero image\"",
+          "description": "Alt text for background image"
+        },
+        {
+          "name": "stats",
+          "type": "Array<{ value: string; label: string }>",
+          "required": false,
+          "default": null,
+          "description": "Stats to display below CTAs"
+        },
+        {
+          "name": "layout",
+          "type": "enum",
+          "values": ["split", "centered", "minimal"],
+          "required": false,
+          "default": "\"split\"",
+          "description": "Layout variant"
+        },
+        {
+          "name": "align",
+          "type": "enum",
+          "values": ["left", "center", "right"],
+          "required": false,
+          "default": "\"left\"",
+          "description": "Text alignment"
+        },
+        {
+          "name": "titleSize",
+          "type": "number",
+          "required": false,
+          "default": "48",
+          "description": "Title font size in pixels"
+        },
+        {
+          "name": "subtitleSize",
+          "type": "number",
+          "required": false,
+          "default": "18",
+          "description": "Subtitle font size in pixels"
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Background color override"
+        },
+        {
+          "name": "textColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Text color override"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Accent color override"
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "required": false,
+          "default": "theme",
+          "description": "Font family override"
+        },
+        {
+          "name": "minH",
+          "type": "string | number",
+          "required": false,
+          "default": "\"100vh\"",
+          "description": "Minimum height"
+        },
+        {
+          "name": "maxW",
+          "type": "number",
+          "required": false,
+          "default": "1200",
+          "description": "Maximum width"
+        },
+        {
+          "name": "px",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Horizontal padding"
+        },
+        {
+          "name": "py",
+          "type": "number",
+          "required": false,
+          "default": "48",
+          "description": "Vertical padding"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "required": false,
+          "default": "theme",
+          "description": "Border radius"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": "24",
+          "description": "Gap between elements"
+        },
+        {
+          "name": "style",
+          "type": "CSSProperties",
+          "required": false,
+          "default": null,
+          "description": "Custom inline styles"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Custom CSS class"
+        }
+      ],
+      "themeTokens": [
+        "bgColor",
+        "textColor",
+        "accentColor",
+        "borderColor",
+        "fontFamily",
+        "radius",
+        "spacing",
+        "cardBg",
+        "cardRadius",
+        "cardBorder",
+        "minH",
+        "maxW",
+        "px",
+        "py",
+        "gap"
+      ],
+      "aiHints": {
+        "pageTypes": [
+          "landing",
+          "marketing",
+          "ecommerce",
+          "saas",
+          "portfolio",
+          "restaurant",
+          "salon",
+          "clinic",
+          "real-estate",
+          "event"
+        ],
+        "placement": "header",
+        "priority": 10,
+        "sequenceOrder": 1,
+        "pairsWellWith": [
+          "navigation.PrimaryNav",
+          "navigation.Footer",
+          "content.HeadingSection",
+          "dataDisplay.Badge",
+          "ecommerce.ProductCard"
+        ],
+        "maxPerPage": 1,
+        "isContainer": false
+      }
     }
   ]
 }

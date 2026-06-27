@@ -2,6 +2,7 @@
 
 import type React from 'react';
 import { useHeroTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 export interface HeroShellProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
@@ -18,15 +19,13 @@ export interface HeroShellProps extends React.ComponentPropsWithoutRef<'section'
 
 const ui = {
   white: '#ffffff',
-  black: '#09090b',
   text: '#18181b',
-  muted: '#71717a',
   border: '#e4e4e7',
-  surface: '#fafafa',
 };
 
 export function HeroShell(props: HeroShellProps) {
   const t = useHeroTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const {
     as: Tag = 'section',
@@ -47,6 +46,8 @@ export function HeroShell(props: HeroShellProps) {
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
   const fg = textColor ?? t.textColor ?? ui.text;
+  const rPx = isMobile ? 16 : px;
+  const pyPx = isMobile ? 32 : py;
 
   return (
     <Tag
@@ -59,8 +60,8 @@ export function HeroShell(props: HeroShellProps) {
         color: fg,
         fontFamily,
         minHeight: typeof minH === 'number' ? `${minH}px` : minH,
-        paddingInline: px,
-        paddingBlock: py,
+        paddingInline: rPx,
+        paddingBlock: pyPx,
         borderRadius: radius,
         border: `1px solid ${ui.border}`,
         position: 'relative',
@@ -69,7 +70,6 @@ export function HeroShell(props: HeroShellProps) {
         ...style,
       }}
     >
-      {/* subtle background gradient */}
       <div
         aria-hidden
         style={{
@@ -80,36 +80,38 @@ export function HeroShell(props: HeroShellProps) {
         }}
       />
 
-      {/* soft blur orbs */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: '12%',
-          left: '8%',
-          width: 240,
-          height: 240,
-          borderRadius: '999px',
-          background: 'rgba(9,9,11,0.035)',
-          filter: 'blur(70px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          bottom: '10%',
-          right: '8%',
-          width: 220,
-          height: 220,
-          borderRadius: '999px',
-          background: 'rgba(9,9,11,0.03)',
-          filter: 'blur(70px)',
-          pointerEvents: 'none',
-        }}
-      />
+      {!isMobile && (
+        <>
+          <div
+            aria-hidden
+            style={{
+              position: 'absolute',
+              top: '12%',
+              left: '8%',
+              width: 240,
+              height: 240,
+              borderRadius: '999px',
+              background: 'rgba(9,9,11,0.035)',
+              filter: 'blur(70px)',
+              pointerEvents: 'none',
+            }}
+          />
+          <div
+            aria-hidden
+            style={{
+              position: 'absolute',
+              bottom: '10%',
+              right: '8%',
+              width: 220,
+              height: 220,
+              borderRadius: '999px',
+              background: 'rgba(9,9,11,0.03)',
+              filter: 'blur(70px)',
+              pointerEvents: 'none',
+            }}
+          />
+        </>
+      )}
 
       <div
         style={{

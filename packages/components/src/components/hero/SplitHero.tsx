@@ -4,6 +4,7 @@ import type React from 'react';
 import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useHeroTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 export interface SplitHeroProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
@@ -39,11 +40,11 @@ const ui = {
   muted: '#71717a',
   border: '#e4e4e7',
   surface: '#fafafa',
-  ring: 'rgba(9,9,11,0.08)',
 };
 
 export function SplitHero(props: SplitHeroProps) {
   const t = useHeroTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const {
     as: Tag = 'section',
@@ -79,8 +80,11 @@ export function SplitHero(props: SplitHeroProps) {
   const fg = textColor ?? t.textColor ?? ui.text;
   const accent = accentColor ?? t.accentColor ?? ui.black;
   const border = borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
-
   const [hover, setHover] = useState(false);
+  const rPx = isMobile ? 16 : px;
+  const pyPx = isMobile ? 32 : py;
+  const titlePx = isMobile ? Math.max(24, Math.floor(titleSize * 0.65)) : titleSize;
+  const subPx = isMobile ? Math.max(14, Math.floor(subtitleSize * 0.85)) : subtitleSize;
 
   return (
     <Tag
@@ -92,7 +96,7 @@ export function SplitHero(props: SplitHeroProps) {
         color: fg,
         fontFamily,
         minHeight: typeof minH === 'number' ? `${minH}px` : minH,
-        padding: `${py}px ${px}px`,
+        padding: `${pyPx}px ${rPx}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
         position: 'relative',
@@ -102,7 +106,6 @@ export function SplitHero(props: SplitHeroProps) {
       }}
       {...rest}
     >
-      {/* subtle background gradient */}
       <div
         aria-hidden
         style={{
@@ -113,21 +116,22 @@ export function SplitHero(props: SplitHeroProps) {
         }}
       />
 
-      {/* soft blur */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: '8%',
-          right: '10%',
-          width: 260,
-          height: 260,
-          borderRadius: '999px',
-          background: 'rgba(9,9,11,0.03)',
-          filter: 'blur(70px)',
-          pointerEvents: 'none',
-        }}
-      />
+      {!isMobile && (
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            top: '8%',
+            right: '10%',
+            width: 260,
+            height: 260,
+            borderRadius: '999px',
+            background: 'rgba(9,9,11,0.03)',
+            filter: 'blur(70px)',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
 
       <div
         style={
@@ -135,8 +139,8 @@ export function SplitHero(props: SplitHeroProps) {
             width: '100%',
             maxWidth: maxW,
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap,
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+            gap: isMobile ? 32 : gap,
             alignItems: 'center',
             direction: reverse ? 'rtl' : 'ltr',
             position: 'relative',
@@ -159,7 +163,7 @@ export function SplitHero(props: SplitHeroProps) {
                 color: fg,
                 fontSize: 13,
                 fontWeight: 600,
-                marginBottom: 24,
+                marginBottom: isMobile ? 16 : 24,
                 boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
               }}
             >
@@ -171,7 +175,7 @@ export function SplitHero(props: SplitHeroProps) {
           {title && (
             <h2
               style={{
-                fontSize: titleSize,
+                fontSize: titlePx,
                 margin: 0,
                 fontWeight: 800,
                 lineHeight: 1.08,
@@ -186,9 +190,9 @@ export function SplitHero(props: SplitHeroProps) {
           {subtitle && (
             <p
               style={{
-                fontSize: subtitleSize,
+                fontSize: subPx,
                 color: ui.muted,
-                marginTop: 18,
+                marginTop: isMobile ? 12 : 18,
                 marginBottom: 0,
                 lineHeight: 1.7,
               }}
@@ -202,7 +206,7 @@ export function SplitHero(props: SplitHeroProps) {
               style={{
                 listStyle: 'none',
                 padding: 0,
-                margin: '28px 0 0',
+                margin: `${isMobile ? 20 : 28}px 0 0`,
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 14,
@@ -215,7 +219,7 @@ export function SplitHero(props: SplitHeroProps) {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 12,
-                    fontSize: 15,
+                    fontSize: isMobile ? 14 : 15,
                     color: fg,
                     fontWeight: 500,
                   }}
@@ -234,28 +238,28 @@ export function SplitHero(props: SplitHeroProps) {
                   >
                     <Icon name="check" size={12} style={{ color: fg } as React.CSSProperties} />
                   </div>
-
                   {f}
                 </li>
               ))}
             </ul>
           )}
 
-          <div style={{ marginTop: 36 }}>
+          <div style={{ marginTop: isMobile ? 24 : 36 }}>
             <button
               type="button"
               onClick={onCta}
+              aria-label={ctaLabel}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               style={{
-                padding: '16px 32px',
+                padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
                 borderRadius: 12,
                 border: `1px solid ${accent}`,
                 background: accent,
                 color: ui.white,
                 cursor: 'pointer',
                 fontWeight: 700,
-                fontSize: 16,
+                fontSize: isMobile ? 14 : 16,
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 8,
@@ -270,58 +274,52 @@ export function SplitHero(props: SplitHeroProps) {
           </div>
         </div>
 
-        {/* Media */}
-        <div style={{ direction: 'ltr' }}>
-          {image ? (
-            <img
-              src={image}
-              alt={imageAlt}
-              style={{
-                width: '100%',
-                height: mediaHeight,
-                objectFit: 'cover',
-                borderRadius: 18,
-                border: `1px solid ${border}`,
-                boxShadow: '0 8px 32px rgba(9,9,11,0.08)',
-                background: ui.surface,
-              }}
-            />
-          ) : (
-            <div
-              style={{
-                width: '100%',
-                height: mediaHeight,
-                borderRadius: 18,
-                border: `1px solid ${border}`,
-                background: ui.surface,
-                display: 'grid',
-                placeItems: 'center',
-                boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
-              }}
-            >
+        {/* Media — hidden on mobile */}
+        {!isMobile && (
+          <div style={{ direction: 'ltr' }}>
+            {image ? (
+              <img
+                src={image}
+                alt={imageAlt}
+                style={{
+                  width: '100%',
+                  height: mediaHeight,
+                  objectFit: 'cover',
+                  borderRadius: 18,
+                  border: `1px solid ${border}`,
+                  boxShadow: '0 8px 32px rgba(9,9,11,0.08)',
+                  background: ui.surface,
+                }}
+              />
+            ) : (
               <div
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: 12,
-                  color: ui.muted,
+                  width: '100%',
+                  height: mediaHeight,
+                  borderRadius: 18,
+                  border: `1px solid ${border}`,
+                  background: ui.surface,
+                  display: 'grid',
+                  placeItems: 'center',
+                  boxShadow: '0 1px 2px rgba(9,9,11,0.04)',
                 }}
               >
-                <Icon name="image" size={52} style={{ opacity: 0.5 } as React.CSSProperties} />
-
-                <span
+                <div
                   style={{
-                    fontSize: 14,
-                    fontWeight: 500,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 12,
+                    color: ui.muted,
                   }}
                 >
-                  Media Preview
-                </span>
+                  <Icon name="image" size={52} style={{ opacity: 0.5 } as React.CSSProperties} />
+                  <span style={{ fontSize: 14, fontWeight: 500 }}>Media Preview</span>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
       </div>
     </Tag>
   );

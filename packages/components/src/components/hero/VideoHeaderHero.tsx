@@ -2,6 +2,7 @@
 
 import type React from 'react';
 import { useHeroTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 export interface VideoHeaderHeroProps extends React.ComponentPropsWithoutRef<'section'> {
   as?: React.ElementType;
@@ -31,13 +32,13 @@ export interface VideoHeaderHeroProps extends React.ComponentPropsWithoutRef<'se
 const ui = {
   white: '#ffffff',
   black: '#09090b',
-  text: '#18181b',
   muted: '#d4d4d8',
   border: '#27272a',
 };
 
 export function VideoHeaderHero(props: VideoHeaderHeroProps) {
   const t = useHeroTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const {
     as: Tag = 'section',
@@ -69,14 +70,17 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
 
   const bg = bgColor ?? t.bgColor ?? ui.black;
   const fg = textColor ?? t.textColor ?? ui.white;
-
   const border = borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
-
   const accent = accentColor ?? t.accentColor ?? ui.white;
+  const rPx = isMobile ? 16 : px;
+  const pyPx = isMobile ? 32 : py;
+  const titlePx = isMobile ? Math.max(28, Math.floor(titleSize * 0.65)) : titleSize;
+  const subPx = isMobile ? Math.max(14, Math.floor(subtitleSize * 0.85)) : subtitleSize;
 
   return (
     <Tag
       className={className}
+      aria-label={title}
       style={{
         display: 'grid',
         placeItems: 'center',
@@ -84,7 +88,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
         color: fg,
         fontFamily,
         minHeight: typeof minH === 'number' ? `${minH}px` : minH,
-        padding: `${py}px ${px}px`,
+        padding: `${pyPx}px ${rPx}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
         position: 'relative',
@@ -94,7 +98,6 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
       }}
       {...rest}
     >
-      {/* video */}
       {videoSrc && (
         <video
           playsInline
@@ -103,6 +106,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
           loop={loop}
           controls={controls}
           poster={poster}
+          aria-hidden="true"
           style={{
             position: 'absolute',
             inset: 0,
@@ -116,43 +120,36 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
         </video>
       )}
 
-      {/* overlay */}
       <div
         aria-hidden
         style={{
           position: 'absolute',
           inset: 0,
-          background: `
-            linear-gradient(
-              180deg,
-              rgba(9,9,11,${overlay * 0.7}),
-              rgba(9,9,11,${overlay})
-            )
-          `,
+          background: `linear-gradient(180deg, rgba(9,9,11,${overlay * 0.7}), rgba(9,9,11,${overlay}))`,
           backdropFilter: 'blur(1px)',
           zIndex: 1,
         }}
       />
 
-      {/* subtle glow */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: '-10%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 520,
-          height: 520,
-          borderRadius: '999px',
-          background: 'rgba(255,255,255,0.05)',
-          filter: 'blur(90px)',
-          zIndex: 1,
-          pointerEvents: 'none',
-        }}
-      />
+      {!isMobile && (
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            top: '-10%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 520,
+            height: 520,
+            borderRadius: '999px',
+            background: 'rgba(255,255,255,0.05)',
+            filter: 'blur(90px)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
 
-      {/* content */}
       <div
         style={{
           position: 'relative',
@@ -165,7 +162,7 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
         {title && (
           <h2
             style={{
-              fontSize: titleSize,
+              fontSize: titlePx,
               margin: 0,
               fontWeight: 800,
               lineHeight: 1.05,
@@ -180,9 +177,9 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
         {subtitle && (
           <p
             style={{
-              fontSize: subtitleSize,
+              fontSize: subPx,
               color: ui.muted,
-              marginTop: 20,
+              marginTop: isMobile ? 12 : 20,
               marginBottom: 0,
               maxWidth: 640,
               marginInline: 'auto',
@@ -193,13 +190,12 @@ export function VideoHeaderHero(props: VideoHeaderHeroProps) {
           </p>
         )}
 
-        {/* optional subtle divider */}
         <div
           style={{
             width: 72,
             height: 1,
             background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-            margin: '36px auto 0',
+            margin: `${isMobile ? 24 : 36}px auto 0`,
             opacity: 0.6,
           }}
         />

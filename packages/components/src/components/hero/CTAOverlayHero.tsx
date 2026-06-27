@@ -4,6 +4,7 @@ import type React from 'react';
 import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useHeroTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 export interface CTAOverlayHeroProps
   extends Omit<React.ComponentPropsWithoutRef<'section'>, 'onSubmit'> {
@@ -33,18 +34,14 @@ export interface CTAOverlayHeroProps
 
 const ui = {
   white: '#ffffff',
-  black: '#09090b',
   text: '#18181b',
   muted: '#71717a',
   border: '#e4e4e7',
-  surface: '#fafafa',
-  surfaceHover: '#f4f4f5',
-  overlay: 'rgba(9,9,11,0.72)',
-  ring: 'rgba(9,9,11,0.08)',
 };
 
 export function CTAOverlayHero(props: CTAOverlayHeroProps) {
   const t = useHeroTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const {
     as: Tag = 'section',
@@ -74,13 +71,16 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
     ...rest
   } = props;
 
-  const bg = bgColor ?? t.bgColor ?? ui.white;
+  const bg = bgColor ?? t.bgColor ?? '#ffffff';
   const fg = textColor ?? t.textColor ?? ui.text;
-  const accent = accentColor ?? t.accentColor ?? ui.black;
+  const accent = accentColor ?? t.accentColor ?? '#09090b';
   const border = borderColor ?? t.cardBorder ?? t.borderColor ?? ui.border;
-
   const [email, setEmail] = useState('');
   const [isHovered, setIsHovered] = useState(false);
+  const rPx = isMobile ? 16 : px;
+  const pyPx = isMobile ? 32 : py;
+  const titlePx = isMobile ? Math.max(28, Math.floor(titleSize * 0.6)) : titleSize;
+  const subPx = isMobile ? Math.max(14, Math.floor(subtitleSize * 0.85)) : subtitleSize;
 
   return (
     <Tag
@@ -95,7 +95,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
         color: bgImage ? ui.white : fg,
         fontFamily,
         minHeight: typeof minH === 'number' ? `${minH}px` : minH,
-        padding: `${py}px ${px}px`,
+        padding: `${pyPx}px ${rPx}px`,
         borderRadius: radius,
         border: `1px solid ${border}`,
         position: 'relative',
@@ -117,9 +117,10 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
         }}
       />
 
-      {!bgImage && (
+      {!bgImage && !isMobile && (
         <>
           <div
+            aria-hidden
             style={{
               position: 'absolute',
               top: '12%',
@@ -131,8 +132,8 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               pointerEvents: 'none',
             }}
           />
-
           <div
+            aria-hidden
             style={{
               position: 'absolute',
               bottom: '16%',
@@ -162,7 +163,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
           {title && (
             <h2
               style={{
-                fontSize: titleSize,
+                fontSize: titlePx,
                 margin: 0,
                 fontWeight: 800,
                 lineHeight: 1.05,
@@ -177,9 +178,9 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
           {subtitle && (
             <p
               style={{
-                fontSize: subtitleSize,
+                fontSize: subPx,
                 color: bgImage ? 'rgba(255,255,255,0.78)' : ui.muted,
-                marginTop: 20,
+                marginTop: isMobile ? 12 : 20,
                 marginBottom: 0,
                 maxWidth: 640,
                 marginInline: 'auto',
@@ -197,6 +198,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               e.preventDefault();
               onSubmit?.(Object.fromEntries(new FormData(e.currentTarget).entries()));
             }}
+            aria-label="Email signup"
             style={{
               marginTop: 8,
               display: 'inline-flex',
@@ -213,13 +215,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               boxShadow: bgImage ? '0 16px 40px rgba(0,0,0,0.18)' : '0 1px 2px rgba(9,9,11,0.06)',
             }}
           >
-            <div
-              style={{
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
+            <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
               <Icon
                 name="mail"
                 size={18}
@@ -231,21 +227,21 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
                   } as React.CSSProperties
                 }
               />
-
               <input
                 name="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={inputPlaceholder}
+                aria-label={inputPlaceholder}
                 style={{
-                  padding: '16px 16px 16px 48px',
+                  padding: `${isMobile ? 14 : 16}px ${isMobile ? 14 : 16}px ${isMobile ? 14 : 16}px 48px`,
                   border: 'none',
                   outline: 'none',
                   background: 'transparent',
                   color: bgImage ? ui.white : fg,
-                  width: 280,
-                  fontSize: 15,
+                  width: isMobile ? 200 : 280,
+                  fontSize: isMobile ? 14 : 15,
                   boxSizing: 'border-box',
                 }}
               />
@@ -253,17 +249,18 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
 
             <button
               type="submit"
+              aria-label={buttonText}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               style={{
-                padding: '16px 28px',
+                padding: `${isMobile ? 12 : 16}px ${isMobile ? 20 : 28}px`,
                 borderRadius: 12,
                 border: `1px solid ${accent}`,
                 background: accent,
                 color: ui.white,
                 cursor: 'pointer',
                 fontWeight: 700,
-                fontSize: 15,
+                fontSize: isMobile ? 14 : 15,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
@@ -283,22 +280,23 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
             style={{
               marginTop: 8,
               display: 'flex',
-              gap: 16,
+              gap: isMobile ? 12 : 16,
               justifyContent: 'center',
               flexWrap: 'wrap',
             }}
           >
             <button
               type="button"
+              aria-label={buttonText}
               style={{
-                padding: '16px 32px',
+                padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
                 borderRadius: 12,
                 border: `1px solid ${accent}`,
                 background: accent,
                 color: ui.white,
                 cursor: 'pointer',
                 fontWeight: 700,
-                fontSize: 16,
+                fontSize: isMobile ? 14 : 16,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
@@ -311,15 +309,16 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
 
             <button
               type="button"
+              aria-label="Watch demo"
               style={{
-                padding: '16px 32px',
+                padding: `${isMobile ? 12 : 16}px ${isMobile ? 24 : 32}px`,
                 borderRadius: 12,
                 border: `1px solid ${bgImage ? 'rgba(255,255,255,0.22)' : border}`,
                 background: bgImage ? 'rgba(255,255,255,0.1)' : ui.white,
                 color: bgImage ? ui.white : fg,
                 cursor: 'pointer',
                 fontWeight: 600,
-                fontSize: 16,
+                fontSize: isMobile ? 14 : 16,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
@@ -339,10 +338,10 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 24,
+            gap: isMobile ? 16 : 24,
             flexWrap: 'wrap',
             color: bgImage ? 'rgba(255,255,255,0.7)' : ui.muted,
-            fontSize: 13,
+            fontSize: isMobile ? 12 : 13,
             fontWeight: 500,
           }}
         >

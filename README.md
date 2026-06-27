@@ -158,7 +158,7 @@ pnpm publish:dry    # Full safeguard dry-run
 | # | Category | Count | Examples |
 |:--|:---------|:------|:---------|
 | 1 | Navigation | 11 | PrimaryNav, SideDrawerNav, Breadcrumbs |
-| 2 | Hero | 7 | StaticHero, AnimatedHero, VideoHero |
+| 2 | Hero | 8 | StaticHero, ImageHero, SplitHero, CarouselHero |
 | 3 | Buttons | 11 | PrimaryButton, GhostButton, IconButton |
 | 4 | Forms | 14 | TextInput, SelectDropdown, FormShell |
 | 5 | Content | 7 | HeadingSection, FAQ, ArticleLayout |
