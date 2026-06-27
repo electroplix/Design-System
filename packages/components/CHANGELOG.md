@@ -1,3 +1,13 @@
+## 0.5.0-alpha.9 (2026-06-27)
+
+### 🩹 Fixes
+
+- add missing social icons, fix Node version, fix 23+ broken Storybook stories ([22be153](https://github.com/electroplix/Design-System/commit/22be153))
+
+### ❤️ Thank You
+
+- Adnan
+
 ## 0.5.0-alpha.8 (2026-06-25)
 
 ### 🩹 Fixes
