@@ -251,7 +251,7 @@ export function CTAOverlayHero(props: CTAOverlayHeroProps) {
               />
             </div>
 
-            <button type="button"
+            <button
               type="submit"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}

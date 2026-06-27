@@ -486,7 +486,6 @@ export function CommentsBox({
         />
 
         <button
-          type="button"
           type="submit"
           disabled={!text.trim()}
           style={{
@@ -655,7 +654,6 @@ export function ReviewsForm({ onSubmit, style = {}, className = '', ...rest }: R
           <button
             type="button"
             key={s}
-            type="button"
             onMouseEnter={() => setHover(s)}
             onMouseLeave={() => setHover(0)}
             onClick={() => setRating(s)}
@@ -708,7 +706,6 @@ export function ReviewsForm({ onSubmit, style = {}, className = '', ...rest }: R
       />
 
       <button
-        type="button"
         type="submit"
         style={{
           padding: '12px 20px',

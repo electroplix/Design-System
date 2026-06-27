@@ -731,7 +731,6 @@ export function CommentsSection({
           </button>
         )}
         <button
-          type="button"
           type="submit"
           disabled={!text.trim()}
           style={{
