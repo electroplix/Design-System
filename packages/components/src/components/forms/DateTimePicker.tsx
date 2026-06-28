@@ -170,8 +170,8 @@ export function DateTimePicker(props: DateTimePickerProps) {
           >
             {['Today', 'Tomorrow', 'Next Week'].map((l) => (
               <button
-                key={l}
                 type="button"
+                key={l}
                 onClick={() => {
                   const d = new Date();
 

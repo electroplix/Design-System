@@ -143,8 +143,8 @@ export function SelectDropdown(props: SelectDropdownProps) {
             >
               {safeOpts.map((opt) => (
                 <button
-                  key={opt.value}
                   type="button"
+                  key={opt.value}
                   disabled={opt.disabled}
                   onClick={() => {
                     if (!opt.disabled) {

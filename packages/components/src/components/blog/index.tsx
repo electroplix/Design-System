@@ -3,6 +3,7 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useBlogTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -407,7 +408,11 @@ export function ArticleRenderer({
   ...rest
 }: ArticleRendererProps) {
   const bg = useBG();
-  const safeHtml = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+  const safeHtml = html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<(iframe|object|embed|form|input|textarea|button|select)[^>]*>/gi, '')
+    .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
+    .replace(/on\w+\s*=\s*\S+/gi, '');
 
   return (
     <article
@@ -445,6 +450,7 @@ export function RelatedPosts({
   ...rest
 }: RelatedPostsProps) {
   const bg = useBG();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <section
@@ -466,7 +472,7 @@ export function RelatedPosts({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${Math.min(posts.length, 3)}, 1fr)`,
+          gridTemplateColumns: isMobile ? '1fr' : `repeat(${Math.min(posts.length, 3)}, 1fr)`,
           gap: 16,
         }}
       >

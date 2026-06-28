@@ -2,6 +2,7 @@
 import type React from 'react';
 import { Icon } from '../../core/icons';
 import { useContentTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 /* ── TeamGrid ───────────────────────────────────────────── */
 
@@ -51,6 +52,7 @@ export function TeamGrid({
   ...rest
 }: TeamGridProps) {
   const t = useContentTheme();
+  const isMobile = useMediaQuery('(max-width: 768px');
 
   const bg = bgColor ?? t.bgColor ?? ui.white;
   const fg = textColor ?? t.textColor ?? ui.text;
@@ -96,7 +98,7 @@ export function TeamGrid({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
           gap: 20,
         }}
       >

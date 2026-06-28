@@ -2,6 +2,7 @@
 import type React from 'react';
 import { type ReactNode, useCallback, useState } from 'react';
 import { useNavTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 export type TabDef = {
   label: string;
@@ -52,6 +53,7 @@ export function Tabs({
 
   const mutedColor = '#71717a';
   const surfaceColor = '#fafafa';
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const [active, setActive] = useState(defaultTab);
 
@@ -120,6 +122,8 @@ export function Tabs({
             borderBottom: isHorizontal ? `1px solid ${borderColor}` : 'none',
             borderRight: !isHorizontal ? `1px solid ${borderColor}` : 'none',
             minWidth: !isHorizontal ? 200 : 'auto',
+            overflowX: isHorizontal && isMobile ? 'auto' : undefined,
+            flexWrap: isHorizontal && isMobile ? 'nowrap' : undefined,
           }}
         >
           {tabs.map((tab, i) => {

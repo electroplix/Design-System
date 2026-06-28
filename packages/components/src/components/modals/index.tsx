@@ -3,6 +3,7 @@ import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useModalsTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -49,6 +50,7 @@ export function OverlayBase({
   ...rest
 }: OverlayBaseProps) {
   const ml = useML();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     if (!isOpen) return;
@@ -97,7 +99,7 @@ export function OverlayBase({
           background: ml.bg,
           border: `1px solid ${ml.border}`,
           borderRadius: ml.r,
-          maxWidth: maxW,
+          maxWidth: isMobile ? 'calc(100vw - 32px)' : maxW,
           width: '100%',
           fontFamily: ml.ff,
           color: ml.fg,

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import type React from 'react';
 import { useMemo, useState } from 'react';
@@ -38,7 +37,7 @@ const ui = {
   surfaceHover: '#f4f4f5',
 };
 
-export function DataTable<T extends Record<string, any>>({
+export function DataTable<T extends Record<string, unknown>>({
   columns = [],
   rows = [],
   pageSize = 5,

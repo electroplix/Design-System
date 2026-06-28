@@ -324,8 +324,8 @@ export function CarouselHero(props: CarouselHeroProps) {
           >
             {slides.map((_, i) => (
               <button
-                key={i}
                 type="button"
+                key={i}
                 role="tab"
                 aria-selected={i === idx}
                 aria-label={`Go to slide ${i + 1}`}

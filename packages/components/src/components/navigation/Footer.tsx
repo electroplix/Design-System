@@ -2,6 +2,7 @@
 import type React from 'react';
 import { Icon } from '../../core/icons';
 import { useNavTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 /* ── Footer ─────────────────────────────────────────────── */
 
@@ -53,6 +54,7 @@ export function Footer({
   ...rest
 }: FooterProps) {
   const t = useNavTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const bg = bgColor ?? t.bgColor ?? '#ffffff';
   const fg = textColor ?? t.textColor ?? '#09090b';
@@ -87,8 +89,11 @@ export function Footer({
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns:
-              columns.length > 0 ? `1fr repeat(${Math.min(columns.length, 4)}, auto)` : '1fr',
+            gridTemplateColumns: isMobile
+              ? '1fr'
+              : columns.length > 0
+                ? `1fr repeat(${Math.min(columns.length, 4)}, auto)`
+                : '1fr',
             gap: 48,
             marginBottom: 40,
           }}

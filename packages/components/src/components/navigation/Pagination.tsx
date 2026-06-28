@@ -3,6 +3,7 @@ import type React from 'react';
 import { useMemo } from 'react';
 import { Icon } from '../../core/icons';
 import { useNavTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 export interface PaginationProps extends React.ComponentPropsWithoutRef<'nav'> {
   currentPage: number;
@@ -41,6 +42,7 @@ export function Pagination({
   ...rest
 }: PaginationProps) {
   const t = useNavTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const bgColor = bgColorProp ?? t.bgColor ?? '#ffffff';
   const textColor = textColorProp ?? t.textColor ?? '#09090b';
@@ -132,18 +134,20 @@ export function Pagination({
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap,
+        gap: isMobile ? 4 : gap,
         fontFamily,
         padding: 8,
         borderRadius: radius + 4,
         background: bgColor,
         border: `1px solid ${borderColor}`,
         boxShadow: '0 1px 2px rgba(9, 9, 11, 0.04)',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
         ...style,
       }}
       {...rest}
     >
-      {showFirstLast && (
+      {!isMobile && showFirstLast && (
         <Btn page={1} disabled={currentPage === 1} icon>
           <Icon name="chevrons-left" size={16} color={currentPage === 1 ? '#a1a1aa' : mutedColor} />
         </Btn>
@@ -185,7 +189,7 @@ export function Pagination({
         </Btn>
       )}
 
-      {showFirstLast && (
+      {!isMobile && showFirstLast && (
         <Btn page={totalPages} disabled={currentPage === totalPages} icon>
           <Icon
             name="chevrons-right"
