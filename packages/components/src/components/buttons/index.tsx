@@ -88,6 +88,7 @@ export function PrimaryButton({ className, style, children, ...p }: ButtonBasePr
 
   return (
     <button
+      type="button"
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
       className={className}
@@ -139,6 +140,7 @@ export function SecondaryButton({ className, style, children, ...p }: ButtonBase
 
   return (
     <button
+      type="button"
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
       className={className}
@@ -187,6 +189,7 @@ export function TertiaryButton({ className, style, children, ...p }: ButtonBaseP
 
   return (
     <button
+      type="button"
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
       className={className}
@@ -238,6 +241,7 @@ export function IconButton({ className, style, ...p }: IconButtonProps) {
 
   return (
     <button
+      type="button"
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
       className={className}
@@ -334,6 +338,7 @@ export function FloatingActionButton({
 
   return (
     <button
+      type="button"
       onClick={p.onClick}
       disabled={p.disabled || p.isLoading}
       className={className}
@@ -436,6 +441,7 @@ export function ButtonGroup({
         const isActive = toggle ? activeIndex === i : btn.active;
         return (
           <button
+            type="button"
             key={btn.id ?? i}
             onClick={(e) => handleButtonClick(i, e, btn.onClick)}
             disabled={btn.disabled}
