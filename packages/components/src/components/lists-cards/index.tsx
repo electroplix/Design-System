@@ -4,6 +4,7 @@ import type React from 'react';
 import { useMemo, useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useListsCardsTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -334,6 +335,7 @@ export function FeatureGrid({
   ...rest
 }: FeatureGridProps) {
   const lc = useLC();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div
@@ -360,7 +362,7 @@ export function FeatureGrid({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
           gap: 16,
         }}
       >
@@ -446,13 +448,14 @@ export function ItemCardGrid({
   ...rest
 }: ItemCardGridProps) {
   const lc = useLC();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div
       className={className}
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
         gap: 16,
         ...style,
       }}
@@ -570,13 +573,14 @@ export function PricingTable({
   ...rest
 }: PricingTableProps) {
   const lc = useLC();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div
       className={className}
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${Math.min(plans.length, 4)}, 1fr)`,
+        gridTemplateColumns: isMobile ? '1fr' : `repeat(${Math.min(plans.length, 4)}, 1fr)`,
         gap: 16,
         fontFamily: lc.ff,
         color: lc.fg,

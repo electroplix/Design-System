@@ -111,10 +111,12 @@ export function CartDrawer({
   ...rest
 }: CartDrawerProps) {
   const e = useEcom();
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const safeItems = Array.isArray(items) ? items : [];
   const total = safeItems.reduce((s, it) => s + it.price * it.qty, 0);
   const count = safeItems.reduce((s, it) => s + it.qty, 0);
   const [hovered, setHovered] = useState<string | null>(null);
+  const drawerWidth = isMobile ? '100vw' : width;
 
   return (
     <aside
@@ -122,9 +124,9 @@ export function CartDrawer({
       style={{
         position: 'fixed',
         top: 0,
-        right: open ? 0 : -width,
+        right: open ? 0 : isMobile ? '-100vw' : -width,
         height: '100dvh',
-        width,
+        width: drawerWidth,
         transition: 'right 0.3s cubic-bezier(0.4,0,0.2,1)',
         background: e.bg,
         color: e.fg,
@@ -866,6 +868,7 @@ export function ProductGrid({
   ...rest
 }: ProductGridProps) {
   const e = useEcom();
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const safe = Array.isArray(products) ? products : [];
   if (safe.length === 0)
     return (
@@ -886,7 +889,12 @@ export function ProductGrid({
   return (
     <div
       className={className}
-      style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1fr)`, gap: 16, ...style }}
+      style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
+        gap: 16,
+        ...style,
+      }}
       {...rest}
     >
       {safe.map((p) => (

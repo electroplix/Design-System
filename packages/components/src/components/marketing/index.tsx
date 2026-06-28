@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Icon } from '../../core/icons';
 import { useMarketingTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 function useMK() {
   const t = useMarketingTheme();
@@ -341,6 +342,7 @@ export function FeatureHighlights({
   ...rest
 }: FeatureHighlightsProps) {
   const mk = useMK();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div className={className} style={{ fontFamily: mk.ff, color: mk.fg, ...style }} {...rest}>
@@ -361,7 +363,7 @@ export function FeatureHighlights({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
           gap: 20,
         }}
       >
@@ -1058,6 +1060,7 @@ export function StatsCounter({
   ...rest
 }: StatsCounterProps) {
   const mk = useMK();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div
@@ -1081,7 +1084,7 @@ export function StatsCounter({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
           gap: 20,
         }}
       >

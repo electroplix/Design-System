@@ -3,6 +3,7 @@ import type React from 'react';
 import { useState } from 'react';
 import { Icon } from '../../core/icons';
 import { useDataDisplayTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 import { Badge, type BadgeTone } from './Badge';
 
 /* ── CalendarGrid ───────────────────────────────────────── */
@@ -53,6 +54,7 @@ export function CalendarGrid({
   const r = t.radius ?? 14;
   const sp = t.spacing ?? 14;
   const [hoveredDay, setHoveredDay] = useState<number | null>(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const safeYear = year || new Date().getFullYear();
   const safeMonth = typeof month === 'number' ? month : new Date().getMonth();
@@ -137,7 +139,12 @@ export function CalendarGrid({
       </div>
 
       <div
-        style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4, marginBottom: 8 }}
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(7, 1fr)',
+          gap: isMobile ? 2 : 4,
+          marginBottom: 8,
+        }}
       >
         {wdays.map((w, i) => (
           <div
@@ -157,7 +164,9 @@ export function CalendarGrid({
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4 }}>
+      <div
+        style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: isMobile ? 2 : 4 }}
+      >
         {cells.map((c, i) => {
           const isToday = isCurrentMonth && c.day === today.getDate();
           const isH = c.day != null && hoveredDay === c.day;

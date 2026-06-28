@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Icon } from '../../core/icons';
 import { useMediaTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 function useMD() {
   const t = useMediaTheme();
@@ -324,12 +325,13 @@ export function IconGrid({
   ...rest
 }: IconGridProps) {
   const md = useMD();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
         gap: 12,
         fontFamily: md.ff,
         color: md.fg,
@@ -393,12 +395,13 @@ export function ImageGallery({
   ...rest
 }: ImageGalleryProps) {
   const md = useMD();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
         gap,
         ...style,
       }}

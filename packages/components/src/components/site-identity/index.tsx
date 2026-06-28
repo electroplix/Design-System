@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { Icon } from '../../core/icons';
 import { useSiteIdentityTheme } from '../../core/provider';
+import { useMediaQuery } from '../../core/utils';
 
 /* ── helpers ────────────────────────────────────────────── */
 
@@ -246,20 +247,21 @@ export interface BrandIconGridProps extends React.ComponentPropsWithoutRef<'div'
 
 export function BrandIconGrid({
   icons = [],
-  columns = 6,
+  columns = 4,
   iconSize = 48,
-  style = {},
-  className = '',
+  className,
+  style,
   ...rest
 }: BrandIconGridProps) {
   const si = useSI();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div
       className={className}
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gridTemplateColumns: isMobile ? '1fr' : `repeat(${columns}, 1fr)`,
         gap: 16,
         fontFamily: si.ff,
         color: si.fg,
