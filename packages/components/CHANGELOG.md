@@ -1,8 +1,25 @@
-## 0.5.0-alpha.12 (2026-06-27)
+## 0.6.0-beta.1 (2026-06-28)
 
 ### 🚀 Features
 
-- make all 7 hero components fully responsive ([f74e926](https://github.com/electroplix/Design-System/commit/f74e926))
+- **accessibility:** add global `*:focus-visible` CSS rule to override inline `outline: none` on keyboard focus
+- **accessibility:** add `prefers-reduced-motion` media query to disable all animations/transitions for users who request reduced motion
+- **accessibility:** add `type="button"` to all 101+ buttons across all categories
+- **accessibility:** add keyboard navigation to Tabs, MegaMenu, Accordion, Pagination, SidebarMenu, SideDrawerNav
+- **responsive:** make all 8 hero components fully responsive with `useMediaQuery`
+- **responsive:** make navigation components responsive (PrimaryNav mobile menu, MegaMenu stacked, Tabs scrollable, Pagination condensed, Footer stacked)
+- **responsive:** make modal OverlayBase responsive on mobile (full-width)
+- **responsive:** make grid components responsive (ProductGrid, FeatureGrid, PricingTable, ImageGallery, etc.)
+- **security:** harden ArticleRenderer XSS stripping (strip iframe, object, embed, form tags + on* event handlers)
+- **SSR:** add runtime guards for window/document/navigator access in social, miscellaneous, and InlineCodeText components
+- **tests:** add 50 behavioral test specs across navigation, forms, modals, hero, and buttons (222 total tests)
+
+### 🩹 Fixes
+
+- fix hero Storybook stories: correct prop names for SplitHero, CTAOverlayHero, CarouselHero
+- add missing ImageHero and HeroShell stories
+- replace `Record<string, any>` with `Record<string, unknown>` in DataTable
+- widen React peer dependency to `^18.0.0 || ^19.0.0` for broader ecosystem compatibility
 
 ### ❤️ Thank You
 

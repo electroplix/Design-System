@@ -110,7 +110,7 @@ export function InlineCodeText({
   });
 
   const handleCopy = async () => {
-    if (codeSnippets.length > 0) {
+    if (codeSnippets.length > 0 && typeof navigator !== 'undefined' && navigator.clipboard) {
       await navigator.clipboard.writeText(codeSnippets.join('\n'));
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);

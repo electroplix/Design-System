@@ -72,7 +72,9 @@ export function SocialShareBar({
     const enc = encodeURIComponent;
 
     if (n === 'copy') {
-      navigator.clipboard.writeText(url);
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        navigator.clipboard.writeText(url);
+      }
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
       return;
@@ -86,7 +88,9 @@ export function SocialShareBar({
       email: `mailto:?subject=${enc(title)}&body=${enc(url)}`,
     };
 
-    window.open(urls[n], '_blank', 'noopener,width=600,height=400');
+    if (typeof window !== 'undefined') {
+      window.open(urls[n], '_blank', 'noopener,width=600,height=400');
+    }
   };
 
   return (

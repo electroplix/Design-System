@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 /**
  * @electroplix/components – buttons tests
  */
@@ -68,5 +68,101 @@ describe('Button components', () => {
   it('PrintButton renders', () => {
     const { container } = wrap(<PrintButton label="Print" />);
     expect(container.firstChild).toBeTruthy();
+  });
+
+  describe('PrimaryButton behavioral', () => {
+    it('has type="button"', () => {
+      wrap(<PrimaryButton label="Go" />);
+      const btn = screen.getByRole('button');
+      expect(btn.getAttribute('type')).toBe('button');
+    });
+
+    it('calls onClick when clicked', () => {
+      const onClick = jest.fn();
+      wrap(<PrimaryButton label="Go" onClick={onClick} />);
+      fireEvent.click(screen.getByText('Go'));
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('is disabled when isLoading', () => {
+      wrap(<PrimaryButton label="Save" isLoading />);
+      const btn = screen.getByRole('button');
+      expect(btn.hasAttribute('disabled')).toBe(true);
+    });
+
+    it('is disabled when disabled prop is true', () => {
+      wrap(<PrimaryButton label="Save" disabled />);
+      const btn = screen.getByRole('button');
+      expect(btn.hasAttribute('disabled')).toBe(true);
+    });
+
+    it('displays label text', () => {
+      wrap(<PrimaryButton label="Submit Form" />);
+      expect(screen.getByText('Submit Form')).toBeTruthy();
+    });
+
+    it('displays children over label', () => {
+      wrap(
+        <PrimaryButton label="Label">
+          <span>Child Content</span>
+        </PrimaryButton>,
+      );
+      expect(screen.getByText('Child Content')).toBeTruthy();
+    });
+  });
+
+  describe('SecondaryButton behavioral', () => {
+    it('has type="button"', () => {
+      wrap(<SecondaryButton label="Cancel" />);
+      const btn = screen.getByRole('button');
+      expect(btn.getAttribute('type')).toBe('button');
+    });
+
+    it('calls onClick when clicked', () => {
+      const onClick = jest.fn();
+      wrap(<SecondaryButton label="Cancel" onClick={onClick} />);
+      fireEvent.click(screen.getByText('Cancel'));
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('TertiaryButton behavioral', () => {
+    it('calls onClick when clicked', () => {
+      const onClick = jest.fn();
+      wrap(<TertiaryButton label="Dismiss" onClick={onClick} />);
+      fireEvent.click(screen.getByText('Dismiss'));
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('IconButton behavioral', () => {
+    it('has type="button"', () => {
+      wrap(<IconButton icon="star" />);
+      const btn = screen.getByRole('button');
+      expect(btn.getAttribute('type')).toBe('button');
+    });
+  });
+
+  describe('FloatingActionButton behavioral', () => {
+    it('has type="button"', () => {
+      wrap(<FloatingActionButton icon="plus" />);
+      const btn = screen.getByRole('button');
+      expect(btn.getAttribute('type')).toBe('button');
+    });
+  });
+
+  describe('ButtonGroup behavioral', () => {
+    it('renders all buttons', () => {
+      wrap(<ButtonGroup buttons={[{ label: 'First' }, { label: 'Second' }]} />);
+      expect(screen.getByText('First')).toBeTruthy();
+      expect(screen.getByText('Second')).toBeTruthy();
+    });
+
+    it('calls onChange when button clicked', () => {
+      const onChange = jest.fn();
+      wrap(<ButtonGroup buttons={[{ label: 'A' }, { label: 'B' }]} onChange={onChange} />);
+      fireEvent.click(screen.getByText('B'));
+      expect(onChange).toHaveBeenCalledWith(1);
+    });
   });
 });

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 /**
  * @electroplix/components – modals tests
  */
@@ -85,5 +85,115 @@ describe('Modal components', () => {
       <WelcomePopup isOpen message="Hi there!" onCta={noop} onClose={noop} />,
     );
     expect(container.firstChild).toBeTruthy();
+  });
+
+  describe('OverlayBase behavioral', () => {
+    it('renders nothing when closed', () => {
+      const { container } = wrap(
+        <OverlayBase isOpen={false} onClose={noop}>
+          <span>content</span>
+        </OverlayBase>,
+      );
+      expect(container.firstChild).toBeNull();
+    });
+
+    it('renders children when open', () => {
+      wrap(
+        <OverlayBase isOpen onClose={noop}>
+          <span>Modal Content</span>
+        </OverlayBase>,
+      );
+      expect(screen.getByText('Modal Content')).toBeTruthy();
+    });
+  });
+
+  describe('GenericModal behavioral', () => {
+    it('renders nothing when closed', () => {
+      const { container } = wrap(
+        <GenericModal isOpen={false} title="Test" onClose={noop}>
+          <p>Body</p>
+        </GenericModal>,
+      );
+      expect(container.firstChild).toBeNull();
+    });
+
+    it('displays title', () => {
+      wrap(
+        <GenericModal isOpen title="My Modal" onClose={noop}>
+          <p>Body</p>
+        </GenericModal>,
+      );
+      expect(screen.getByText('My Modal')).toBeTruthy();
+    });
+  });
+
+  describe('ConfirmDialog behavioral', () => {
+    it('renders nothing when closed', () => {
+      const { container } = wrap(
+        <ConfirmDialog isOpen={false} message="Delete?" onConfirm={noop} onCancel={noop} />,
+      );
+      expect(container.firstChild).toBeNull();
+    });
+
+    it('displays message text', () => {
+      wrap(<ConfirmDialog isOpen message="Delete item?" onConfirm={noop} onCancel={noop} />);
+      expect(screen.getAllByText('Delete item?').length).toBeGreaterThanOrEqual(1);
+    });
+
+    it('calls onConfirm when confirm clicked', () => {
+      const onConfirm = jest.fn();
+      wrap(<ConfirmDialog isOpen message="Delete?" onConfirm={onConfirm} onCancel={noop} />);
+      const confirmBtn = screen.getByText('Confirm');
+      fireEvent.click(confirmBtn);
+      expect(onConfirm).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls onCancel when cancel clicked', () => {
+      const onCancel = jest.fn();
+      wrap(<ConfirmDialog isOpen message="Delete?" onConfirm={noop} onCancel={onCancel} />);
+      const cancelBtn = screen.getByText('Cancel');
+      fireEvent.click(cancelBtn);
+      expect(onCancel).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('WelcomePopup behavioral', () => {
+    it('renders nothing when closed', () => {
+      const { container } = wrap(
+        <WelcomePopup isOpen={false} message="Hi!" onCta={noop} onClose={noop} />,
+      );
+      expect(container.firstChild).toBeNull();
+    });
+
+    it('displays message', () => {
+      wrap(<WelcomePopup isOpen message="Welcome here!" onCta={noop} onClose={noop} />);
+      expect(screen.getAllByText('Welcome here!').length).toBeGreaterThanOrEqual(1);
+    });
+  });
+
+  describe('CookieNotice behavioral', () => {
+    it('calls onAccept when accept clicked', () => {
+      const onAccept = jest.fn();
+      wrap(<CookieNotice isOpen onAccept={onAccept} onDecline={noop} />);
+      const acceptBtn = screen.getByText('Accept');
+      fireEvent.click(acceptBtn);
+      expect(onAccept).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('ToastBanners behavioral', () => {
+    it('renders toast messages', () => {
+      wrap(
+        <ToastBanners
+          toasts={[
+            { id: '1', message: 'Saved!', type: 'success' },
+            { id: '2', message: 'Error!', type: 'error' },
+          ]}
+          onDismiss={noop}
+        />,
+      );
+      expect(screen.getByText('Saved!')).toBeTruthy();
+      expect(screen.getByText('Error!')).toBeTruthy();
+    });
   });
 });
