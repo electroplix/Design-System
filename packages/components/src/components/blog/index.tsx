@@ -408,7 +408,11 @@ export function ArticleRenderer({
   ...rest
 }: ArticleRendererProps) {
   const bg = useBG();
-  const safeHtml = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+  const safeHtml = html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<(iframe|object|embed|form|input|textarea|button|select)[^>]*>/gi, '')
+    .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
+    .replace(/on\w+\s*=\s*\S+/gi, '');
 
   return (
     <article
