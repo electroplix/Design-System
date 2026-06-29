@@ -33,7 +33,7 @@
     "@nx/playwright": "22.7.2",
     "@nx/react": "22.7.2",
     "@nx/rollup": "22.7.2",
-    "@nx/storybook": "22.7.2",
+    "@nx/storybook": "23.0.1",
     "@nx/workspace": "22.7.2",
     "@playwright/test": "^1.60.0",
     "@rollup/plugin-url": "^8.0.2",
