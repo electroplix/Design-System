@@ -31,7 +31,7 @@
     "@nx/jest": "22.7.2",
     "@nx/js": "22.7.2",
     "@nx/playwright": "22.7.2",
-    "@nx/react": "22.7.2",
+    "@nx/react": "23.0.1",
     "@nx/rollup": "22.7.2",
     "@nx/storybook": "22.7.2",
     "@nx/workspace": "22.7.2",
